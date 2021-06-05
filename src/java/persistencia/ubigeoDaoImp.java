@@ -14,8 +14,8 @@ import java.util.List;
 public class ubigeoDaoImp implements ubigeoDao {
 
     @Override
-    public List listarDep() {
-        String sql = "select * from ubigeo_peru_departments";
+    public List listarDep(String name) {
+        String sql = "select * from ubigeo_peru_departments where name='" + name + "'";
         List lis = operacion.listar(sql);
         if (lis != null) {
             return lis;
@@ -24,8 +24,8 @@ public class ubigeoDaoImp implements ubigeoDao {
     }
 
     @Override
-    public List listarDis(String cod) {
-        String sql = "select * from ubigeo_peru_districts where province_id='" + cod + "'";
+    public List listarDis(String codDe,String name,String codPro) {
+        String sql = "select * from ubigeo_peru_districts where name='" + name + "' and province_id='" + codPro + "' and department_id='" + codDe + "'";
         List lis = operacion.listar(sql);
         if (lis != null) {
             return lis;
@@ -34,8 +34,8 @@ public class ubigeoDaoImp implements ubigeoDao {
     }
 
     @Override
-    public List listarPro(String cod) {
-        String sql = "select * from ubigeo_peru_provinces where department_id='" + cod + "'";
+    public List listarPro(String codDe,String name) {
+        String sql = "select * from ubigeo_peru_provinces where name='" + name + "' and department_id='" + codDe + "'";
         List lis = operacion.listar(sql);
         if (lis != null) {
             return lis;

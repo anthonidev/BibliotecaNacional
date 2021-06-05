@@ -7,10 +7,10 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
     <head>
-        <meta charset="UTF-8">
+         <meta http-equiv=”Content-Type” content=”text/html; charset=ISO-8859-1″ />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
@@ -87,94 +87,113 @@
                                     </div>
 
                                     <div>
-                                        <form action="" method="post">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                    <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                </div>
-                                                <div class="col-6">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                    <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
-                                                    <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
-                                                    <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
+                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
+                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            </div>
+                                            <div class="col-6 my-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
+                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            </div>
+                                            <div class="col-6 my-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
+                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            </div>
+                                            <form action="test" method="post">
+
                                                 <div class="col-6 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
-                                                    <% List lisA = (List) session.getAttribute("lisA");%>
 
-
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Seleccionar departamento</option>
-                                                        <% for (int i = 1; i < lisA.size(); i++) { %>
-                                                        <% Object[] f = (Object[]) lisA.get(i);%>
-                                                        <option value="<%= f[0]%>"><%= f[1]%></option>
-                                                        <% }%>
+                                                    <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required="">
+                                                        <option value="">Seleccione</option>
+                                                        <option value="Amazonas">Amazonas</option>
+                                                        <option value="Ancash">Ancash</option>
+                                                        <option value="Apurímac">Apurímac</option>
+                                                        <option value="Arequipa">Arequipa</option>
+                                                        <option value="Ayacucho">Ayacucho</option>
+                                                        <option value="Cajamarca">Cajamarca</option>
+                                                        <option value="Callao">Callao</option>
+                                                        <option value="Cuzco">Cuzco </option>
+                                                        <option value="Huancavelica">Huancavelica</option>
+                                                        <option value="Huánuco">Huánuco</option>
+                                                        <option value="Ica">Ica</option>
+                                                        <option value="Junín">Junín</option>
+                                                        <option value="La_Libertad">La Libertad</option>
+                                                        <option value="Lambayeque">Lambayeque</option>
+                                                        <option value="Lima">Lima</option>
+                                                        <option value="Loreto">Loreto</option>
+                                                        <option value="Madre_de_Dios">Madre de Dios</option>
+                                                        <option value="Moquegua">Moquegua</option>
+                                                        <option value="Pasco">Pasco</option>
+                                                        <option value="Piura">Piura</option>
+                                                        <option value="Puno">Puno</option>
+                                                        <option value="San_Martín">San Martín</option>
+                                                        <option value="Tacna">Tacna</option>
+                                                        <option value="Tumbes">Tumbes</option>
+                                                        <option value="Ucayali">Ucayali</option>
                                                     </select>
 
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                    <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                
+                                            
+                                            <div class="col-6 my-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
+                                                <select class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required="">
+                                                    <option>Seleccione la Provincia</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-6 my-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
+                                                <select class="form-select form-control" aria-label="Default select example" name="selectDistrito" required="">
+                                                    <option>Seleccione el Distrito</option>
+                                                </select>
+                                            </div>
+                                                                                            <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
+</form>
+                                            <div class="col-6 my-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
+                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
-                                                </div>
-                                                <div class="col-12 my-2">
-                                                    <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
-                                                    <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            </div>
+                                            <div class="col-12 my-2">
+                                                <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
+                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
-                                                </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
-                                                    <input type="password" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            </div>
+                                            <div class="col-6 my-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
+                                                <input type="password" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
-                                                </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Repetir constraseña</span>
-                                                    <input type="password" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            </div>
+                                            <div class="col-6 my-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Repetir constraseña</span>
+                                                <input type="password" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
-                                                </div>
+                                            </div>
 
-                                                <div class="input-group input-group-lg my-5 ">
-                                                    <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
-                                                </div>
+                                            <div class="input-group input-group-lg my-5 ">
+                                                <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
+                                            </div>
 
-                                        </form>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
 
 
 
         </main>
+        <script src="js/ubigeo.js"></script>
     </body>
 
 </html>

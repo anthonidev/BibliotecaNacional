@@ -1,37 +1,61 @@
-
 package vista;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicio.departamentoServicio;
-import servicio.departamentoServicioImp;
+import servicio.UbigeoServicio;
+import servicio.UbigeoServicioImp;
 
+@WebServlet(name = "test", urlPatterns = {"/test"})
+public class test extends HttpServlet {
 
-@WebServlet(name = "departamentoControl", urlPatterns = {"/departamentoControl"})
-public class departamentoControl extends HttpServlet {
-    private departamentoServicio depSer;
+    private UbigeoServicio ubiSer;
 
-    public departamentoControl() {
-        depSer = new departamentoServicioImp();
+    public test() {
+        ubiSer = new UbigeoServicioImp();
     }
-
-   
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String ctr = request.getParameter("ctr");
-        if (ctr.equals("Listar")) {
-            List lisA = depSer.listar();
-            request.getSession().setAttribute("lisA", lisA);
-            response.sendRedirect("signUp.jsp");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String acc = request.getParameter("acc");
+
+            if (acc.equals("Registrarse")) {
+                
+                //ubigeo ---->
+                String dep = request.getParameter("selectDepartamento");
+                String pro = request.getParameter("selectProvincia");
+                String dis = request.getParameter("selectDistrito");
+
+                List lisDep = ubiSer.listarDep(dep);
+                Object[] f = (Object[]) lisDep.get(1);
+                String codDep= (String) f[0];
+                
+                List lisPro = ubiSer.listarPro(codDep, pro);
+                Object[] x = (Object[]) lisPro.get(1);
+                String codPro= (String) x[0];
+                
+                List lisDis = ubiSer.listarDis(codDep, dis, codPro);
+                Object[] e =(Object[]) lisDis.get(1);
+                String codDis=(String) e[0];
+                //<----ubigeo
+                
+                System.out.println(codDep);
+                System.out.println(codPro);
+                System.out.println(codDis);
+                
+                response.sendRedirect("Login.jsp");
+
+            }
+
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

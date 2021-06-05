@@ -93,7 +93,7 @@
 
                                     <div class="d-flex flex-column">
                                         <h1 class="text-dark h5 text-center">No tienes cuenta?</h1>
-                                        <a href="" class="btn btn-success m-auto">Registrarse </a>
+                                        <a href="signUp.jsp" class="btn btn-success m-auto">Registrarse </a>
                                     </div>
                                 </div>
                             </div>
