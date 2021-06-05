@@ -10,7 +10,7 @@
 <html lang="es">
 
     <head>
-         <meta http-equiv=”Content-Type” content=”text/html; charset=ISO-8859-1″ />
+        <meta http-equiv=”Content-Type” content=”text/html; charset=ISO-8859-1″ />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
@@ -22,64 +22,15 @@
 
     <body class="">
         <main class="container-fluid p-0 ">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
-                    <a class="navbar-brand" href="#"><img src="img/LogoMakr-1JUGB7.png" width="80" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center justify-content-end w-100">
-                            <li class="nav-item mx-3">
-                                <a class="nav-link active h5" aria-current="page" href="index.html"><i
-                                        class="fas fa-home d-flex align-items-start justify-content-center w-100"></i>
-                                    Inicio</a>
-                            </li>
-                            <li class="nav-item mx-3">
-                                <a class="nav-link active h5" aria-current="page" href="#"><i
-                                        class="fas fa-book d-flex align-items-start justify-content-center w-100"></i>
-                                    Productos</a>
-                            </li>
-                            <li class="nav-item mx-3">
-                                <a class="nav-link active h5" aria-current="page" href="#"><i
-                                        class="fas fa-info-circle d-flex align-items-start justify-content-center w-100"></i>
-                                    Informacion</a>
-                            </li>
-                            <li class="nav-item mx-3">
-                                <a class="nav-link active h5" aria-current="page" href="#"><i
-                                        class="fas fa-id-card-alt d-flex align-items-start justify-content-center w-100"></i>
-                                    Contacto</a>
-                            </li>
-
-
-                        </ul>
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center justify-content-md-end justify-content-center  w-50">
-                            <li class="nav-item mx-3">
-                                <a class="nav-link active h5" aria-current="page" href="index.html"><i
-                                        class="fas fa-sign-in-alt d-flex align-items-start justify-content-center w-100"></i>
-                                    Login</a>
-                            </li>
-                            <li class="nav-item mx-3">
-                                <a class="nav-link active h5" aria-current="page" href="#"><i
-                                        class="fas fa-ethernet d-flex align-items-start justify-content-center w-100"></i>
-                                    intranet</a>
-                            </li>
-
-
-
-                        </ul>
-
-                    </div>
-                </div>
-            </nav>
+            <jsp:include page="navInicio.jsp" />
             <div class="row">
                 <div class="col-12 col-md-9 m-auto mt-5">
                     <div class="card mb-md-3 shadow p-3 mb-5 bg-body rounded  ">
                         <div class="row g-0">
-                            <div class="col-md-6 ">
+                            <div class="col-md-5 m-auto">
                                 <img class="img-fluid" src="https://image.freepik.com/vector-gratis/dibujado-mano-ilustracion-dia-mundial-libro-pila-libros_23-2148868267.jpg" alt="...">
                             </div>
-                            <div class="col-md-6 bg-light d-flex align-items-center">
+                            <div class="col-md-7 bg-light d-flex align-items-center">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center justify-content-center flex-column">
                                         <img src="./img/logo.png" class="img-fluid " alt="">
@@ -87,26 +38,28 @@
                                     </div>
 
                                     <div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                            </div>
-                                            <div class="col-6">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                            </div>
-                                            <div class="col-6 my-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
-                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                            </div>
-                                            <div class="col-6 my-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
-                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                            </div>
-                                            <form action="test" method="post">
+                                        <form action="clienteControl" method="post">
 
+                                            <div class="row">
+
+                                                <div class="col-6">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
+                                                    <input type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                </div>
+                                                <div class="col-6">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
+                                                    <input type="text" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                </div>
                                                 <div class="col-6 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
+                                                    <input type="text" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                </div>
+                                                <div class="col-6 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
+                                                    <input type="text" required class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                </div>
+
+                                                <div class="col-4 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
 
                                                     <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required="">
@@ -139,49 +92,50 @@
                                                     </select>
 
                                                 </div>
+
+
+                                                <div class="col-4 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
+                                                    <select class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required="">
+                                                        <option>Seleccione la Provincia</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
+                                                    <select class="form-select form-control" aria-label="Default select example" name="selectDistrito" required="">
+                                                        <option>Seleccione el Distrito</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
+                                                    <input type="text" required class="form-control" name="Direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+
+                                                </div>
+                                                <div class="col-6 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
+                                                    <input type="date" required class="form-control" name="FechaNa" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+
+                                                </div>
+                                                <div class="col-6 my-2">
+                                                    <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
+                                                    <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+
+                                                </div>
+                                                <div class="col-6 my-2 m-auto">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
+                                                    <input type="password" required class="form-control" name="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+
+                                                </div>
                                                 
-                                            
-                                            <div class="col-6 my-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
-                                                <select class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required="">
-                                                    <option>Seleccione la Provincia</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-6 my-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
-                                                <select class="form-select form-control" aria-label="Default select example" name="selectDistrito" required="">
-                                                    <option>Seleccione el Distrito</option>
-                                                </select>
-                                            </div>
-                                                                                            <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
-</form>
-                                            <div class="col-6 my-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
-                                            </div>
-                                            <div class="col-12 my-2">
-                                                <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
-                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-
-                                            </div>
-                                            <div class="col-6 my-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
-                                                <input type="password" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-
-                                            </div>
-                                            <div class="col-6 my-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Repetir constraseña</span>
-                                                <input type="password" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-
-                                            </div>
-
-                                            <div class="input-group input-group-lg my-5 ">
-                                                <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
-                                            </div>
+                                                <div class="input-group input-group-lg my-5 ">
+                                                    <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
+                                                </div>
 
 
-                                        </div>
+                                            </div>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
