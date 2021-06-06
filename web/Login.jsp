@@ -40,11 +40,11 @@
                                         <form action="" method="post">
                                             <div class="input-group input-group-lg my-5 ">
                                                 <span class="input-group-text" id="inputGroup-sizing-lg" style="width:140px">Usuario</span>
-                                                <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                                <input type="text" required class="form-control" name="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                             </div>
                                             <div class="input-group input-group-lg my-5 ">
                                                 <span class="input-group-text" id="inputGroup-sizing-lg " style="width:140px">Constraseña</span>
-                                                <input type="password" required class="form-control" name="pas" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                                <input type="password" required class="form-control" name="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                             </div>
                                             <div class="input-group input-group-lg my-5 ">
                                                 <input type="submit" name="acc" value="Iniciar" class="btn w-100 btn-primary fw-bold">

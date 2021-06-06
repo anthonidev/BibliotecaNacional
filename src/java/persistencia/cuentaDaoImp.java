@@ -46,5 +46,20 @@ public class cuentaDaoImp implements cuentaDao{
         }
         return null;
     }
+
+    @Override
+    public cuenta validar(String user, String pass) {
+        String sql = "select * from cuenta where user like '" + user + "' and pass like'" + pass + "'";
+        Object[] fill = operacion.buscar(sql);
+        if (fill != null) {
+            cuenta cu = new cuenta();
+            cu.setIdCuenta((int)fill[0]);
+            cu.setUser(fill[1].toString());
+            cu.setPass(fill[2].toString());
+            
+            return cu;
+        }
+        return null;
+    }
     
 }

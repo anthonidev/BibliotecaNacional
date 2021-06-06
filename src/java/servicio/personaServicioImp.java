@@ -63,4 +63,27 @@ public class personaServicioImp implements personaServicio {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Object[] buscarId(int IdPer) {
+        Persona per=perDao.buscarId(IdPer);
+        if(per!=null){
+            Object[]fil=new Object[10];
+            fil[0]=per.getCodPer();
+            fil[1]=per.getNombre();
+            fil[2]=per.getApellidos();
+            fil[3]=per.getDni();
+            fil[4]=per.getDireccion();
+            fil[5]=per.getTelefono();
+            fil[6]=per.getFechaNa();
+            fil[7]=per.getIdDist();
+            fil[8]=per.getIdPro();
+            fil[9]=per.getIdDep();
+            return fil;
+            
+            
+        }
+        
+        return null;
+    }
+
 }

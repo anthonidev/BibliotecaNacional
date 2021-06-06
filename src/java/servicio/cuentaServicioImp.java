@@ -44,7 +44,7 @@ public class cuentaServicioImp implements cuentaServicio{
     public Object[] buscar(String user) {
         cuenta cu=cuDao.buscar(user);
         if(cu!=null){
-            Object[]fil=new Object[10];
+            Object[]fil=new Object[3];
             fil[0]=cu.getIdCuenta();
             fil[1]=cu.getUser();
             fil[2]=cu.getPass();
@@ -52,5 +52,20 @@ public class cuentaServicioImp implements cuentaServicio{
         }
         return null;
     }
-    
+
+    @Override
+    public Object[] validar(String user, String pass) {
+         if(user.equals("") || pass.equals("")){
+            return null;
+        }
+        cuenta cu=cuDao.validar(user, pass);
+        if(cu!=null){
+            Object[]fil=new Object[3];
+            fil[0]=cu.getIdCuenta();
+            fil[1]=cu.getUser();
+            fil[2]=cu.getPass();
+            return fil;
+        }
+        return null;
+    }
 }

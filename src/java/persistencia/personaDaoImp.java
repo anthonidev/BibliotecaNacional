@@ -60,4 +60,25 @@ public class personaDaoImp implements personaDao {
         return Integer.parseInt(idPer);
     }
 
+    @Override
+    public Persona buscarId(int IdPer) {
+        String sql = "select * from persona where IdPer=" + IdPer + "";
+        Object[] fill = operacion.buscar(sql);
+        if (fill != null) {
+            Persona per = new Persona();
+            per.setCodPer((int) fill[0]);
+            per.setNombre(fill[1].toString());
+            per.setApellidos(fill[2].toString());
+            per.setDni(fill[3].toString());
+            per.setDireccion(fill[4].toString());
+            per.setTelefono(fill[5].toString());
+            per.setFechaNa(fill[6].toString());
+            per.setIdDist(fill[7].toString());
+            per.setIdPro(fill[8].toString());
+            per.setIdDep(fill[9].toString());
+            return per;
+        }
+        return null;
+    }
+
 }
