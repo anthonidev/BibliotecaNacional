@@ -13,8 +13,20 @@ public class tipoServicioImp implements tipoServicio {
     }
 
     @Override
-    public Object[] buscar(int idTip) {
-        tipoEmpleado tipEm = tipDao.buscar(idTip);
+    public Object[] buscar(String nombre) {
+        tipoEmpleado tipEm = tipDao.buscar(nombre);
+        if (tipEm != null) {
+            Object[] fil = new Object[2];
+            fil[0] = tipEm.getIdTip();
+            fil[1] = tipEm.getNombre();
+            return fil;
+        }
+        return null;
+    }
+    
+    @Override
+    public Object[] buscarId(int idTip) {
+        tipoEmpleado tipEm = tipDao.buscarId(idTip);
         if (tipEm != null) {
             Object[] fil = new Object[2];
             fil[0] = tipEm.getIdTip();

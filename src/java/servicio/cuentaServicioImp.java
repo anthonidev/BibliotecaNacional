@@ -68,17 +68,4 @@ public class cuentaServicioImp implements cuentaServicio{
         }
         return null;
     }
-
-    @Override
-    public Object[] buscarid(int idCuenta) {
-        cuenta cu=cuDao.buscarid(idCuenta);
-        if(cu!=null){
-            Object[]fil=new Object[3];
-            fil[0]=cu.getIdCuenta();
-            fil[1]=cu.getUser();
-            fil[2]=cu.getPass();
-            return fil;
-        }
-        return null;
-    }
 }

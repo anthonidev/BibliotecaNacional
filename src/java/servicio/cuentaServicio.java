@@ -9,6 +9,5 @@ public interface cuentaServicio {
     public String eliminar(int IdCuenta);
     public List listar();
     public Object[] buscar(String user);
-    public Object[] buscarid(int idCuenta);
     public Object[]validar(String user,String pass);
 }

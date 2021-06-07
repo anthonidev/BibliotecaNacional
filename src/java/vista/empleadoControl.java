@@ -1,6 +1,7 @@
 package vista;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,13 +16,14 @@ public class empleadoControl extends HttpServlet {
     private tipoServicio tipSer;
     private empleadoServicio empSer;
     private personaServicio perSer;
+    private UbigeoServicio ubiSer;
 
     public empleadoControl() {
         cuSer = new cuentaServicioImp();
         tipSer = new tipoServicioImp();
         empSer = new empleadoServicioImp();
         perSer = new personaServicioImp();
-
+        ubiSer = new UbigeoServicioImp();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +36,7 @@ public class empleadoControl extends HttpServlet {
             if (fil != null) {
                 //validar a que cargo pertenece
                 Object[] emp = empSer.buscar((int) fil[0]);
-                Object[] tip = tipSer.buscar((int) emp[2]);
+                Object[] tip = tipSer.buscarId((int) emp[2]);
 
                 switch (tip[1].toString()) {
                     case "admin":
@@ -50,6 +52,49 @@ public class empleadoControl extends HttpServlet {
                 request.getSession().setAttribute("msg", "ACCESO NO PERMITIDO");
                 response.sendRedirect("mensajes/ErrorLogin.jsp");
             }
+        }
+        if (acc.equals("Registrar")) {
+            String Nombre = request.getParameter("Nombre");
+            String Apellidos = request.getParameter("Apellidos");
+            String Dni = request.getParameter("Dni");
+            String Telefono = request.getParameter("Telefono");
+            String FechaNa = request.getParameter("FechaNa");
+            String Direccion = request.getParameter("Direccion");
+            String tipo = request.getParameter("tipo");
+            String usu = request.getParameter("usuario");
+            String pass = request.getParameter("password");
+            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8");
+            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8");
+            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8");
+
+            List lisDep = ubiSer.listarDep(dep);
+            Object[] f = (Object[]) lisDep.get(1);
+            String codDep = (String) f[0];
+
+            List lisPro = ubiSer.listarPro(codDep, pro);
+            Object[] x = (Object[]) lisPro.get(1);
+            String codPro = (String) x[0];
+
+            List lisDis = ubiSer.listarDis(codDep, dis, codPro);
+            Object[] e = (Object[]) lisDis.get(1);
+            String codDis = (String) e[0];
+
+            perSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, codDis, codPro, codDep);
+            cuSer.grabar(usu, pass);
+
+            Object[] busP=perSer.buscar(Dni);
+            int IdPerEmp=(int) busP[0];
+
+            Object[] busE=cuSer.buscar(usu);
+            int IdCuenta=(int)busE[0];
+            
+            Object[] busT=tipSer.buscar(tipo);
+            int IdTip=(int)busT[0];
+
+            empSer.grabar(IdPerEmp, IdCuenta, IdTip);
+
+            request.getSession().setAttribute("msg", "Empleado Grabado.");
+            response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
         if (acc.equals("test")) {
             

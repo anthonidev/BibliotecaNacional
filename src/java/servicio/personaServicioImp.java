@@ -11,7 +11,7 @@ public class personaServicioImp implements personaServicio {
     public personaServicioImp() {
         perDao = new personaDaoImp();
     }
-    
+
     @Override
     public String grabar(String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
 
@@ -79,7 +79,11 @@ public class personaServicioImp implements personaServicio {
             fil[8]=per.getIdPro();
             fil[9]=per.getIdDep();
             return fil;
+            
+            
         }
+        
         return null;
     }
+
 }
