@@ -61,5 +61,19 @@ public class cuentaDaoImp implements cuentaDao{
         }
         return null;
     }
+
+    @Override
+    public cuenta buscarid(int idCuenta) {
+        String sql = "select * from cuenta where idCuenta=" + idCuenta + "";
+        Object[] fill = operacion.buscar(sql);
+        if (fill != null) {
+            cuenta cu = new cuenta();
+            cu.setIdCuenta((int) fill[0]);
+            cu.setUser((String) fill[1]);
+            cu.setPass((String) fill[2]);
+            return cu;
+        }
+        return null;
+    }
     
 }

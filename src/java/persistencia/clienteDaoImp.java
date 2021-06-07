@@ -17,5 +17,18 @@ public class clienteDaoImp implements clienteDao{
         String sql= "delete from cliente where IdPerCli="+IdPerCli+"";
         return operacion.ejecutar(sql);
     }
+
+    @Override
+    public cliente buscar(int idPerCli) {
+        String sql = "select * from cliente where idPerCli=" + idPerCli + "";
+        Object[] fill = operacion.buscar(sql);
+        if (fill != null) {
+            cliente cu = new cliente();
+            cu.setIdPerCli((int) fill[0]);
+            cu.setIdCuenta((int) fill[1]);
+            return cu;
+        }
+        return null;
+    }
     
 }

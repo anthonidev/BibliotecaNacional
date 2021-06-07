@@ -15,6 +15,8 @@ public interface cuentaDao {
 
     public cuenta buscar(String user);
 
+    public cuenta buscarid(int idCuenta);
+
     public cuenta validar(String user, String pass);
 
 }

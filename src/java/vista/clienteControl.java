@@ -16,6 +16,8 @@ public class clienteControl extends HttpServlet {
     private clienteServicio cliSer;
     private cuentaServicio cuSer;
     private personaServicio perSer;
+    private clientePresentador pre;
+    private personaServicio serPer;
 
     public clienteControl() {
         ubiSer = new UbigeoServicioImp();
@@ -44,7 +46,6 @@ public class clienteControl extends HttpServlet {
             String dis = request.getParameter("selectDistrito");
 
             //persona------>
-            
             //ubigeo ---->
             List lisDep = ubiSer.listarDep(dep);
             Object[] f = (Object[]) lisDep.get(1);
@@ -60,30 +61,48 @@ public class clienteControl extends HttpServlet {
             //<----ubigeo
 
             perSer.grabar(Nombre, Apellidos, Dni, dis, Telefono, FechaNa, codDis, codPro, codDep);
-            
+
             //<------persona
-            
-             //cuenta------>
-             
-             cuSer.grabar(usu, pass);
-             
-             //<------cuenta
-             
-             //cliente------>
-             
-             Object[] busP=perSer.buscar(Dni);
-             int IdPerCli=(int) busP[0];
-             
-             Object[] busC=cuSer.buscar(usu);
-             int IdCuenta=(int)busC[0];
-             
-             System.out.println(IdPerCli);
-             cliSer.grabar(IdPerCli, IdCuenta);
-             
-             //<------cliente
+            //cuenta------>
+            cuSer.grabar(usu, pass);
+
+            //<------cuenta
+            //cliente------>
+            Object[] busP = perSer.buscar(Dni);
+            int IdPerCli = (int) busP[0];
+
+            Object[] busC = cuSer.buscar(usu);
+            int IdCuenta = (int) busC[0];
+
+            System.out.println(IdPerCli);
+            cliSer.grabar(IdPerCli, IdCuenta);
+
+            //<------cliente
             response.sendRedirect("Login.jsp");
 
         }
+
+        if (acc.equals("Buscar")) {
+            String dni = request.getParameter("dni");
+            Object[] busDni = perSer.buscar(dni);
+            Object[] busCli = cliSer.buscar((int) busDni[0]);
+            Object[] busCu = cuSer.buscarid((int) busCli[1]);
+            System.out.println(busCli[1]);
+            if (busDni != null) {
+                pre.setFil(busDni);
+                System.out.println(busCu[1]);
+                pre.setUsuario(busCu[1].toString());
+            } else {
+                pre.setMsg("El usuario no existe");
+            }
+        }
+
+        if (acc.equals("Clientes")) {
+            pre = new clientePresentador();
+            serPer = new personaServicioImp();
+            request.getSession().setAttribute("pre", pre);
+        }
+        response.sendRedirect("Intranet/Admin/cliente.jsp");
 
     }
 
