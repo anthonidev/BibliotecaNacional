@@ -3,6 +3,7 @@
     Created on : 05/06/2021, 02:24:12 PM
     Author     : Anthoni
 --%>
+<%@page import="java.util.List"%>
 <%@page import="vista.clientePresentador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -152,19 +153,19 @@
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[7]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDep()%>">
                                                     <label for="floatingInputGrid">Departamento</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[8]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getPro()%>">
                                                     <label for="floatingInputGrid">Provincia</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[9]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDis()%>">
                                                     <label for="floatingInputGrid">Distrito</label>
                                                 </div>
                                             </div>
@@ -175,7 +176,7 @@
                                                 </div>
                                             </div>
 
-                                            <a href="#listar" class="btn btn-secondary my-5 fw-bold ">Listar Cliente</a>
+                                            <a href="#listar" class="btn btn-secondary my-5 fw-bold ">Listar Clientes</a>
                                         </div>
                                     </div>
                                 </div>
@@ -190,79 +191,103 @@
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body bg-light ">
-                                            <form action="" method="post">
+                                            <form action="../../clienteControl" method="post">
+
                                                 <div class="row">
+
                                                     <div class="col-6">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                        <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                        <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
-                                                        <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
-                                                        <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6 my-2">
+
+                                                    <div class="col-4 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Open this select menu</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+
+                                                        <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required="">
+                                                            <option value="">Seleccione</option>
+                                                            <option value="Amazonas">Amazonas</option>
+                                                            <option value="Ancash">Ancash</option>
+                                                            <option value="Apurímac">Apurímac</option>
+                                                            <option value="Arequipa">Arequipa</option>
+                                                            <option value="Ayacucho">Ayacucho</option>
+                                                            <option value="Cajamarca">Cajamarca</option>
+                                                            <option value="Callao">Callao</option>
+                                                            <option value="Cuzco">Cuzco </option>
+                                                            <option value="Huancavelica">Huancavelica</option>
+                                                            <option value="Huánuco">Huánuco</option>
+                                                            <option value="Ica">Ica</option>
+                                                            <option value="Junín">Junín</option>
+                                                            <option value="La_Libertad">La Libertad</option>
+                                                            <option value="Lambayeque">Lambayeque</option>
+                                                            <option value="Lima">Lima</option>
+                                                            <option value="Loreto">Loreto</option>
+                                                            <option value="Madre_de_Dios">Madre de Dios</option>
+                                                            <option value="Moquegua">Moquegua</option>
+                                                            <option value="Pasco">Pasco</option>
+                                                            <option value="Piura">Piura</option>
+                                                            <option value="Puno">Puno</option>
+                                                            <option value="San_Martín">San Martín</option>
+                                                            <option value="Tacna">Tacna</option>
+                                                            <option value="Tumbes">Tumbes</option>
+                                                            <option value="Ucayali">Ucayali</option>
                                                         </select>
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Open this select menu</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Open this select menu</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                        <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
                                                     </div>
+
+
+                                                    <div class="col-4 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
+                                                        <select class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required="">
+                                                            <option>Seleccione la Provincia</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
+                                                        <select class="form-select form-control" aria-label="Default select example" name="selectDistrito" required="">
+                                                            <option>Seleccione el Distrito</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="col-12 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
+                                                        <input type="text" required class="form-control" name="Direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+
+                                                    </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
+                                                        <input type="date" required class="form-control" name="FechaNa" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+
+                                                    </div>
+                                                    <div class="col-6 my-2">
                                                         <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
                                                         <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
                                                     </div>
-                                                    <div class="col-6 my-2">
+                                                    <div class="col-6 my-2 m-auto">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
-                                                        <input type="password" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="password" required class="form-control" name="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
                                                     </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Tipo de
-                                                            usuario</span>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Open this select menu</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                        </select>
+
+
+                                                    <div class="input-group input-group-lg my-5 ">
+                                                        <input type="hidden" name="menu" value="intranet">
+
+                                                        <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
                                                     </div>
-                                                    <div class="input-group input-group-lg ">
-                                                        <input type="submit" name="acc" value="Registrar " class="btn w-100 btn-primary fw-bold">
-                                                    </div>
+
+
                                                 </div>
                                             </form>
                                         </div>
@@ -276,25 +301,77 @@
                                         <div class="accordion-body bg-light">
                                             <form action="../ClienteControl" method="post">
                                                 <div class="row d-flex align-items-center justify-content-center w-100 ">
-                                                    <div class="col-12 col-md-7   ">
-                                                        <label for="exampleInputEmail1" class="form-label text-dark">Codigo:
-                                                        </label>
-                                                        <input name="cod" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    <div class="col-12 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[0]%>">
+                                                            <label for="floatingInputGrid">Codigo</label>
+                                                        </div>
                                                     </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[1]%>">
+                                                            <label for="floatingInputGrid">Nombre</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[2]%>">
+                                                            <label for="floatingInputGrid">Apellidos</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[3]%>">
+                                                            <label for="floatingInputGrid">Dni</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[4]%>">
+                                                            <label for="floatingInputGrid">Direccion</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[5]%>">
+                                                            <label for="floatingInputGrid">Telefono</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[6]%>">
+                                                            <label for="floatingInputGrid">Fecha de Nacimiento</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDep()%>">
+                                                            <label for="floatingInputGrid">Departamento</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getPro()%>">
+                                                            <label for="floatingInputGrid">Provincia</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDis()%>">
+                                                            <label for="floatingInputGrid">Distrito</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 mt-3" id="mostrar">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getUsuario()%>">
+                                                            <label for="floatingInputGrid">Usuario</label>
+                                                        </div>
+                                                    </div>
+                                                                                                                <input type="submit" class="btn btn btn-primary w-75 m-3 btn-lg" name="acc" value="Actualizar">
 
-                                                    <div class="col-12 col-md-7 ">
-                                                        <label for="exampleInputEmail1" class="form-label text-dark">Tipo:
-                                                        </label>
-                                                        <input name="tip" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                    </div>
-                                                    <div class="col-12 col-md-7 ">
-                                                        <label for="exampleInputEmail1" class="form-label text-dark">Contraseña: </label>
-                                                        <input name="pas" required type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                    </div>
-
-                                                    <input type="submit" class="btn btn btn-secondary w-75 m-3 btn-lg" name="acc" value="Actualizar">
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -304,12 +381,14 @@
                                     </h2>
                                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body bg-light">
-                                            <form action="../ClienteControl" method="post">
+                                            <form action="../../clienteControl" method="post">
                                                 <div class="row d-flex align-items-center justify-content-center w-100 ">
                                                     <div class="col-12 col-md-7   ">
-                                                        <label for="exampleInputEmail1" class="form-label text-dark">Codigo:
+                                                        <label for="exampleInputEmail1" class="form-label text-dark">Nombre del cliente
                                                         </label>
-                                                        <input name="cod" required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                        <input  required type="text" value="<%= per[1] + " " + per[2]%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                        <input name="codCu" type="hidden" value="<%= p.getCodigoCuenta()%>">
+                                                        <input name="codPer" type="hidden" value="<%= per[0]%>">
                                                     </div>
 
 
@@ -328,77 +407,57 @@
                 </div>
                 <div class="col-10 m-auto d-flex justify-content-center align-items-center  flex-column" style="height: 100vh" id="listar">
                     <h1 class="fw-bold text-center text-primary my-5">Lista de Clientes</h1>
-                    <form action="../CompraControl" method="post">
-                        <table class="table table-light table-striped  shadow  bg-body rounded border-1 ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Codigo</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Apellido</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Direccion</th>
-                                    <th scope="col">Departamento</th>
-                                    <th scope="col">Usuario</th>
-                                    <th scope="col">Cargo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="">
-                            <form action="../CompraControl" method="post">
+                    <% List lisP = (List) session.getAttribute("lisP");%>
+                    <table class="table table-light table-striped  shadow  bg-body rounded border-1 ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Dni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (int i = 1; i < lisP.size(); i++) { %>
+                            <% Object[] f = (Object[]) lisP.get(i);%>
+                            <tr class="">
                                 <th scope="row">
-                                    <input type="hidden" name="ide" value="">
 
-                                    <input type="text" name="cod" value="" class="form-control text-center" readonly>
+                                    <input type="text" name="cod" value="<%= f[0]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
-                                    <input type="hidden" name="ide" value="">
 
-                                    <input type="text" name="cod" value="" class="form-control text-center" readonly>
+                                    <input type="text" name="cod" value="<%= f[1]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
-                                    <input type="hidden" name="ide" value="">
 
-                                    <input type="text" name="cod" value="" class="form-control text-center" readonly>
+                                    <input type="text" name="cod" value="<%= f[2]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
-                                    <input type="hidden" name="ide" value="">
 
-                                    <input type="text" name="" value="" class="form-control text-center" readonly>
+                                    <input type="text" name="" value="<%= f[5]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
-                                    <input type="hidden" name="ide" value="">
 
-                                    <input type="text" name="cod" value="" class="form-control text-center" readonly>
+                                    <input type="text" name="cod" value="<%= f[4]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
-                                    <input type="hidden" name="ide" value="">
 
-                                    <input type="text" name="cod>" value="" class="form-control text-center" readonly>
+                                    <input type="text" name="cod>" value="<%= f[3]%>" class="form-control text-center" readonly>
                                 </th>
-                                <th scope="row">
-                                    <input type="hidden" name="ide" value="">
+                                <% }%>
 
-                                    <input type="text" name="cod" value="<" class="form-control text-center" readonly>
-                                </th>
-                                <th scope="row">
-                                    <input type="hidden" name="ide" value="">
-
-                                    <input type="text" name="cod" value="" class="form-control text-center" readonly>
-                                </th>
-
-
-                            </form>
                             </tr>
 
 
-
-
-                            </tbody>
-                        </table>
-                    </form>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </main>
+        <<script src="../../js/ubigeo.js"></script>
     </body>
 
 </html>

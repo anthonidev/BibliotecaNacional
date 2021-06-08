@@ -49,13 +49,13 @@ public class personaServicioImp implements personaServicio {
     }
 
     @Override
-    public String eliminar(String codPer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String eliminar(int IdPer) {
+        return perDao.eliminar(IdPer);
     }
 
     @Override
     public List listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return perDao.listar();
     }
 
     @Override

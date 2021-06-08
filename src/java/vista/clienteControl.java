@@ -44,6 +44,7 @@ public class clienteControl extends HttpServlet {
             String dep = request.getParameter("selectDepartamento");
             String pro = request.getParameter("selectProvincia");
             String dis = request.getParameter("selectDistrito");
+            String menu = request.getParameter("menu");
 
             //persona------>
             //ubigeo ---->
@@ -78,7 +79,26 @@ public class clienteControl extends HttpServlet {
             cliSer.grabar(IdPerCli, IdCuenta);
 
             //<------cliente
-            response.sendRedirect("Login.jsp");
+            if (menu.equals("intranet")) {
+                
+                //actualizar la tabla de clientes------>
+                
+                List lisP = perSer.listar();
+                for (int i = 1; i < lisP.size(); i++) {
+                    Object[] p = (Object[]) lisP.get(i);
+
+                    Object val = cliSer.buscar((int) p[0]);
+                    if (val == null) {
+                        lisP.remove(i);
+                    }
+                }
+                request.getSession().setAttribute("lisP", lisP);
+                //<------actualizar la tabla de clientes
+                response.sendRedirect("Intranet/Admin/cliente.jsp");
+
+            } else {
+                response.sendRedirect("Login.jsp");
+            }
 
         }
 
@@ -86,14 +106,36 @@ public class clienteControl extends HttpServlet {
             String dni = request.getParameter("dni");
             Object[] busDni = perSer.buscar(dni);
             Object[] busCli = cliSer.buscar((int) busDni[0]);
+
+            Object[] dep = ubiSer.buscarDep(busDni[9].toString());
+            Object[] dis = ubiSer.buscarDis(busDni[7].toString());
+            Object[] pro = ubiSer.buscarPro(busDni[8].toString());
+
             Object[] busCu = cuSer.buscarid((int) busCli[1]);
             System.out.println(busCli[1]);
             if (busDni != null) {
                 pre.setFil(busDni);
-                System.out.println(busCu[1]);
                 pre.setUsuario(busCu[1].toString());
+                pre.setCodigoCuenta((int) busCu[0]);
+                pre.setDep(dep[1].toString());
+                pre.setDis(dis[1].toString());
+                pre.setPro(pro[1].toString());
+
+                response.sendRedirect("Intranet/Admin/cliente.jsp");
+                List lisP = perSer.listar();
+                for (int i = 1; i < lisP.size(); i++) {
+                    Object[] p = (Object[]) lisP.get(i);
+
+                    Object val = cliSer.buscar((int) p[0]);
+                    if (val == null) {
+                        lisP.remove(i);
+                    }
+                }
+                request.getSession().setAttribute("lisP", lisP);
+
             } else {
                 pre.setMsg("El usuario no existe");
+                response.sendRedirect("Intranet/Admin/cliente.jsp");
             }
         }
 
@@ -101,8 +143,43 @@ public class clienteControl extends HttpServlet {
             pre = new clientePresentador();
             serPer = new personaServicioImp();
             request.getSession().setAttribute("pre", pre);
+
+            List lisP = perSer.listar();
+            for (int i = 1; i < lisP.size(); i++) {
+                Object[] p = (Object[]) lisP.get(i);
+
+                Object val = cliSer.buscar((int) p[0]);
+                if (val == null) {
+                    lisP.remove(i);
+                }
+            }
+            request.getSession().setAttribute("lisP", lisP);
+
+            response.sendRedirect("Intranet/Admin/cliente.jsp");
+
         }
-        response.sendRedirect("Intranet/Admin/cliente.jsp");
+        if (acc.equals("Eliminar")) {
+            int codCu = Integer.parseInt(request.getParameter("codCu"));
+            int IdPerCli = Integer.parseInt(request.getParameter("codPer"));
+
+            cliSer.eliminar(IdPerCli);
+            cuSer.eliminar(codCu);
+            perSer.eliminar(IdPerCli);
+
+            List lisP = perSer.listar();
+            for (int i = 1; i < lisP.size(); i++) {
+                Object[] p = (Object[]) lisP.get(i);
+
+                Object val = cliSer.buscar((int) p[0]);
+                if (val == null) {
+                    lisP.remove(i);
+                }
+            }
+            request.getSession().setAttribute("lisP", lisP);
+
+            response.sendRedirect("Intranet/Admin/cliente.jsp");
+
+        }
 
     }
 

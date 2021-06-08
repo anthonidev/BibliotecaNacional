@@ -1,6 +1,7 @@
 package servicio;
 
 import java.util.List;
+import negocio.ubigeo;
 import persistencia.ubigeoDao;
 import persistencia.ubigeoDaoImp;
 
@@ -25,6 +26,42 @@ private ubigeoDao ubiDao;
     @Override
     public List listarPro(String codDe, String name) {
         return ubiDao.listarPro(codDe, name);
+    }
+
+    @Override
+    public Object[] buscarDep(String id) {
+        ubigeo cu=ubiDao.buscarDep(id);
+        if(cu!=null){
+            Object[]fil=new Object[2];
+            fil[0]=cu.getId();
+            fil[1]=cu.getName();
+            return fil;
+        }
+        return null;
+    }
+
+    @Override
+    public Object[] buscarDis(String id) {
+        ubigeo cu=ubiDao.buscarDis(id);
+        if(cu!=null){
+            Object[]fil=new Object[2];
+            fil[0]=cu.getId();
+            fil[1]=cu.getName();
+            return fil;
+        }
+        return null;
+    }
+
+    @Override
+    public Object[] buscarPro(String id) {
+        ubigeo cu=ubiDao.buscarPro(id);
+        if(cu!=null){
+            Object[]fil=new Object[2];
+            fil[0]=cu.getId();
+            fil[1]=cu.getName();
+            return fil;
+        }
+        return null;
     }
 
    

@@ -38,8 +38,8 @@ public class personaDaoImp implements personaDao {
     }
 
     @Override
-    public String eliminar(String codPer) {
-         String sql = "delete from persona where codCli='" + codPer + "'";
+    public String eliminar(int IdPer) {
+         String sql = "delete from persona where IdPer=" + IdPer + "";
          return operacion.ejecutar(sql);
     }
 

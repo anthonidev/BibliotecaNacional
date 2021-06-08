@@ -129,6 +129,7 @@
                                                 
 
                                                 <div class="input-group input-group-lg my-5 ">
+                                                     <input type="hidden" name="menu" value="signup">
                                                     <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
                                                 </div>
 
