@@ -1,8 +1,8 @@
-function cambia() {
+function cambia2() {
 
-    var sel_departamento = document.getElementsByName("selectDepartamento")[0];
-    var sel_provincia = document.getElementsByName("selectProvincia")[0];
-    var sel_distrito = document.getElementsByName("selectDistrito")[0];
+    var sel_departamento = document.getElementsByName("selectDepartamento2")[0];
+    var sel_provincia = document.getElementsByName("selectProvincia2")[0];
+    var sel_distrito = document.getElementsByName("selectDistrito2")[0];
 
     var opt_Amazonas = new Array("Seleccione la Provincia", "Bagua", "Bongará", "Chachapoyas", "Condorcanqui", "Luya", "Rodríguez de Mendoza", "Utcubamba");
     var opt_Amazonas_value = new Array("Seleccione la Provincia", "Bagua", "Bongará", "Chachapoyas", "Condorcanqui", "Luya", "Rodríguez_de_Mendoza", "Utcubamba");
@@ -285,11 +285,11 @@ var opt_Coronel_Portillo = new Array("Seleccione el Distrito", "Callería", "Cam
 var opt_Padre_Abad = new Array("Seleccione el Distrito", "Alexander von Humboldt", "Curimaná", "Irázola", "Neshuya", "Padre Abad");
 var opt_Purús = new Array("Seleccione el Distrito", "Purús");
 
-function cambiaDistrito() {
+function cambiaDistrito2() {
     var cosa;
-    var sel_departamento = document.getElementsByName("selectDepartamento")[0];
-    var sel_provincia = document.getElementsByName("selectProvincia")[0];
-    var sel_distrito = document.getElementsByName("selectDistrito")[0];
+    var sel_departamento = document.getElementsByName("selectDepartamento2")[0];
+    var sel_provincia = document.getElementsByName("selectProvincia2")[0];
+    var sel_distrito = document.getElementsByName("selectDistrito2")[0];
 
     selectProvincia = sel_provincia.options[sel_provincia.selectedIndex].value;
     if (selectProvincia != 0) {

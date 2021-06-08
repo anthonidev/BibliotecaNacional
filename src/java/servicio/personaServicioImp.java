@@ -40,8 +40,10 @@ public class personaServicioImp implements personaServicio {
     }
 
     @Override
-    public String actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String actualizar(int IdPer, String Nombre, String Apellidos, String Dni, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep, String Direccion) {
+        Persona Per = new Persona(IdPer, Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, IdDist, IdPro, IdDep);
+        String msg = perDao.actualizar(Per);
+        return msg;
     }
 
     @Override
@@ -76,7 +78,6 @@ public class personaServicioImp implements personaServicio {
             fil[9]=per.getIdDep();
             return fil;
         }
-        
         return null;
     }
 

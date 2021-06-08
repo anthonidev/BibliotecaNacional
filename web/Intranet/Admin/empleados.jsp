@@ -4,6 +4,10 @@
     Author     : Anthoni
 --%>
 
+<%@page import="servicio.tipoServicioImp"%>
+<%@page import="servicio.tipoServicio"%>
+<%@page import="servicio.cuentaServicioImp"%>
+<%@page import="servicio.cuentaServicio"%>
 <%@page import="servicio.empleadoServicioImp"%>
 <%@page import="servicio.empleadoServicio"%>
 <%@page import="java.util.List"%>
@@ -20,13 +24,14 @@
         <script src="https://kit.fontawesome.com/50872a9b90.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="../../js/ubigeo.js"></script>
+        <script src="../../js/ubigeo2.js"></script>
         <script src="../../js/validar.js"></script>
         <title>Biblioteca</title>
     </head>
     <body>
         <% String msg=(String)session.getAttribute("msg"); %>
         <% Object[] obj=(Object[])session.getAttribute("filaBus"); %>
-        <% Object[] fila={"","","","","","","","","","","",""}; %>
+        <% Object[] fila={"","","","","","","","","","","","",""}; %>
         <% if (obj!=null) fila=obj; %>
         
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -98,7 +103,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="row col-11">
+            <div class="row col-11" id="#">
                 <div class="row">
                     <div class="col-6">
                         <div class="row">
@@ -276,8 +281,6 @@
                                                     <select class="form-select form-control" aria-label="Default select example" name="tipo" required="">
                                                         <option selected>Seleccione</option>
                                                         <option value="admin">admin</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-6 my-2">
@@ -302,7 +305,7 @@
                                 </h2>
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
-                                        <form action="../EmpleadoControl" method="post">
+                                        <form action="../../empleadoControl" method="post">
                                             <div class="row d-flex align-items-center justify-content-center w-100 ">
                                                 <div class="row">
                                                     <div class="col-6">
@@ -312,6 +315,9 @@
                                                     <div class="col-6">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
                                                         <input type="text" required class="form-control" name="Apellidos" value="<%= fila[2] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    </div>
+                                                    <div>
+                                                        <input type="hidden" name="Dni" value="<%= fila[3] %>">
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
@@ -323,7 +329,7 @@
                                                     </div>
                                                     <div class="col-4 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
-                                                        <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required="">
+                                                        <select class="form-select form-control" onchange="cambia2()" aria-label="Default select example" name="selectDepartamento2" required>
                                                             <option value="">Seleccione</option>
                                                             <option value="Amazonas">Amazonas</option>
                                                             <option value="Ancash">Ancash</option>
@@ -354,35 +360,32 @@
                                                     </div>
                                                     <div class="col-4 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
-                                                        <select class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required="">
+                                                        <select class="form-select form-control" aria-label="Default select example" name="selectProvincia2" onchange="cambiaDistrito2()" required>
                                                             <option>Seleccione la Provincia</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-4 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
-                                                        <select class="form-select form-control" aria-label="Default select example" name="selectDistrito" required="">
+                                                        <select class="form-select form-control" aria-label="Default select example" name="selectDistrito2" required>
                                                             <option>Seleccione el Distrito</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-12 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                        <input type="text" required class="form-control" name="Direccion" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" class="form-control" name="Direccion" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" required>
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Tipo de empleado</span>
-                                                        <select class="form-select form-control" aria-label="Default select example" name="tipo" required="">
+                                                        <select class="form-select form-control" aria-label="Default select example" name="tipo" required>
                                                             <option selected>Seleccione</option>
-                                                            <option value="admin">admin</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                            <option value="admin" id="admin">admin</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
-                                                        <input type="password" required class="form-control" name="password" value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="password" placeholder="Ingrese nueva contraseña" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                 </div>
-
                                                 <input type="submit" class="btn btn btn-secondary w-75 m-3 btn-lg" name="acc" value="Actualizar">
                                             </div>
                                         </form>
@@ -420,7 +423,7 @@
                 </div>
             </div>
             <div class="col-10 m-auto d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="listar">
-                <h1 class="fw-bold text-center text-primary my-5">Lista de Empleados</h1>
+                <h1 class="fw-bold  text-primary my-5">Lista de Empleados</h1>
                 <form action="../CompraControl" method="post">
                     <table class="table table-light table-striped  shadow  bg-body rounded border-1 ">
                         <thead>
@@ -439,9 +442,22 @@
                                 <form action="../CompraControl" method="post">
                                     <% empleadoServicio empSer=new empleadoServicioImp(); %>
                                     <% personaServicio perSer=new personaServicioImp(); %>
+                                    <% cuentaServicio cuSer=new cuentaServicioImp(); %>
+                                    <% tipoServicio tipSer=new tipoServicioImp(); %>
                                     <% List lista=perSer.listar(); %>
                                     <% for (int i = 1; i < lista.size(); i++) { %>
                                     <% Object[] fi=(Object[])lista.get(i); %>
+                                    <%
+                                        Object[] busE=empSer.buscarId((int) fi[0]);
+                                        fi[6] = (int) busE[1]; //IdCuenta
+                                        fi[7] = (int) busE[2]; //idTipoEmp
+                                        
+                                        Object[] busC=cuSer.buscarId((int) fi[6]);
+                                        fi[6] = (String) busC[1]; //usuario
+                                        
+                                        Object[] busT=tipSer.buscarId((int) fi[7]);
+                                        fi[7] = (String) busT[1]; //nombreTipEmp
+                                    %>
                                     <div class="d-flex flex-column">
                                         <tr>
                                             <td><input type="text" name="cod" value="<%= fi[3] %>" class="form-control text-center" readonly></td>
@@ -449,8 +465,8 @@
                                             <td><input type="text" name="cod" value="<%= fi[2] %>" class="form-control text-center" readonly></td>
                                             <td><input type="text" name="cod" value="<%= fi[5] %>" class="form-control text-center" readonly></td>
                                             <td><input type="text" name="cod" value="<%= fi[4] %>" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="" class="form-control text-center" readonly></td>
+                                            <td><input type="text" name="cod" value="<%= fi[6] %>" class="form-control text-center" readonly></td>
+                                            <td><input type="text" name="cod" value="<%= fi[7] %>" class="form-control text-center" readonly></td>
                                         </tr>
                                     </div>
                                     <% } %>
@@ -459,6 +475,9 @@
                         </tbody>
                     </table>
                 </form>
+                <div class="d-flex justify-content-center">
+                    <a href="#" class="btn btn-secondary w-25 my-4 py-3 mx-auto fw-bold">Regresar</a>
+                </div>
             </div>
         </div>
     </body>

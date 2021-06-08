@@ -12,8 +12,9 @@ public class cuentaDaoImp implements cuentaDao{
     }
 
     @Override
-    public String actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String actualizar(cuenta cu) {
+        String sql="update cuenta set pass='"+cu.getPass()+"' where IdCuenta="+cu.getIdCuenta()+"";
+        return operacion.ejecutar(sql);
     }
 
     @Override

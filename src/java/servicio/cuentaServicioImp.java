@@ -14,14 +14,16 @@ public class cuentaServicioImp implements cuentaServicio{
 
     @Override
     public String grabar(String user, String pass) {
-        cuenta cli=new cuenta(user,pass);
-        String msg=cuDao.grabar(cli);
+        cuenta cu=new cuenta(user,pass);
+        String msg=cuDao.grabar(cu);
         return msg;
     }
 
     @Override
-    public String actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String actualizar(int IdCuenta, String user, String pass) {
+        cuenta cu = new cuenta(IdCuenta, user, pass);
+        String msg = cuDao.actualizar(cu);
+        return msg;
     }
 
     @Override
@@ -31,7 +33,7 @@ public class cuentaServicioImp implements cuentaServicio{
 
     @Override
     public List listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
