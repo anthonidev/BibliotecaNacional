@@ -11,6 +11,20 @@ public class empleadoDaoImp implements empleadoDao {
     }
 
     @Override
+    public empleado buscarId(int IdPerEm) {
+        String sql = "select * from empleado where IdPerEm=" + IdPerEm + "";
+        Object[] fill = operacion.buscar(sql);
+        if (fill != null) {
+            empleado emp = new empleado();
+            emp.setIdPerEm((int) fill[0]);
+            emp.setIdCuenta((int) fill[1]);
+            emp.setIdTip((int) fill[2]);
+            return emp;
+        }
+        return null;
+    }
+
+    @Override
     public empleado buscar(int idCuenta) {
         String sql = "select * from empleado where idCuenta=" + idCuenta + "";
         Object[] fill = operacion.buscar(sql);
@@ -29,5 +43,4 @@ public class empleadoDaoImp implements empleadoDao {
         String sql = "delete from empleado where idCuenta=" + idCuenta + "";
         return operacion.ejecutar(sql);
     }
-
 }

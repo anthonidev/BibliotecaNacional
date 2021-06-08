@@ -1,4 +1,3 @@
-
 package persistencia;
 
 import java.util.List;
@@ -48,6 +47,20 @@ public class cuentaDaoImp implements cuentaDao{
     }
 
     @Override
+    public cuenta buscarId(int IdCuenta) {
+        String sql = "select * from cuenta where IdCuenta=" + IdCuenta + "";
+        Object[] fill = operacion.buscar(sql);
+        if (fill != null) {
+            cuenta cu = new cuenta();
+            cu.setIdCuenta((int) fill[0]);
+            cu.setUser((String) fill[1]);
+            cu.setPass((String) fill[2]);
+            return cu;
+        }
+        return null;
+    }
+
+    @Override
     public cuenta validar(String user, String pass) {
         String sql = "select * from cuenta where user like '" + user + "' and pass like'" + pass + "'";
         Object[] fill = operacion.buscar(sql);
@@ -61,5 +74,4 @@ public class cuentaDaoImp implements cuentaDao{
         }
         return null;
     }
-    
 }

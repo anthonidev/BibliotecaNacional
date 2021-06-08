@@ -1,22 +1,16 @@
-
 package servicio;
 
 import java.util.List;
 import negocio.cuenta;
 import persistencia.*;
 
-/**
- *
- * @author Anthoni
- */
 public class cuentaServicioImp implements cuentaServicio{
     
     private cuentaDao cuDao;
 
     public cuentaServicioImp() {
-    cuDao =new cuentaDaoImp();
+        cuDao =new cuentaDaoImp();
     }
-    
 
     @Override
     public String grabar(String user, String pass) {
@@ -43,6 +37,19 @@ public class cuentaServicioImp implements cuentaServicio{
     @Override
     public Object[] buscar(String user) {
         cuenta cu=cuDao.buscar(user);
+        if(cu!=null){
+            Object[]fil=new Object[3];
+            fil[0]=cu.getIdCuenta();
+            fil[1]=cu.getUser();
+            fil[2]=cu.getPass();
+            return fil;
+        }
+        return null;
+    }
+
+    @Override
+    public Object[] buscarId(int IdCuenta) {
+        cuenta cu=cuDao.buscarId(IdCuenta);
         if(cu!=null){
             Object[]fil=new Object[3];
             fil[0]=cu.getIdCuenta();

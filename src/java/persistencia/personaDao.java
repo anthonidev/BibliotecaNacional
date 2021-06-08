@@ -9,7 +9,7 @@ public interface personaDao {
     public Persona buscar(String Dni);
     public Persona buscarId(int IdPer);
     public String actualizar();
-    public String eliminar(String codPer);
+    public String eliminar(int IdPer);
     public List listar();
     public int lastId();
 }

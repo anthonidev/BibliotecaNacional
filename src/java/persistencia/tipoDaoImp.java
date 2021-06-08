@@ -6,7 +6,7 @@ import negocio.tipoEmpleado;
 public class tipoDaoImp implements tipoDao{
 
     @Override
-    public tipoEmpleado buscar(String nombre ) {
+    public tipoEmpleado buscar(String nombre) {
         String sql="select * from tipoempleado where nombre='"+nombre+"'";
         Object[] fill=operacion.buscar(sql);
         
@@ -19,7 +19,7 @@ public class tipoDaoImp implements tipoDao{
         return null;
     }
     
-    public tipoEmpleado buscarId(int idTip ) {
+    public tipoEmpleado buscarId(int idTip) {
         String sql="select * from tipoempleado where idTip="+idTip+"";
         Object[] fill=operacion.buscar(sql);
         

@@ -18,8 +18,18 @@ private ubigeoDao ubiDao;
     }
 
     @Override
+    public List listarDepId(String id) {
+        return ubiDao.listarDepId(id);
+    }
+
+    @Override
     public List listarDis(String codDe, String name, String codPro) {
         return ubiDao.listarDis(codDe, name, codPro);
+    }
+
+    @Override
+    public List listarDisId(String id) {
+        return ubiDao.listarDisId(id);
     }
 
     @Override
@@ -27,6 +37,8 @@ private ubigeoDao ubiDao;
         return ubiDao.listarPro(codDe, name);
     }
 
-   
-    
+    @Override
+    public List listarProId(String id) {
+        return ubiDao.listarProId(id);
+    }
 }

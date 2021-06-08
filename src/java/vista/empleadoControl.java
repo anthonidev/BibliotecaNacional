@@ -96,11 +96,58 @@ public class empleadoControl extends HttpServlet {
             request.getSession().setAttribute("msg", "Empleado Grabado.");
             response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
-        if (acc.equals("test")) {
+        if (acc.equals("Buscar")) {
+            String dni=request.getParameter("dni-buscar");
             
+            Object[] fila=new Object[12];
+            Object[] per=perSer.buscar(dni);
+            for (int i = 0; i < per.length; i++)
+                fila[i] = per[i];
+            
+            List lisDep = ubiSer.listarDepId((String) fila[9]);
+            Object[] f = (Object[]) lisDep.get(1);
+            fila[9] = (String) f[1];
 
+            List lisPro = ubiSer.listarProId((String) fila[8]);
+            Object[] x = (Object[]) lisPro.get(1);
+            fila[8] = (String) x[1];
+
+            List lisDis = ubiSer.listarDisId((String) fila[7]);
+            Object[] e = (Object[]) lisDis.get(1);
+            fila[7] = (String) e[1];
+            
+            Object[] busE=empSer.buscarId((int) fila[0]);
+            fila[10] = (int) busE[1];
+            fila[11] = (int) busE[2];
+            
+            Object[] busC=cuSer.buscarId((int) fila[10]);
+            fila[10] = (String) busC[1];
+            
+            Object[] busT=tipSer.buscarId((int) fila[11]);
+            fila[11] = (String) busT[1];
+            
+            request.getSession().setAttribute("filaBus", fila);
+            response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
-
+        if (acc.equals("Limpiar")) {
+            Object[] fila={"","","","","","","","","","","",""};
+            request.getSession().setAttribute("filaBus", fila);
+            response.sendRedirect("Intranet/Admin/empleados.jsp");
+        }
+        if (acc.equals("Eliminar")) {
+            String dni=request.getParameter("dni-eliminar");
+            
+            Object[] per=perSer.buscar(dni);
+            Object[] busE=empSer.buscarId((int) per[0]);
+            String msgE = empSer.eliminar((int) busE[1]);
+            perSer.eliminar((int) busE[0]);
+            cuSer.eliminar((int) busE[1]);
+            Object[] fila={"","","","","","","","","","","",""};
+            
+            request.getSession().setAttribute("msg", msgE);
+            request.getSession().setAttribute("filaBus", fila);
+            response.sendRedirect("Intranet/Admin/empleados.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

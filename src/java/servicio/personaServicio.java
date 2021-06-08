@@ -8,7 +8,7 @@ public interface personaServicio {
     public Object[] buscar(String Dni);
     public Object[] buscarId(int IdPer);
     public String actualizar();
-    public String eliminar(String codPer);
+    public String eliminar(int IdPer);
     public List listar();
     public int lastId();
 }
