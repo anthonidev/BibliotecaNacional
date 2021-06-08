@@ -51,8 +51,9 @@ public class empleadoControl extends HttpServlet {
                 response.sendRedirect("mensajes/ErrorLogin.jsp");
             }
         }
-        if (acc.equals("test")) {
-            
+        if (acc.equals("Cerrar")) {
+            request.getSession().invalidate();
+             response.sendRedirect("Intranet.jsp");
 
         }
 
