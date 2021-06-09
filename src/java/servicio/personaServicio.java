@@ -7,7 +7,7 @@ public interface personaServicio {
     public String grabar(String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep);
     public Object[] buscar(String Dni);
     public Object[] buscarId(int IdPer);
-    public String actualizar();
+    public String actualizar(int IdPer, String Nombre, String Apellidos, String Dni, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep, String Direccion);
     public String eliminar(int IdPer);
     public List listar();
     public int lastId();

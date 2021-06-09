@@ -2,6 +2,6 @@
 package servicio;
 
 public interface tipoServicio {
-    public Object[] buscar(int idTip );
-    
+    public Object[] buscar(String nombre);
+    public Object[] buscarId(int idTip);
 }

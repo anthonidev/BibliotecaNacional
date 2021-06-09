@@ -33,8 +33,9 @@ public class personaDaoImp implements personaDao {
     }
 
     @Override
-    public String actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String actualizar(Persona Per) {
+        String sql="update persona set Nombre='"+Per.getNombre()+"',Apellidos='"+Per.getApellidos()+"',Direccion='"+Per.getDireccion()+"',Telefono='"+Per.getTelefono()+"',FechaNa='"+Per.getFechaNa()+"',IdDist='"+Per.getIdDist()+"',IdPro='"+Per.getIdPro()+"',IdDep='"+Per.getIdDep()+"' where IdPer="+Per.getCodPer()+"";
+        return operacion.ejecutar(sql);
     }
 
     @Override

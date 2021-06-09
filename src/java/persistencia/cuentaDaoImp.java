@@ -1,4 +1,3 @@
-
 package persistencia;
 
 import java.util.List;
@@ -13,8 +12,9 @@ public class cuentaDaoImp implements cuentaDao{
     }
 
     @Override
-    public String actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String actualizar(cuenta cu) {
+        String sql="update cuenta set pass='"+cu.getPass()+"' where IdCuenta="+cu.getIdCuenta()+"";
+        return operacion.ejecutar(sql);
     }
 
     @Override
@@ -48,6 +48,20 @@ public class cuentaDaoImp implements cuentaDao{
     }
 
     @Override
+    public cuenta buscarId(int IdCuenta) {
+        String sql = "select * from cuenta where IdCuenta=" + IdCuenta + "";
+        Object[] fill = operacion.buscar(sql);
+        if (fill != null) {
+            cuenta cu = new cuenta();
+            cu.setIdCuenta((int) fill[0]);
+            cu.setUser((String) fill[1]);
+            cu.setPass((String) fill[2]);
+            return cu;
+        }
+        return null;
+    }
+
+    @Override
     public cuenta validar(String user, String pass) {
         String sql = "select * from cuenta where user like '" + user + "' and pass like'" + pass + "'";
         Object[] fill = operacion.buscar(sql);
@@ -61,19 +75,4 @@ public class cuentaDaoImp implements cuentaDao{
         }
         return null;
     }
-
-    @Override
-    public cuenta buscarid(int idCuenta) {
-        String sql = "select * from cuenta where idCuenta=" + idCuenta + "";
-        Object[] fill = operacion.buscar(sql);
-        if (fill != null) {
-            cuenta cu = new cuenta();
-            cu.setIdCuenta((int) fill[0]);
-            cu.setUser((String) fill[1]);
-            cu.setPass((String) fill[2]);
-            return cu;
-        }
-        return null;
-    }
-    
 }

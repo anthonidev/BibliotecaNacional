@@ -24,7 +24,7 @@ public class clienteServicioImp implements clienteServicio{
     public String eliminar(int IdPerCli) {
         return cliDao.eliminar(IdPerCli);
     }
-
+    
     @Override
     public Object[] buscar(int idPerCli) {
         cliente cu=cliDao.buscar(idPerCli);
@@ -33,7 +33,7 @@ public class clienteServicioImp implements clienteServicio{
             fil[0]=cu.getIdPerCli();
             fil[1]=cu.getIdCuenta();
             return fil;
-        }
+}
         return null;
     }
     

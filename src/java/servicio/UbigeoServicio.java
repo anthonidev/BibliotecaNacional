@@ -9,4 +9,7 @@ public interface UbigeoServicio {
      public Object[] buscarDep(String id);
      public Object[] buscarDis(String id);
      public Object[] buscarPro(String id);
+    public List listarDepId(String id);
+    public List listarDisId(String id);
+    public List listarProId(String id);
 }

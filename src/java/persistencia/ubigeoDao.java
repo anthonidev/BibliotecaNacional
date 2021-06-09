@@ -10,4 +10,7 @@ public interface ubigeoDao {
     public ubigeo buscarDep(String id);
     public ubigeo buscarDis(String id);
     public ubigeo buscarPro(String id);
+    public List listarDepId(String id);
+    public List listarDisId(String id);
+    public List listarProId(String id);
 }

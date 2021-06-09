@@ -11,10 +11,9 @@ public class personaServicioImp implements personaServicio {
     public personaServicioImp() {
         perDao = new personaDaoImp();
     }
-    
+
     @Override
     public String grabar(String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
-
         Persona Per = new Persona(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, IdDist, IdPro, IdDep);
         String msg = perDao.grabar(Per);
         return msg;
@@ -36,16 +35,15 @@ public class personaServicioImp implements personaServicio {
             fil[8]=per.getIdPro();
             fil[9]=per.getIdDep();
             return fil;
-            
-            
         }
-        
         return null;
     }
 
     @Override
-    public String actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String actualizar(int IdPer, String Nombre, String Apellidos, String Dni, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep, String Direccion) {
+        Persona Per = new Persona(IdPer, Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, IdDist, IdPro, IdDep);
+        String msg = perDao.actualizar(Per);
+        return msg;
     }
 
     @Override
@@ -82,4 +80,5 @@ public class personaServicioImp implements personaServicio {
         }
         return null;
     }
+
 }

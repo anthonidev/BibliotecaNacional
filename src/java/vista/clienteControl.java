@@ -16,15 +16,14 @@ public class clienteControl extends HttpServlet {
     private clienteServicio cliSer;
     private cuentaServicio cuSer;
     private personaServicio perSer;
-    private clientePresentador pre;
-    private personaServicio serPer;
+        private clientePresentador pre;
+        private personaServicio serPer;
 
     public clienteControl() {
         ubiSer = new UbigeoServicioImp();
         cliSer = new clienteServicioImp();
         cuSer = new cuentaServicioImp();
         perSer = new personaServicioImp();
-
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -33,20 +32,22 @@ public class clienteControl extends HttpServlet {
         String acc = request.getParameter("acc");
 
         if (acc.equals("Registrarse")) {
-
             String Nombre = request.getParameter("Nombre");
             String Apellidos = request.getParameter("Apellidos");
             String Dni = request.getParameter("Dni");
             String Telefono = request.getParameter("Telefono");
             String FechaNa = request.getParameter("FechaNa");
+            String Direccion = request.getParameter("Direccion");
             String usu = request.getParameter("usu");
             String pass = request.getParameter("pass");
-            String dep = request.getParameter("selectDepartamento");
-            String pro = request.getParameter("selectProvincia");
-            String dis = request.getParameter("selectDistrito");
+          
             String menu = request.getParameter("menu");
+            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8");
+            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8");
+            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8");
 
             //persona------>
+            
             //ubigeo ---->
             List lisDep = ubiSer.listarDep(dep);
             Object[] f = (Object[]) lisDep.get(1);
@@ -61,21 +62,24 @@ public class clienteControl extends HttpServlet {
             String codDis = (String) e[0];
             //<----ubigeo
 
-            perSer.grabar(Nombre, Apellidos, Dni, dis, Telefono, FechaNa, codDis, codPro, codDep);
-
+            perSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, codDis, codPro, codDep);
+            
             //<------persona
+            
             //cuenta------>
+
             cuSer.grabar(usu, pass);
 
             //<------cuenta
+
             //cliente------>
-            Object[] busP = perSer.buscar(Dni);
-            int IdPerCli = (int) busP[0];
 
-            Object[] busC = cuSer.buscar(usu);
-            int IdCuenta = (int) busC[0];
+            Object[] busP=perSer.buscar(Dni);
+            int IdPerCli=(int) busP[0];
 
-            System.out.println(IdPerCli);
+            Object[] busC=cuSer.buscar(usu);
+            int IdCuenta=(int)busC[0];
+
             cliSer.grabar(IdPerCli, IdCuenta);
 
             //<------cliente
@@ -111,7 +115,7 @@ public class clienteControl extends HttpServlet {
             Object[] dis = ubiSer.buscarDis(busDni[7].toString());
             Object[] pro = ubiSer.buscarPro(busDni[8].toString());
 
-            Object[] busCu = cuSer.buscarid((int) busCli[1]);
+            Object[] busCu = cuSer.buscarId((int) busCli[1]);
             System.out.println(busCli[1]);
             if (busDni != null) {
                 pre.setFil(busDni);
@@ -181,7 +185,9 @@ public class clienteControl extends HttpServlet {
 
         }
 
-    }
+        }
+    
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

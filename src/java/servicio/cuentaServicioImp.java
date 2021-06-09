@@ -1,33 +1,29 @@
-
 package servicio;
 
 import java.util.List;
 import negocio.cuenta;
 import persistencia.*;
 
-/**
- *
- * @author Anthoni
- */
 public class cuentaServicioImp implements cuentaServicio{
     
     private cuentaDao cuDao;
 
     public cuentaServicioImp() {
-    cuDao =new cuentaDaoImp();
+        cuDao =new cuentaDaoImp();
     }
-    
 
     @Override
     public String grabar(String user, String pass) {
-        cuenta cli=new cuenta(user,pass);
-        String msg=cuDao.grabar(cli);
+        cuenta cu=new cuenta(user,pass);
+        String msg=cuDao.grabar(cu);
         return msg;
     }
 
     @Override
-    public String actualizar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String actualizar(int IdCuenta, String user, String pass) {
+        cuenta cu = new cuenta(IdCuenta, user, pass);
+        String msg = cuDao.actualizar(cu);
+        return msg;
     }
 
     @Override
@@ -37,7 +33,7 @@ public class cuentaServicioImp implements cuentaServicio{
 
     @Override
     public List listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
@@ -54,11 +50,8 @@ public class cuentaServicioImp implements cuentaServicio{
     }
 
     @Override
-    public Object[] validar(String user, String pass) {
-         if(user.equals("") || pass.equals("")){
-            return null;
-        }
-        cuenta cu=cuDao.validar(user, pass);
+    public Object[] buscarId(int IdCuenta) {
+        cuenta cu=cuDao.buscarId(IdCuenta);
         if(cu!=null){
             Object[]fil=new Object[3];
             fil[0]=cu.getIdCuenta();
@@ -70,8 +63,11 @@ public class cuentaServicioImp implements cuentaServicio{
     }
 
     @Override
-    public Object[] buscarid(int idCuenta) {
-        cuenta cu=cuDao.buscarid(idCuenta);
+    public Object[] validar(String user, String pass) {
+         if(user.equals("") || pass.equals("")){
+            return null;
+        }
+        cuenta cu=cuDao.validar(user, pass);
         if(cu!=null){
             Object[]fil=new Object[3];
             fil[0]=cu.getIdCuenta();

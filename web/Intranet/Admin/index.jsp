@@ -65,10 +65,7 @@
                 <div class="col-1 d-flex align-items-center py-5 shadow-sm p-3 mb-5 bg-primary rounded">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded">
-                            <form action="">
-                                <i class="fas fa-users-cog w-100 text-center h5"></i>
-                                <input class="nav-link active text-dark h5 text-center border-0 bg-body m-auto" type="submit" name="acc" value="Empleados" >
-                            </form>
+                            <a class="nav-link active text-dark h5 text-center" aria-current="page" href="empleados.jsp"><i class="fas fa-users-cog w-100 text-center"></i>Empleados</a>
                         </li>
                         <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
                             <form action="../../clienteControl" method="post">
