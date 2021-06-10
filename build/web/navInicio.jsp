@@ -19,7 +19,7 @@
                     <a class="nav-link active h5" aria-current="page" href="index.jsp"><i class="fas fa-home d-flex align-items-start justify-content-center w-100"></i> Inicio</a>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link active h5" aria-current="page" href="#"><i class="fas fa-book d-flex align-items-start justify-content-center w-100"></i> Libros</a>
+                    <a class="nav-link active h5" aria-current="page" href="Libros.jsp"><i class="fas fa-book d-flex align-items-start justify-content-center w-100"></i> Libros</a>
                 </li>
                 <li class="nav-item mx-3">
                     <a class="nav-link active h5" aria-current="page" href="#"><i class="fas fa-info-circle d-flex align-items-start justify-content-center w-100"></i> Informacion</a>

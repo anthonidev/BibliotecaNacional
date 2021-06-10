@@ -3,33 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Integrador/BibliotecaNacional/web/signUp.jsp</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/personaServicioImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/cuentaDaoImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/clienteServicioImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/personaServicio.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/personaDao.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/clientePresentador.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/clienteServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/empleadoControl.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/PresentadorGeneral.java</file>
             <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/clienteControl.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/cliente.jsp</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ubigeoDaoImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/personaDaoImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/ubigeo.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/clienteDaoImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/tipoDaoImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/UbigeoServicioImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/cuentaDao.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/UbigeoServicio.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ubigeoDao.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/clienteDao.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/cuentaServicio.java</file>
-=======
-            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/src/java/vista/clienteControl.java</file>
-            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/src/java/vista/empleadoControl.java</file>
-            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/Intranet/Admin/empleados.jsp</file>
->>>>>>> Empleado
         </group>
     </open-files>
 </project-private>

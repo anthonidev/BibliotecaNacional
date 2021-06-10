@@ -96,10 +96,13 @@ public class empleadoControl extends HttpServlet {
             String tipo = request.getParameter("tipo");
             String usu = request.getParameter("usuario");
             String pass = request.getParameter("password");
-            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8");
-            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8");
-            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8");
-
+            
+            
+            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
+            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
+            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
+            
+            System.out.println(dep);
             List lisDep = ubiSer.listarDep(dep);
             Object[] f = (Object[]) lisDep.get(1);
             String codDep = (String) f[0];
@@ -115,6 +118,7 @@ public class empleadoControl extends HttpServlet {
             perSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, codDis, codPro, codDep);
             cuSer.grabar(usu, pass);
 
+            
             Object[] busP=perSer.buscar(Dni);
             int IdPerEmp=(int) busP[0];
 

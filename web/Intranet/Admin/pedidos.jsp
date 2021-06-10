@@ -12,7 +12,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../Sass/custon.css">
+        <link rel="stylesheet" href="../../css/style.css">
         <script src="https://kit.fontawesome.com/50872a9b90.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <title>Biblioteca</title>
@@ -49,7 +49,7 @@
                                 <form action="../ClienteControl" method="post" class=" d-flex w-100">
                                     <div class="row w-100">
                                         <div class="col-12 d-flex ">
-                                            <input type="text" class="form-control" required placeholder="Buscar Cliente por codigo" name="cod" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control" required placeholder="Buscar pedido por codigo" name="cod" aria-label="Recipient's username" aria-describedby="button-addon2">
                                             <input class="btn btn-secondary " type="submit" id="button-addon2" name="acc" value="Buscar">
                                         </div>
                                         <div class="col-12 mt-3" id="mostrar">
@@ -149,19 +149,19 @@
 
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text"  value="" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text"  value="" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text"  value="" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text" value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text" value="" class="form-control text-center" readonly>
                                 </th>
 
 
@@ -172,19 +172,19 @@
 
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text"  value="" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text"  value="" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text"  value="" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" readonly>
+                                    <input type="text"  value="" class="form-control text-center" readonly>
                                 </th>
 
 
@@ -219,21 +219,21 @@
                             <form action="../CompraControl" method="post">
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" style="width: 100px" readonly>
+                                    <input type="text"  value="" class="form-control text-center" style="width: 100px" readonly>
                                 </th>
                                 <td>
-                                    <input type="text" value="<%=%>" class="form-control text-center " style="width: 250px" readonly>
+                                    <input type="text" v class="form-control text-center " style="width: 250px" readonly>
                                 </td>
                                 <td>
                                     <div class="input-group mb-3 " style="width: 120px">
                                         <span class="input-group-text">S/.</span>
-                                        <input type="text"  value="<%=%>" class="form-control " readonly>
+                                        <input type="text"   class="form-control " readonly>
 
                                     </div>
 
                                 </td>
                                 <td>
-                                    <input type="number" name="can<%=%>" required value="" class="form-control " style="width: 120px">
+                                    <input type="number" name="" required value="" class="form-control " style="width: 120px">
                                 </td>
                                 <td>
                                     <input type="submit" name="acc" value="Agregar" class=" btn btn-success">
@@ -270,21 +270,21 @@
                             <form action="../CompraControl" method="post">
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" style="width: 100px" readonly>
+                                    <input type="text"  value="" class="form-control text-center" style="width: 100px" readonly>
                                 </th>
                                 <td>
-                                    <input type="text" value="<%=%>" class="form-control text-center " style="width: 250px" readonly>
+                                    <input type="text" value="" class="form-control text-center " style="width: 250px" readonly>
                                 </td>
                                 <td>
                                     <div class="input-group mb-3 " style="width: 120px">
                                         <span class="input-group-text">S/.</span>
-                                        <input type="text"  value="<%=%>" class="form-control " readonly>
+                                        <input type="text"  value="" class="form-control " readonly>
 
                                     </div>
 
                                 </td>
                                 <td>
-                                    <input type="number" name="can<%=%>" required value="" class="form-control " style="width: 120px">
+                                    <input type="number" name="can" required value="" class="form-control " style="width: 120px">
                                 </td>
                                 <td>
                                     <input type="submit" name="acc" value="Agregar" class=" btn btn-success">
@@ -321,21 +321,21 @@
                             <form action="../CompraControl" method="post">
                                 <th scope="row">
 
-                                    <input type="text"  value="<%=%>" class="form-control text-center" style="width: 100px" readonly>
+                                    <input type="text"  value="" class="form-control text-center" style="width: 100px" readonly>
                                 </th>
                                 <td>
-                                    <input type="text" value="<%=%>" class="form-control text-center " style="width: 250px" readonly>
+                                    <input type="text" value="" class="form-control text-center " style="width: 250px" readonly>
                                 </td>
                                 <td>
                                     <div class="input-group mb-3 " style="width: 120px">
                                         <span class="input-group-text">S/.</span>
-                                        <input type="text"  value="<%=%>" class="form-control " readonly>
+                                        <input type="text"  value="" class="form-control " readonly>
 
                                     </div>
 
                                 </td>
                                 <td>
-                                    <input type="number" name="can<%=%>" required value="" class="form-control " style="width: 120px">
+                                    <input type="number" name="can" required value="" class="form-control " style="width: 120px">
                                 </td>
                                 <td>
                                     <input type="submit" name="acc" value="Agregar" class=" btn btn-success">

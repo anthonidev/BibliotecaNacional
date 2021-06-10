@@ -74,7 +74,7 @@
                             </form>
                         </li>
                         <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
-                            <form action="">
+                            <form action="../../pedidoControl" method="post">
                                 <i class="fas fa-truck-loading w-100 text-center h5"></i>
                                 <input class="nav-link active text-dark h5 text-center border-0 bg-body m-auto" type="submit" name="acc" value="Pedidos" >
                             </form>
