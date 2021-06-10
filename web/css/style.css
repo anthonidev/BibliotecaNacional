@@ -41,6 +41,29 @@ and open the template in the editor.
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
+.bg-nav-bar{
+    background-color: #F5F5FF;
+}
+
+.tipo-sesion{
+    position: absolute;
+    bottom: calc(100% + .5rem);
+    right: 1rem;
+    border-radius: .5rem;
+    background: #F5F5FF;
+    padding: .2rem;
+    display: flex;
+    justify-items: center;
+    width: fit-content;
+    height: fit-content;
+    
+}
+
+.hv:hover{
+    box-shadow: 0 0 0 3px #ccccd4;
+    border-radius: .5rem;
+}
+
 *,
 *::before,
 *::after {
