@@ -1,7 +1,9 @@
 package servicio;
 
 import java.util.List;
+import negocio.Cuenta;
 import negocio.Persona;
+import negocio.Presentador;
 import persistencia.*;
 
 public class personaServicioImp implements personaServicio {
@@ -13,10 +15,11 @@ public class personaServicioImp implements personaServicio {
     }
 
     @Override
-    public String grabar(String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
-        Persona Per = new Persona(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, IdDist, IdPro, IdDep);
-        String msg = perDao.grabar(Per);
-        return msg;
+    public String grabar(String nombre, String apellidos, String dni, String direccion, String telefono, String fechana, String idDist, String idPro, String idDep, String user, String pass) {
+        Persona per = new Persona(nombre, apellidos, dni, direccion, telefono, fechana, idDist, idPro, idDep);
+        Cuenta cu=new Cuenta(user, pass);
+        Presentador pre=new Presentador(per, cu);
+        return perDao.grabar(pre);
     }
 
     @Override

@@ -1,15 +1,19 @@
 
 package negocio;
 
-public class tipoEmpleado {
-    int idTip;
-    String nombre;
+public class TipoEmpleado {
+    private int idTip;
+    private String nombre;
 
-    public tipoEmpleado() {
+    public TipoEmpleado() {
     }
 
-    public tipoEmpleado(int idTip, String nombre) {
+    public TipoEmpleado(int idTip, String nombre) {
         this.idTip = idTip;
+        this.nombre = nombre;
+    }
+
+    public TipoEmpleado(String nombre) {
         this.nombre = nombre;
     }
 
@@ -28,6 +32,4 @@ public class tipoEmpleado {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
 }

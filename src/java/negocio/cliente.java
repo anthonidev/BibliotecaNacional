@@ -1,11 +1,11 @@
 package negocio;
-public class cliente {
-    int idPerCli,idCuenta;
+public class Cliente {
+    private int idPerCli,idCuenta;
 
-    public cliente() {
+    public Cliente() {
     }
 
-    public cliente(int idPerCli, int idCuenta) {
+    public Cliente(int idPerCli, int idCuenta) {
         this.idPerCli = idPerCli;
         this.idCuenta = idCuenta;
     }
