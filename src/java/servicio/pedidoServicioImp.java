@@ -55,8 +55,13 @@ public class pedidoServicioImp implements pedidoServicio {
     }
 
     @Override
-    public List listarPedido(int IdPerCli) {
+    public List listarDetalle(int IdPerCli) {
          return peDao.listarDetalle(IdPerCli);
+    }
+
+    @Override
+    public List listarPedido(int estado) {
+        return peDao.listarPedido(estado);
     }
     
 }

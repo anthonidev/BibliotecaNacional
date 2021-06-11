@@ -12,6 +12,7 @@ public interface pedidoDao {
     public String NegarPedido(int IdPedido);
     public BuscarPedido buscarId(int IdPedido);
     public List listarDetalle(int IdPedido);
+    public List listarPedido(int estado);
     
     
     

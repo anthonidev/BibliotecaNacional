@@ -54,6 +54,16 @@ public class pedidoDaoImp implements pedidoDao{
         }
         return null;
     }
+
+    @Override
+    public List listarPedido(int estado) {
+         String sql = "call ListarPedido("+estado+")";
+        List lis=operacion.listar(sql);
+        if(lis!=null){
+            return lis;
+        }
+        return null;
+    }
     
    
 }
