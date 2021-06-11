@@ -1,5 +1,7 @@
 package persistencia;
 
+import java.util.List;
+import negocio.BuscarPedido;
 import negocio.Pedido;
 
 public class pedidoDaoImp implements pedidoDao{
@@ -12,23 +14,43 @@ public class pedidoDaoImp implements pedidoDao{
     }
 
     @Override
-    public String actualizar(Pedido pe) {
-        String sql="update pedido set estado="+pe.getEstado()+" where IdPer="+pe.getIdPedido()+"";
+    public String AprobarPedido(int IdPedido) {
+        String sql="call AprobarPedido("+IdPedido+")";
         return operacion.ejecutar(sql);
     }
 
     @Override
-    public Pedido buscarId(int IdPedido) {
-        String sql = "select * from pedido where Dni=" + IdPedido + "";
+    public BuscarPedido buscarId(int IdPedido) {
+        String sql = "call buscarPedido("+ IdPedido +")";
         Object[] fill = operacion.buscar(sql);
+        
         if (fill != null) {
-            Pedido pe = new Pedido();
-            pe.setIdPedido((int) fill[0]);
-            pe.setIdPerCli((int) fill[1]);
-            pe.setFecha(fill[2].toString());
-            pe.setEstado((int)fill[3]);
-            pe.setTotal((double)fill[4]);
-            return pe;
+            BuscarPedido bp = new BuscarPedido();
+            bp.setIdPedido((int) fill[0]);
+            bp.setNombre((String) fill[1]);
+            bp.setApellidos((String) fill[2]);
+            bp.setDni((String) fill[3]);
+            bp.setDireccion((String) fill[4]);
+            bp.setFecha(fill[5].toString());
+            bp.setEstado((int)fill[6]);
+            bp.setTotal((double)fill[7]);
+            return bp;
+        }
+        return null;
+    }
+
+    @Override
+    public String NegarPedido(int IdPedido) {
+        String sql="call RechazarPedido("+IdPedido+")";
+        return operacion.ejecutar(sql);
+    }
+
+    @Override
+    public List listarDetalle(int IdPedido) {
+        String sql = "call ListarDetalle("+IdPedido+")";
+        List lis=operacion.listar(sql);
+        if(lis!=null){
+            return lis;
         }
         return null;
     }

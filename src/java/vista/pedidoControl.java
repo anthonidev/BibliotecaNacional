@@ -1,6 +1,7 @@
 package vista;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,33 +11,65 @@ import servicio.*;
 
 @WebServlet(name = "pedidoControl", urlPatterns = {"/pedidoControl"})
 public class pedidoControl extends HttpServlet {
-
+    
     private pedidoServicio peSer;
-
+    private PresentadorGeneral pg;
+    
     public pedidoControl() {
         peSer = new pedidoServicioImp();
     }
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String acc = request.getParameter("acc");
-
+        
         if (acc.equals("Pedidos")) {
-
+            pg = new PresentadorGeneral();
+            request.getSession().setAttribute("pg", pg);
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
-
+            
         }
         if (acc.equals("Buscar")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
             Object[] fill = peSer.buscar(cod);
+            List lisP = peSer.listarPedido(cod);
+            pg.setListaDetalle(lisP);
             if (fill != null) {
+                pg.setPedido(fill);
                 request.getSession().setAttribute("fill", fill);
                 response.sendRedirect("Intranet/Admin/pedidos.jsp");
-            }else{
-                System.out.println("no se encuentra en la db");
+            } else {
+                Object[] vacio = {"", "", "", "", "", "", "", ""};
+                pg.setPedido(vacio);
+                pg.setMsg("No exite el pedido!!");
+                response.sendRedirect("Intranet/Admin/pedidos.jsp");
+                
             }
-
+            
+        }
+        if (acc.equals("Acepar Pedido")) {
+            int cod = Integer.parseInt(request.getParameter("cod"));
+            String msg = peSer.AprobarPedido(cod);
+            if (msg == null) {
+                //actualizar tabla
+                Object[] fill = peSer.buscar(cod);
+                pg.setPedido(fill);
+                request.getSession().setAttribute("fill", fill);
+            }
+            response.sendRedirect("Intranet/Admin/pedidos.jsp");
+            
+        }
+        if (acc.equals("Rechazar Pedido")) {
+            int cod = Integer.parseInt(request.getParameter("cod"));
+            String msg = peSer.NegarPedido(cod);
+            if (msg == null) {
+                Object[] fill = peSer.buscar(cod);
+                pg.setPedido(fill);
+                request.getSession().setAttribute("fill", fill);
+            }
+            response.sendRedirect("Intranet/Admin/pedidos.jsp");
+            
         }
     }
 

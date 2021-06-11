@@ -1,8 +1,9 @@
 
 package servicio;
 
+import java.util.List;
+import negocio.BuscarPedido;
 import negocio.Pedido;
-import negocio.Persona;
 import persistencia.pedidoDao;
 import persistencia.pedidoDaoImp;
 
@@ -24,25 +25,38 @@ public class pedidoServicioImp implements pedidoServicio {
     }
 
     @Override
-    public String actualizar(int IdPerCli, int estado) {
-         Pedido Pe = new Pedido(IdPerCli, estado);
-        String msg = peDao.actualizar(Pe);
+    public String AprobarPedido(int IdPerCli) {
+        String msg = peDao.AprobarPedido(IdPerCli);
         return msg;
     }
 
     @Override
     public Object[] buscar(int IdPerCli) {
-        Pedido pe=peDao.buscarId(IdPerCli);
-        if(pe!=null){
-            Object[]fil=new Object[5];
-            fil[0]=pe.getIdPedido();
-            fil[1]=pe.getIdPerCli();
-            fil[2]=pe.getFecha();
-            fil[3]=pe.getEstado();
-            fil[4]=pe.getTotal();
+        BuscarPedido bp=peDao.buscarId(IdPerCli);
+        if(bp!=null){
+            Object[]fil=new Object[8];
+            fil[0]=bp.getIdPedido();
+            fil[1]=bp.getNombre();
+            fil[2]=bp.getApellidos();
+            fil[3]=bp.getDni();
+            fil[4]=bp.getDireccion();
+            fil[5]=bp.getFecha();
+            fil[6]=bp.getEstado();
+            fil[7]=bp.getTotal();
             return fil;
         }
         return null;
+    }
+
+    @Override
+    public String NegarPedido(int IdPerCli) {
+        String msg = peDao.NegarPedido(IdPerCli);
+        return msg;
+    }
+
+    @Override
+    public List listarPedido(int IdPerCli) {
+         return peDao.listarDetalle(IdPerCli);
     }
     
 }

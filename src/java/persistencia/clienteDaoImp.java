@@ -20,7 +20,7 @@ public class clienteDaoImp implements clienteDao{
     
     @Override
     public cliente buscar(int idPerCli) {
-        String sql = "select * from cliente where idPerCli=" + idPerCli + "";
+        String sql = "select * from cliente where IdPerCli=" + idPerCli + "";
         Object[] fill = operacion.buscar(sql);
         if (fill != null) {
             cliente cu = new cliente();
