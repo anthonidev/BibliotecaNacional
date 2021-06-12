@@ -18,9 +18,8 @@
     </head>
     <body class="">
         <main class="container-fluid p-0 ">
-            <jsp:include page="navInicio.jsp" />
-            <div class="">
-                <div class="col-12 col-md-9 m-auto my-5 py-4">
+            <div class="row">
+                <div class="col-12 col-md-9 m-auto mt-5">
                     <div class="card mb-md-3 shadow p-3 mb-5 bg-body rounded  ">
                         <div class="row g-0">
                             <div class="col-md-6 d-flex m-auto ">
@@ -33,7 +32,7 @@
                                         <h1 class="text-dark text-center fw-bolder">Iniciar Sesión</h1>
                                     </div>
                                     <div>
-                                        <form action="empleadoControl" method="post">
+                                        <form action="EmpleadoControl" method="post">
                                             <div class="input-group input-group-lg my-5 ">
                                                 <span class="input-group-text" id="inputGroup-sizing-lg" style="width:140px">Usuario</span>
                                                 <input type="text" required class="form-control" name="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">

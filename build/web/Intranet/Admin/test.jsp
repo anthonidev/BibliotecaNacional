@@ -6,13 +6,10 @@
 
 <%@page import="servicio.empleadoServicioImp"%>
 <%@page import="servicio.empleadoServicio"%>
-<%@page import="servicio.empleadoServicio"%>
 <%@page import="servicio.cuentaServicioImp"%>
 <%@page import="servicio.tipoServicioImp"%>
-<%@page import="servicio.personaServicioImp"%>
 <%@page import="servicio.tipoServicio"%>
 <%@page import="servicio.cuentaServicio"%>
-<%@page import="servicio.personaServicio"%>
 <%@page import="servicio.UbigeoServicioImp"%>
 <%@page import="servicio.UbigeoServicio"%>
 <%@page import="java.util.List"%>
@@ -24,8 +21,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <% personaServicio perSer=new personaServicioImp();
-           cuentaServicio cuSer=new cuentaServicioImp();
+        <% cuentaServicio cuSer=new cuentaServicioImp();
            tipoServicio tipSer=new tipoServicioImp();
            empleadoServicio empSer=new empleadoServicioImp();
            UbigeoServicio ubiSer = new UbigeoServicioImp(); %>
@@ -35,13 +31,11 @@
         <p><%= fil[0] %></p>
         <% } --%>
         
-        <%
-            List lisId = ubiSer.listarId("Madre de Dios", "Tahuamanu", "Iberia");
-            Object[] id = (Object[]) lisId.get(1);
-            %>
+        <% List lista=empSer.listar();
+            for (int i = 1; i < lista.size(); i++) {
+                Object[] fi=(Object[])lista.get(i); %>
                 
-        <h2><%= id[0] %></h2>
-        <h2><%= id[1] %></h2>
-        <h2><%= id[2] %></h2>
+        <h2><%= fi[0] %></h2>
+        <% } %>
     </body>
 </html>
