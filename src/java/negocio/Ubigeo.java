@@ -3,6 +3,9 @@ package negocio;
 public class Ubigeo {
     private String id,name,district_id,province_id,department_id;
 
+    public Ubigeo() {
+    }
+
     public Ubigeo(String id, String name) {
         this.id = id;
         this.name = name;

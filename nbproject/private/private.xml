@@ -1,28 +1,22 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Integrador/BibliotecaNacional/web/css/style.css</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/empleadoControl.java</file>
             <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/PresentadorGeneral.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/cliente.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/clienteDaoImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/web/index.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ClienteDaoImo.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/pedidoServicioImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/pedidos.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/clienteServicioImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/pedidoDaoImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/personaServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/Cliente.java</file>
             <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/cliente.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/clienteControl.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/clienteServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ClienteDao.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/index.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/pedidoControl.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional/web/navInicio.jsp</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional/web/css/style-responsive.scss</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> design

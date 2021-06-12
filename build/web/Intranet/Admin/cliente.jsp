@@ -3,6 +3,7 @@
     Created on : 05/06/2021, 02:24:12 PM
     Author     : Anthoni
 --%>
+<%@page import="vista.PresentadorGeneral"%>
 <%@page import="java.util.List"%>
 <%@page import="vista.clientePresentador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,6 +48,8 @@
                     </ul>
                 </div>
                 <div class="col-10">
+                    <% PresentadorGeneral pe = (PresentadorGeneral) session.getAttribute("pg");%>
+                    <% Object[] cliente = pe.getCliente();%>
                     <div class="row">
 
                         <div class="col-6">
@@ -62,71 +65,69 @@
                                                 </form>
 
                                             </div>
-                                            <% clientePresentador p = (clientePresentador) session.getAttribute("pre"); %>
-                                            <% Object[] per = p.getFil();%>
                                             <div class="col-12 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[0]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[0]%>">
                                                     <label for="floatingInputGrid">Codigo</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[1]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[1]%>">
                                                     <label for="floatingInputGrid">Nombre</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[2]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[2]%>">
                                                     <label for="floatingInputGrid">Apellidos</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[3]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[3]%>">
                                                     <label for="floatingInputGrid">Dni</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[4]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[4]%>">
                                                     <label for="floatingInputGrid">Direccion</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[5]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[5]%>">
                                                     <label for="floatingInputGrid">Telefono</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[6]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[6]%>">
                                                     <label for="floatingInputGrid">Fecha de Nacimiento</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDep()%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[7]%>">
                                                     <label for="floatingInputGrid">Departamento</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getPro()%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[9]%>">
                                                     <label for="floatingInputGrid">Provincia</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDis()%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[8]%>">
                                                     <label for="floatingInputGrid">Distrito</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getUsuario()%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=cliente[13]%>">
                                                     <label for="floatingInputGrid">Usuario</label>
                                                 </div>
                                             </div>
@@ -138,6 +139,13 @@
                             </div>
                         </div>
                         <div class="col-6">
+                            <% if (pe.getMsg().toString() != "") {%>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <h4 class="fw-bold text-center text-dark my-5"><%=pe.getMsg()%></h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            <% pe.setMsg(""); %>
+                            <%}%>
                             <div class="accordion accordion-flush shadow  bg-body rounded border-1 mt-4" id="accordionFlushExample">
 
                                 <div class="accordion-item  ">
@@ -152,19 +160,19 @@
 
                                                     <div class="col-6">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                        <input type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="nom" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                        <input type="text" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="ape" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
-                                                        <input type="text" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
-                                                        <input type="text" required class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="tel" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
 
                                                     <div class="col-4 my-2">
@@ -216,17 +224,17 @@
                                                     </div>
                                                     <div class="col-12 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                        <input type="text" required class="form-control" name="Direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="dir" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
-                                                        <input type="date" required class="form-control" name="FechaNa" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                                                        <input type="date" required class="form-control" name="fec" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
 
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
-                                                        <input type="text" required class="form-control" name="usu" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="user" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 
                                                     </div>
                                                     <div class="col-6 my-2 m-auto">
@@ -235,11 +243,10 @@
 
                                                     </div>
 
-
                                                     <div class="input-group input-group-lg my-5 ">
                                                         <input type="hidden" name="menu" value="intranet">
 
-                                                        <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
+                                                        <input type="submit" name="acc" value="Registrar" class="btn w-100 btn-primary fw-bold">
                                                     </div>
 
 
@@ -258,67 +265,67 @@
                                                 <div class="row d-flex align-items-center justify-content-center w-100 ">
                                                     <div class="col-12 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[0]%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
                                                             <label for="floatingInputGrid">Codigo</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[1]%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
                                                             <label for="floatingInputGrid">Nombre</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[2]%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
                                                             <label for="floatingInputGrid">Apellidos</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[3]%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
                                                             <label for="floatingInputGrid">Dni</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[4]%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
                                                             <label for="floatingInputGrid">Direccion</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[5]%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
                                                             <label for="floatingInputGrid">Telefono</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= per[6]%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
                                                             <label for="floatingInputGrid">Fecha de Nacimiento</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDep()%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
                                                             <label for="floatingInputGrid">Departamento</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getPro()%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
                                                             <label for="floatingInputGrid">Provincia</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getDis()%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
                                                             <label for="floatingInputGrid">Distrito</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 mt-3" id="mostrar">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%= p.getUsuario()%>">
+                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
                                                             <label for="floatingInputGrid">Usuario</label>
                                                         </div>
                                                     </div>
@@ -341,9 +348,9 @@
                                                     <div class="col-12 col-md-7   ">
                                                         <label for="exampleInputEmail1" class="form-label text-dark">Nombre del cliente
                                                         </label>
-                                                        <input  required type="text" value="<%= per[1] + " " + per[2]%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                        <input name="codCu" type="hidden" value="<%= p.getCodigoCuenta()%>">
-                                                        <input name="codPer" type="hidden" value="<%= per[0]%>">
+                                                        <input  required type="text" value="<%=cliente[1]+" "+cliente[2] %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                        <input name="cod" type="hidden" value="<%=cliente[0]%>">
+                                                        <input name="usu" type="hidden" value="<%=cliente[13]%>">
                                                     </div>
 
 
@@ -362,7 +369,7 @@
                 </div>
                 <div class="col-10 m-auto d-flex justify-content-center align-items-center  flex-column" style="height: 100vh" id="listar">
                     <h1 class="fw-bold text-center text-primary my-5">Lista de Clientes</h1>
-                    <% List lisP = (List) session.getAttribute("lisP");%>
+                    <% List lista = (List) session.getAttribute("lista");%>
                     <table class="table table-light table-striped  shadow  bg-body rounded border-1 ">
                         <thead>
                             <tr>
@@ -372,41 +379,45 @@
                                 <th scope="col">Telefono</th>
                                 <th scope="col">Direccion</th>
                                 <th scope="col">Dni</th>
+                                <th scope="col">Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% for (int i = 1; i < lisP.size(); i++) { %>
-                            <% Object[] f = (Object[]) lisP.get(i);%>
+                            <% for (int i = 1; i < lista.size(); i++) { %>
+                            <% Object[] f = (Object[]) lista.get(i);%>
                             <tr class="">
                                 <th scope="row">
 
-                                    <input type="text" name="cod" value="<%= f[0]%>" class="form-control text-center" readonly>
+                                    <input type="text" value="<%= f[0]%>" class="form-control text-center" readonly >
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text" name="cod" value="<%= f[1]%>" class="form-control text-center" readonly>
+                                    <input type="text" value="<%= f[1]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text" name="cod" value="<%= f[2]%>" class="form-control text-center" readonly>
+                                    <input type="text" value="<%= f[2]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text" name="" value="<%= f[5]%>" class="form-control text-center" readonly>
+                                    <input type="text" value="<%= f[3]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text" name="cod" value="<%= f[4]%>" class="form-control text-center" readonly>
+                                    <input type="text" value="<%= f[4]%>" class="form-control text-center" readonly>
                                 </th>
                                 <th scope="row">
 
-                                    <input type="text" name="cod>" value="<%= f[3]%>" class="form-control text-center" readonly>
+                                    <input type="text" value="<%= f[5]%>" class="form-control text-center" readonly>
+                                </th>
+                                <th scope="row">
+                                    <form method="post" action="../../clienteControl">
+                                        <input type="hidden" name="dni" value="<%= f[5]%>" >
+                                        <input type="submit" name="acc" value="Ver Detalles" class=" btn btn-success">
+                                    </form>
                                 </th>
                                 <% }%>
-
                             </tr>
-
-
                         </tbody>
                     </table>
                 </div>
