@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import servicio.*;
 
 @WebServlet(name = "clienteControl", urlPatterns = {"/clienteControl"})
-public class clienteControl extends HttpServlet {
+public class ClienteControl extends HttpServlet {
 
     private clienteServicio Ser;
     private PresentadorGeneral pg;
 
-    public clienteControl() {
-        Ser = new clienteServicioImp();
+    public ClienteControl() {
+        Ser = new ClienteServicioImp();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

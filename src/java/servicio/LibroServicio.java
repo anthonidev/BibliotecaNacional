@@ -2,7 +2,7 @@ package servicio;
 
 import java.util.List;
 
-public interface libroServicio {
+public interface LibroServicio {
     public String grabar(String Nombre, int IdCat, String Descripcion, int Stock, double Precio, String Foto);
     public Object[] buscarId(int IdLibro);
     public String actualizar(int IdLibro, String Nombre, int IdCat, String Descripcion, int Stock, double Precio);

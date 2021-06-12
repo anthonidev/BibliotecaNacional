@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/PresentadorGeneral.java</file>
             <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ClienteDaoImo.java</file>
             <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/pedidoServicioImp.java</file>
@@ -17,6 +18,9 @@
             <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ClienteDao.java</file>
             <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/index.jsp</file>
             <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/pedidoControl.java</file>
+=======
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/Intranet/Admin/empleados.jsp</file>
+>>>>>>> Piscoya
         </group>
     </open-files>
 </project-private>

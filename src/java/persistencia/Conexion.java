@@ -16,8 +16,5 @@ public class Conexion {
        } catch (Exception e) {
        }
        return con;
-       
    }
-
-   
 }

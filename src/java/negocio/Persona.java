@@ -2,10 +2,9 @@ package negocio;
 
 public class Persona {
     private int codPer;
-    private String Nombre,Apellidos,Dni,Direccion,Telefono,FechaNa,IdDist,IdPro,IdDep;
+    private String Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, IdDist, IdPro, IdDep;
     
-    public Persona() {
-    }
+    public Persona() { }
 
     public Persona(String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
         this.Nombre = Nombre;
@@ -19,25 +18,10 @@ public class Persona {
         this.IdDep = IdDep;
     }
 
-    public Persona(String Nombre, String Apellidos, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
-        this.Nombre = Nombre;
-        this.Apellidos = Apellidos;
-        this.Direccion = Direccion;
-        this.Telefono = Telefono;
-        this.FechaNa = FechaNa;
-        this.IdDist = IdDist;
-        this.IdPro = IdPro;
-        this.IdDep = IdDep;
-    }
-
-    public Persona(int codPer, String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
-        this.codPer = codPer;
-        this.Nombre = Nombre;
-        this.Apellidos = Apellidos;
+    public Persona(String Dni, String Direccion, String Telefono, String IdDist, String IdPro, String IdDep) {
         this.Dni = Dni;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
-        this.FechaNa = FechaNa;
         this.IdDist = IdDist;
         this.IdPro = IdPro;
         this.IdDep = IdDep;
@@ -127,5 +111,4 @@ public class Persona {
     public void setIdDep(String IdDep) {
         this.IdDep = IdDep;
     }
-    
 }

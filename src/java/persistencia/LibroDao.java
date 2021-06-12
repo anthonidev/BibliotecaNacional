@@ -3,7 +3,7 @@ package persistencia;
 import java.util.List;
 import negocio.Libro;
 
-public interface libroDao {
+public interface LibroDao {
     public String grabar(Libro lib);
     public Libro buscarId(int IdLibro);
     public String actualizar(Libro lib);

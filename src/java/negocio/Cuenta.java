@@ -1,6 +1,4 @@
-
 package negocio;
-
 
 public class Cuenta {
     private int IdCuenta;

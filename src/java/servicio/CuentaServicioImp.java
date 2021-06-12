@@ -5,12 +5,12 @@ import negocio.Persona;
 import negocio.Presentador;
 import persistencia.*;
 
-public class cuentaServicioImp implements cuentaServicio{
+public class CuentaServicioImp implements CuentaServicio{
     
-    private cuentaDao cuDao;
+    private CuentaDao cuDao;
 
-    public cuentaServicioImp() {
-        cuDao =new cuentaDaoImp();
+    public CuentaServicioImp() {
+        cuDao =new CuentaDaoImp();
     }
 
     @Override
@@ -23,11 +23,6 @@ public class cuentaServicioImp implements cuentaServicio{
         if (msg==null) {
             msg="Empleado Actualizado";
         } return msg;
-    }
-
-    @Override
-    public String eliminar(int IdCuenta) {
-        return cuDao.eliminar(IdCuenta);
     }
 
     @Override

@@ -2,15 +2,14 @@ package servicio;
 
 import java.util.List;
 import negocio.TipoEmpleado;
-import persistencia.tipoDao;
-import persistencia.tipoDaoImp;
+import persistencia.TipoDaoImp;
+import persistencia.TipoDao;
 
-public class tipoServicioImp implements tipoServicio {
+public class TipoServicioImp implements TipoServicio {
+    private TipoDao tipDao;
 
-    private tipoDao tipDao;
-
-    public tipoServicioImp() {
-        tipDao = new tipoDaoImp();
+    public TipoServicioImp() {
+        tipDao = new TipoDaoImp();
     }
 
     @Override

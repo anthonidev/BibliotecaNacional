@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class operacion {
+public class Operacion {
     public static String ejecutar(String sql){
         String msg=null;
         try{
@@ -25,6 +25,7 @@ public class operacion {
         }
         return msg;
     }
+    
     public static List listar(String sql){
         List lista=new ArrayList();
         try{
@@ -53,6 +54,7 @@ public class operacion {
         }
         return lista;
     }
+    
     public static Object[] buscar(String sql){
         Object[]fila=null;
         List lista=listar(sql);

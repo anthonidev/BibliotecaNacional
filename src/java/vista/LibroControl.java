@@ -7,16 +7,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicio.libroServicio;
-import servicio.libroServicioImp;
+import servicio.LibroServicioImp;
+import servicio.LibroServicio;
 
 @WebServlet(name = "libroControl", urlPatterns = {"/libroControl"})
-public class libroControl extends HttpServlet {
+public class LibroControl extends HttpServlet {
 
-    private libroServicio libSer;
+    private LibroServicio libSer;
 
-    public libroControl() {
-        libSer = new libroServicioImp();
+    public LibroControl() {
+        libSer = new LibroServicioImp();
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

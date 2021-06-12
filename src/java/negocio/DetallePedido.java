@@ -1,11 +1,10 @@
-
 package negocio;
 
-public class detallePedido {
-    int IdDetalle,IdPedido,IdLibro,Cantidad;
-    double Precio;
+public class DetallePedido {
+    private int IdDetalle,IdPedido,IdLibro,Cantidad;
+    private double Precio;
 
-    public detallePedido(int IdDetalle, int IdPedido, int IdLibro, int Cantidad, double Precio) {
+    public DetallePedido(int IdDetalle, int IdPedido, int IdLibro, int Cantidad, double Precio) {
         this.IdDetalle = IdDetalle;
         this.IdPedido = IdPedido;
         this.IdLibro = IdLibro;
@@ -13,10 +12,10 @@ public class detallePedido {
         this.Precio = Precio;
     }
 
-    public detallePedido() {
+    public DetallePedido() {
     }
 
-    public detallePedido(int IdPedido, int IdLibro, int Cantidad, double Precio) {
+    public DetallePedido(int IdPedido, int IdLibro, int Cantidad, double Precio) {
         this.IdPedido = IdPedido;
         this.IdLibro = IdLibro;
         this.Cantidad = Cantidad;

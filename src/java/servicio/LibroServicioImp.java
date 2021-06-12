@@ -2,14 +2,14 @@ package servicio;
 
 import java.util.List;
 import negocio.Libro;
-import persistencia.libroDao;
-import persistencia.libroDaoImp;
+import persistencia.LibroDaoImp;
+import persistencia.LibroDao;
 
-public class libroServicioImp implements libroServicio {
-    private libroDao libDao;
+public class LibroServicioImp implements LibroServicio {
+    private LibroDao libDao;
 
-    public libroServicioImp() {
-        libDao = new libroDaoImp();
+    public LibroServicioImp() {
+        libDao = new LibroDaoImp();
     }
     
     @Override

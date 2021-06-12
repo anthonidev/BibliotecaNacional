@@ -1,18 +1,18 @@
 package servicio;
 
+import java.util.List;
 import negocio.Cuenta;
 import negocio.Persona;
 import negocio.Presentador;
 import negocio.TipoEmpleado;
-import persistencia.empleadoDao;
-import persistencia.empleadoDaoImp;
+import persistencia.EmpleadoDaoImp;
+import persistencia.EmpleadoDao;
 
-public class empleadoServicioImp implements empleadoServicio {
+public class EmpleadoServicioImp implements EmpleadoServicio {
+    private EmpleadoDao empDao;
 
-    private empleadoDao empDao;
-
-    public empleadoServicioImp() {
-        empDao = new empleadoDaoImp();
+    public EmpleadoServicioImp() {
+        empDao = new EmpleadoDaoImp();
     }
 
     @Override
@@ -51,8 +51,8 @@ public class empleadoServicioImp implements empleadoServicio {
     }
 
     @Override
-    public String actualizar(String nombre, String apellidos, String direccion, String telefono, String fechana, String idDist, String idPro, String idDep, String nomTipo) {
-        Persona per=new Persona(nombre, apellidos, direccion, telefono, fechana, idDist, idPro, idDep);
+    public String actualizar(String direccion, String telefono, String idDist, String idPro, String idDep, String dni, String nomTipo) {
+        Persona per=new Persona(dni, direccion, telefono, idDist, idPro, idDep);
         TipoEmpleado tip=new TipoEmpleado(nomTipo);
         Presentador pre=new Presentador(per, tip);
         String msg=empDao.actualizar(pre);
@@ -69,5 +69,10 @@ public class empleadoServicioImp implements empleadoServicio {
         if (msg==null) {
             msg="Empleado eliminado";
         } return msg;
+    }
+
+    @Override
+    public List listar() {
+        return empDao.listar();
     }
 }

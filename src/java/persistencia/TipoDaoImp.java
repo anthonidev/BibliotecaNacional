@@ -4,12 +4,12 @@ package persistencia;
 import java.util.List;
 import negocio.TipoEmpleado;
 
-public class tipoDaoImp implements tipoDao{
+public class TipoDaoImp implements TipoDao{
 
     @Override
     public TipoEmpleado buscar(String nombre) {
         String sql="select * from tipoempleado where nombre='"+nombre+"'";
-        Object[] fill=operacion.buscar(sql);
+        Object[] fill=Operacion.buscar(sql);
         
         if(fill!=null){
             TipoEmpleado tip=new TipoEmpleado();
@@ -22,7 +22,7 @@ public class tipoDaoImp implements tipoDao{
     
     public TipoEmpleado buscarId(int idTip) {
         String sql="select * from tipoempleado where idTip="+idTip+"";
-        Object[] fill=operacion.buscar(sql);
+        Object[] fill=Operacion.buscar(sql);
         
         if(fill!=null){
             TipoEmpleado tip=new TipoEmpleado();
@@ -36,7 +36,7 @@ public class tipoDaoImp implements tipoDao{
     @Override
     public List listar() {
         String sql = "select * from tipoempleado";
-        List lis=operacion.listar(sql);
+        List lis=Operacion.listar(sql);
         if (lis!=null)
             return lis;
         return null;

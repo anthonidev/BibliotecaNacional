@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import servicio.*;
 
 @WebServlet(name = "empleadoControl", urlPatterns = {"/empleadoControl"})
-public class empleadoControl extends HttpServlet {
+public class EmpleadoControl extends HttpServlet {
 
-    private cuentaServicio cuSer;
-    private empleadoServicio empSer;
-    private personaServicio perSer;
+    private CuentaServicio cuSer;
+    private EmpleadoServicio empSer;
     private UbigeoServicio ubiSer;
 
-    public empleadoControl() {
-        cuSer = new cuentaServicioImp();
-        empSer = new empleadoServicioImp();
-        perSer = new personaServicioImp();
+    public EmpleadoControl() {
+        cuSer = new CuentaServicioImp();
+        empSer = new EmpleadoServicioImp();
         ubiSer = new UbigeoServicioImp();
     }
 
@@ -87,10 +85,6 @@ public class empleadoControl extends HttpServlet {
             List lisId = ubiSer.listarId(dep, pro, dis);
             Object[] id = (Object[]) lisId.get(1);
             
-            System.out.println(id[0].toString());
-            System.out.println(id[1].toString());
-            System.out.println(id[2].toString());
-            
             String msg=empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, id[0].toString(), id[1].toString(), id[2].toString(), usu, pass, tipo);
 
             Object[] fila={"","","","","","","","","","","",""};
@@ -100,11 +94,8 @@ public class empleadoControl extends HttpServlet {
         }
         
         if (acc.equals("Actualizar")) {
-            String Nombre = request.getParameter("Nombre");
-            String Apellidos = request.getParameter("Apellidos");
             String Dni = request.getParameter("Dni");
             String Telefono = request.getParameter("Telefono");
-            String FechaNa = request.getParameter("FechaNa");
             String Direccion = request.getParameter("Direccion");
             String tipo = request.getParameter("tipo");
             String pass = request.getParameter("password");
@@ -115,7 +106,7 @@ public class empleadoControl extends HttpServlet {
             List lisId = ubiSer.listarId(dep, pro, dis);
             Object[] id = (Object[]) lisId.get(1);
             
-            String msg = empSer.actualizar(Nombre, Apellidos, Direccion, Telefono, FechaNa, id[0].toString(), id[1].toString(), id[2].toString(), tipo);
+            String msg = empSer.actualizar(Direccion, Telefono, id[0].toString(), id[1].toString(), id[2].toString(), Dni, tipo);
             
             if (pass!="")
                 cuSer.actualizar(pass, Dni);

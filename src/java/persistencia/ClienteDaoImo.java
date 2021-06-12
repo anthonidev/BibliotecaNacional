@@ -12,14 +12,14 @@ public class ClienteDaoImo implements ClienteDao {
     @Override
     public String grabarCliente(Cliente cli) {
         String sql = "call GrabarCLiente('" + cli.getNombre() + "','" + cli.getApellidos() + "','" + cli.getDocumento() + "','" + cli.getDireccion() + "','" + cli.getTelefono() + "','" + cli.getFecha() + "','" + cli.getNombreDep() + "','" + cli.getNombrePro() + "','" + cli.getNombreDis() + "','" + cli.getUsuario() + "','" + cli.getPassword() + "')";
-        return operacion.ejecutar(sql);
+        return Operacion.ejecutar(sql);
     }
 
     
     @Override
     public Cliente buscarCliente(String documento) {
         String sql = "call BuscarCLiente("+documento+")";
-        Object[] fill = operacion.buscar(sql);
+        Object[] fill = Operacion.buscar(sql);
         if (fill != null) {
             Cliente cl = new Cliente();
             cl.setIdPerCli((int) fill[0]);
@@ -44,7 +44,7 @@ public class ClienteDaoImo implements ClienteDao {
     @Override
     public List listarCliente() {
         String sql="select * from vista_listarClientes";
-        List lis=operacion.listar(sql);
+        List lis=Operacion.listar(sql);
         if(lis!=null){
             return lis;
         }
@@ -54,6 +54,6 @@ public class ClienteDaoImo implements ClienteDao {
     @Override
     public String EliminarCliente(int cod, String usu) {
         String sql="call EliminarCliente("+cod+",'"+usu+"')";
-        return operacion.ejecutar(sql);
+        return Operacion.ejecutar(sql);
     }
 }

@@ -12,7 +12,7 @@ public class TipoEmpleado {
         this.idTip = idTip;
         this.nombre = nombre;
     }
-
+    
     public TipoEmpleado(String nombre) {
         this.nombre = nombre;
     }

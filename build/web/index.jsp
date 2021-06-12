@@ -271,5 +271,4 @@
     </section>
     <!-- /pantalla de inicio -->
   </body>
->>>>>>> design
 </html>
