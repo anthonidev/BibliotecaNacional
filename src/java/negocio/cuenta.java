@@ -2,24 +2,21 @@
 package negocio;
 
 
-public class cuenta {
-    int IdCuenta;
-    String user,pass;
+public class Cuenta {
+    private int IdCuenta;
+    private String user,pass;
 
-    public cuenta() {
+    public Cuenta() {
     }
 
-    public cuenta(int IdCuenta, String user, String pass) {
-        this.IdCuenta = IdCuenta;
+    public Cuenta(String user, String pass) {
         this.user = user;
         this.pass = pass;
     }
 
-    public cuenta(String user, String pass) {
-        this.user = user;
+    public Cuenta(String pass) {
         this.pass = pass;
     }
-    
 
     public int getIdCuenta() {
         return IdCuenta;
@@ -44,6 +41,4 @@ public class cuenta {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    
-    
 }

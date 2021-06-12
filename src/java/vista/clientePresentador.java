@@ -12,45 +12,6 @@ public class clientePresentador {
     private String msg = "";
     private String usuario="";
 
-    
-    private String pro="",dis="",dep="";
-    private int codigoCuenta=0;
-
-    public int getCodigoCuenta() {
-        return codigoCuenta;
-    }
-
-    public void setCodigoCuenta(int codigoCuenta) {
-        this.codigoCuenta = codigoCuenta;
-    }
-
-    
-    public String getPro() {
-        return pro;
-    }
-
-    public void setPro(String pro) {
-        this.pro = pro;
-    }
-
-    public String getDis() {
-        return dis;
-    }
-
-    public void setDis(String dis) {
-        this.dis = dis;
-    }
-
-    public String getDep() {
-        return dep;
-    }
-
-    public void setDep(String dep) {
-        this.dep = dep;
-    }
-    
-    
-    
     public String getUsuario() {
         return usuario;
     }

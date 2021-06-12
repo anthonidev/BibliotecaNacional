@@ -1,9 +1,11 @@
 
 package persistencia;
 
-import negocio.tipoEmpleado;
+import java.util.List;
+import negocio.TipoEmpleado;
 
 public interface tipoDao {
-    public tipoEmpleado buscar(String nombre);
-    public tipoEmpleado buscarId(int idTip);
+    public TipoEmpleado buscar(String nombre);
+    public TipoEmpleado buscarId(int idTip);
+    public List listar();
 }

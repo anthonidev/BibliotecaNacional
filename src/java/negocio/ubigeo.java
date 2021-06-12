@@ -1,23 +1,20 @@
 package negocio;
 
-public class ubigeo {
-    String id,name,province_id,department_id;
+public class Ubigeo {
+    private String id,name,district_id,province_id,department_id;
 
-    public ubigeo(String id, String name) {
+    public Ubigeo(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public ubigeo(String id, String name, String province_id) {
-        this.id = id;
-        this.name = name;
+    public Ubigeo(String district_id, String province_id, String department_id) {
+        this.district_id = district_id;
         this.province_id = province_id;
+        this.department_id = department_id;
     }
 
-    public ubigeo() {
-    }
-
-    public ubigeo(String id, String name, String province_id, String department_id) {
+    public Ubigeo(String id, String name, String province_id, String department_id) {
         this.id = id;
         this.name = name;
         this.province_id = province_id;
@@ -40,6 +37,14 @@ public class ubigeo {
         this.name = name;
     }
 
+    public String getDistrict_id() {
+        return district_id;
+    }
+
+    public void setDistrict_id(String district_id) {
+        this.district_id = district_id;
+    }
+
     public String getProvince_id() {
         return province_id;
     }
@@ -55,6 +60,4 @@ public class ubigeo {
     public void setDepartment_id(String department_id) {
         this.department_id = department_id;
     }
-    
-    
 }

@@ -1,12 +1,13 @@
 package negocio;
 
-public class empleado {
-    int IdPerEm , idCuenta, IdTip;  
+public class Empleado {
+    private int IdPerEm , idCuenta, IdTip;
+    private String nomTip;
 
-    public empleado() {
+    public Empleado() {
     }
 
-    public empleado(int IdPerEm, int idCuenta, int IdTip) {
+    public Empleado(int IdPerEm, int idCuenta, int IdTip) {
         this.IdPerEm = IdPerEm;
         this.idCuenta = idCuenta;
         this.IdTip = IdTip;
@@ -35,6 +36,12 @@ public class empleado {
     public void setIdTip(int IdTip) {
         this.IdTip = IdTip;
     }
-    
-    
+
+    public String getNomTip() {
+        return nomTip;
+    }
+
+    public void setNomTip(String nomTip) {
+        this.nomTip = nomTip;
+    }
 }

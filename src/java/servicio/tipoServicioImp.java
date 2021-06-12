@@ -1,6 +1,7 @@
 package servicio;
 
-import negocio.tipoEmpleado;
+import java.util.List;
+import negocio.TipoEmpleado;
 import persistencia.tipoDao;
 import persistencia.tipoDaoImp;
 
@@ -14,7 +15,7 @@ public class tipoServicioImp implements tipoServicio {
 
     @Override
     public Object[] buscar(String nombre) {
-        tipoEmpleado tipEm = tipDao.buscar(nombre);
+        TipoEmpleado tipEm = tipDao.buscar(nombre);
         if (tipEm != null) {
             Object[] fil = new Object[2];
             fil[0] = tipEm.getIdTip();
@@ -26,7 +27,7 @@ public class tipoServicioImp implements tipoServicio {
     
     @Override
     public Object[] buscarId(int idTip) {
-        tipoEmpleado tipEm = tipDao.buscarId(idTip);
+        TipoEmpleado tipEm = tipDao.buscarId(idTip);
         if (tipEm != null) {
             Object[] fil = new Object[2];
             fil[0] = tipEm.getIdTip();
@@ -34,5 +35,10 @@ public class tipoServicioImp implements tipoServicio {
             return fil;
         }
         return null;
+    }
+
+    @Override
+    public List listar() {
+        return tipDao.listar();
     }
 }

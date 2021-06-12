@@ -13,14 +13,12 @@ import servicio.*;
 public class empleadoControl extends HttpServlet {
 
     private cuentaServicio cuSer;
-    private tipoServicio tipSer;
     private empleadoServicio empSer;
     private personaServicio perSer;
     private UbigeoServicio ubiSer;
 
     public empleadoControl() {
         cuSer = new cuentaServicioImp();
-        tipSer = new tipoServicioImp();
         empSer = new empleadoServicioImp();
         perSer = new personaServicioImp();
         ubiSer = new UbigeoServicioImp();
@@ -35,21 +33,14 @@ public class empleadoControl extends HttpServlet {
             String user = request.getParameter("user");
             String pass = request.getParameter("pass");
             Object[] fil = cuSer.validar(user, pass);
+            
             if (fil != null) {
-                //validar a que cargo pertenece
-                Object[] emp = empSer.buscar((int) fil[0]);
-                Object[] tip = tipSer.buscarId((int) emp[2]);
-
-                switch (tip[1].toString()) {
+                switch (fil[2].toString()) {
                     case "admin":
-                        Object[] per = perSer.buscarId((int) emp[0]);
-                        request.getSession().setAttribute("per", per);
-                        request.getSession().setAttribute("tip", tip);
                         request.getSession().setAttribute("fil", fil);
                         response.sendRedirect("Intranet/Admin/index.jsp");
                         break;
                 }
-
             } else {
                 request.getSession().setAttribute("msg", "ACCESO NO PERMITIDO");
                 response.sendRedirect("Intranet.jsp");
@@ -57,32 +48,25 @@ public class empleadoControl extends HttpServlet {
         }
         
         if (acc.equals("Buscar")) {
-            String dni=request.getParameter("dni-buscar");
+            String Dni=request.getParameter("Dni");
+            Object[] fila=empSer.buscar(Dni);
             
-            Object[] fil=new Object[13];
-            Object[] per=perSer.buscar(dni);
-            
-            if (per!=null) {
-                Object[] fila=buscar(fil, per);
-                
-                Object[] busC=cuSer.buscarId((int) fila[10]);
-                fila[10] = (String) busC[1]; //usuario
-                fila[12] = (String) busC[2]; //password
-
-                Object[] busT=tipSer.buscarId((int) fila[11]);
-                fila[11] = (String) busT[1]; //nombreTipEmp
-
+            if (fila!=null) {
                 request.getSession().setAttribute("filaBus", fila);
+                request.getSession().setAttribute("msg", null);
                 response.sendRedirect("Intranet/Admin/empleados.jsp");
             } else {
-                request.getSession().setAttribute("msg", "Empleado no existe.");
+                Object[] fil={"","","","","","","","","","","",""};
+                request.getSession().setAttribute("filaBus", fil);
+                request.getSession().setAttribute("msg", "Empleado no existe");
                 response.sendRedirect("Intranet/Admin/empleados.jsp");
             }
         }
         
         if (acc.equals("Limpiar")) {
-            Object[] fila={"","","","","","","","","","","","",""};
+            Object[] fila={"","","","","","","","","","","",""};
             request.getSession().setAttribute("filaBus", fila);
+            request.getSession().setAttribute("msg", null);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
         
@@ -96,41 +80,22 @@ public class empleadoControl extends HttpServlet {
             String tipo = request.getParameter("tipo");
             String usu = request.getParameter("usuario");
             String pass = request.getParameter("password");
-            
-            
             String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
             String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
             String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
+
+            List lisId = ubiSer.listarId(dep, pro, dis);
+            Object[] id = (Object[]) lisId.get(1);
             
-            System.out.println(dep);
-            List lisDep = ubiSer.listarDep(dep);
-            Object[] f = (Object[]) lisDep.get(1);
-            String codDep = (String) f[0];
-
-            List lisPro = ubiSer.listarPro(codDep, pro);
-            Object[] x = (Object[]) lisPro.get(1);
-            String codPro = (String) x[0];
-
-            List lisDis = ubiSer.listarDis(codDep, dis, codPro);
-            Object[] e = (Object[]) lisDis.get(1);
-            String codDis = (String) e[0];
-
-            perSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, codDis, codPro, codDep);
-            cuSer.grabar(usu, pass);
-
+            System.out.println(id[0].toString());
+            System.out.println(id[1].toString());
+            System.out.println(id[2].toString());
             
-            Object[] busP=perSer.buscar(Dni);
-            int IdPerEmp=(int) busP[0];
+            String msg=empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, id[0].toString(), id[1].toString(), id[2].toString(), usu, pass, tipo);
 
-            Object[] busE=cuSer.buscar(usu);
-            int IdCuenta=(int)busE[0];
-            
-            Object[] busT=tipSer.buscar(tipo);
-            int IdTip=(int)busT[0];
-
-            empSer.grabar(IdPerEmp, IdCuenta, IdTip);
-
-            request.getSession().setAttribute("msg", "Empleado Grabado.");
+            Object[] fila={"","","","","","","","","","","",""};
+            request.getSession().setAttribute("filaBus", fila);
+            request.getSession().setAttribute("msg", msg);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
         
@@ -143,76 +108,34 @@ public class empleadoControl extends HttpServlet {
             String Direccion = request.getParameter("Direccion");
             String tipo = request.getParameter("tipo");
             String pass = request.getParameter("password");
-            String dep = new String(request.getParameter("selectDepartamento2").getBytes("ISO-8859-1"),"UTF-8");
-            String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"),"UTF-8");
-            String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"),"UTF-8");
-
-            List lisDep = ubiSer.listarDep(dep);
-            Object[] f = (Object[]) lisDep.get(1);
-            String codDep = (String) f[0];
-
-            List lisPro = ubiSer.listarPro(codDep, pro);
-            Object[] x = (Object[]) lisPro.get(1);
-            String codPro = (String) x[0];
-
-            List lisDis = ubiSer.listarDis(codDep, dis, codPro);
-            Object[] e = (Object[]) lisDis.get(1);
-            String codDis = (String) e[0];
+            String dep = new String(request.getParameter("selectDepartamento2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
+            String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
+            String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
             
-            Object[] busP=perSer.buscar(Dni);
-            int IdPerEmp=(int) busP[0];
+            List lisId = ubiSer.listarId(dep, pro, dis);
+            Object[] id = (Object[]) lisId.get(1);
             
-            perSer.actualizar(IdPerEmp, Nombre, Apellidos, Dni, Telefono, FechaNa, codDis, codPro, codDep, Direccion);
+            String msg = empSer.actualizar(Nombre, Apellidos, Direccion, Telefono, FechaNa, id[0].toString(), id[1].toString(), id[2].toString(), tipo);
             
-            Object[] fil=new Object[13];
-            busP=perSer.buscar(Dni);
-            Object[] fila=buscar(fil, busP);
-
             if (pass!="")
-                cuSer.actualizar((int) fila[10], null, pass);
+                cuSer.actualizar(pass, Dni);
             
-            request.getSession().setAttribute("msg", "Empleado Actualizado.");
-            request.getSession().setAttribute("filaBus", fila);
-            response.sendRedirect("Intranet/Admin/empleados.jsp");
-        }
-        
-        if (acc.equals("Eliminar")) {
-            String dni=request.getParameter("dni-eliminar");
-            
-            Object[] per=perSer.buscar(dni);
-            Object[] busE=empSer.buscarId((int) per[0]);
-            String msg = empSer.eliminar((int) busE[1]);
-            perSer.eliminar((int) busE[0]);
-            cuSer.eliminar((int) busE[1]);
-            Object[] fila={"","","","","","","","","","","","",""};
+            Object[] fila=empSer.buscar(Dni);
             
             request.getSession().setAttribute("msg", msg);
             request.getSession().setAttribute("filaBus", fila);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
-    }
-    
-    private Object[] buscar(Object[] fila, Object[] per) {
-        for (int i = 0; i < per.length; i++)
-            fila[i] = per[i];
         
-        List lisDep = ubiSer.listarDepId((String) fila[9]);
-        Object[] f = (Object[]) lisDep.get(1);
-        fila[9] = (String) f[1];
-
-        List lisPro = ubiSer.listarProId((String) fila[8]);
-        Object[] x = (Object[]) lisPro.get(1);
-        fila[8] = (String) x[1];
-
-        List lisDis = ubiSer.listarDisId((String) fila[7]);
-        Object[] e = (Object[]) lisDis.get(1);
-        fila[7] = (String) e[1];
-        
-        Object[] busE=empSer.buscarId((int) fila[0]);
-        fila[10] = (int) busE[1]; //idCuenta
-        fila[11] = (int) busE[2]; //idTipoEmp
-        
-        return fila;
+        if (acc.equals("Eliminar")) {
+            String dni=request.getParameter("Dni");
+            String msg = empSer.eliminar(dni);
+            Object[] fila={"","","","","","","","","","","",""};
+            
+            request.getSession().setAttribute("msg", msg);
+            request.getSession().setAttribute("filaBus", fila);
+            response.sendRedirect("Intranet/Admin/empleados.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

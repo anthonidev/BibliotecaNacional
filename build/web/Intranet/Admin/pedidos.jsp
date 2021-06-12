@@ -115,7 +115,6 @@
                                             <label for="floatingInputGrid">Estado</label>
                                         </div>
                                     </div>
-
                                     <div class="col-12 mt-3" id="mostrar">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="<%=pedido[7]%>">
@@ -149,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5  ">
+                <div class="col-5 ">
                     <div class="col-8 m-auto m-2">
                         <% if (pe.getMsg().toString() != "") {%>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
