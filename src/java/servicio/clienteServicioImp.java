@@ -4,11 +4,11 @@ import java.util.List;
 import negocio.Cliente;
 import persistencia.*;
 
-public class ClienteServicioImp implements clienteServicio {
+public class clienteServicioImp implements clienteServicio {
 
     private ClienteDao Dao;
 
-    public ClienteServicioImp() {
+    public clienteServicioImp() {
         Dao = new ClienteDaoImo();
     }
 
