@@ -19,11 +19,13 @@
     </head>
     <body>
         <jsp:include page="navInicio.jsp" />
-        <% String msg=(String)session.getAttribute("msgL"); %>
-        <% Object[] obj=(Object[])session.getAttribute("libus"); %>
-        <% Object[] fila={"","","","","","","","","","","","",""}; %>
-        <% if (obj!=null) fila=obj; %>
-        
+        <% String msg = (String) session.getAttribute("msgL"); %>
+        <% Object[] obj = (Object[]) session.getAttribute("libus"); %>
+        <% Object[] fila = {"", "", "", "", "", "", "", "", "", "", "", "", ""}; %>
+        <% if (obj != null) {
+                fila = obj;
+            }%>
+
         <div class="d-flex" style="height: 94vh">
             <div class="col-1 py-4 d-flex shadow-sm p-3 mb-5 bg-primary rounded">
                 <ul class="navbar-nav d-flex justify-content-between me-auto mb-2 mb-lg-0">
@@ -51,11 +53,12 @@
                             <div class="col-12 my-4">
                                 <div class="input-group mb-3">
                                     <div class="row w-100 px-2">
+                                        <div class="row col-12">
                                         <div class="d-flex justify-content-between">
                                             <form action="../../libroControl" method="post" class="col-10">
                                                 <div class="row col-12">
                                                     <div class="col-9">
-                                                        <input type="text" class="form-control" required placeholder="Buscar Libro por código" name="Codigo" maxlength="5" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                        <input type="text" class="form-control" required placeholder="Buscar Libro por código" name="Codigo" maxlength="5" onkeyup="this.value = Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                     </div>
                                                     <div class="col-3 d-flex flex-column">
                                                         <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Buscar">
@@ -68,51 +71,52 @@
                                                 </div>
                                             </form>
                                         </div>
+                                             </div>
                                         <div class="col-8 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[0] %>" readonly>
+                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[0]%>" readonly>
                                                 <label for="floatingInputGrid">Código</label>
                                             </div>
                                             <div class="col-12 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[1] %>" readonly>
+                                                    <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[1]%>" readonly>
                                                     <label for="floatingInputGrid">Nombre</label>
                                                 </div>
                                             </div>
-                                            <div class="col-12 mt-3" id="mostrar">
-                                                <div class="form-floating">
-                                                    <textarea class="form-control" id="floatingTextarea2" style="height: 120px" readonly><%= fila[3] %></textarea>
+                                            <div class="col-12 mt-3 " id="mostrar">
+                                                <div class="form-floating ">
+                                                    <textarea class="form-control h-100" id="floatingTextarea2"  readonly><%= fila[3]%></textarea>
                                                     <label for="floatingTextarea2">Descripción</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-4 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="image" class="form-control" id="floatingInputGrid" value="<%= fila[7] %>" style="height: 35vh;" readonly>
+                                                <input type="image" class="form-control" id="floatingInputGrid" value="<%= fila[7]%>" style="height: 35vh;" readonly>
                                                 <label for="floatingInputGrid">Portada</label>
                                             </div>
                                         </div>
                                         <div class="col-6 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[2] %>" readonly>
+                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[2]%>" readonly>
                                                 <label for="floatingInputGrid">Categoría</label>
                                             </div>
                                         </div>
                                         <div class="col-6 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[5] %>" readonly>
+                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[5]%>" readonly>
                                                 <label for="floatingInputGrid">Estado</label>
                                             </div>
                                         </div>
                                         <div class="col-6 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[4] %>" readonly>
+                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[4]%>" readonly>
                                                 <label for="floatingInputGrid">Stock</label>
                                             </div>
                                         </div>
                                         <div class="col-6 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[6] %>" readonly>
+                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[6]%>" readonly>
                                                 <label for="floatingInputGrid">Precio</label>
                                             </div>
                                         </div>
@@ -131,8 +135,8 @@
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../libroControl" method="post">
-                                            <%  %>
-                                            
+                                            <%%>
+
                                             <div class="row">
                                                 <div class="col-6">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
@@ -147,11 +151,11 @@
                                                 </div>
                                                 <div class="col-6 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Stock</span>
-                                                    <input type="text" required class="form-control" name="Stock" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
+                                                    <input type="text" required class="form-control" name="Stock" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value = Numeros(this.value)">
                                                 </div>
                                                 <div class="col-6 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                    <input type="text" required class="form-control" name="Precio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
+                                                    <input type="text" required class="form-control" name="Precio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value = Numeros(this.value)">
                                                 </div>
                                                 <div class="col-12 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
@@ -179,11 +183,11 @@
                                             <div class="row d-flex align-items-center justify-content-center w-100 ">
                                                 <div class="row">
                                                     <div>
-                                                        <input type="hidden" name="Codigo" value="<%= fila[0] %>">
+                                                        <input type="hidden" name="Codigo" value="<%= fila[0]%>">
                                                     </div>
                                                     <div class="col-6">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                        <input type="text" required class="form-control" name="Nombre" value="<%= fila[1] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" required class="form-control" name="Nombre" value="<%= fila[1]%>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Categoría</span>
@@ -194,15 +198,15 @@
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Stock</span>
-                                                        <input type="text" required class="form-control" name="Stock" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
+                                                        <input type="text" required class="form-control" name="Stock" value="<%= fila[4]%>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value = Numeros(this.value)">
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                        <input type="text" required class="form-control" name="Precio" value="<%= fila[6] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
+                                                        <input type="text" required class="form-control" name="Precio" value="<%= fila[6]%>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value = Numeros(this.value)">
                                                     </div>
                                                     <div class="col-12 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
-                                                        <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"><%= fila[3] %></textarea>
+                                                        <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"><%= fila[3]%></textarea>
                                                     </div>
                                                     <div class="col-12 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Portada</span>
@@ -225,22 +229,22 @@
                                             <div class="row d-flex align-items-center justify-content-center w-100 ">
                                                 <div class="col-12 col-md-7">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Código:</span>
-                                                    <input name="Codigo" required type="text" class="form-control" value="<%= fila[0] %>">
+                                                    <input name="Codigo" required type="text" class="form-control" value="<%= fila[0]%>">
                                                 </div>
-                                                
+
                                                 <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <% if (msg!=null) { %>
+                            <% if (msg != null) {%>
                             <div class="d-flex flex-column py-3 px-5">
                                 <div class="d-flex justify-content-center justify-align-items py-3 fw-bold" style="background-color: #56FF87; color: #4D4D4D; font-size: 20px">
-                                    <%= msg %>
+                                    <%= msg%>
                                 </div>
                             </div>
-                            <% } %>
+                            <% }%>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,3 @@
-
 package servicio;
 
 import negocio.Cliente;
@@ -23,6 +22,18 @@ public class clienteServicioImp implements clienteServicio{
     @Override
     public String eliminar(int IdPerCli) {
         return cliDao.eliminar(IdPerCli);
+    }
+    
+    @Override
+    public Object[] buscar(int idPerCli) {
+        Cliente cu=cliDao.buscar(idPerCli);
+        if(cu!=null){
+            Object[]fil=new Object[2];
+            fil[0]=cu.getIdPerCli();
+            fil[1]=cu.getIdCuenta();
+            return fil;
+}
+        return null;
     }
     
 }
