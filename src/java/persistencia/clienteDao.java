@@ -1,10 +1,11 @@
 
 package persistencia;
 
-import negocio.cliente;
+import negocio.Cliente;
 
 public interface clienteDao {
-    public String grabar(cliente cli);
+    public String grabar(Cliente cli);
     public String eliminar(int IdPerCli);
-    public cliente buscar(int idPerCli);
+        public Cliente buscar(int idPerCli);
+
 }

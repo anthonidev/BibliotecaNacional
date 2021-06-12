@@ -1,8 +1,8 @@
 package negocio;
 
 public class Persona {
-    int codPer;
-    String Nombre,Apellidos,Dni,Direccion,Telefono,FechaNa,IdDist,IdPro,IdDep; 
+    private int codPer;
+    private String Nombre,Apellidos,Dni,Direccion,Telefono,FechaNa,IdDist,IdPro,IdDep;
     
     public Persona() {
     }
@@ -11,6 +11,17 @@ public class Persona {
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
         this.Dni = Dni;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
+        this.FechaNa = FechaNa;
+        this.IdDist = IdDist;
+        this.IdPro = IdPro;
+        this.IdDep = IdDep;
+    }
+
+    public Persona(String Nombre, String Apellidos, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
         this.FechaNa = FechaNa;
@@ -30,6 +41,10 @@ public class Persona {
         this.IdDist = IdDist;
         this.IdPro = IdPro;
         this.IdDep = IdDep;
+    }
+
+    public Persona(String Dni) {
+        this.Dni = Dni;
     }
 
     public int getCodPer() {

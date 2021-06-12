@@ -1,13 +1,13 @@
 
 package persistencia;
 
-import negocio.cliente;
+import negocio.Cliente;
 
 
 public class clienteDaoImp implements clienteDao{
 
     @Override
-    public String grabar(cliente cli) {
+    public String grabar(Cliente cli) {
         String sql = "insert into cliente values(" + cli.getIdPerCli() + "," + cli.getIdCuenta()+ ")";
         return operacion.ejecutar(sql);
     }
@@ -18,12 +18,13 @@ public class clienteDaoImp implements clienteDao{
         return operacion.ejecutar(sql);
     }
     
+
     @Override
-    public cliente buscar(int idPerCli) {
-        String sql = "select * from cliente where idPerCli=" + idPerCli + "";
+    public Cliente buscar(int idPerCli) {
+        String sql = "select * from cliente where IdPerCli=" + idPerCli + "";
         Object[] fill = operacion.buscar(sql);
         if (fill != null) {
-            cliente cu = new cliente();
+            Cliente cu = new Cliente();
             cu.setIdPerCli((int) fill[0]);
             cu.setIdCuenta((int) fill[1]);
             return cu;
@@ -31,4 +32,5 @@ public class clienteDaoImp implements clienteDao{
         return null;
     }
     
+
 }

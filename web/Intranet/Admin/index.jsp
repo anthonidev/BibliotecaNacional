@@ -13,7 +13,6 @@
     Gson gsonObj = new Gson();
     Map<Object, Object> map = null;
     List<Map<Object, Object>> list = new ArrayList<Map<Object, Object>>();
-
     map = new HashMap<Object, Object>();
     map.put("label", "Work");
     map.put("y", 44);
@@ -38,7 +37,6 @@
     map.put("label", "Sleep");
     map.put("y", 29);
     list.add(map);
-
     String dataPoints = gsonObj.toJson(list);
 %>
 
@@ -59,7 +57,6 @@
     <body class="">
 
         <main class="container-fluid p-0 ">
-            <% Object[] tip = (Object[]) session.getAttribute("tip");%>
             <jsp:include page="navAdmin.jsp" />
             <div class="row ">
                 <div class="col-1 d-flex align-items-center py-5 shadow-sm p-3 mb-5 bg-primary rounded">
@@ -80,10 +77,8 @@
                             </form>
                         </li>
                         <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
-                            <form action="">
-                                <i class="fas fa-book-open w-100 text-center h5"></i>
-                                <input class="nav-link active text-dark h5 text-center border-0 bg-body m-auto" type="submit" name="acc" value="Libros" >
-                            </form>
+                            <a class="nav-link active text-dark h5 text-center" aria-current="page" href="libros.jsp"><i class="fas fa-users-cog w-100 text-center"></i>Libros</a>
+
                         </li>
                         <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
                             <form action="">
@@ -102,7 +97,7 @@
                                 <li class="nav-item mx-3 ">
                                     <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-column align-items-start  justify-content-start ">   
                                         <li class="nav-item mx-3 ">
-                                            <h1 class="text-dark h4 text-uppercase "><i class="fas fa-user-tie"></i> Cargo: <%=tip[1]%> </h1>
+                                            <h1 class="text-dark h4 text-uppercase "><i class="fas fa-user-tie"></i> Cargo: %> </h1>
                                         </li>
 
 
@@ -115,7 +110,6 @@
                         <div class="col-12 shadow p-3 bg-body rounded ">
                             <script type="text/javascript">
                                 window.onload = function () {
-
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         theme: "light2", // "light1", "dark1", "dark2"
                                         exportEnabled: true,
@@ -132,7 +126,6 @@
                                             }]
                                     });
                                     chart.render();
-
                                 }
                             </script>
                             <div id="chartContainer" style="height: 370px; width: 100%;"></div>

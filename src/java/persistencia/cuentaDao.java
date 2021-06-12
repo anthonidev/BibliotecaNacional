@@ -1,14 +1,9 @@
 package persistencia;
 
-import java.util.List;
-import negocio.cuenta;
+import negocio.Presentador;
 
 public interface cuentaDao {
-    public String grabar(cuenta cu);
-    public String actualizar(cuenta cu);
+    public String actualizar(Presentador pre);
     public String eliminar(int IdCuenta);
-    public List listar();
-    public cuenta buscar(String user);
-    public cuenta buscarId(int IdCuenta);
-    public cuenta validar(String user, String pass);
+    public Presentador validar(String user, String pass);
 }

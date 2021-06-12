@@ -19,12 +19,11 @@
         <script src="js/validar.js"></script>
         <title>Crear Cuenta</title>
     </head>
-
     <body class="">
         <main class="container-fluid p-0 ">
             <jsp:include page="navInicio.jsp" />
-            <div class="row">
-                <div class="col-12 col-md-9 m-auto mt-5">
+            <div class="d-flex">
+                <div class="col-12 col-md-9 m-auto mt-4">
                     <div class="card mb-md-3 shadow p-3 mb-5 bg-body rounded  ">
                         <div class="row g-0">
                             <div class="col-md-5 m-auto">
@@ -115,7 +114,6 @@
                                                     <input type="password" required class="form-control" name="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                 </div>
                                                 <div class="input-group input-group-lg my-5 ">
-                                                     <input type="hidden" name="menu" value="signup">
                                                     <input type="submit" name="acc" value="Registrarse" class="btn w-100 btn-primary fw-bold">
                                                 </div>
                                             </div>

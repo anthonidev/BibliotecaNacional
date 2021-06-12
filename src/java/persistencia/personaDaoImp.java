@@ -2,11 +2,20 @@ package persistencia;
 
 import java.util.List;
 import negocio.Persona;
+import negocio.Presentador;
 
 public class personaDaoImp implements personaDao {
 
     @Override
-    public String grabar(Persona Per) {
+    public String grabar(Presentador pre) {
+        String sql = "insert into persona values(null,'"+pre.getPer().getNombre()+"','"+pre.getPer().getApellidos()+"','"+pre.getPer().getDni()+"','"+pre.getPer().getDireccion()+"'," +
+                    "'"+pre.getPer().getTelefono()+"','"+pre.getPer().getFechaNa()+"','"+pre.getPer().getIdDist()+"','"+pre.getPer().getIdPro()+"','"+pre.getPer().getIdDep()+"');\n" +
+                    "insert into cuenta values(Null,'"+pre.getCu().getUser()+"','"+pre.getCu().getPass()+"');";
+        return operacion.ejecutar(sql);
+    }
+    
+    @Override
+    public String grabarasas(Persona Per) {
         String sql = "insert into persona values(Null,'" + Per.getNombre() + "','" + Per.getApellidos() + "','" + Per.getDni() + "','" + Per.getDireccion() + "','" + Per.getTelefono() + "','" + Per.getFechaNa() + "','" + Per.getIdDist() + "','" + Per.getIdPro() + "','" + Per.getIdDep() + "')";
         return operacion.ejecutar(sql);
     }
@@ -40,23 +49,22 @@ public class personaDaoImp implements personaDao {
 
     @Override
     public String eliminar(int IdPer) {
-         String sql = "delete from persona where IdPer=" + IdPer + "";
-         return operacion.ejecutar(sql);
+        String sql = "delete from persona where IdPer=" + IdPer + "";
+        return operacion.ejecutar(sql);
     }
 
     @Override
     public List listar() {
         String sql = "select * from persona";
         List lis=operacion.listar(sql);
-        if(lis!=null){
+        if (lis!=null)
             return lis;
-        }
         return null;
     }
 
     @Override
     public int lastId() {
-       String sql="SELECT MAX(IdPer) AS id FROM persona";
+        String sql="SELECT MAX(IdPer) AS id FROM persona";
         String idPer=operacion.ejecutar(sql);
         return Integer.parseInt(idPer);
     }
@@ -81,5 +89,4 @@ public class personaDaoImp implements personaDao {
         }
         return null;
     }
-
 }

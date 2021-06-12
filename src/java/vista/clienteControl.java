@@ -50,139 +50,139 @@ public class clienteControl extends HttpServlet {
             //persona------>
             
             //ubigeo ---->
-            List lisDep = ubiSer.listarDep(dep);
-            Object[] f = (Object[]) lisDep.get(1);
-            String codDep = (String) f[0];
-
-            List lisPro = ubiSer.listarPro(codDep, pro);
-            Object[] x = (Object[]) lisPro.get(1);
-            String codPro = (String) x[0];
-
-            List lisDis = ubiSer.listarDis(codDep, dis, codPro);
-            Object[] e = (Object[]) lisDis.get(1);
-            String codDis = (String) e[0];
-            //<----ubigeo
-
-            perSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, codDis, codPro, codDep);
-            
-            //<------persona
-            
-            //cuenta------>
-
-            cuSer.grabar(usu, pass);
-
-            //<------cuenta
-
-            //cliente------>
-
-            Object[] busP=perSer.buscar(Dni);
-            int IdPerCli=(int) busP[0];
-
-            Object[] busC=cuSer.buscar(usu);
-            int IdCuenta=(int)busC[0];
-
-            cliSer.grabar(IdPerCli, IdCuenta);
-
-            //<------cliente
-            if (menu.equals("intranet")) {
-                
-                //actualizar la tabla de clientes------>
-                
-                List lisP = perSer.listar();
-                for (int i = 1; i < lisP.size(); i++) {
-                    Object[] p = (Object[]) lisP.get(i);
-
-                    Object val = cliSer.buscar((int) p[0]);
-                    if (val == null) {
-                        lisP.remove(i);
-                    }
-                }
-                request.getSession().setAttribute("lisP", lisP);
-                //<------actualizar la tabla de clientes
-                response.sendRedirect("Intranet/Admin/cliente.jsp");
-
-            } else {
-                response.sendRedirect("Login.jsp");
-            }
-
-        }
-
-        if (acc.equals("Buscar")) {
-            String dni = request.getParameter("dni");
-            Object[] busDni = perSer.buscar(dni);
-            Object[] busCli = cliSer.buscar((int) busDni[0]);
-
-            Object[] dep = ubiSer.buscarDep(busDni[9].toString());
-            Object[] dis = ubiSer.buscarDis(busDni[7].toString());
-            Object[] pro = ubiSer.buscarPro(busDni[8].toString());
-
-            Object[] busCu = cuSer.buscarId((int) busCli[1]);
-            System.out.println(busCli[1]);
-            if (busDni != null) {
-                pre.setFil(busDni);
-                pre.setUsuario(busCu[1].toString());
-                pre.setCodigoCuenta((int) busCu[0]);
-                pre.setDep(dep[1].toString());
-                pre.setDis(dis[1].toString());
-                pre.setPro(pro[1].toString());
-
-                response.sendRedirect("Intranet/Admin/cliente.jsp");
-                List lisP = perSer.listar();
-                for (int i = 1; i < lisP.size(); i++) {
-                    Object[] p = (Object[]) lisP.get(i);
-
-                    Object val = cliSer.buscar((int) p[0]);
-                    if (val == null) {
-                        lisP.remove(i);
-                    }
-                }
-                request.getSession().setAttribute("lisP", lisP);
-
-            } else {
-                pre.setMsg("El usuario no existe");
-                response.sendRedirect("Intranet/Admin/cliente.jsp");
-            }
-        }
-
-        if (acc.equals("Clientes")) {
-            pre = new clientePresentador();
-            serPer = new personaServicioImp();
-            request.getSession().setAttribute("pre", pre);
-
-            List lisP = perSer.listar();
-            for (int i = 1; i < lisP.size(); i++) {
-                Object[] p = (Object[]) lisP.get(i);
-
-                Object val = cliSer.buscar((int) p[0]);
-                if (val == null) {
-                    lisP.remove(i);
-                }
-            }
-            request.getSession().setAttribute("lisP", lisP);
-
-            response.sendRedirect("Intranet/Admin/cliente.jsp");
-
-        }
-        if (acc.equals("Eliminar")) {
-            int codCu = Integer.parseInt(request.getParameter("codCu"));
-            int IdPerCli = Integer.parseInt(request.getParameter("codPer"));
-
-            cliSer.eliminar(IdPerCli);
-            cuSer.eliminar(codCu);
-            perSer.eliminar(IdPerCli);
-
-            List lisP = perSer.listar();
-            for (int i = 1; i < lisP.size(); i++) {
-                Object[] p = (Object[]) lisP.get(i);
-
-                Object val = cliSer.buscar((int) p[0]);
-                if (val == null) {
-                    lisP.remove(i);
-                }
-            }
-            request.getSession().setAttribute("lisP", lisP);
-
-            response.sendRedirect("Intranet/Admin/cliente.jsp");
+//            List lisDep = ubiSer.listarDep(dep);
+//            Object[] f = (Object[]) lisDep.get(1);
+//            String codDep = (String) f[0];
+//
+//            List lisPro = ubiSer.listarPro(codDep, pro);
+//            Object[] x = (Object[]) lisPro.get(1);
+//            String codPro = (String) x[0];
+//
+//            List lisDis = ubiSer.listarDis(codDep, dis, codPro);
+//            Object[] e = (Object[]) lisDis.get(1);
+//            String codDis = (String) e[0];
+//            //<----ubigeo
+//
+//            perSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, codDis, codPro, codDep);
+//            
+//            //<------persona
+//            
+//            //cuenta------>
+//
+//            cuSer.grabar(usu, pass);
+//
+//            //<------cuenta
+//
+//            //cliente------>
+//
+//            Object[] busP=perSer.buscar(Dni);
+//            int IdPerCli=(int) busP[0];
+//
+//            Object[] busC=cuSer.buscar(usu);
+//            int IdCuenta=(int)busC[0];
+//
+//            cliSer.grabar(IdPerCli, IdCuenta);
+//
+//            //<------cliente
+//            if (menu.equals("intranet")) {
+//                
+//                //actualizar la tabla de clientes------>
+//                
+//                List lisP = perSer.listar();
+//                for (int i = 1; i < lisP.size(); i++) {
+//                    Object[] p = (Object[]) lisP.get(i);
+//
+//                    Object val = cliSer.buscar((int) p[0]);
+//                    if (val == null) {
+//                        lisP.remove(i);
+//                    }
+//                }
+//                request.getSession().setAttribute("lisP", lisP);
+//                //<------actualizar la tabla de clientes
+//                response.sendRedirect("Intranet/Admin/cliente.jsp");
+//
+//            } else {
+//                response.sendRedirect("Login.jsp");
+//            }
+//
+//        }
+//
+//        if (acc.equals("Buscar")) {
+//            String dni = request.getParameter("dni");
+//            Object[] busDni = perSer.buscar(dni);
+//            Object[] busCli = cliSer.buscar((int) busDni[0]);
+//
+//            Object[] dep = ubiSer.buscarDep(busDni[9].toString());
+//            Object[] dis = ubiSer.buscarDis(busDni[7].toString());
+//            Object[] pro = ubiSer.buscarPro(busDni[8].toString());
+//
+//            Object[] busCu = cuSer.buscarId((int) busCli[1]);
+//            System.out.println(busCli[1]);
+//            if (busDni != null) {
+//                pre.setFil(busDni);
+//                pre.setUsuario(busCu[1].toString());
+//                pre.setCodigoCuenta((int) busCu[0]);
+//                pre.setDep(dep[1].toString());
+//                pre.setDis(dis[1].toString());
+//                pre.setPro(pro[1].toString());
+//
+//                response.sendRedirect("Intranet/Admin/cliente.jsp");
+//                List lisP = perSer.listar();
+//                for (int i = 1; i < lisP.size(); i++) {
+//                    Object[] p = (Object[]) lisP.get(i);
+//
+//                    Object val = cliSer.buscar((int) p[0]);
+//                    if (val == null) {
+//                        lisP.remove(i);
+//                    }
+//                }
+//                request.getSession().setAttribute("lisP", lisP);
+//
+//            } else {
+//                pre.setMsg("El usuario no existe");
+//                response.sendRedirect("Intranet/Admin/cliente.jsp");
+//            }
+//        }
+//
+//        if (acc.equals("Clientes")) {
+//            pre = new clientePresentador();
+//            serPer = new personaServicioImp();
+//            request.getSession().setAttribute("pre", pre);
+//
+//            List lisP = perSer.listar();
+//            for (int i = 1; i < lisP.size(); i++) {
+//                Object[] p = (Object[]) lisP.get(i);
+//
+//                Object val = cliSer.buscar((int) p[0]);
+//                if (val == null) {
+//                    lisP.remove(i);
+//                }
+//            }
+//            request.getSession().setAttribute("lisP", lisP);
+//
+//            response.sendRedirect("Intranet/Admin/cliente.jsp");
+//
+//        }
+//        if (acc.equals("Eliminar")) {
+//            int codCu = Integer.parseInt(request.getParameter("codCu"));
+//            int IdPerCli = Integer.parseInt(request.getParameter("codPer"));
+//
+//            cliSer.eliminar(IdPerCli);
+//            cuSer.eliminar(codCu);
+//            perSer.eliminar(IdPerCli);
+//
+//            List lisP = perSer.listar();
+//            for (int i = 1; i < lisP.size(); i++) {
+//                Object[] p = (Object[]) lisP.get(i);
+//
+//                Object val = cliSer.Buscar((int) p[0]);
+//                if (val == null) {
+//                    lisP.remove(i);
+//                }
+//            }
+//            request.getSession().setAttribute("lisP", lisP);
+//
+//            response.sendRedirect("Intranet/Admin/cliente.jsp");
 
         }
 

@@ -1,19 +1,18 @@
 package persistencia;
 
-import java.util.List;
-import negocio.cuenta;
+import negocio.Persona;
+import negocio.Presentador;
+import negocio.TipoEmpleado;
 
 public class cuentaDaoImp implements cuentaDao{
 
     @Override
-    public String grabar(cuenta cu) {
-        String sql = "insert into cuenta values(Null,'" + cu.getUser() + "','" + cu.getPass()+ "')";
-        return operacion.ejecutar(sql);
-    }
-
-    @Override
-    public String actualizar(cuenta cu) {
-        String sql="update cuenta set pass='"+cu.getPass()+"' where IdCuenta="+cu.getIdCuenta()+"";
+    public String actualizar(Presentador pre) {
+        String sql="UPDATE CUENTA SET pass='"+pre.getCu().getPass()+"' WHERE IdCuenta=(SELECT C.IDCUENTA FROM EMPLEADO E\n" +
+                    "INNER JOIN CUENTA C\n" +
+                    "INNER JOIN PERSONA P\n" +
+                    "ON P.IDPER=E.IDPEREM\n" +
+                    "WHERE P.IDPER=(SELECT IDPER FROM PERSONA WHERE DNI='"+pre.getPer().getDni()+"'));\n";
         return operacion.ejecutar(sql);
     }
 
@@ -24,54 +23,24 @@ public class cuentaDaoImp implements cuentaDao{
     }
 
     @Override
-    public List listar() {
-        String sql = "select * from cuenta";
-        List lis=operacion.listar(sql);
-        if(lis!=null){
-            return lis;
-        }
-        return null;
-    }
-
-    @Override
-    public cuenta buscar(String user) {
-        String sql = "select * from cuenta where user='" + user + "'";
+    public Presentador validar(String user, String pass) {
+        String sql = "SELECT P.IDPER,P.NOMBRE,T.NOMBRE\n" +
+                    "FROM EMPLEADO E\n" +
+                    "INNER JOIN CUENTA C\n" +
+                    "INNER JOIN PERSONA P\n" +
+                    "INNER JOIN TIPOEMPLEADO T\n" +
+                    "ON E.IDPEREM=P.IDPER AND E.IDCUENTA=C.IDCUENTA AND E.IDTIP=T.IDTIP\n" +
+                    "WHERE C.USER LIKE '"+user+"' AND C.PASS LIKE '"+pass+"'";
         Object[] fill = operacion.buscar(sql);
         if (fill != null) {
-            cuenta cu = new cuenta();
-            cu.setIdCuenta((int) fill[0]);
-            cu.setUser((String) fill[1]);
-            cu.setPass((String) fill[2]);
-            return cu;
-        }
-        return null;
-    }
-
-    @Override
-    public cuenta buscarId(int IdCuenta) {
-        String sql = "select * from cuenta where IdCuenta=" + IdCuenta + "";
-        Object[] fill = operacion.buscar(sql);
-        if (fill != null) {
-            cuenta cu = new cuenta();
-            cu.setIdCuenta((int) fill[0]);
-            cu.setUser((String) fill[1]);
-            cu.setPass((String) fill[2]);
-            return cu;
-        }
-        return null;
-    }
-
-    @Override
-    public cuenta validar(String user, String pass) {
-        String sql = "select * from cuenta where user like '" + user + "' and pass like'" + pass + "'";
-        Object[] fill = operacion.buscar(sql);
-        if (fill != null) {
-            cuenta cu = new cuenta();
-            cu.setIdCuenta((int)fill[0]);
-            cu.setUser(fill[1].toString());
-            cu.setPass(fill[2].toString());
+            Persona per = new Persona();
+            TipoEmpleado tip=new TipoEmpleado();
+            per.setCodPer((int) fill[0]);
+            per.setNombre(fill[1].toString());
+            tip.setNombre(fill[2].toString());
             
-            return cu;
+            Presentador pre=new Presentador(per, tip);
+            return pre;
         }
         return null;
     }
