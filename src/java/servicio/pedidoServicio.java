@@ -10,3 +10,4 @@ public interface PedidoServicio {
     public List listarDetalle(int IdPerCli);
     public List listarPedido(int estado);
 }
+
