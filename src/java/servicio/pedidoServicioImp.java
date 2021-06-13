@@ -60,4 +60,3 @@ public class PedidoServicioImp implements PedidoServicio {
         return peDao.listarPedido(estado);
     }
 }
-

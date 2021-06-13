@@ -3,24 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/PresentadorGeneral.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ClienteDaoImo.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/pedidoServicioImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/pedidos.jsp</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/clienteServicioImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/pedidoDaoImp.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/personaServicio.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/Cliente.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/cliente.jsp</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/clienteControl.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/clienteServicio.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/ClienteDao.java</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/index.jsp</file>
-            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/pedidoControl.java</file>
-=======
-            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/Intranet/Admin/empleados.jsp</file>
->>>>>>> Piscoya
+            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/index.jsp</file>
+            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/PedidoServicioImp.java</file>
+            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/PedidoServicio.java</file>
+            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/css/style.css</file>
+            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/vista/ClienteControl.java</file>
+            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/ClienteServicioImp.java</file>
         </group>
     </open-files>
 </project-private>

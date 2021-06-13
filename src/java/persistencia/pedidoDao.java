@@ -13,4 +13,3 @@ public interface PedidoDao {
     public List listarDetalle(int IdPedido);
     public List listarPedido(int estado);
 }
-
