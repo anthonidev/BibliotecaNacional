@@ -4,18 +4,19 @@
     Author     : Anthoni
 --%>
 
-<%@page import="servicio.UbigeoServicioImp"%>
-<%@page import="servicio.UbigeoServicio"%>
-<%@page import="servicio.tipoServicioImp"%>
-<%@page import="servicio.tipoServicio"%>
-<%@page import="servicio.cuentaServicioImp"%>
-<%@page import="servicio.cuentaServicio"%>
-<%@page import="servicio.empleadoServicioImp"%>
-<%@page import="servicio.empleadoServicio"%>
+<%@page import="servicio.*"%>
 <%@page import="java.util.List"%>
-<%@page import="servicio.personaServicio"%>
-<%@page import="servicio.personaServicioImp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    EmpleadoServicio empSer=new EmpleadoServicioImp();
+    TipoServicio tipSer=new TipoServicioImp();
+    UbigeoServicio ubiSer = new UbigeoServicioImp();
+    String msg=(String) session.getAttribute("msg");
+    Object[] obj=(Object[]) session.getAttribute("filaBus");
+    Object[] fila={"","","","","","","","","","","",""};
+    List lisDep=ubiSer.listarDep();
+    if (obj!=null) fila=obj;
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,41 +32,38 @@
         <title>Biblioteca</title>
     </head>
     <body>
-        <jsp:include page="navInicio.jsp" />
-        <% personaServicio perSer=new personaServicioImp();
-           cuentaServicio cuSer=new cuentaServicioImp();
-           tipoServicio tipSer=new tipoServicioImp();
-           UbigeoServicio ubiSer = new UbigeoServicioImp();
-           String msg=(String) session.getAttribute("msg");
-           Object[] obj=(Object[]) session.getAttribute("filaBus");
-           Object[] fila={"","","","","","","","","","","",""};
-           if (obj!=null) fila=obj; %>
+        <jsp:include page="navAdmin.jsp"/>
         
         <div class="d-flex" style="height: 94vh">
-            <div class="col-1 py-4 d-flex shadow-sm p-3 mb-5 bg-primary rounded">
-                <ul class="navbar-nav d-flex justify-content-between me-auto mb-2 mb-lg-0">
-                    <li class="nav-item my-0 shadow-sm p-3  bg-danger rounded">
-                        <a class="nav-link active text-dark text-center" aria-current="page" href="empleados.jsp"><i
-                                class="fas fa-users-cog w-100 h3 text-center"></i>Empleados</a>
-                    </li>
-                    <li class="nav-item my-0 shadow-sm p-3  bg-body rounded ">
-                        <a class="nav-link active text-dark text-center" aria-current="page" href="#"><i
-                                class="fas fa-user-tag w-100 h3 text-center"></i>Clientes</a>
-                    </li>
-                    <li class="nav-item my-0 shadow-sm p-3  bg-body rounded ">
-                        <a class="nav-link active text-dark text-center" aria-current="page" href="#"><i
-                                class="fas fa-truck-loading w-100 h3 text-center"></i>Pedidos</a>
-                    </li>
-                    <li class="nav-item my-0 shadow-sm p-3  bg-body rounded ">
-                        <a class="nav-link active text-dark text-center" aria-current="page" href="libros.jsp"><i
-                                class="fas fa-book-open w-100 h3 text-center"></i>Libros</a>
-                    </li>
-                    <li class="nav-item  shadow-sm p-3  bg-body rounded ">
-                        <a class="nav-link active text-dark text-center" aria-current="page" href="#"><i
-                                class="fas fa-clipboard-list w-100 h3 text-center"></i>Boletas</a>
-                    </li>
-                </ul>
-            </div>
+            <div class="col-1 d-flex align-items-center py-5 shadow-sm p-3 mb-5 bg-primary rounded">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded">
+                            <a class="nav-link active text-dark h5 text-center" aria-current="page" href="empleados.jsp"><i class="fas fa-users-cog w-100 text-center"></i>Empleados</a>
+                        </li>
+                        <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
+                            <form action="../../clienteControl" method="post">
+                                <i class="fas fa-user-tag h5 w-100 text-center"></i>
+                                <input class="nav-link active text-dark h5 text-center border-0 bg-body m-auto" type="submit" name="acc" value="Clientes" >
+                            </form>
+                        </li>
+                        <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
+                            <form action="../../pedidoControl" method="post">
+                                <i class="fas fa-truck-loading w-100 text-center h5"></i>
+                                <input class="nav-link active text-dark h5 text-center border-0 bg-body m-auto" type="submit" name="acc" value="Pedidos" >
+                            </form>
+                        </li>
+                        <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
+                            <a class="nav-link active text-dark h5 text-center" aria-current="page" href="libros.jsp"><i class="fas fa-users-cog w-100 text-center"></i>Libros</a>
+
+                        </li>
+                        <li class="nav-item my-4 shadow-sm p-3 my-3 bg-body rounded ">
+                            <form action="">
+                                <i class="fas fa-clipboard-list w-100 text-center h5"></i>
+                                <input class="nav-link active text-dark h5 text-center border-0 bg-body m-auto" type="submit" name="acc" value="Boletas" >
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             <div class="col-11" id="#">
                 <div class="d-flex px-5">
                     <div class="col-6">
@@ -192,31 +190,12 @@
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
                                                     <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required="">
                                                         <option value="">Seleccione</option>
-                                                        <option value="Amazonas">Amazonas</option>
-                                                        <option value="Ancash">Ancash</option>
-                                                        <option value="Apurímac">Apurímac</option>
-                                                        <option value="Arequipa">Arequipa</option>
-                                                        <option value="Ayacucho">Ayacucho</option>
-                                                        <option value="Cajamarca">Cajamarca</option>
-                                                        <option value="Callao">Callao</option>
-                                                        <option value="Cuzco">Cuzco </option>
-                                                        <option value="Huancavelica">Huancavelica</option>
-                                                        <option value="Huánuco">Huánuco</option>
-                                                        <option value="Ica">Ica</option>
-                                                        <option value="Junín">Junín</option>
-                                                        <option value="La_Libertad">La Libertad</option>
-                                                        <option value="Lambayeque">Lambayeque</option>
-                                                        <option value="Lima">Lima</option>
-                                                        <option value="Loreto">Loreto</option>
-                                                        <option value="Madre_de_Dios">Madre de Dios</option>
-                                                        <option value="Moquegua">Moquegua</option>
-                                                        <option value="Pasco">Pasco</option>
-                                                        <option value="Piura">Piura</option>
-                                                        <option value="Puno">Puno</option>
-                                                        <option value="San_Martín">San Martín</option>
-                                                        <option value="Tacna">Tacna</option>
-                                                        <option value="Tumbes">Tumbes</option>
-                                                        <option value="Ucayali">Ucayali</option>
+                                                        <% for (int i = 1; i < lisDep.size(); i++) { %>
+                                                        <% Object[] dep=(Object[]) lisDep.get(i); %>
+                                                        <% String sltd="", value=""; %>
+                                                        <% if(fila[6].equals(dep[0])) sltd="selected"; value=dep[0].toString().replace(" ", "_"); %>
+                                                        <option value="<%= value %>" <%= sltd %>><%= dep[0] %></option>
+                                                        <% } %>
                                                     </select>
                                                 </div>
                                                 <div class="col-4 my-2">
@@ -271,14 +250,6 @@
                                         <form action="../../empleadoControl" method="post">
                                             <div class="row d-flex align-items-center justify-content-center w-100 ">
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                        <input type="text" required class="form-control" name="Nombre" value="<%= fila[0] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                        <input type="text" required class="form-control" name="Apellidos" value="<%= fila[1] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                    </div>
                                                     <div>
                                                         <input type="hidden" name="Dni" value="<%= fila[2] %>">
                                                     </div>
@@ -287,29 +258,24 @@
                                                         <input type="text" required class="form-control" name="Telefono" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
                                                     </div>
                                                     <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
-                                                        <input type="date" required class="form-control" name="FechaNa" value="<%= fila[5] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-                                                    </div>
-                                                    <% List lis=ubiSer.listarDep(); %>
-                                                    <div class="col-4 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
                                                         <select class="form-select form-control" onchange="cambia2()" aria-label="Default select example" name="selectDepartamento2" required>
                                                             <option value="">Seleccione</option>
-                                                            <% for (int i = 1; i < lis.size(); i++) { %>
-                                                            <% Object[] dep=(Object[]) lis.get(i); %>
-                                                            <% String sltd=""; %>
-                                                            <% if(fila[6].equals(dep[0])) sltd="selected"; %>
-                                                            <option value="<%= dep[0] %>" <%= sltd %>><%= dep[0] %></option>
+                                                            <% for (int i = 1; i < lisDep.size(); i++) { %>
+                                                            <% Object[] dep=(Object[]) lisDep.get(i); %>
+                                                            <% String sltd="", value=""; %>
+                                                            <% if(fila[6].equals(dep[0])) sltd="selected"; value=dep[0].toString().replace(" ", "_"); %>
+                                                            <option value="<%= value %>" <%= sltd %>><%= dep[0] %></option>
                                                             <% } %>
                                                         </select>
                                                     </div>
-                                                    <div class="col-4 my-2">
+                                                    <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
                                                         <select class="form-select form-control" aria-label="Default select example" name="selectProvincia2" onchange="cambiaDistrito2()" required>
                                                             <option>Seleccione la Provincia</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-4 my-2">
+                                                    <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
                                                         <select class="form-select form-control" aria-label="Default select example" name="selectDistrito2" required>
                                                             <option>Seleccione el Distrito</option>
@@ -376,46 +342,40 @@
         </div>
         <div class="d-flex">
             <div class="col-10 m-auto d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="listar">
-                <h1 class="fw-bold  text-primary my-5">Lista de Empleados</h1>
-                <form action="../CompraControl" method="post">
-                    <table class="table table-light table-striped  shadow  bg-body rounded border-1 ">
-                        <thead>
-                            <tr>
-                                <th scope="col">DNI</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Direccion</th>
-                                <th scope="col">Usuario</th>
-                                <th scope="col">Cargo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <form action="../CompraControl" method="post">
-                                    <% List lista=perSer.listar();
-                                       for (int i = 1; i < lista.size(); i++) {
-                                           Object[] fi=(Object[])lista.get(i); %>
-                                    <div class="d-flex flex-column">
-                                        <tr>
-                                            <td><input type="text" name="cod" value="<%= fi[3] %>" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="<%= fi[1] %>" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="<%= fi[2] %>" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="<%= fi[5] %>" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="<%= fi[4] %>" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="<%= fi[9] %>" class="form-control text-center" readonly></td>
-                                            <td><input type="text" name="cod" value="<%= fi[9] %>" class="form-control text-center" readonly></td>
-                                        </tr>
-                                    </div>
-                                    <% } %>
-                                </form>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-                <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-secondary w-25 my-4 py-3 mx-auto fw-bold">Regresar</a>
-                </div>
+                <h1 class="fw-bold text-primary my-5">Lista de Empleados</h1>
+                <table class="table table-light table-striped shadow bg-body rounded border-1">
+                    <thead>
+                        <tr>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Cargo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <% List lista=empSer.listar();
+                               for (int i = 1; i < lista.size(); i++) {
+                                   Object[] fi=(Object[])lista.get(i); %>
+                            <div class="d-flex flex-column">
+                                <tr>
+                                    <td><input type="text" name="cod" value="<%= fi[0] %>" class="form-control text-center" readonly></td>
+                                    <td><input type="text" name="cod" value="<%= fi[1] %>" class="form-control text-center" readonly></td>
+                                    <td><input type="text" name="cod" value="<%= fi[2] %>" class="form-control text-center" readonly></td>
+                                    <td><input type="text" name="cod" value="<%= fi[3] %>" class="form-control text-center" readonly></td>
+                                    <td><input type="text" name="cod" value="<%= fi[4] %>" class="form-control text-center" readonly></td>
+                                    <td><input type="text" name="cod" value="<%= fi[5] %>" class="form-control text-center" readonly></td>
+                                    <td><input type="text" name="cod" value="<%= fi[6] %>" class="form-control text-center" readonly></td>
+                                </tr>
+                            </div>
+                            <% } %>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#" class="btn btn-secondary w-25 my-4 py-3 mx-auto fw-bold">Regresar</a>
             </div>
         </div>
     </body>

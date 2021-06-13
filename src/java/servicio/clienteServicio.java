@@ -1,10 +1,13 @@
-
 package servicio;
 
+import java.util.List;
+
 public interface clienteServicio {
-    public String grabar(int IdPerCli,int IdCuenta);
-    public String eliminar(int IdPerCli);
 
-    public Object[] buscar(int idPerCli);
+    public String grabarCliente(String nombre, String apellidos, String documento, String direccion, String telefono, String fecha, String dep, String pro, String dis, String usuario, String password);
 
+    public Object[] buscarCliente(String documento);
+    public List listarCliente();
+    
+    public String EliminarCliente(int cod,String usu);
 }

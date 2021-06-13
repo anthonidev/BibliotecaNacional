@@ -130,7 +130,6 @@
                             </script>
                             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
-
                         </div>
                         <div class="col-12 shadow p-3 bg-body rounded my-5">
                             <div class="card" style="width: 18rem;">
@@ -144,9 +143,6 @@
                         </div>
 
                     </div>
-
-
-
                     </body>
                 </div>
             </div>

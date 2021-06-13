@@ -1,15 +1,14 @@
 package servicio;
 
 import java.util.List;
-import persistencia.ubigeoDao;
-import persistencia.ubigeoDaoImp;
+import persistencia.UbigeoDaoImp;
+import persistencia.UbigeoDao;
 
 public class UbigeoServicioImp implements UbigeoServicio {
-    
-private ubigeoDao ubiDao;
+    private UbigeoDao ubiDao;
 
     public UbigeoServicioImp() {
-        ubiDao =new ubigeoDaoImp();
+        ubiDao =new UbigeoDaoImp();
     }
     
     @Override

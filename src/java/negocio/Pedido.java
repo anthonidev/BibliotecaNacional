@@ -2,9 +2,9 @@ package negocio;
 
 public class Pedido {
 
-    int IdPedido, IdPerCli, estado;
-    String fecha;
-    double Total;
+    private int IdPedido, IdPerCli, estado;
+    private String fecha;
+    private double Total;
 
     public Pedido() {
     }

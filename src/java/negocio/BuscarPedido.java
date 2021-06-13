@@ -2,9 +2,11 @@ package negocio;
 
 public class BuscarPedido {
 
-    String Nombre, Apellidos, Dni, Direccion, fecha;
-    int IdPedido, estado;
-    double Total;
+
+    private String Nombre, Apellidos, Dni, Direccion, fecha;
+    private int IdPedido, estado;
+    private double Total;
+
 
     public BuscarPedido() {
     }
@@ -83,7 +85,5 @@ public class BuscarPedido {
     public void setTotal(double Total) {
         this.Total = Total;
     }
-    
-    
 
 }

@@ -1,12 +1,16 @@
-
 package vista;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PresentadorGeneral {
-     private Object[] pedido = {"", "", "", "", "", "", "", ""};
-     private Object[] detalle={"","","",""};
+    private Object[] pedido = {"", "", "", "", "", "", "", ""};
+    private Object[] detalle={"","","",""};
+    
+    private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", "", "",""};
+    private List listaClienteBuscar = new ArrayList();
+
+    
     private List lista = new ArrayList();
     private List listaDetalle = new ArrayList();
     private String msg = "";
@@ -14,8 +18,26 @@ public class PresentadorGeneral {
     public PresentadorGeneral() {
          lista.add(pedido);
          listaDetalle.add(detalle);
+         listaClienteBuscar.add(cliente);
     }
 
+    public Object[] getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Object[] cliente) {
+        this.cliente = cliente;
+    }
+
+    public List getListaClienteBuscar() {
+        return listaClienteBuscar;
+    }
+
+    public void setListaClienteBuscar(List listaClienteBuscar) {
+        this.listaClienteBuscar = listaClienteBuscar;
+    }
+
+    
     public Object[] getDetalle() {
         return detalle;
     }
