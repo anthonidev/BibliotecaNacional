@@ -1,5 +1,7 @@
 package vista;
 
+import servicio.ClienteServicioImp;
+import servicio.ClienteServicio;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -10,85 +12,178 @@ import javax.servlet.http.HttpServletResponse;
 import servicio.*;
 
 @WebServlet(name = "clienteControl", urlPatterns = {"/clienteControl"})
-public class clienteControl extends HttpServlet {
+public class ClienteControl extends HttpServlet {
 
-    private clienteServicio Ser;
-    private PresentadorGeneral pg;
+    private UbigeoServicio ubiSer;
+    private ClienteServicio cliSer;
+    private CuentaServicio cuSer;
+    private ClientePresentador pre;
 
-    public clienteControl() {
-        Ser = new clienteServicioImp();
+    public ClienteControl() {
+        ubiSer = new UbigeoServicioImp();
+        cliSer = new ClienteServicioImp();
+        cuSer = new CuentaServicioImp();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String acc = request.getParameter("acc");
-        if (acc.equals("Clientes")) {
-            pg = new PresentadorGeneral();
-            List lista = Ser.listarCliente();
-            request.getSession().setAttribute("lista", lista);
-            request.getSession().setAttribute("pg", pg);
-            response.sendRedirect("Intranet/Admin/cliente.jsp");
 
-        }
-        if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
-            String dni = request.getParameter("dni");
-            Object[] fill = Ser.buscarCliente(dni);
-
-            if (fill != null) {
-                pg.setCliente(fill);
-                List lista = Ser.listarCliente();
-                request.getSession().setAttribute("lista", lista);
-                request.getSession().setAttribute("fill", fill);
-                response.sendRedirect("Intranet/Admin/cliente.jsp");
-            } else {
-                Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-                pg.setCliente(vacio);
-                pg.setMsg("No exite el cliente!!");
-                response.sendRedirect("Intranet/Admin/cliente.jsp");
-            }
-        }
-        if (acc.equals("Registrar")) {
-            String nommbre = request.getParameter("nom");
-            String apellido = request.getParameter("ape");
-            String documento = request.getParameter("dni");
-            String direccion = request.getParameter("dir");
-            String telefono = request.getParameter("tel");
-            String fecha = request.getParameter("fec");
-            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
-            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
-            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
-            String usuario = request.getParameter("user");
-            String password = request.getParameter("pass");
-
-            String msg = Ser.grabarCliente(nommbre, apellido, documento, direccion, telefono, fecha, dep, pro, dis, usuario, password);
-            if (msg == null) {
-                List lista = Ser.listarCliente();
-                request.getSession().setAttribute("lista", lista);
-                pg.setMsg("Cliente registrado exitosamente");
-            } else {
-                pg.setMsg("Error al registrar cliente");
-            }
-            response.sendRedirect("Intranet/Admin/cliente.jsp");
-        }
-        if (acc.equals("Eliminar")) {
-            int cod = Integer.parseInt(request.getParameter("cod"));
+        if (acc.equals("Registrarse")) {
+            String Nombre = request.getParameter("Nombre");
+            String Apellidos = request.getParameter("Apellidos");
+            String Dni = request.getParameter("Dni");
+            String Telefono = request.getParameter("Telefono");
+            String FechaNa = request.getParameter("FechaNa");
+            String Direccion = request.getParameter("Direccion");
             String usu = request.getParameter("usu");
+            String pass = request.getParameter("pass");
+          
+            String menu = request.getParameter("menu");
+            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8");
+            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8");
+            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8");
 
-            String msg = Ser.EliminarCliente(cod, usu);
-
-            if (msg == null) {
-                Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-                pg.setCliente(vacio);
-                List lista = Ser.listarCliente();
-                request.getSession().setAttribute("lista", lista);
-            }
-            response.sendRedirect("Intranet/Admin/cliente.jsp");
-
+            //persona------>
+            
+            //ubigeo ---->
+//            List lisDep = ubiSer.listarDep(dep);
+//            Object[] f = (Object[]) lisDep.get(1);
+//            String codDep = (String) f[0];
+//
+//            List lisPro = ubiSer.listarPro(codDep, pro);
+//            Object[] x = (Object[]) lisPro.get(1);
+//            String codPro = (String) x[0];
+//
+//            List lisDis = ubiSer.listarDis(codDep, dis, codPro);
+//            Object[] e = (Object[]) lisDis.get(1);
+//            String codDis = (String) e[0];
+//            //<----ubigeo
+//
+//            perSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, codDis, codPro, codDep);
+//            
+//            //<------persona
+//            
+//            //cuenta------>
+//
+//            cuSer.grabar(usu, pass);
+//
+//            //<------cuenta
+//
+//            //cliente------>
+//
+//            Object[] busP=perSer.buscar(Dni);
+//            int IdPerCli=(int) busP[0];
+//
+//            Object[] busC=cuSer.buscar(usu);
+//            int IdCuenta=(int)busC[0];
+//
+//            cliSer.grabar(IdPerCli, IdCuenta);
+//
+//            //<------cliente
+//            if (menu.equals("intranet")) {
+//                
+//                //actualizar la tabla de clientes------>
+//                
+//                List lisP = perSer.listar();
+//                for (int i = 1; i < lisP.size(); i++) {
+//                    Object[] p = (Object[]) lisP.get(i);
+//
+//                    Object val = cliSer.buscar((int) p[0]);
+//                    if (val == null) {
+//                        lisP.remove(i);
+//                    }
+//                }
+//                request.getSession().setAttribute("lisP", lisP);
+//                //<------actualizar la tabla de clientes
+//                response.sendRedirect("Intranet/Admin/cliente.jsp");
+//
+//            } else {
+//                response.sendRedirect("Login.jsp");
+//            }
+//
+//        }
+//
+//        if (acc.equals("Buscar")) {
+//            String dni = request.getParameter("dni");
+//            Object[] busDni = perSer.buscar(dni);
+//            Object[] busCli = cliSer.buscar((int) busDni[0]);
+//
+//            Object[] dep = ubiSer.buscarDep(busDni[9].toString());
+//            Object[] dis = ubiSer.buscarDis(busDni[7].toString());
+//            Object[] pro = ubiSer.buscarPro(busDni[8].toString());
+//
+//            Object[] busCu = cuSer.buscarId((int) busCli[1]);
+//            System.out.println(busCli[1]);
+//            if (busDni != null) {
+//                pre.setFil(busDni);
+//                pre.setUsuario(busCu[1].toString());
+//                pre.setCodigoCuenta((int) busCu[0]);
+//                pre.setDep(dep[1].toString());
+//                pre.setDis(dis[1].toString());
+//                pre.setPro(pro[1].toString());
+//
+//                response.sendRedirect("Intranet/Admin/cliente.jsp");
+//                List lisP = perSer.listar();
+//                for (int i = 1; i < lisP.size(); i++) {
+//                    Object[] p = (Object[]) lisP.get(i);
+//
+//                    Object val = cliSer.buscar((int) p[0]);
+//                    if (val == null) {
+//                        lisP.remove(i);
+//                    }
+//                }
+//                request.getSession().setAttribute("lisP", lisP);
+//
+//            } else {
+//                pre.setMsg("El usuario no existe");
+//                response.sendRedirect("Intranet/Admin/cliente.jsp");
+//            }
+//        }
+//
+//        if (acc.equals("Clientes")) {
+//            pre = new ClientePresentador();
+//            serPer = new personaServicioImp();
+//            request.getSession().setAttribute("pre", pre);
+//
+//            List lisP = perSer.listar();
+//            for (int i = 1; i < lisP.size(); i++) {
+//                Object[] p = (Object[]) lisP.get(i);
+//
+//                Object val = cliSer.buscar((int) p[0]);
+//                if (val == null) {
+//                    lisP.remove(i);
+//                }
+//            }
+//            request.getSession().setAttribute("lisP", lisP);
+//
+//            response.sendRedirect("Intranet/Admin/cliente.jsp");
+//
+//        }
+//        if (acc.equals("Eliminar")) {
+//            int codCu = Integer.parseInt(request.getParameter("codCu"));
+//            int IdPerCli = Integer.parseInt(request.getParameter("codPer"));
+//
+//            cliSer.eliminar(IdPerCli);
+//            cuSer.eliminar(codCu);
+//            perSer.eliminar(IdPerCli);
+//
+//            List lisP = perSer.listar();
+//            for (int i = 1; i < lisP.size(); i++) {
+//                Object[] p = (Object[]) lisP.get(i);
+//
+//                Object val = cliSer.Buscar((int) p[0]);
+//                if (val == null) {
+//                    lisP.remove(i);
+//                }
+//            }
+//            request.getSession().setAttribute("lisP", lisP);
+//
+//            response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
-
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
