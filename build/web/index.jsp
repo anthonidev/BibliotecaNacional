@@ -20,11 +20,9 @@
   </head>
 
   <body class="">
-    <main class="container-fluid p-0">
-      <jsp:include page="navInicio.jsp" />
-    </main>
+    <jsp:include page="navInicio.jsp" />
     <!-- pantalla de inicio -->
-    <section class="container_section_datos p-0 h-100">
+    <main class="container_section_datos p-0 h-100">
       <jsp:include page="barra-busqueda.jsp" />
       <a href="./Libros.jsp" class="container-fluid position-absolute top-0 end-0 d-none d-lg-block z-index group-card--custom" style="padding: 37px !important;"></a>
       <div class="row pt-3 w-100 container__sec">
@@ -713,7 +711,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </main>
     <!-- /pantalla de inicio -->
   </body>
 </html>

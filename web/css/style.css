@@ -11818,6 +11818,10 @@ fieldset:disabled .btn {
     opacity: .7;
 }
 
+.h-min{
+  height: min-content;
+}
+
 /* navbar */
 .bg-nav-bar {
   background-color: var(--bs-lila);
@@ -11915,7 +11919,7 @@ fieldset:disabled .btn {
 
 .group-card--custom > .col {
   padding: 0;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
 }
 
 .precio_card {
@@ -11956,19 +11960,44 @@ fieldset:disabled .btn {
 
 /* /index usuarios */
 
+/* busqueda libros */
+.group-card--custom--busqueda{
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.group-card--custom--busqueda > .col{
+  margin-right: 0 !important;
+  margin-bottom: 1rem;
+  flex: 0 !important;
+}
+/* /busqueda libros */
+
 /* /custom */
 /* index usuario */
 @media screen and (min-width: 992px) {
     /* barra de busqueda */
+    .container__barra--busqueda{
+      position: fixed !important;
+      width: calc(100vw - 292px);
+    }
     .form-busqueda {
         width: 100%;
       }
     /* /barra de busqueda */
   .container_section_datos {
+    padding-top: 74px !important;
     width: calc(100vw - 292px);
     height: 100vh;
     margin-left: 280px;
     overflow: hidden;
+  }
+  @-moz-document url-prefix() {
+    .container_section_datos{
+      width: calc(100vw - 297px);
+    }
   }
   .container__sec--bottom {
     margin-bottom: 0 !important;

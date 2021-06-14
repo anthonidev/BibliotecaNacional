@@ -2,8 +2,8 @@
 <%-- Document : navInicio Created on : 05/06/2021, 02:02:25 PM Author : Anthoni
 --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-    <!-- barra-movil -->
-    <div class="container-fluid p-0 position-sticky top-0 z-index">
+    <!-- barra-busqueda -->
+    <div class="container-fluid p-0 position-sticky top-0 z-index container__barra--busqueda">
       <nav class="px-3 navbar navbar-light bg-white shadow-sm">
         <a class="navbar-brand d-lg-none" href="#">
           <img src="./img/logtipo.svg" width="67" alt="" />
@@ -22,6 +22,7 @@
               rounded-pill
               btn btn-primary
               m-0
+              h-min
             "
             type="submit">
             <img
@@ -34,4 +35,4 @@
         </form>
       </nav>
     </div>
-    <!-- /barra-movil -->
+    <!-- /barra-busqueda -->
