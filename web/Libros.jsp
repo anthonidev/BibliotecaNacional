@@ -24,7 +24,7 @@
       <jsp:include page="./barra-busqueda.jsp" />
       <div class="container-fluid pt-2">
         <div class="row">
-          <div class="col-12 position-sticky pt-2 top-0 z-index bg-white">
+          <div class="col-12  col-lg-3 position-sticky pt-2 top-0 z-index bg-white modal_filtrar">
             <div class="card">
               <h5 class="card-title fw-bold text-center m-0">Filtrar</h5>
 
@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 pt-4">
+          <div class="col-12 col-lg-9 offset-lg-3 pt-4">
             <div class="row
             overflow-auto
             m-0
