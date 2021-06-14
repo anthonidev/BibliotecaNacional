@@ -6,8 +6,7 @@
     <jsp:include page="./metas-head.jsp" />
     <title>Biblioteca</title>
   </head>
-
-  <body class="">
+  <body>
     <main class="container-fluid p-0">
     </main>
   </body>

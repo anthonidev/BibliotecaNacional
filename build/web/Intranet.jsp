@@ -7,28 +7,20 @@
     <title>Intranet</title>
   </head>
   <body class="">
-    <main class="container-fluid p-0">
+    <main class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-9 m-auto mt-5">
-          <div class="card mb-md-3 shadow p-3 mb-5 bg-body rounded">
-            <div class="row g-0">
-              <div class="col-md-6 d-flex m-auto">
-                <img
-                  class="img-fluid"
-                  src="https://image.freepik.com/vector-gratis/personas-que-utilizan-concepto-isometrico-horizontal-biblioteca-linea-azul-3d_1284-31705.jpg"
-                  alt="..."
-                />
-              </div>
-              <div class="col-md-6 bg-light d-flex align-items-center">
+        <img
+          class="img-fluid"
+          src="https://image.freepik.com/vector-gratis/personas-que-utilizan-concepto-isometrico-horizontal-biblioteca-linea-azul-3d_1284-31705.jpg"
+          alt="..."
+        />
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
                 <div class="card-body">
-                  <div
-                    class="
-                      d-flex
-                      align-items-center
-                      justify-content-center
-                      flex-column
-                    "
-                  >
+                  <div class=" d-flex align-items-center justify-content-center flex-column " >
                     <img src="./img/logo.png" class="img-fluid" alt="" />
                     <h1 class="text-dark text-center fw-bolder">
                       Iniciar Sesión
@@ -79,8 +71,6 @@
                     </form>
                   </div>
                 </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
