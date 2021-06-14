@@ -6,9 +6,7 @@ public class UbigeoDaoImp implements UbigeoDao {
 
     @Override
     public List listarId(String Dep, String Pro, String Dis) {
-        String sql = "SELECT id,province_id,department_id FROM ubigeo_peru_districts where name='"+Dis+"' AND province_id=(\n" +
-                        "SELECT id FROM ubigeo_peru_provinces WHERE NAME='"+Pro+"') AND department_id=(\n" +
-                        "SELECT id FROM ubigeo_peru_departments WHERE NAME='"+Dep+"');";
+        String sql="call SP_LISTARUBIGEOID('"+Dis+"','"+Pro+"','"+Dep+"')";
         List lis = Operacion.listar(sql);
         if (lis != null) {
             return lis;

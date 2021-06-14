@@ -17,8 +17,8 @@
         <title>Intranet</title>
     </head>
     <body class="">
-        <main class="container-fluid p-0 ">
-            <div class="row">
+        <main class="container-fluid p-0">
+            <div class="d-flex">
                 <div class="col-12 col-md-9 m-auto mt-5">
                     <div class="card mb-md-3 shadow p-3 mb-5 bg-body rounded  ">
                         <div class="row g-0">

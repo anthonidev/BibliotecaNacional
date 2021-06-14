@@ -54,7 +54,7 @@
     <body class="">
         <main class="container-fluid p-0">
             <jsp:include page="navAdmin.jsp" />
-            
+            <% Object[] inicio=(Object[]) session.getAttribute("filaInicio"); %>
             <div class="d-flex" style="height: 94vh">
                 <div class="col-1 py-4 d-flex shadow-sm p-3 mb-5 bg-primary rounded">
                     <ul class="navbar-nav d-flex justify-content-between me-auto mb-2 mb-lg-0">
@@ -87,16 +87,12 @@
                     </ul>
                 </div>
                 <div class="col-8 m-auto ">
-                    <div class="row ">
-                        <div class="col-12 ">
-                            <ul class="navbar-nav  mb-2 mb-lg-0 d-flex align-items-start  justify-content-start    ">
-                                <li class="nav-item mx-3 ">
-                                    <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-column align-items-start  justify-content-start ">   
-                                        <li class="nav-item mx-3 ">
-                                            <h1 class="text-dark h4 text-uppercase "><i class="fas fa-user-tie"></i> Cargo: %> </h1>
-                                        </li>
-                                    </ul>
-                                </li>
+                    <div class="row">
+                        <div class="col-12 my-3 shadow d-flex bg-secondary justify-content-center">
+                            <ul class="mb-lg-0">
+                                <div class="p-3 bg-secondary bg-gradient">
+                                    <h1 class="text-light h4 text-uppercase"><i class="fas fa-user-tie"></i> Cargo: <%= inicio[2] %></h1>
+                                </div>
                             </ul>
                         </div>
                         <div class="col-12 shadow p-3 bg-body rounded ">

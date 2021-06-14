@@ -1,9 +1,11 @@
 package persistencia;
 
+import java.util.List;
 import negocio.Cliente;
 
 public interface ClienteDao {
-    public String grabar(Cliente cli);
-    public String eliminar(int IdPerCli);
-    public Cliente buscar(int idPerCli);
+    public String grabarCliente(Cliente pe);
+    public Cliente buscarCliente(String documento);
+    public List listarCliente();
+    public String EliminarCliente(int cod,String usu);
 }
