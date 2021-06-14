@@ -3,19 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script
-      src="https://kit.fontawesome.com/50872a9b90.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
+    <jsp:include page="./metas-head.jsp" />
     <title>Biblioteca</title>
   </head>
   <body class="">
@@ -24,7 +12,17 @@
       <jsp:include page="./barra-busqueda.jsp" />
       <div class="container-fluid pt-2">
         <div class="row">
-          <div class="col-12  col-lg-3 position-sticky pt-2 top-0 z-index bg-white modal_filtrar">
+          <div
+            class="
+              col-12 col-lg-3
+              position-sticky
+              pt-2
+              top-0
+              z-index
+              bg-white
+              modal_filtrar
+            "
+          >
             <div class="card">
               <h5 class="card-title fw-bold text-center m-0">Filtrar</h5>
 
@@ -43,17 +41,20 @@
             </div>
           </div>
           <div class="col-12 col-lg-9 offset-lg-3 pt-4">
-            <div class="row
-            overflow-auto
-            m-0
-            flex-nowrap
-            pb-1
-            group-card--custom 
-            group-card--custom--busqueda
-            container__sec--bottom
-            w-100">
+            <div
+              class="
+                row
+                overflow-auto
+                m-0
+                flex-nowrap
+                pb-1
+                group-card--custom group-card--custom--busqueda
+                container__sec--bottom
+                w-100
+              "
+            >
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -100,7 +101,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -147,7 +148,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -194,7 +195,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -241,7 +242,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -288,7 +289,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -335,7 +336,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -382,7 +383,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -429,7 +430,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"
@@ -476,7 +477,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="card shadow card--libro ">
+                <div class="card shadow card--libro">
                   <img
                     src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
                     class="card-img-top rounded-3"

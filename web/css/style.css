@@ -11979,13 +11979,12 @@ fieldset:disabled .btn {
 /* /busqueda libros */
 
 /* /custom */
+
 /* resposive tablet */
 /* @media screen and (min-width: 768px) {
-  .group-card--custom--busqueda{
-    justify-content: flex-start !important;
-  }
 } */
 /* resposive tablet */
+
 /* resposive desktop */
 @media screen and (min-width: 992px) {
   /* general */
@@ -12007,7 +12006,6 @@ fieldset:disabled .btn {
   .group-card--custom {
     width: calc(100vw - 292px);
   }
-
   /* /general */
 
   /* barra de busqueda */
@@ -12019,6 +12017,7 @@ fieldset:disabled .btn {
     width: 100%;
   }
   /* /barra de busqueda */
+  
   /* busqueda libros */
   .modal_filtrar{
     position: fixed !important;
