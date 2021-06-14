@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <!-- navbar -->
 <nav
-    class="
+    class=" z-index
     navbar navbar-light
     bg-nav-bar
     rounded-pill
@@ -14,6 +14,7 @@
     ms-2
     shadow
     d-lg-none
+    
     "
     >
     <div class="container">
@@ -111,11 +112,12 @@
     bg-nav-bar
     d-none d-lg-block
     p-3
+    z-index
     "
     style="width: 280px;"
     >
     <a class="navbar-brand d-none d-lg-block m-0 mb-2" href="index.jsp"
-       ><img src="img/logo.svg" alt="" class="logo-navbar_desltop"
+       ><img src="img/logo.svg" alt="" class="logo-navbar_desktop"
           /></a>
     <hr>
     <ul
@@ -154,7 +156,7 @@
                 <span class="d-none d-lg-block justify-self-center ms-4"> Informacion </span>
             </a>
         </li>
-        <li class="nav-item position-absolute nav-bar_desktop__contacto">
+        <li class="nav-item position-absolute nav-bar_desktop__sesion">
             <hr>
             <a
                 class="mb-0 d-flex align-items-center nav-link active h5"
@@ -168,7 +170,7 @@
                 <span class="icon-navbar_desktop">
                     <img src="./img/icons/btn-perfil.svg" alt="" width="" />
                 </span>
-                <span class="d-none d-lg-block justify-self-center ms-4"> Contacto </span>
+                <span class="d-none d-lg-block justify-self-center ms-4"> Sesion </span>
             </a>
             <div class="collapse tipo-sesion shadow-sm" id="navbarSupportedContent">
                 <ul class="navbar-nav text-center">
