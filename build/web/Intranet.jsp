@@ -7,71 +7,55 @@
     <title>Intranet</title>
   </head>
   <body class="">
-    <main class="container-fluid">
-      <div class="row">
+    <main class="container-fluid container_sesion w-100 h-100 p-0">
+      <div class="container-fluid d-none">
         <img
           class="img-fluid"
           src="https://image.freepik.com/vector-gratis/personas-que-utilizan-concepto-isometrico-horizontal-biblioteca-linea-azul-3d_1284-31705.jpg"
           alt="..."
         />
       </div>
-
-      <div class="row">
-        <div class="col">
-          <div class="card">
-                <div class="card-body">
-                  <div class=" d-flex align-items-center justify-content-center flex-column " >
-                    <img src="./img/logo.png" class="img-fluid" alt="" />
-                    <h1 class="text-dark text-center fw-bolder">
-                      Iniciar Sesión
-                    </h1>
-                  </div>
-                  <div>
-                    <form action="empleadoControl" method="post">
-                      <div class="input-group input-group-lg my-5">
-                        <span
-                          class="input-group-text"
-                          id="inputGroup-sizing-lg"
-                          style="width: 140px"
-                          >Usuario</span
-                        >
-                        <input
-                          type="text"
-                          required
-                          class="form-control"
-                          name="user"
-                          aria-label="Sizing example input"
-                          aria-describedby="inputGroup-sizing-lg"
-                        />
-                      </div>
-                      <div class="input-group input-group-lg my-5">
-                        <span
-                          class="input-group-text"
-                          id="inputGroup-sizing-lg "
-                          style="width: 140px"
-                          >Constraseña</span
-                        >
-                        <input
-                          type="password"
-                          required
-                          class="form-control"
-                          name="pass"
-                          aria-label="Sizing example input"
-                          aria-describedby="inputGroup-sizing-lg"
-                        />
-                      </div>
-                      <div class="input-group input-group-lg my-5">
-                        <input
-                          type="submit"
-                          name="acc"
-                          value="Iniciar"
-                          class="btn w-100 btn-primary fw-bold"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                </div>
-          </div>
+      <div class="container-fluid h-100 d-grid">
+        <div class="row login_sec__logo">
+            <img src="./img/logtipo.svg"  class=" login_sec__logo--movil d-lg-none"alt="">
+            <img src="./img/logo.svg" class="login_sec__logo--desktop d-none d-lg-block" alt="" />
+        </div>
+        <div class="row login_sec__form px-3">
+            <h1 class="text-dark text-center fw-bolder m-0 align-self-center">Iniciar Sesión</h1>
+            <form action="empleadoControl" method="post">
+              <div class="form-floating my-4">
+                <input
+                  type="text"
+                  required
+                  class="form-control" id="floatingInput" 
+                  name="user"
+                  placeholder="Usuario"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-lg"
+                />
+                <label for="floatingInput">Usuario</label>
+              </div>
+              <div class="form-floating my-4">
+                <input
+                  type="password"
+                  required
+                  class="form-control"
+                  id="floatingPassword" placeholder="Contraseña"
+                  name="pass"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-lg"
+                />
+                <label for="floatingPassword">Contraseña</label>
+              </div>
+              <div class="input-group input-group-lg my-4">
+                <input
+                  type="submit"
+                  name="acc"
+                  value="Iniciar"
+                  class="btn w-100 btn-primary fw-bold"
+                />
+              </div>
+            </form>
         </div>
       </div>
     </main>

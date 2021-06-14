@@ -11978,6 +11978,25 @@ fieldset:disabled .btn {
 }
 /* /busqueda libros */
 
+/* sesiones */
+.container_sesion{
+  height: 100vh !important;
+  background: #0F0A3C;
+}
+  .login_sec__logo {
+    display: flex;
+    justify-content: center !important;
+  }
+  .login_sec__form{
+    background: white;
+    padding-top: 1rem;
+    border-radius: 60px 0 0;
+  }
+
+  .login_sec__logo--movil{
+    width: 50%;
+  }
+/* /sesiones */
 /* /custom */
 
 /* resposive tablet */
