@@ -2,7 +2,7 @@ package servicio;
 
 import java.util.List;
 
-public interface clienteServicio {
+public interface ClienteServicio {
 
     public String grabarCliente(String nombre, String apellidos, String documento, String direccion, String telefono, String fecha, String dep, String pro, String dis, String usuario, String password);
 
