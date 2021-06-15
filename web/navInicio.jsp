@@ -159,7 +159,7 @@
         <li class="nav-item position-absolute nav-bar_desktop__sesion">
             <hr>
             <a
-                class="mb-0 d-flex align-items-center nav-link active h5"
+                class="mb-0 d-flex align-items-center justify-content-center nav-link active h5"
                 aria-current="page"
                 href="#"
                 data-bs-toggle="collapse"
@@ -167,10 +167,12 @@
                 aria-expanded="false"
                 aria-controls="multiCollapseExample2"
                 >
-                <span class="icon-navbar_desktop">
+                <span class="icon-navbar_desktop d-none">
                     <img src="./img/icons/btn-perfil.svg" alt="" width="" />
                 </span>
-                <span class="d-none d-lg-block justify-self-center ms-4"> Sesion </span>
+                <span class="d-none d-lg-block justify-self-center w-100 mx-2 btn btn-dark"> 
+                    Iniciar Sesión 
+                </span>
             </a>
             <div class="collapse tipo-sesion shadow-sm" id="navbarSupportedContent">
                 <ul class="navbar-nav text-center">
