@@ -12020,6 +12020,7 @@ fieldset:disabled .btn {
 @media screen and (min-width: 768px) {
     /* sesiones */
     .container_sesion {
+      overflow: hidden;
       display: grid;
       grid-template-columns: 1fr 1fr;
       height: 90vh !important;

@@ -13,7 +13,6 @@
         w-100
         h-100
         p-0
-        overflow-hidden
         position-relative
       "
     >

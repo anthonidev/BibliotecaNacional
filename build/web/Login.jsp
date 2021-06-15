@@ -8,24 +8,36 @@
   </head>
   <body class="d-flex">
     <main
-      class="
-        container-fluid container_sesion
-        w-100
-        h-100
-        p-0
-        overflow-hidden
-        position-relative
-      "
+      class="container-fluid container_sesion w-100 h-100 p-0 position-relative"
     >
       <button
         class="btn position-absolute pt-3 start-0 z-index"
         onclick="history.go(-1)"
       >
-        <img src="./img/icons/btn-atras.svg" width="32" alt=""  class="d-none d-md-block"/>
-        <img src="./img/icons/btn-atras--white.svg" width="32" alt="" class="d-md-none"/>
+        <img
+          src="./img/icons/btn-atras.svg"
+          width="32"
+          alt=""
+          class="d-none d-md-block"
+        />
+        <img
+          src="./img/icons/btn-atras--white.svg"
+          width="32"
+          alt=""
+          class="d-md-none"
+        />
       </button>
 
-      <div class="  container-fluid  p-0  d-none d-md-flex  position-relative  overflow-hidden  m-0 bg-white"
+      <div
+        class="
+          container-fluid
+          p-0
+          d-none d-md-flex
+          position-relative
+          overflow-hidden
+          m-0
+          bg-white
+        "
       >
         <img
           class="obj-fit--cover z-index-sec w-100 p-0"
@@ -49,7 +61,9 @@
         </div>
 
         <div class="row m-0 login_sec__forms px-3">
-          <h1 class="text-dark text-center fw-bolder m-0 align-self-center p-0">Iniciar Sesión</h1>
+          <h1 class="text-dark text-center fw-bolder m-0 align-self-center p-0">
+            Iniciar Sesión
+          </h1>
           <form action="" class="d-grid align-item-space-between" method="post">
             <div class="form-floating">
               <input
@@ -87,12 +101,15 @@
             </div>
           </form>
           <div class="d-flex align-items-center justify-content-center">
-            <span class="text-dark h6 text-center m-0">¿Aun no tienes una cuenta?</span>
+            <span class="text-dark h6 text-center m-0"
+              >¿Aun no tienes una cuenta?</span
+            >
             <a href="signUp.jsp" class="btn btn-link h5 text-success m-0">
-              Registrate 
+              Registrate
             </a>
           </div>
         </div>
+      </div>
     </main>
   </body>
 </html>
