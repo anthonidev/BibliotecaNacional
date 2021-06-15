@@ -5,16 +5,6 @@ import java.util.List;
 public class UbigeoDaoImp implements UbigeoDao {
 
     @Override
-    public List listarId(String Dep, String Pro, String Dis) {
-        String sql="call SP_LISTARUBIGEOID('"+Dis+"','"+Pro+"','"+Dep+"')";
-        List lis = Operacion.listar(sql);
-        if (lis != null) {
-            return lis;
-        }
-        return null;
-    }
-
-    @Override
     public List listarDep() {
         String sql = "SELECT name FROM ubigeo_peru_departments";
         List lis = Operacion.listar(sql);

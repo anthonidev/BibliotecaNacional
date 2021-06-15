@@ -76,6 +76,26 @@ public class LibroControl extends HttpServlet {
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
         
+        if (acc.equals("Aceptar Libro")) {
+            int Codigo = Integer.parseInt(request.getParameter("Codigo"));
+            String msg = libSer.actualizarEstado(Codigo, 1);
+            pg.setMsg(msg);
+            Object[] fila=libSer.buscar(Codigo);
+            
+            request.getSession().setAttribute("libus", fila);
+            response.sendRedirect("Intranet/Admin/libros.jsp");
+        }
+        
+        if (acc.equals("Rechazar Libro")) {
+            int Codigo = Integer.parseInt(request.getParameter("Codigo"));
+            String msg = libSer.actualizarEstado(Codigo, 2);
+            pg.setMsg(msg);
+            Object[] fila=libSer.buscar(Codigo);
+            
+            request.getSession().setAttribute("libus", fila);
+            response.sendRedirect("Intranet/Admin/libros.jsp");
+        }
+        
         if (acc.equals("Eliminar")) {
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
             String msg=libSer.eliminar(Codigo);

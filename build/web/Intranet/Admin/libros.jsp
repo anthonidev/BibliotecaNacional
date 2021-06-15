@@ -12,13 +12,10 @@
 <%
     LibroServicio libSer=new LibroServicioImp();
     PresentadorGeneral pe = (PresentadorGeneral) session.getAttribute("pg");
-    Object[] obj=(Object[])session.getAttribute("libus"); String estilo="";
+    Object[] obj=(Object[])session.getAttribute("libus");
     Object[] fila={"","","","","","","",""};
     List lisCat=libSer.listarCategoria();
     if (obj!=null) fila=obj;
-    if (fila[5].equals(0)) { fila[5]="Pendiente"; estilo="bg-primary"; }
-    else if (fila[5].equals(1)) { fila[5]="Aceptado"; estilo="bg-success"; }
-    else if (fila[5].equals(2)) { fila[5]="Rechazado"; estilo="bg-danger"; }
 %>
 <!DOCTYPE html>
 <html>
@@ -34,6 +31,12 @@
     </head>
     <body>
         <jsp:include page="navAdmin.jsp" />
+        <%! String estado, estilo; %>
+        <% estado=fila[5].toString();
+           if (fila[5].equals(0)) { fila[5]="Pendiente"; estilo="bg-primary"; }
+           else if (fila[5].equals(1)) { estado="Aceptado"; estilo="bg-success"; }
+           else if (fila[5].equals(2)) { estado="Rechazado"; estilo="bg-danger"; } 
+           else estilo=""; %>
         
         <div class="d-flex" style="height: 94vh">
             <div class="col-1 py-4 d-flex shadow-sm p-3 mb-5 bg-primary rounded">
@@ -77,7 +80,7 @@
                                             <form action="../../LibroControl" method="post" class="col-10">
                                                 <div class="row col-12">
                                                     <div class="col-9">
-                                                        <input type="text" class="form-control" required placeholder="Buscar Libro por código" name="Codigo" maxlength="5" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                        <input type="text" class="form-control rounded-pill" required placeholder="Buscar Libro por código" name="Codigo" maxlength="5" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                     </div>
                                                     <div class="col-3 d-flex flex-column">
                                                         <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Buscar">
@@ -110,7 +113,7 @@
                                         </div>
                                         <div class="col-4 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="image" class="form-control" id="floatingInputGrid" value="<%= fila[7] %>" style="height: 35vh;" readonly>
+                                                <input type="image" class="form-control" src="<%= fila[7] %>" value="" style="height: 35vh;" readonly>
                                                 <label for="floatingInputGrid">Portada</label>
                                             </div>
                                         </div>
@@ -122,7 +125,7 @@
                                         </div>
                                         <div class="col-6 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control <%= estilo %>" id="floatingInputGrid" value="<%= fila[5] %>" readonly>
+                                                <input type="text" class="form-control <%= estilo %>" id="floatingInputGrid" value="<%= estado %>" readonly>
                                                 <label for="floatingInputGrid">Estado</label>
                                             </div>
                                         </div>
@@ -134,7 +137,8 @@
                                         </div>
                                         <div class="col-6 mt-3" id="mostrar">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= fila[6] %>" readonly>
+                                                <% String precio="S/  "+fila[6]; %>
+                                                <input type="text" class="form-control" id="floatingInputGrid" value="<%= precio %>" readonly>
                                                 <label for="floatingInputGrid">Precio</label>
                                             </div>
                                         </div>
@@ -146,8 +150,8 @@
                     </div>
                     <div class="col-6 d-flex flex-column">
                         <% if (pe.getMsg().toString() != "") { %>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <h4 class="fw-bold text-center text-dark my-3"><%= pe.getMsg() %></h4>
+                        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                            <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg() %></h4>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <% pe.setMsg(""); %>
@@ -167,7 +171,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Categoría</span>
-                                                    <select class="form-select form-control" aria-label="Default select example" name="Categoría" required="">
+                                                    <select class="form-select form-control" aria-label="Default select example" name="Categoria" required>
                                                         <option selected>Seleccione</option>
                                                         <% for (int i = 1; i < lisCat.size(); i++) { %>
                                                         <% Object[] cat=(Object[]) lisCat.get(i); %>
@@ -181,7 +185,10 @@
                                                 </div>
                                                 <div class="col-6 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                    <input type="text" required class="form-control" name="Precio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="6" onkeyup="this.value=Precios(this.value)">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">S/ </span>
+                                                        <input type="text" required class="form-control" name="Precio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="6" onkeyup="this.value=Precios(this.value)">
+                                                    </div>
                                                 </div>
                                                 <div class="col-12 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
@@ -205,8 +212,17 @@
                                 </h2>
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
-                                        <form action="../../LibroControl" method="post">
-                                            <div class="row d-flex align-items-center justify-content-center w-100 ">
+                                        <form action="../../LibroControl" method="post" class="mx-3 mb-2">
+                                            <div class="d-flex flex-column">
+                                                <div class="col-12 d-flex justify-content-evenly my-2 px-5">
+                                                    <input type="hidden" name="Codigo" value="<%= fila[0] %>">
+                                                    <input type="submit" name="acc" class="shadow bg-gradient btn btn-success btn-lg fw-bold w-35" value="Aceptar Libro">
+                                                    <input type="submit" name="acc" class="shadow bg-gradient btn btn-danger btn-lg fw-bold" value="Rechazar Libro">
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <form action="../../LibroControl" method="post" class="mx-3">
+                                            <div class="d-flex flex-column align-items-center justify-content-center w-100">
                                                 <div class="row">
                                                     <div>
                                                         <input type="hidden" name="Codigo" value="<%= fila[0] %>">
@@ -217,7 +233,10 @@
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                        <input type="text" required class="form-control" name="Precio" value="<%= fila[6] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Precios(this.value)">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">S/.</span>
+                                                            <input type="text" value="<%= fila[6]%>"  class="form-control">
+                                                        </div>
                                                     </div>
                                                     <div class="col-12 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
@@ -280,13 +299,18 @@
                                    else { fi[5]="Rechazado"; style="bg-danger"; } %>
                             <div class="d-flex flex-column">
                                 <tr>
-                                    <td><input type="text" value="<%= fi[0] %>" class="form-control text-center" readonly></td>
+                                    <td style="width: 7%"><input type="text" value="<%= fi[0] %>" class="form-control text-center" readonly></td>
                                     <td><input type="text" value="<%= fi[1] %>" class="form-control text-center" readonly></td>
                                     <td><input type="text" value="<%= fi[2] %>" class="form-control text-center" readonly></td>
                                     <td><input type="text" value="<%= fi[3] %>" class="form-control text-center" readonly></td>
-                                    <td><input type="text" value="<%= fi[4] %>" class="form-control text-center" readonly></td>
-                                    <td><input type="text" value="<%= fi[5] %>" class="form-control text-center <%= style %>" readonly></td>
-                                    <td><input type="text" value="<%= "S/ "+fi[6] %>" class="form-control text-center" readonly></td>
+                                    <td style="width: 5%"><input type="text" value="<%= fi[4] %>" class="form-control text-center" readonly></td>
+                                    <td style="width: 11%"><input type="text" value="<%= fi[5] %>" class="form-control text-center <%= style %>" readonly></td>
+                                    <td style="width: 10%">
+                                        <div class="input-group">
+                                            <span class="input-group-text">S/ </span>
+                                            <input type="text" value="<%= fi[6]%>"  class="form-control text-center" readonly>
+                                        </div>
+                                    </td>
                                     <td scope="row">
                                         <form method="post" action="../../LibroControl">
                                             <input type="hidden" name="Codigo" value="<%= fi[0]%>" >

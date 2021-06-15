@@ -26,6 +26,7 @@ public class LibroDaoImp implements LibroDao {
     
     @Override
     public String grabar(Libro lib) {
+        System.out.println(lib.getCategoria());
         String sql = "call SP_GRABARLIBRO('"+lib.getNombre()+"','"+lib.getCategoria()+"','"+lib.getDescripcion()+"',"+lib.getStock()+","+lib.getPrecio()+",'"+lib.getFoto()+"')";
         return Operacion.ejecutar(sql);
     }
@@ -33,6 +34,12 @@ public class LibroDaoImp implements LibroDao {
     @Override
     public String actualizar(Libro lib) {
         String sql="call SP_ACTUALIZARLIBRO("+lib.getIdLibro()+","+lib.getStock()+","+lib.getPrecio()+",'"+lib.getDescripcion()+"')";
+        return Operacion.ejecutar(sql);
+    }
+
+    @Override
+    public String actualizarEstado(int idLibro, int estado) {
+        String sql="call SP_ACTUALIZARESTADO("+idLibro+","+estado+")";
         return Operacion.ejecutar(sql);
     }
 

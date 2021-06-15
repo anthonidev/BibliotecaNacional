@@ -14,15 +14,11 @@ public class CuentaServicioImp implements CuentaServicio{
     }
 
     @Override
-    public String actualizar(String pass, String dni) {
+    public void actualizar(String pass, String dni) {
         Cuenta cu=new Cuenta(pass);
         Persona per=new Persona(dni);
         Presentador pre=new Presentador(per, cu);
-        String msg=cuDao.actualizar(pre);
-        
-        if (msg==null) {
-            msg="Empleado Actualizado";
-        } return msg;
+        cuDao.actualizar(pre);
     }
 
     @Override

@@ -16,8 +16,8 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
     }
 
     @Override
-    public String grabar(String nombre, String apellidos, String dni, String direccion, String telefono, String fechana, String idDist, String idPro, String idDep, String user, String pass, String nomTipo) {
-        Persona per=new Persona(nombre, apellidos, dni, direccion, telefono, fechana, idDist, idPro, idDep);
+    public String grabar(String nombre, String apellidos, String dni, String direccion, String telefono, String fechana, String Dis, String Pro, String Dep, String user, String pass, String nomTipo) {
+        Persona per=new Persona(nombre, apellidos, dni, direccion, telefono, fechana, Dis, Pro, Dep);
         Cuenta cu=new Cuenta(user, pass);
         TipoEmpleado tip=new TipoEmpleado(nomTipo);
         Presentador pre=new Presentador(per, cu, tip);
@@ -39,9 +39,9 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
             fil[3]=pre.getPer().getDireccion();
             fil[4]=pre.getPer().getTelefono();
             fil[5]=pre.getPer().getFechaNa();
-            fil[6]=pre.getPer().getIdDep();
-            fil[7]=pre.getPer().getIdPro();
-            fil[8]=pre.getPer().getIdDist();
+            fil[6]=pre.getPer().getDep();
+            fil[7]=pre.getPer().getPro();
+            fil[8]=pre.getPer().getDis();
             fil[9]=pre.getCu().getUser();
             fil[10]=pre.getCu().getPass();
             fil[11]=pre.getTip().getNombre();
@@ -51,8 +51,8 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
     }
 
     @Override
-    public String actualizar(String direccion, String telefono, String idDist, String idPro, String idDep, String dni, String nomTipo) {
-        Persona per=new Persona(dni, direccion, telefono, idDist, idPro, idDep);
+    public String actualizar(String direccion, String telefono, String Dis, String Pro, String Dep, String dni, String nomTipo) {
+        Persona per=new Persona(dni, direccion, telefono, Dis, Pro, Dep);
         TipoEmpleado tip=new TipoEmpleado(nomTipo);
         Presentador pre=new Presentador(per, tip);
         String msg=empDao.actualizar(pre);

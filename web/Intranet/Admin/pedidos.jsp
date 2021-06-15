@@ -65,7 +65,7 @@
                                                 <form action="../../PedidoControl" method="post" class="col-10">
                                                     <div class="row col-12">
                                                         <div class="col-9">
-                                                            <input type="text" class="form-control" required placeholder="Buscar Pedido por código" name="cod" maxlength="8" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                            <input type="text" class="form-control rounded-pill" required placeholder="Buscar Pedido por código" name="cod" maxlength="8" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                         </div>
                                                         <div class="col-3 d-flex flex-column">
                                                             <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Buscar">
@@ -115,9 +115,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
-                                                <%! String estado = "";%>
-                                                <%! String estilo = "";%>
-                                                <%estado = pedido[6].toString();%>
+                                                <%! String estado, estilo; %>
+                                                <% estado = pedido[6].toString(); %>
                                                 <% if (estado.equals("1")) {
                                                         estado = "Aceptado";
                                                         estilo = "bg-success";
@@ -127,27 +126,27 @@
                                                     } else if (estado.equals("0")) {
                                                         estado = "Pendiente";
                                                         estilo = "bg-primary";
-                                                    } else {
-                                                         estilo = "";
-                                                    }%>  
+                                                    } else
+                                                         estilo = ""; %>
 
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control <%= estilo%>" id="floatingInputGrid" readonly value="<%= estado%>">
+                                                    <input type="text" class="form-control <%= estilo %>" id="floatingInputGrid" readonly value="<%= estado %>">
                                                     <label for="floatingInputGrid">Estado</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%=pedido[7]%>">
+                                                    <% String total="S/  "+pedido[7]; %>
+                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= total %>">
                                                     <label for="floatingInputGrid">Total</label>
                                                 </div>
                                             </div>
                                             <div class="col-5 m-auto mt-3 p-2">
                                                 <div class="card shadow bg-body rounded border-1 ">
-                                                    <div class="card-body  d-flex  justify-content-center ">
+                                                    <div class="card-body  d-flex  justify-content-center">
                                                         <form action="../../PedidoControl" method="post" class="d-flex  justify-content-center ">
                                                             <input type="hidden" name="cod" value="<%=pedido[0]%>"> 
-                                                            <input type="submit" name="acc" class="btn btn-success btn-lg  mx-5 fw-bold " value="Acepar Pedido">
+                                                            <input type="submit" name="acc" class="btn btn-success btn-lg  mx-5 fw-bold " value="Aceptar Pedido">
                                                             <input type="submit" name="acc" class="btn btn-danger mx-5 btn-lg fw-bold " value="Rechazar Pedido">
                                                         </form>
                                                     </div>
@@ -169,8 +168,8 @@
                         </div>
                         <div class="col-6 d-flex flex-column">
                             <% if (pe.getMsg().toString() != "") { %>
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <h4 class="fw-bold text-center text-dark my-5"><%= pe.getMsg() %></h4>
+                            <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                                <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg() %></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             <% pe.setMsg(""); %>
@@ -181,8 +180,8 @@
                                     <tr>
                                         <th scope="col">Id Detalle</th>
                                         <th scope="col">Nombre del libro</th>
-                                        <th scope="col">Precio</th>
                                         <th scope="col">Cantidad</th>
+                                        <th scope="col">Precio</th>
 
                                     </tr>
                                 </thead>
@@ -201,7 +200,10 @@
                                             <input type="text"  value="<%= f[2]%>" class="form-control text-center" readonly>
                                         </th>
                                         <th scope="row">
-                                            <input type="text" value="<%= f[3]%>" class="form-control text-center" readonly>
+                                            <div class="input-group">
+                                                <span class="input-group-text">S/ </span>
+                                                <input type="text" value="<%= f[3] %>"  class="form-control " readonly>
+                                            </div>
                                         </th>
                                     </tr>
                                     <% } %>

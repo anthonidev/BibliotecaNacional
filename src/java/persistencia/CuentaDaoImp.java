@@ -7,9 +7,9 @@ import negocio.TipoEmpleado;
 public class CuentaDaoImp implements CuentaDao{
 
     @Override
-    public String actualizar(Presentador pre) {
+    public void actualizar(Presentador pre) {
         String sql="call SP_ACTUALIZARPASS('"+pre.getCu().getPass()+"','"+pre.getPer().getDni()+"')";
-        return Operacion.ejecutar(sql);
+        Operacion.ejecutar(sql);
     }
 
     @Override

@@ -48,7 +48,7 @@ public class ClienteServicioImp implements ClienteServicio {
     }
 
     @Override
-    public String EliminarCliente(int cod, String usu) {
+    public String eliminarCliente(int cod, String usu) {
         return cliDao.EliminarCliente(cod, usu);
     }
 }

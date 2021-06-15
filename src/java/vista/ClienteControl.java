@@ -84,7 +84,7 @@ public class ClienteControl extends HttpServlet {
             int cod = Integer.parseInt(request.getParameter("cod"));
             String usu = request.getParameter("usu");
 
-            String msg = cliSer.EliminarCliente(cod, usu);
+            String msg = cliSer.eliminarCliente(cod, usu);
 
             if (msg == null) {
                 Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};

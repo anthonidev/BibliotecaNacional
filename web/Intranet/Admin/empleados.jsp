@@ -77,7 +77,7 @@
                                             <form action="../../EmpleadoControl" method="post" class="col-10">
                                                 <div class="row col-12">
                                                     <div class="col-9">
-                                                        <input type="text" class="form-control" required placeholder="Buscar empleado por DNI" name="Dni" maxlength="8" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                        <input type="text" class="form-control rounded-pill" required placeholder="Buscar empleado por DNI" name="Dni" maxlength="8" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                     </div>
                                                     <div class="col-3 d-flex flex-column">
                                                         <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Buscar">
@@ -164,8 +164,8 @@
                     </div>
                     <div class="col-6 d-flex flex-column">
                         <% if (pe.getMsg().toString() != "") { %>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <h4 class="fw-bold text-center text-dark my-3"><%= pe.getMsg() %></h4>
+                        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                            <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg() %></h4>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         <% pe.setMsg(""); %>

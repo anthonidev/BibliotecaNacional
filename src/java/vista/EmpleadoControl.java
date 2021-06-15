@@ -1,7 +1,6 @@
 package vista;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,13 +13,11 @@ public class EmpleadoControl extends HttpServlet {
 
     private CuentaServicio cuSer;
     private EmpleadoServicio empSer;
-    private UbigeoServicio ubiSer;
     private PresentadorGeneral pg;
 
     public EmpleadoControl() {
         cuSer = new CuentaServicioImp();
         empSer = new EmpleadoServicioImp();
-        ubiSer = new UbigeoServicioImp();
         pg = new PresentadorGeneral();
     }
 
@@ -82,11 +79,8 @@ public class EmpleadoControl extends HttpServlet {
             String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
             String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
             String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
-
-            List lisId = ubiSer.listarId(dep, pro, dis);
-            Object[] id = (Object[]) lisId.get(1);
             
-            String msg=empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, id[0].toString(), id[1].toString(), id[2].toString(), usu, pass, tipo);
+            String msg=empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, dis, pro, dep, usu, pass, tipo);
             pg.setMsg(msg);
             
             Object[] fila={"","","","","","","","","","","",""};
@@ -104,10 +98,7 @@ public class EmpleadoControl extends HttpServlet {
             String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
             String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
             
-            List lisId = ubiSer.listarId(dep, pro, dis);
-            Object[] id = (Object[]) lisId.get(1);
-            
-            String msg = empSer.actualizar(Direccion, Telefono, id[0].toString(), id[1].toString(), id[2].toString(), Dni, tipo);
+            String msg = empSer.actualizar(Direccion, Telefono, dis, pro, dep, Dni, tipo);
             
             if (pass!="")
                 cuSer.actualizar(pass, Dni);

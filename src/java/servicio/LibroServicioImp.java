@@ -32,8 +32,8 @@ public class LibroServicioImp implements LibroServicio {
             fil[3]=lib.getDescripcion();
             fil[4]=lib.getStock();
             fil[5]=lib.getEstado();
-            fil[6]="S/ "+lib.getPrecio();
-            fil[7]=lib.getFoto();
+            fil[6]=lib.getPrecio();
+            fil[7]="../../img/libros/"+lib.getFoto();
             return fil;
         }
         return null;
@@ -50,7 +50,10 @@ public class LibroServicioImp implements LibroServicio {
 
     @Override
     public String actualizarEstado(int idLibro, int estado) {
-        return null;
+        String msg = libDao.actualizarEstado(idLibro, estado);
+        if (msg==null)
+            msg="Estado Actualizado";
+        return msg;
     }
 
     @Override
