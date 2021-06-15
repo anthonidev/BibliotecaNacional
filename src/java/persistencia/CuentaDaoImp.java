@@ -7,9 +7,9 @@ import negocio.TipoEmpleado;
 public class CuentaDaoImp implements CuentaDao{
 
     @Override
-    public String actualizar(Presentador pre) {
+    public void actualizar(Presentador pre) {
         String sql="call SP_ACTUALIZARPASS('"+pre.getCu().getPass()+"','"+pre.getPer().getDni()+"')";
-        return Operacion.ejecutar(sql);
+        Operacion.ejecutar(sql);
     }
 
     @Override
@@ -21,8 +21,7 @@ public class CuentaDaoImp implements CuentaDao{
             TipoEmpleado tip=new TipoEmpleado();
             per.setCodPer((int) fill[0]);
             per.setNombre(fill[1].toString());
-            per.setApellidos(fill[2].toString());
-            tip.setNombre(fill[3].toString());
+            tip.setNombre(fill[2].toString());
             
             Presentador pre=new Presentador(per, tip);
             return pre;

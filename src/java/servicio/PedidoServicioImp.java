@@ -21,7 +21,7 @@ public class PedidoServicioImp implements PedidoServicio {
     }
 
     @Override
-    public String AprobarPedido(int IdPerCli) {
+    public String aprobarPedido(int IdPerCli) {
         String msg = peDao.AprobarPedido(IdPerCli);
         return msg;
     }
@@ -45,7 +45,7 @@ public class PedidoServicioImp implements PedidoServicio {
     }
 
     @Override
-    public String NegarPedido(int IdPerCli) {
+    public String negarPedido(int IdPerCli) {
         String msg = peDao.NegarPedido(IdPerCli);
         return msg;
     }

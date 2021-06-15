@@ -9,16 +9,15 @@ public class PresentadorGeneral {
     
     private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", "", "",""};
     private List listaClienteBuscar = new ArrayList();
-
     
     private List lista = new ArrayList();
     private List listaDetalle = new ArrayList();
     private String msg = "";
 
     public PresentadorGeneral() {
-         lista.add(pedido);
-         listaDetalle.add(detalle);
-         listaClienteBuscar.add(cliente);
+        lista.add(pedido);
+        listaDetalle.add(detalle);
+        listaClienteBuscar.add(cliente);
     }
 
     public Object[] getCliente() {
@@ -36,7 +35,6 @@ public class PresentadorGeneral {
     public void setListaClienteBuscar(List listaClienteBuscar) {
         this.listaClienteBuscar = listaClienteBuscar;
     }
-
     
     public Object[] getDetalle() {
         return detalle;
@@ -53,7 +51,6 @@ public class PresentadorGeneral {
     public void setListaDetalle(List listaDetalle) {
         this.listaDetalle = listaDetalle;
     }
-    
 
     public Object[] getPedido() {
         return pedido;
@@ -78,8 +75,4 @@ public class PresentadorGeneral {
     public void setMsg(String msg) {
         this.msg = msg;
     }
-
-    
-    
-    
 }

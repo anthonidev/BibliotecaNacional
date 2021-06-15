@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "pedidoControl", urlPatterns = {"/pedidoControl"})
+@WebServlet(name = "PedidoControl", urlPatterns = {"/PedidoControl"})
 public class PedidoControl extends HttpServlet {
 
     private PedidoServicio peSer;
@@ -39,7 +39,6 @@ public class PedidoControl extends HttpServlet {
 
             request.getSession().setAttribute("pg", pg);
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
-
         }
         
         if (acc.equals("Buscar")) {
@@ -65,14 +64,18 @@ public class PedidoControl extends HttpServlet {
                 pg.setPedido(vacio);
                 pg.setMsg("No exite el pedido!!");
                 response.sendRedirect("Intranet/Admin/pedidos.jsp");
-
             }
-
         }
         
-        if (acc.equals("Acepar Pedido")) {
+        if (acc.equals("Limpiar")) {
+            Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+            pg.setPedido(vacio);
+            response.sendRedirect("Intranet/Admin/pedidos.jsp");
+        }
+        
+        if (acc.equals("Aceptar Pedido")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
-            String msg = peSer.AprobarPedido(cod);
+            String msg = peSer.aprobarPedido(cod);
             if (msg == null) {
                 //actualizar tabla
                 Object[] fill = peSer.buscar(cod);
@@ -88,12 +91,11 @@ public class PedidoControl extends HttpServlet {
                 request.getSession().setAttribute("Rechazados", Rechazados);
             }
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
-
         }
         
         if (acc.equals("Rechazar Pedido")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
-            String msg = peSer.NegarPedido(cod);
+            String msg = peSer.negarPedido(cod);
             if (msg == null) {
                 Object[] fill = peSer.buscar(cod);
                 pg.setPedido(fill);
@@ -108,7 +110,6 @@ public class PedidoControl extends HttpServlet {
                 request.getSession().setAttribute("Rechazados", Rechazados);
             }
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
-
         }
         
         if (acc.equals("Ver Detalles")) {

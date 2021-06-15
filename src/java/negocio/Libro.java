@@ -1,35 +1,27 @@
 package negocio;
 
 public class Libro {
-    private int IdLibro, IdCat, Stock, Estado;
-    private String Nombre,Descripcion,Foto;
-    private double precio;
+    private int IdLibro, Stock, Estado;
+    private String Nombre,Categoria,Descripcion,Foto;
+    private double Precio;
 
     public Libro() {
     }
 
-    public Libro(int IdCat, int Stock, String Nombre, String Descripcion, String Foto, double precio) {
-        this.IdCat = IdCat;
+    public Libro(int Stock, String Nombre, String Categoria, String Descripcion, String Foto, double Precio) {
         this.Stock = Stock;
         this.Nombre = Nombre;
+        this.Categoria = Categoria;
         this.Descripcion = Descripcion;
         this.Foto = Foto;
-        this.precio = precio;
+        this.Precio = Precio;
     }
 
-    public Libro(int IdLibro, int IdCat, int Stock, String Nombre, String Descripcion, String Foto, double precio) {
+    public Libro(int IdLibro, int Stock, String Descripcion, double Precio) {
         this.IdLibro = IdLibro;
-        this.IdCat = IdCat;
         this.Stock = Stock;
-        this.Nombre = Nombre;
         this.Descripcion = Descripcion;
-        this.Foto = Foto;
-        this.precio = precio;
-    }
-
-    public Libro(int IdLibro, int Estado) {
-        this.IdLibro = IdLibro;
-        this.Estado = Estado;
+        this.Precio = Precio;
     }
 
     public int getIdLibro() {
@@ -38,14 +30,6 @@ public class Libro {
 
     public void setIdLibro(int IdLibro) {
         this.IdLibro = IdLibro;
-    }
-
-    public int getIdCat() {
-        return IdCat;
-    }
-
-    public void setIdCat(int IdCat) {
-        this.IdCat = IdCat;
     }
 
     public int getStock() {
@@ -72,6 +56,14 @@ public class Libro {
         this.Nombre = Nombre;
     }
 
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+
     public String getDescripcion() {
         return Descripcion;
     }
@@ -89,11 +81,10 @@ public class Libro {
     }
 
     public double getPrecio() {
-        return precio;
+        return Precio;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setPrecio(double Precio) {
+        this.Precio = Precio;
     }
-    
 }
