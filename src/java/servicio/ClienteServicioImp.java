@@ -4,24 +4,23 @@ import java.util.List;
 import negocio.Cliente;
 import persistencia.*;
 
-public class clienteServicioImp implements clienteServicio {
+public class ClienteServicioImp implements ClienteServicio {
+    private ClienteDao cliDao;
 
-    private ClienteDao Dao;
-
-    public clienteServicioImp() {
-        Dao = new ClienteDaoImo();
+    public ClienteServicioImp() {
+        cliDao = new ClienteDaoImp();
     }
 
     @Override
     public String grabarCliente(String nombre, String apellidos, String documento, String direccion, String telefono, String fecha, String dep, String pro, String dis, String usuario, String password) {
         Cliente cli = new Cliente(nombre, apellidos, documento, direccion, telefono, fecha, dep, pro, dis, usuario, password);
-        String msg = Dao.grabarCliente(cli);
+        String msg = cliDao.grabarCliente(cli);
         return msg;
     }
 
     @Override
     public Object[] buscarCliente(String documento) {
-        Cliente bp=Dao.buscarCliente(documento);
+        Cliente bp=cliDao.buscarCliente(documento);
         if(bp!=null){
             Object[]fil=new Object[14];
             fil[0]=bp.getIdPerCli();
@@ -45,12 +44,11 @@ public class clienteServicioImp implements clienteServicio {
 
     @Override
     public List listarCliente() {
-        return Dao.listarCliente();
+        return cliDao.listarCliente();
     }
 
     @Override
-    public String EliminarCliente(int cod, String usu) {
-        return Dao.EliminarCliente(cod, usu);
+    public String eliminarCliente(int cod, String usu) {
+        return cliDao.EliminarCliente(cod, usu);
     }
-
 }
