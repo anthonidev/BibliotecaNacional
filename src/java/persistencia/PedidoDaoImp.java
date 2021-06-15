@@ -4,7 +4,7 @@ import java.util.List;
 import negocio.BuscarPedido;
 import negocio.Pedido;
 
-public class PedidoDaoImp implements PedidoDao {
+public class PedidoDaoImp implements PedidoDao{
 
     @Override
     public String grabar(Pedido pe) {

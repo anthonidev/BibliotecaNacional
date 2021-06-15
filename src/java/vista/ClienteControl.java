@@ -79,7 +79,7 @@ public class ClienteControl extends HttpServlet {
             }
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
-        
+
         if (acc.equals("Eliminar")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
             String usu = request.getParameter("usu");

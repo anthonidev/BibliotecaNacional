@@ -86,7 +86,7 @@ public class Cliente {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
+    
     public String getIdProvincia() {
         return idProvincia;
     }
@@ -130,7 +130,7 @@ public class Cliente {
     public int getIdPerCli() {
         return IdPerCli;
     }
-
+    
     public void setIdPerCli(int IdPerCli) {
         this.IdPerCli = IdPerCli;
     }

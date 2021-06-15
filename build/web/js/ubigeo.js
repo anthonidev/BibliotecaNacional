@@ -86,7 +86,7 @@ function cambia() {
     sel_provincia.options[0].selected = true;
     sel_distrito.options[0].selected = true;
 }
-var opt_Bagua = new Array("Seleccione el Distrito", "Aramago", "Bagua", "Copallín", "Chiriaco", "El Parco", "La Peca");
+var opt_Bagua = new Array("Seleccione el Distrito", "Aramango", "Bagua", "Copallín", "Chiriaco", "El Parco", "La Peca");
 var opt_Bongará = new Array("Seleccione el Distrito", "Chisquilla", "Churuja", "Corosha", "Cuipes", "Florida", "Jazán", "Jumbilla", "Recta", "San Carlos", "Shipasbamba", "Valera", "Yambrasbamba");
 var opt_Chachapoyas = new Array("Seleccione el Distrito", "Asunsión", "Balsas", "Chachapoyas", "Cheto", "Chiliquín", "Chuquibamba", "Granada", "Huancas", "La Jalca", "Leimebamba", "Levanto", "Magdalena", "Mariscal Castilla", "Molinopampa", "Montevideo", "Olleros", "Quinjalca", "San Francisco de Daguas", "San Isidro de Maino", "Soloco", "Sonche");
 var opt_Condorcanqui = new Array("Seleccione el Distrito", "El Cenepa", "Nieva", "Río Santiago");
