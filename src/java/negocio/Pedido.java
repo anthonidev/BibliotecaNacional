@@ -1,7 +1,6 @@
 package negocio;
 
 public class Pedido {
-
     private int IdPedido, IdPerCli, estado;
     private String fecha;
     private double Total;
@@ -67,6 +66,4 @@ public class Pedido {
     public void setTotal(double Total) {
         this.Total = Total;
     }
-    
-
 }

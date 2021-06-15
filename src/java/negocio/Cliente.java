@@ -1,12 +1,9 @@
 package negocio;
 
 public class Cliente {
-
-    String nombre, apellidos, documento, direccion, telefono, fecha, Iddistrito, idProvincia, idDepartamento, usuario, password;
-
-    int IdPerCli;
-
-    String nombreDep, nombrePro, nombreDis;
+    private String nombre, apellidos, documento, direccion, telefono, fecha, Iddistrito, idProvincia, idDepartamento, usuario, password;
+    private int IdPerCli;
+    private String nombreDep, nombrePro, nombreDis;
     //Nombre Apellidos dpcumento Direccion Telefono FechaNa nombreDep nombrePro nombreDis  dep pro dis
 
     public Cliente() {
@@ -33,7 +30,6 @@ public class Cliente {
         this.direccion = direccion;
         this.telefono = telefono;
         this.fecha = fecha;
-        this.Iddistrito = Iddistrito;
         this.idProvincia = idProvincia;
         this.idDepartamento = idDepartamento;
         this.IdPerCli = IdPerCli;
@@ -42,8 +38,6 @@ public class Cliente {
         this.nombreDis = nombreDis;
         this.usuario = usuario;
     }
-    
-    
     
     public String getNombre() {
         return nombre;
@@ -92,8 +86,6 @@ public class Cliente {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
-  
 
     public String getIdProvincia() {
         return idProvincia;
@@ -166,6 +158,4 @@ public class Cliente {
     public void setNombreDis(String nombreDis) {
         this.nombreDis = nombreDis;
     }
-
-    
 }

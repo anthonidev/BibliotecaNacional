@@ -9,35 +9,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servicio.*;
 
-@WebServlet(name = "clienteControl", urlPatterns = {"/clienteControl"})
+@WebServlet(name = "ClienteControl", urlPatterns = {"/ClienteControl"})
 public class ClienteControl extends HttpServlet {
 
-    private ClienteServicio Ser;
+    private ClienteServicio cliSer;
     private PresentadorGeneral pg;
 
     public ClienteControl() {
-        Ser = new ClienteServicioImp();
+        cliSer = new ClienteServicioImp();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String acc = request.getParameter("acc");
+        
         if (acc.equals("Clientes")) {
             pg = new PresentadorGeneral();
-            List lista = Ser.listarCliente();
+            List lista = cliSer.listarCliente();
             request.getSession().setAttribute("lista", lista);
             request.getSession().setAttribute("pg", pg);
             response.sendRedirect("Intranet/Admin/cliente.jsp");
-
         }
+        
         if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
             String dni = request.getParameter("dni");
-            Object[] fill = Ser.buscarCliente(dni);
+            Object[] fill = cliSer.buscarCliente(dni);
 
             if (fill != null) {
                 pg.setCliente(fill);
-                List lista = Ser.listarCliente();
+                List lista = cliSer.listarCliente();
                 request.getSession().setAttribute("lista", lista);
                 request.getSession().setAttribute("fill", fill);
                 response.sendRedirect("Intranet/Admin/cliente.jsp");
@@ -48,6 +49,13 @@ public class ClienteControl extends HttpServlet {
                 response.sendRedirect("Intranet/Admin/cliente.jsp");
             }
         }
+        
+        if (acc.equals("Limpiar")) {
+            Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+            pg.setCliente(vacio);
+            response.sendRedirect("Intranet/Admin/cliente.jsp");
+        }
+        
         if (acc.equals("Registrar")) {
             String nommbre = request.getParameter("nom");
             String apellido = request.getParameter("ape");
@@ -61,9 +69,9 @@ public class ClienteControl extends HttpServlet {
             String usuario = request.getParameter("user");
             String password = request.getParameter("pass");
 
-            String msg = Ser.grabarCliente(nommbre, apellido, documento, direccion, telefono, fecha, dep, pro, dis, usuario, password);
+            String msg = cliSer.grabarCliente(nommbre, apellido, documento, direccion, telefono, fecha, dep, pro, dis, usuario, password);
             if (msg == null) {
-                List lista = Ser.listarCliente();
+                List lista = cliSer.listarCliente();
                 request.getSession().setAttribute("lista", lista);
                 pg.setMsg("Cliente registrado exitosamente");
             } else {
@@ -71,22 +79,21 @@ public class ClienteControl extends HttpServlet {
             }
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
+        
         if (acc.equals("Eliminar")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
             String usu = request.getParameter("usu");
 
-            String msg = Ser.EliminarCliente(cod, usu);
+            String msg = cliSer.eliminarCliente(cod, usu);
 
             if (msg == null) {
                 Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
                 pg.setCliente(vacio);
-                List lista = Ser.listarCliente();
+                List lista = cliSer.listarCliente();
                 request.getSession().setAttribute("lista", lista);
             }
             response.sendRedirect("Intranet/Admin/cliente.jsp");
-
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

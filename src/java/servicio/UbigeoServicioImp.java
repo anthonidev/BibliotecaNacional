@@ -10,11 +10,6 @@ public class UbigeoServicioImp implements UbigeoServicio {
     public UbigeoServicioImp() {
         ubiDao =new UbigeoDaoImp();
     }
-    
-    @Override
-    public List listarId(String Dep, String Pro, String Dis) {
-        return ubiDao.listarId(Dep, Pro, Dis);
-    }
 
     @Override
     public List listarDep() {
