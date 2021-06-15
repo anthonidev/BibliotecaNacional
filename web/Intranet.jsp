@@ -63,7 +63,7 @@
             Iniciar Sesión
           </h1>
           <form
-            action="empleadoControl"
+            action="EmpleadoControl"
             class="d-grid align-item-space-between"
             method="post"
           >
