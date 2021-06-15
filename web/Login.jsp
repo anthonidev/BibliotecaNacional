@@ -47,6 +47,7 @@
             alt=""
           />
         </div>
+
         <div class="row m-0 login_sec__forms px-3">
           <h1 class="text-dark text-center fw-bolder m-0 align-self-center p-0">Iniciar Sesión</h1>
           <form action="" class="d-grid align-item-space-between" method="post">

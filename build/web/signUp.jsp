@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
     <jsp:include page="./metas-head.jsp" />
     <title>Crear Cuenta</title>
   </head>
-  <body class="">
+  <body class="d-flex">
     <main class="container-fluid p-0">
       <div class="row">
         <div class="col-12 col-md-9 m-auto mt-5">
