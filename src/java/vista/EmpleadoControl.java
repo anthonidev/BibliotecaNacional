@@ -33,6 +33,7 @@ public class EmpleadoControl extends HttpServlet {
             Object[] fila = cuSer.validar(user, pass);
             
             if (fila != null) {
+                System.out.println(fila[2]);
                 switch (fila[2].toString()) {
                     case "admin":
                         request.getSession().setAttribute("filaInicio", fila);

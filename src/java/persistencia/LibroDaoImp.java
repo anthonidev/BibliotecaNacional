@@ -26,13 +26,13 @@ public class LibroDaoImp implements LibroDao {
     
     @Override
     public String grabar(Libro lib) {
-        System.out.println(lib.getCategoria());
         String sql = "call SP_GRABARLIBRO('"+lib.getNombre()+"','"+lib.getCategoria()+"','"+lib.getDescripcion()+"',"+lib.getStock()+","+lib.getPrecio()+",'"+lib.getFoto()+"')";
         return Operacion.ejecutar(sql);
     }
 
     @Override
     public String actualizar(Libro lib) {
+        System.out.println(lib.getPrecio());
         String sql="call SP_ACTUALIZARLIBRO("+lib.getIdLibro()+","+lib.getStock()+","+lib.getPrecio()+",'"+lib.getDescripcion()+"')";
         return Operacion.ejecutar(sql);
     }

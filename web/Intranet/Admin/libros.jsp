@@ -33,7 +33,7 @@
         <jsp:include page="navAdmin.jsp" />
         <%! String estado, estilo; %>
         <% estado=fila[5].toString();
-           if (fila[5].equals(0)) { fila[5]="Pendiente"; estilo="bg-primary"; }
+           if (fila[5].equals(0)) { estado="Pendiente"; estilo="bg-primary"; }
            else if (fila[5].equals(1)) { estado="Aceptado"; estilo="bg-success"; }
            else if (fila[5].equals(2)) { estado="Rechazado"; estilo="bg-danger"; } 
            else estilo=""; %>
@@ -175,7 +175,7 @@
                                                         <option selected>Seleccione</option>
                                                         <% for (int i = 1; i < lisCat.size(); i++) { %>
                                                         <% Object[] cat=(Object[]) lisCat.get(i); %>
-                                                        <option value="<%= cat[0] %>"><%= cat[0] %></option>
+                                                        <option value="<%= cat[0] %>"><%= cat[1] %></option>
                                                         <% } %>
                                                     </select>
                                                 </div>
@@ -235,7 +235,7 @@
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
                                                         <div class="input-group">
                                                             <span class="input-group-text">S/.</span>
-                                                            <input type="text" value="<%= fila[6]%>"  class="form-control">
+                                                            <input type="text" name="Precio" value="<%= fila[6]%>"  class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 my-2">
