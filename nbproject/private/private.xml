@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/Login.jsp</file>
             <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/index.jsp</file>
             <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/persistencia/PedidoDao.java</file>
@@ -17,6 +18,56 @@
             <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/LibroServicio.java</file>
             <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/EmpleadoServicioImp.java</file>
             <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/signUp.jsp</file>
+=======
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/navAdmin.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/LibroDaoImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/Cuenta.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/LibroControl.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/PresentadorGeneral.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/BuscarPedido.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/pedidos.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/build.xml</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/EmpleadoControl.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/Cliente.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/cliente.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Login.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/PedidoDao.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/CuentaServicioImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/PedidoServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/META-INF/context.xml</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/UbigeoServicioImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/ClienteControl.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/LibroServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/CuentaDaoImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/EmpleadoServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/vista/PedidoControl.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/CuentaDao.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/Presentador.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/ClienteServicioImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/Operacion.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/EmpleadoDaoImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/PedidoServicioImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/conf/MANIFEST.MF</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/TipoEmpleado.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/LibroDao.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/TipoDaoImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/PedidoDaoImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/ClienteServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/CuentaServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/UbigeoDaoImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/CategoriaLibro.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/empleados.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/index.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/UbigeoDao.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/nbproject/build-impl.xml</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/negocio/Pedido.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/web/Intranet/Admin/libros.jsp</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/persistencia/Conexion.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/UbigeoServicio.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/LibroServicioImp.java</file>
+            <file>file:/D:/Integrador/BibliotecaNacional/src/java/servicio/EmpleadoServicioImp.java</file>
+>>>>>>> be9b8dc7deddd86d812a3a9946ea36aa6c19f5c6
         </group>
     </open-files>
 </project-private>
