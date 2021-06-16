@@ -14,24 +14,26 @@ public class ClienteControl extends HttpServlet {
 
     private ClienteServicio cliSer;
     private PresentadorGeneral pg;
+    private CuentaServicio cuSer;
 
     public ClienteControl() {
         cliSer = new ClienteServicioImp();
+        cuSer = new CuentaServicioImp();
+        pg = new PresentadorGeneral();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String acc = request.getParameter("acc");
+        request.getSession().setAttribute("pg", pg);
         
         if (acc.equals("Clientes")) {
-            pg = new PresentadorGeneral();
             List lista = cliSer.listarCliente();
             request.getSession().setAttribute("lista", lista);
-            request.getSession().setAttribute("pg", pg);
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
-        
+
         if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
             String dni = request.getParameter("dni");
             Object[] fill = cliSer.buscarCliente(dni);
@@ -49,13 +51,13 @@ public class ClienteControl extends HttpServlet {
                 response.sendRedirect("Intranet/Admin/cliente.jsp");
             }
         }
-        
+
         if (acc.equals("Limpiar")) {
             Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
             pg.setCliente(vacio);
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
-        
+
         if (acc.equals("Registrar")) {
             String nommbre = request.getParameter("nom");
             String apellido = request.getParameter("ape");
@@ -93,6 +95,25 @@ public class ClienteControl extends HttpServlet {
                 request.getSession().setAttribute("lista", lista);
             }
             response.sendRedirect("Intranet/Admin/cliente.jsp");
+        }
+
+        if (acc.equals("Iniciar")) {
+            String user = request.getParameter("user");
+            String pass = request.getParameter("pass");
+            Object[] fila = cuSer.validarCliente(user, pass);
+            if (fila != null) {
+                pg.setUserCliente(fila);
+                pg.setCtr("online");
+                request.getSession().setAttribute("fila", fila);
+                response.sendRedirect("Libros.jsp");
+            } else {
+                request.getSession().setAttribute("msg", "ACCESO NO PERMITIDO");
+                response.sendRedirect("Intranet.jsp");
+            }
+        }
+         if (acc.equals("Cerrar")) {
+            request.getSession().invalidate();
+            response.sendRedirect("Login.jsp");
         }
     }
 

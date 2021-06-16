@@ -1,10 +1,20 @@
 
+<%@page import="java.lang.Object"%>
+<%@page import="vista.PresentadorGeneral"%>
 <%-- Document : navInicio Created on : 05/06/2021, 02:02:25 PM Author : Anthoni
 --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- navbar -->
+<%! String ctr = "";%>
+<% PresentadorGeneral pe = (PresentadorGeneral) session.getAttribute("pg");
+    Object fila = session.getAttribute("fila");
+    Object[] online = {"", "", "", ""};
+    if (fila != null) {
+        online = pe.getUserCliente();
+    }
+%>
 <nav
-    class="
+    class=" z-index
     navbar navbar-light
     bg-nav-bar
     rounded-pill
@@ -14,6 +24,7 @@
     ms-2
     shadow
     d-lg-none
+
     "
     >
     <div class="container">
@@ -52,6 +63,7 @@
                     <span class="d-none d-lg-block"> Informacion </span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a
                     class="mb-0 nav-link active h5"
@@ -111,11 +123,12 @@
     bg-nav-bar
     d-none d-lg-block
     p-3
+    z-index
     "
     style="width: 280px;"
     >
     <a class="navbar-brand d-none d-lg-block m-0 mb-2" href="index.jsp"
-       ><img src="img/logo.svg" alt="" class="logo-navbar_desltop"
+       ><img src="img/logo.svg" alt="" class="logo-navbar_desktop"
           /></a>
     <hr>
     <ul
@@ -154,10 +167,20 @@
                 <span class="d-none d-lg-block justify-self-center ms-4"> Informacion </span>
             </a>
         </li>
-        <li class="nav-item position-absolute nav-bar_desktop__contacto">
+        <%if (online[0] != online[3]) {%>
+        <li class="nav-item  align-content-center justify-content-center h-100 ">
+            <span class="d-none d-lg-block justify-self-center ms-4"> Usuario: <%=online[3]%></span>
+            <span class="d-none d-lg-block justify-self-center ms-4"> Nombre: <%=online[1]%></span>
+            <form action="ClienteControl" method="post">
+                <input type="submit" name="acc" class="btn-danger btn w-100 " value="Cerrar">
+            </form>
+        </li>
+        <%}%>
+
+        <li class="nav-item position-absolute nav-bar_desktop__sesion">
             <hr>
             <a
-                class="mb-0 d-flex align-items-center nav-link active h5"
+                class="mb-0 d-flex align-items-center justify-content-center nav-link active h5"
                 aria-current="page"
                 href="#"
                 data-bs-toggle="collapse"
@@ -165,10 +188,12 @@
                 aria-expanded="false"
                 aria-controls="multiCollapseExample2"
                 >
-                <span class="icon-navbar_desktop">
+                <span class="icon-navbar_desktop d-none">
                     <img src="./img/icons/btn-perfil.svg" alt="" width="" />
                 </span>
-                <span class="d-none d-lg-block justify-self-center ms-4"> Contacto </span>
+                <span class="d-none d-lg-block justify-self-center w-100 mx-2 btn btn-dark"> 
+                    Iniciar Sesión 
+                </span>
             </a>
             <div class="collapse tipo-sesion shadow-sm" id="navbarSupportedContent">
                 <ul class="navbar-nav text-center">

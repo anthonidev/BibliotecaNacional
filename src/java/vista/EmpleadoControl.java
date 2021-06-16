@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import servicio.*;
 
 @WebServlet(name = "EmpleadoControl", urlPatterns = {"/EmpleadoControl"})
@@ -119,6 +120,12 @@ public class EmpleadoControl extends HttpServlet {
             
             request.getSession().setAttribute("filaBus", fila);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
+        }
+        
+        if (acc.equals("Cerrar")) {
+            HttpSession session = request.getSession(false);
+            session.invalidate();
+            response.sendRedirect("index.jsp");
         }
     }
 

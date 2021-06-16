@@ -13,11 +13,40 @@ public class PresentadorGeneral {
     private List lista = new ArrayList();
     private List listaDetalle = new ArrayList();
     private String msg = "";
-
+    private String ctr="" ;
+   
+    private Object[] UserCliente={"","","",""};
+    private List cliUsu= new ArrayList();
+    
     public PresentadorGeneral() {
         lista.add(pedido);
         listaDetalle.add(detalle);
         listaClienteBuscar.add(cliente);
+        cliUsu.add(UserCliente);
+    }
+
+    public String getCtr() {
+        return ctr;
+    }
+
+    public void setCtr(String ctr) {
+        this.ctr = ctr;
+    }
+
+    public Object[] getUserCliente() {
+        return UserCliente;
+    }
+
+    public void setUserCliente(Object[] UserCliente) {
+        this.UserCliente = UserCliente;
+    }
+
+    public List getCliUsu() {
+        return cliUsu;
+    }
+
+    public void setCliUsu(List cliUsu) {
+        this.cliUsu = cliUsu;
     }
 
     public Object[] getCliente() {

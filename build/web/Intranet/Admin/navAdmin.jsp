@@ -1,8 +1,3 @@
-<%-- 
-    Document   : navAdmin
-    Created on : 08/06/2021, 03:04:37 PM
-    Author     : Anthoni
---%>
 <% Object[] inicio=(Object[]) session.getAttribute("filaInicio"); %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,8 +24,8 @@
                     </ul>
                 </li>
                 <li class="nav-item mx-3">
-                    <form action="../../empleadoControl" method="post">
-                        <input type="submit" name="acc" class="btn-danger btn w-100 " value="Cerrar">
+                    <form action="../../EmpleadoControl" method="post">
+                        <input type="submit" name="acc" class="btn-danger btn w-100 fw-bold fs-5" value="Cerrar">
                     </form>
                 </li>
             </ul>

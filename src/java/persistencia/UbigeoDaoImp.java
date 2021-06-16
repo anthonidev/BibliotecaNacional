@@ -15,13 +15,22 @@ public class UbigeoDaoImp implements UbigeoDao {
     }
 
     @Override
-    public List listarPro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List listarPro(String Dep) {
+        String sql = "SELECT NAME FROM UBIGEO_PERU_PROVINCES WHERE DEPARTMENT_ID=(SELECT ID FROM UBIGEO_PERU_DEPARTMENTS WHERE NAME='"+Dep+"')";
+        List lis = Operacion.listar(sql);
+        if (lis != null) {
+            return lis;
+        }
+        return null;
     }
 
     @Override
-    public List listarDis() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List listarDis(String Dep, String Pro) {
+        String sql = "SELECT NAME FROM UBIGEO_PERU_DISTRICTS WHERE DEPARTMENT_ID=(SELECT ID FROM UBIGEO_PERU_DEPARTMENTS WHERE NAME='"+Dep+"') AND PROVINCE_ID=(SELECT ID FROM UBIGEO_PERU_PROVINCES WHERE NAME='"+Pro+"')";
+        List lis = Operacion.listar(sql);
+        if (lis != null) {
+            return lis;
+        }
+        return null;
     }
-
 }

@@ -17,12 +17,12 @@ public class UbigeoServicioImp implements UbigeoServicio {
     }
 
     @Override
-    public List listarPro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List listarPro(String Dep) {
+        return ubiDao.listarPro(Dep);
     }
 
     @Override
-    public List listarDis() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List listarDis(String Dep, String Pro) {
+        return ubiDao.listarDis(Dep, Pro);
     }
 }
