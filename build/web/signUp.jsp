@@ -5,8 +5,6 @@ pageEncoding="UTF-8"%>
 <html lang="es">
   <head>
     <jsp:include page="./metas-head.jsp" />
-    <script src="./js/ubigeo.js"></script>
-    <script src="./js/validar.js"></script>
     <title>Crear Cuenta</title>
   </head>
   <body class="d-flex">

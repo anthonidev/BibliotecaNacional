@@ -15,3 +15,5 @@
   integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
   crossorigin="anonymous"
 ></script>
+<script src="./js/ubigeo.js"></script>
+<script src="./js/validar.js"></script>
