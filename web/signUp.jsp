@@ -5,6 +5,8 @@ pageEncoding="UTF-8"%>
 <html lang="es">
   <head>
     <jsp:include page="./metas-head.jsp" />
+    <script src="./js/ubigeo.js"></script>
+    <script src="./js/validar.js"></script>
     <title>Crear Cuenta</title>
   </head>
   <body class="d-flex">
@@ -47,77 +49,81 @@ pageEncoding="UTF-8"%>
         />
       </div>
 
-      <div class="container-fluid h-100 d-grid p-0 z-index-sec m-0">
-        <div
-          class="d-flex align-items-center flex-column pt-2"
-        >
-          <h1 class="text-light text-center align-self-start fw-bolder ps-5 ms-4">Crear cuenta</h1>
+      <div class="container-fluid h-100 d-grid grid-them-row--min p-0 z-index-sec m-0">
+        <div class="p-2 pt-2 mt-1">
+          <h1
+            class="text-light ps-5 m-0"
+          >
+            Crear cuenta
+          </h1>
         </div>
-        <div class="row m-0 login_sec__forms px-3">
-          <form action="clienteControl" class="d-grid align-item-space-between" method="post">
-            <div class="row">
-              <div class="col-6">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Nombre</span
-                >
+        <div class="row m-0 login_sec__forms px-3 pe-0 py-3 b-r-f-20">
+          <form
+            action="ClienteControl"
+            class="d-grid align-item-space-between ps-0"
+            method="post"
+          >
+            <div class="row g-1">
+              <div class="col-6 form-floating">
                 <input
                   type="text"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="Nombre"
                   name="Nombre"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
                 />
+                <label for="floatingInput">Nombre</label>
               </div>
-              <div class="col-6">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Apellidos</span
-                >
+              <div class="col-6 form-floating">
                 <input
                   type="text"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="Apellidos"
                   name="Apellidos"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
                 />
+                <label for="floatingInput">Apellidos</label>
               </div>
-              <div class="col-6 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Dni</span
-                >
+              <div class="col-6 form-floating my-2">
                 <input
                   type="text"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="DNI"
                   name="Dni"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
                   maxlength="8"
                   onkeyup="this.value=Numeros(this.value)"
                 />
+                <label for="floatingInput">DNI</label>
               </div>
-              <div class="col-6 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Telefono</span
-                >
+              <div class="col-6 form-floating my-2">
                 <input
                   type="text"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="Telefono"
                   name="Telefono"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
                   maxlength="9"
                   onkeyup="this.value=Numeros(this.value)"
                 />
+                <label for="floatingInput">Telefono</label>
               </div>
-              <div class="col-4 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Departamento</span
-                >
+              <div class="col-4 form-floating my-2">
                 <select
                   class="form-select form-control"
+                  id="floatingSelect"
                   onchange="cambia()"
                   aria-label="Default select example"
                   name="selectDepartamento"
@@ -150,13 +156,12 @@ pageEncoding="UTF-8"%>
                   <option value="Tumbes">Tumbes</option>
                   <option value="Ucayali">Ucayali</option>
                 </select>
+                <label for="floatingSelect">Departamento</label>
               </div>
-              <div class="col-4 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Provincia</span
-                >
+              <div class="col-4 form-floating my-2">
                 <select
                   class="form-select form-control"
+                  id="floatingSelect"
                   aria-label="Default select example"
                   name="selectProvincia"
                   onchange="cambiaDistrito()"
@@ -164,80 +169,80 @@ pageEncoding="UTF-8"%>
                 >
                   <option>Seleccione la Provincia</option>
                 </select>
+                <label for="floatingSelect">Provincia</label>
               </div>
-              <div class="col-4 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Distrito</span
-                >
+              <div class="col-4 form-floating my-2">
                 <select
                   class="form-select form-control"
+                  id="floatingSelect"
                   aria-label="Default select example"
                   name="selectDistrito"
                   required=""
                 >
                   <option>Seleccione el Distrito</option>
                 </select>
+                <label for="floatingSelect">Distrito</label>
               </div>
-              <div class="col-12 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Direccion</span
-                >
+              <div class="col-12 form-floating my-2">
                 <input
                   type="text"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="Dirección"
                   name="Direccion"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
                 />
+                <label for="floatingInput">Dirección</label>
               </div>
-              <div class="col-6 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Fecha de Nacimiento</span
-                >
+              <div class="col-6 form-floating my-2">
                 <input
                   type="date"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="Fecha Nacimiento"
                   name="FechaNa"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
                   pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                 />
+                <label for="floatingInput">Fecha Nacimiento</label>
               </div>
-              <div class="col-6 my-2">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Usuario</span
-                >
+              <div class="col-6 form-floating my-2">
                 <input
                   type="text"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="Usuario"
                   name="usu"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
-                />
+                  />
+                  <label for="floatingInput">Usuario</label>
               </div>
-              <div class="col-6 my-2 m-auto">
-                <span class="input-group-text" id="inputGroup-sizing-lg"
-                  >Constraseña</span
-                >
+              <div class="col form-floating my-2 m-auto">
                 <input
                   type="password"
                   required
                   class="form-control"
+                  id="floatingInput"
+                  placeholder="Contraseña"
                   name="pass"
                   aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing"
-                />
+                  />
+                  <label for="floatingInput">Contraseña</label>
               </div>
             </div>
-            <div class="input-group input-group-lg my-5">
+            <div class="input-group input-group-md">
               <input
                 type="submit"
                 name="acc"
                 value="Registrarse"
-                class="btn w-100 btn-primary fw-bold"
+                class="btn w-100 btn-primary h-min fw-bold"
               />
             </div>
           </form>

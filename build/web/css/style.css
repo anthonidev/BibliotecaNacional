@@ -11829,6 +11829,12 @@ fieldset:disabled .btn {
 .obj-fit--cover{
   object-fit: cover;
 }
+.grid-them-row--min{
+  grid-template-rows: min-content;
+}
+.b-r-f-20{
+  border-top-left-radius: 20px !important;
+}
 .back-img{
   width: 100%;
   height: 100%;
