@@ -33,4 +33,18 @@ public class CuentaServicioImp implements CuentaServicio{
         }
         return null;
     }
+
+    @Override
+    public Object[] validarCliente(String user, String pass) {
+        Presentador pre=cuDao.validarCliente(user, pass);
+        if(pre!=null){
+            Object[]fil=new Object[4];
+            fil[0]=pre.getPer().getCodPer();
+            fil[1]=pre.getPer().getNombre();
+            fil[2]=pre.getPer().getApellidos();
+            fil[3]=pre.getCu().getUser();
+            return fil;
+        }
+        return null;
+    }
 }

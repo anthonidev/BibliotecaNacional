@@ -5,6 +5,7 @@ public class Presentador {
     private Cuenta cu;
     private TipoEmpleado tip;
     private Empleado emp;
+    private Cliente cli;
 
     public Presentador(Persona per, TipoEmpleado tip) {
         this.per = per;
@@ -22,6 +23,21 @@ public class Presentador {
         this.tip = tip;
     }
 
+    public Presentador(Persona per, Cuenta cu, Cliente cli) {
+        this.per = per;
+        this.cu = cu;
+        this.cli = cli;
+    }
+
+    public Cliente getCli() {
+        return cli;
+    }
+
+    public void setCli(Cliente cli) {
+        this.cli = cli;
+    }
+
+    
     public Persona getPer() {
         return per;
     }

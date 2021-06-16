@@ -120,6 +120,10 @@ public class EmpleadoControl extends HttpServlet {
             request.getSession().setAttribute("filaBus", fila);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
+         if (acc.equals("Cerrar")) {
+            request.getSession().invalidate();
+            response.sendRedirect("Intranet.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

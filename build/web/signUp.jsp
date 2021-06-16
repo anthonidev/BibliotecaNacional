@@ -5,8 +5,6 @@ pageEncoding="UTF-8"%>
 <html lang="es">
   <head>
     <jsp:include page="./metas-head.jsp" />
-    <script src="js/ubigeo.js"></script>
-    <script src="js/validar.js"></script>
     <title>Crear Cuenta</title>
   </head>
   <body class="d-flex">
@@ -50,15 +48,13 @@ pageEncoding="UTF-8"%>
       </div>
 
       <div class="container-fluid h-100 d-grid p-0 z-index-sec m-0">
-        <div class="d-flex align-items-center flex-column pt-2">
-          <h1
-            class="text-light text-center align-self-start fw-bolder ps-5 ms-4"
-          >
-            Crear cuenta
-          </h1>
+        <div
+          class="d-flex align-items-center flex-column pt-2"
+        >
+          <h1 class="text-light text-center align-self-start fw-bolder ps-5 ms-4">Crear cuenta</h1>
         </div>
         <div class="row m-0 login_sec__forms px-3">
-          <form action="clienteControl" method="post">
+          <form action="clienteControl" class="d-grid align-item-space-between" method="post">
             <div class="row">
               <div class="col-6">
                 <span class="input-group-text" id="inputGroup-sizing-lg"
@@ -235,14 +231,14 @@ pageEncoding="UTF-8"%>
                   aria-describedby="inputGroup-sizing"
                 />
               </div>
-              <div class="input-group input-group-lg my-5">
-                <input
-                  type="submit"
-                  name="acc"
-                  value="Registrarse"
-                  class="btn w-100 btn-primary fw-bold"
-                />
-              </div>
+            </div>
+            <div class="input-group input-group-lg my-5">
+              <input
+                type="submit"
+                name="acc"
+                value="Registrarse"
+                class="btn w-100 btn-primary fw-bold"
+              />
             </div>
           </form>
         </div>

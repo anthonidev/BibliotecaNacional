@@ -1,8 +1,18 @@
 
+<%@page import="java.lang.Object"%>
+<%@page import="vista.PresentadorGeneral"%>
 <%-- Document : navInicio Created on : 05/06/2021, 02:02:25 PM Author : Anthoni
 --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- navbar -->
+<%! String ctr = "";%>
+<% PresentadorGeneral pe = (PresentadorGeneral) session.getAttribute("pg");
+    Object fila = session.getAttribute("fila");
+    Object[] online = {"", "", "", ""};
+    if (fila != null) {
+        online = pe.getUserCliente();
+    }
+%>
 <nav
     class=" z-index
     navbar navbar-light
@@ -14,7 +24,7 @@
     ms-2
     shadow
     d-lg-none
-    
+
     "
     >
     <div class="container">
@@ -53,6 +63,7 @@
                     <span class="d-none d-lg-block"> Informacion </span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a
                     class="mb-0 nav-link active h5"
@@ -156,6 +167,16 @@
                 <span class="d-none d-lg-block justify-self-center ms-4"> Informacion </span>
             </a>
         </li>
+        <%if (online[0] != online[3]) {%>
+        <li class="nav-item  align-content-center justify-content-center h-100 ">
+            <span class="d-none d-lg-block justify-self-center ms-4"> Usuario: <%=online[3]%></span>
+            <span class="d-none d-lg-block justify-self-center ms-4"> Nombre: <%=online[1]%></span>
+            <form action="ClienteControl" method="post">
+                <input type="submit" name="acc" class="btn-danger btn w-100 " value="Cerrar">
+            </form>
+        </li>
+        <%}%>
+
         <li class="nav-item position-absolute nav-bar_desktop__sesion">
             <hr>
             <a
