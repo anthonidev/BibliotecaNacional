@@ -23,7 +23,8 @@ public class LibroServicioImp implements LibroServicio {
 
     @Override
     public Object[] buscar(int idLibro) {
-        Libro lib=libDao.buscar(idLibro);
+        Libro libro=new Libro(idLibro);
+        Libro lib=libDao.buscar(libro);
         if(lib!=null){
             Object[]fil=new Object[8];
             fil[0]=lib.getIdLibro();
@@ -50,7 +51,8 @@ public class LibroServicioImp implements LibroServicio {
 
     @Override
     public String actualizarEstado(int idLibro, int estado) {
-        String msg = libDao.actualizarEstado(idLibro, estado);
+        Libro lib=new Libro(idLibro, estado);
+        String msg = libDao.actualizarEstado(lib);
         if (msg==null)
             msg="Estado Actualizado";
         return msg;
@@ -58,7 +60,8 @@ public class LibroServicioImp implements LibroServicio {
 
     @Override
     public String eliminar(int idLibro) {
-        String msg=libDao.eliminar(idLibro);
+        Libro lib=new Libro(idLibro);
+        String msg=libDao.eliminar(lib);
         if (msg==null)
             msg="Libro Eliminado";
         return msg;

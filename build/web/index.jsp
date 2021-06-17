@@ -1,4 +1,3 @@
-<%-- Document : index Created on : 04/06/2021, 01:22:51 PM Author : Anthoni --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 

@@ -1,8 +1,6 @@
-
 <%@page import="java.lang.Object"%>
 <%@page import="vista.PresentadorGeneral"%>
-<%-- Document : navInicio Created on : 05/06/2021, 02:02:25 PM Author : Anthoni
---%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- navbar -->
 <%! String ctr = "";%>

@@ -1,14 +1,14 @@
 package persistencia;
 
 import java.util.List;
-import negocio.BuscarPedido;
 import negocio.Pedido;
+import negocio.Presentador;
 
 public interface PedidoDao {
     public String grabar(Pedido pe);
-    public String AprobarPedido(int IdPedido);
-    public String NegarPedido(int IdPedido);
-    public BuscarPedido buscarId(int IdPedido);
-    public List listarDetalle(int IdPedido);
-    public List listarPedido(int estado);
+    public String AprobarPedido(Pedido pe);
+    public String NegarPedido(Pedido pe);
+    public Presentador buscar(Pedido pe);
+    public List listarDetalle(Pedido pe);
+    public List listarPedido(Pedido pe);
 }

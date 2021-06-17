@@ -24,6 +24,15 @@ public class Libro {
         this.Precio = Precio;
     }
 
+    public Libro(int IdLibro, int Estado) {
+        this.IdLibro = IdLibro;
+        this.Estado = Estado;
+    }
+
+    public Libro(int IdLibro) {
+        this.IdLibro = IdLibro;
+    }
+
     public int getIdLibro() {
         return IdLibro;
     }

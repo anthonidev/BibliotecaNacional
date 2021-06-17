@@ -1,10 +1,11 @@
 package persistencia;
 
 import java.util.List;
-import negocio.BuscarPedido;
 import negocio.Pedido;
+import negocio.Persona;
+import negocio.Presentador;
 
-public class PedidoDaoImp implements PedidoDao {
+public class PedidoDaoImp implements PedidoDao{
 
     @Override
     public String grabar(Pedido pe) {
@@ -14,40 +15,44 @@ public class PedidoDaoImp implements PedidoDao {
     }
 
     @Override
-    public String AprobarPedido(int IdPedido) {
-        String sql="call AprobarPedido("+IdPedido+")";
+    public String AprobarPedido(Pedido pe) {
+        String sql="call AprobarPedido("+pe.getIdPedido()+")";
         return Operacion.ejecutar(sql);
     }
 
     @Override
-    public BuscarPedido buscarId(int IdPedido) {
-        String sql = "call buscarPedido("+ IdPedido +")";
+    public Presentador buscar(Pedido pe) {
+        String sql = "call buscarPedido("+pe.getIdPedido()+")";
         Object[] fill = Operacion.buscar(sql);
         
         if (fill != null) {
-            BuscarPedido bp = new BuscarPedido();
-            bp.setIdPedido((int) fill[0]);
-            bp.setNombre((String) fill[1]);
-            bp.setApellidos((String) fill[2]);
-            bp.setDni((String) fill[3]);
-            bp.setDireccion((String) fill[4]);
-            bp.setFecha(fill[5].toString());
-            bp.setEstado((int)fill[6]);
-            bp.setTotal((double)fill[7]);
-            return bp;
+            Persona per=new Persona();
+            Pedido ped=new Pedido();
+            
+            ped.setIdPedido((int) fill[0]);
+            per.setNombre((String) fill[1]);
+            per.setApellidos((String) fill[2]);
+            per.setDni((String) fill[3]);
+            per.setDireccion((String) fill[4]);
+            ped.setFecha(fill[5].toString());
+            ped.setEstado((int)fill[6]);
+            ped.setTotal((double)fill[7]);
+            
+            Presentador pre=new Presentador(per, ped);
+            return pre;
         }
         return null;
     }
 
     @Override
-    public String NegarPedido(int IdPedido) {
-        String sql="call RechazarPedido("+IdPedido+")";
+    public String NegarPedido(Pedido pe) {
+        String sql="call RechazarPedido("+pe.getIdPedido()+")";
         return Operacion.ejecutar(sql);
     }
 
     @Override
-    public List listarDetalle(int IdPedido) {
-        String sql = "call ListarDetalle("+IdPedido+")";
+    public List listarDetalle(Pedido pe) {
+        String sql = "call ListarDetalle("+pe.getIdPedido()+")";
         List lis=Operacion.listar(sql);
         if(lis!=null){
             return lis;
@@ -56,8 +61,8 @@ public class PedidoDaoImp implements PedidoDao {
     }
 
     @Override
-    public List listarPedido(int estado) {
-         String sql = "call ListarPedido("+estado+")";
+    public List listarPedido(Pedido pe) {
+         String sql = "call ListarPedido("+pe.getEstado()+")";
         List lis=Operacion.listar(sql);
         if(lis!=null){
             return lis;

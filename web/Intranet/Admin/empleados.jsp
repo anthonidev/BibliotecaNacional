@@ -1,9 +1,3 @@
-<%-- 
-    Document   : empleados
-    Created on : 05/06/2021, 02:23:39 PM
-    Author     : Anthoni
---%>
-
 <%@page import="vista.PresentadorGeneral"%>
 <%@page import="servicio.*"%>
 <%@page import="java.util.List"%>
@@ -15,8 +9,11 @@
     PresentadorGeneral pe = (PresentadorGeneral) session.getAttribute("pg");
     Object[] obj=(Object[]) session.getAttribute("filaBus");
     Object[] fila={"","","","","","","","","","","",""};
-    List lisDep=ubiSer.listarDep();
     if (obj!=null) fila=obj;
+    List lisTip=tipSer.listar();
+    List lisDep=ubiSer.listarDep();
+    List lisPro=ubiSer.listarPro(fila[6].toString());
+    List lisDis=ubiSer.listarDis(fila[6].toString(), fila[7].toString());
 %>
 <!DOCTYPE html>
 <html>
@@ -230,7 +227,10 @@
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Tipo de usuario</span>
                                                     <select class="form-select form-control" aria-label="Default select example" name="tipo" required>
                                                         <option selected>Seleccione</option>
-                                                        <option value="admin">admin</option>
+                                                        <% for (int i = 1; i < lisTip.size(); i++) { %>
+                                                        <% Object[] tip=(Object[]) lisTip.get(i); %>
+                                                        <option value="<%= tip[1] %>"><%= tip[1] %></option>
+                                                        <% } %>
                                                     </select>
                                                 </div>
                                                 <div class="col-6 my-2">
@@ -281,25 +281,36 @@
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
                                                         <select class="form-select form-control" aria-label="Default select example" name="selectProvincia2" onchange="cambiaDistrito2()" required>
                                                             <option>Seleccione la Provincia</option>
+                                                            <% for (int i = 1; i < lisPro.size(); i++) { %>
+                                                            <% Object[] pro=(Object[]) lisPro.get(i); %>
+                                                            <% String sltd="", value=""; %>
+                                                            <% if(fila[7].equals(pro[0])) sltd="selected"; value=pro[0].toString().replace(" ", "_"); %>
+                                                            <option value="<%= value %>" <%= sltd %>><%= pro[0] %></option>
+                                                            <% } %>
                                                         </select>
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
                                                         <select class="form-select form-control" aria-label="Default select example" name="selectDistrito2" required>
                                                             <option>Seleccione el Distrito</option>
+                                                            <% for (int i = 1; i < lisDis.size(); i++) { %>
+                                                            <% Object[] dis=(Object[]) lisDis.get(i); %>
+                                                            <% String sltd="", value=""; %>
+                                                            <% if(fila[8].equals(dis[0])) sltd="selected"; value=dis[0].toString().replace(" ", "_"); %>
+                                                            <option value="<%= value %>" <%= sltd %>><%= dis[0] %></option>
+                                                            <% } %>
                                                         </select>
                                                     </div>
                                                     <div class="col-12 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
                                                         <input type="text" class="form-control" name="Direccion" value="<%= fila[3] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" required>
                                                     </div>
-                                                    <% List lis2=tipSer.listar(); %>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Tipo de empleado</span>
                                                         <select class="form-select form-control" aria-label="Default select example" name="tipo" required>
                                                             <option>Seleccione</option>
-                                                            <% for (int i = 1; i < lis2.size(); i++) { %>
-                                                            <% Object[] tip=(Object[]) lis2.get(i); %>
+                                                            <% for (int i = 1; i < lisTip.size(); i++) { %>
+                                                            <% Object[] tip=(Object[]) lisTip.get(i); %>
                                                             <% String sltd=""; %>
                                                             <% if(fila[11].equals(tip[1])) sltd="selected"; %>
                                                             <option value="<%= tip[1] %>" <%= sltd %>><%= tip[1] %></option>
@@ -353,6 +364,7 @@
                             <th scope="col">Direccion</th>
                             <th scope="col">Usuario</th>
                             <th scope="col">Cargo</th>
+                            <th scope="col">Detalle</th>
                         </tr>
                     </thead>
                     <tbody>

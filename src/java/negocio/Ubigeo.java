@@ -1,66 +1,41 @@
 package negocio;
 
 public class Ubigeo {
-    private String id,name,district_id,province_id,department_id;
+    private String nameDep,namePro,nameDis;
 
     public Ubigeo() {
     }
 
-    public Ubigeo(String id, String name) {
-        this.id = id;
-        this.name = name;
+    public Ubigeo(String nameDep, String namePro) {
+        this.nameDep = nameDep;
+        this.namePro = namePro;
     }
 
-    public Ubigeo(String district_id, String province_id, String department_id) {
-        this.district_id = district_id;
-        this.province_id = province_id;
-        this.department_id = department_id;
+    public Ubigeo(String nameDep) {
+        this.nameDep = nameDep;
     }
 
-    public Ubigeo(String id, String name, String province_id, String department_id) {
-        this.id = id;
-        this.name = name;
-        this.province_id = province_id;
-        this.department_id = department_id;
+    public String getNameDep() {
+        return nameDep;
     }
 
-    public String getId() {
-        return id;
+    public void setNameDep(String nameDep) {
+        this.nameDep = nameDep;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getNamePro() {
+        return namePro;
     }
 
-    public String getName() {
-        return name;
+    public void setNamePro(String namePro) {
+        this.namePro = namePro;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNameDis() {
+        return nameDis;
     }
 
-    public String getDistrict_id() {
-        return district_id;
-    }
-
-    public void setDistrict_id(String district_id) {
-        this.district_id = district_id;
-    }
-
-    public String getProvince_id() {
-        return province_id;
-    }
-
-    public void setProvince_id(String province_id) {
-        this.province_id = province_id;
-    }
-
-    public String getDepartment_id() {
-        return department_id;
-    }
-
-    public void setDepartment_id(String department_id) {
-        this.department_id = department_id;
+    public void setNameDis(String nameDis) {
+        this.nameDis = nameDis;
     }
 }

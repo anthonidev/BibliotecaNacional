@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pedidos
-    Created on : 05/06/2021, 02:23:46 PM
-    Author     : Anthoni
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="vista.PresentadorGeneral"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

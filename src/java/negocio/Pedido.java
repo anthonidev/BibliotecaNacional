@@ -19,12 +19,8 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Pedido(int IdPedido, int IdPerCli, int estado, String fecha, double Total) {
+    public Pedido(int IdPedido) {
         this.IdPedido = IdPedido;
-        this.IdPerCli = IdPerCli;
-        this.estado = estado;
-        this.fecha = fecha;
-        this.Total = Total;
     }
 
     public int getIdPedido() {

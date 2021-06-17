@@ -23,7 +23,8 @@ public class CuentaServicioImp implements CuentaServicio{
 
     @Override
     public Object[] validar(String user, String pass) {
-        Presentador pre=cuDao.validar(user, pass);
+        Cuenta cu=new Cuenta(user, pass);
+        Presentador pre=cuDao.validar(cu);
         if(pre!=null){
             Object[]fil=new Object[3];
             fil[0]=pre.getPer().getCodPer();
@@ -36,7 +37,8 @@ public class CuentaServicioImp implements CuentaServicio{
 
     @Override
     public Object[] validarCliente(String user, String pass) {
-        Presentador pre=cuDao.validarCliente(user, pass);
+        Cuenta cu=new Cuenta(user, pass);
+        Presentador pre=cuDao.validar(cu);
         if(pre!=null){
             Object[]fil=new Object[4];
             fil[0]=pre.getPer().getCodPer();

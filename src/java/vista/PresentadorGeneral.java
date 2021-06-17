@@ -7,17 +7,16 @@ public class PresentadorGeneral {
     private Object[] pedido = {"", "", "", "", "", "", "", ""};
     private Object[] detalle={"","","",""};
     
-    private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", "", "",""};
+    private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", ""};
     private List listaClienteBuscar = new ArrayList();
     
     private List lista = new ArrayList();
     private List listaDetalle = new ArrayList();
     private String msg = "";
-   private String ctr="" ;
+    private String ctr="" ;
    
     private Object[] UserCliente={"","","",""};
-        private List cliUsu= new ArrayList();
-
+    private List cliUsu= new ArrayList();
     
     public PresentadorGeneral() {
         lista.add(pedido);

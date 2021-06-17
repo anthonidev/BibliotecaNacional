@@ -1,9 +1,3 @@
-<%-- 
-    Document   : libros
-    Created on : 05/06/2021, 02:24:54 PM
-    Author     : Anthoni
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="servicio.LibroServicio"%>
 <%@page import="servicio.LibroServicioImp"%>

@@ -1,8 +1,8 @@
 package servicio;
 
 import java.util.List;
-import negocio.BuscarPedido;
 import negocio.Pedido;
+import negocio.Presentador;
 import persistencia.PedidoDao;
 import persistencia.PedidoDaoImp;
 
@@ -14,49 +14,54 @@ public class PedidoServicioImp implements PedidoServicio {
     }
 
     @Override
-    public String grabar(int IdPerCli, String fecha, int estado, double Total) {
+    public String grabar(int IdPerCli, String fecha, double Total) {
         Pedido Pe = new Pedido(IdPerCli, fecha, Total);
         String msg = peDao.grabar(Pe);
         return msg;
     }
 
     @Override
-    public String aprobarPedido(int IdPerCli) {
-        String msg = peDao.AprobarPedido(IdPerCli);
+    public String aprobarPedido(int IdPed) {
+        Pedido ped=new Pedido(IdPed);
+        String msg = peDao.AprobarPedido(ped);
         return msg;
     }
 
     @Override
-    public Object[] buscar(int IdPerCli) {
-        BuscarPedido bp=peDao.buscarId(IdPerCli);
-        if(bp!=null){
+    public Object[] buscar(int IdPed) {
+        Pedido ped=new Pedido(IdPed);
+        Presentador pre=peDao.buscar(ped);
+        if(pre!=null){
             Object[]fil=new Object[8];
-            fil[0]=bp.getIdPedido();
-            fil[1]=bp.getNombre();
-            fil[2]=bp.getApellidos();
-            fil[3]=bp.getDni();
-            fil[4]=bp.getDireccion();
-            fil[5]=bp.getFecha();
-            fil[6]=bp.getEstado();
-            fil[7]=bp.getTotal();
+            fil[0]=pre.getPed().getIdPedido();
+            fil[1]=pre.getPer().getNombre();
+            fil[2]=pre.getPer().getApellidos();
+            fil[3]=pre.getPer().getDni();
+            fil[4]=pre.getPer().getDireccion();
+            fil[5]=pre.getPed().getFecha();
+            fil[6]=pre.getPed().getEstado();
+            fil[7]=pre.getPed().getTotal();
             return fil;
         }
         return null;
     }
 
     @Override
-    public String negarPedido(int IdPerCli) {
-        String msg = peDao.NegarPedido(IdPerCli);
+    public String negarPedido(int IdPed) {
+        Pedido ped=new Pedido(IdPed);
+        String msg = peDao.NegarPedido(ped);
         return msg;
     }
 
     @Override
-    public List listarDetalle(int IdPerCli) {
-         return peDao.listarDetalle(IdPerCli);
+    public List listarDetalle(int IdPed) {
+        Pedido ped=new Pedido(IdPed);
+        return peDao.listarDetalle(ped);
     }
 
     @Override
     public List listarPedido(int estado) {
-        return peDao.listarPedido(estado);
+        Pedido ped=new Pedido(estado, estado);
+        return peDao.listarPedido(ped);
     }
 }

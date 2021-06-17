@@ -25,7 +25,7 @@
                 </li>
                 <li class="nav-item mx-3">
                     <form action="../../EmpleadoControl" method="post">
-                        <input type="submit" name="acc" class="btn-danger btn w-100 " value="Cerrar">
+                        <input type="submit" name="acc" class="btn-danger btn w-100 fw-bold fs-5" value="Cerrar">
                     </form>
                 </li>
             </ul>
