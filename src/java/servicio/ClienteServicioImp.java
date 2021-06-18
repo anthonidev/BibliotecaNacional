@@ -48,8 +48,15 @@ public class ClienteServicioImp implements ClienteServicio {
     }
 
     @Override
-    public List listarCliente() {
-        return cliDao.listarCliente();
+    public String actualizarCliente(String dni, String direccion, String telefono, String dep, String pro, String dis, String usuario) {
+        Persona per=new Persona(dni, direccion, telefono, dis, pro, dep);
+        Cuenta cu=new Cuenta(usuario, null);
+        Presentador pre=new Presentador(per, cu);
+        String msg=cliDao.actualizarCliente(pre);
+        
+        if (msg==null) {
+            msg="Cliente Actualizado";
+        } return msg;
     }
 
     @Override
@@ -57,10 +64,15 @@ public class ClienteServicioImp implements ClienteServicio {
         Persona per=new Persona(String.valueOf(cod));
         Cuenta cu=new Cuenta(usu, usu);
         Presentador pre=new Presentador(per, cu);
-        String msg=cliDao.EliminarCliente(pre);
+        String msg=cliDao.eliminarCliente(pre);
         
         if (msg==null) {
             msg="Cliente Eliminado";
         } return msg;
+    }
+
+    @Override
+    public List listarCliente() {
+        return cliDao.listarCliente();
     }
 }

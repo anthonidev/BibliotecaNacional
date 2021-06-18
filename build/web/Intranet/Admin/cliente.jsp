@@ -172,8 +172,8 @@
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body bg-light">
-                                            <form action="../../ClienteControl" method="post">
-                                                <div class="row">
+                                            <form action="../../ClienteControl" method="post" class="d-flex flex-column align-items-center">
+                                                <div class="row px-3">
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
                                                         <input type="text" required class="form-control" name="nom" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
@@ -229,11 +229,8 @@
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
                                                         <input type="password" required class="form-control" name="pass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="input-group input-group-lg my-2">
-                                                        <input type="hidden" name="menu" value="intranet">
-                                                        <input type="submit" name="acc" value="Registrar" class="btn w-100 btn-primary fw-bold">
-                                                    </div>
                                                 </div>
+                                                <input type="submit" name="acc" value="Registrar" class="btn btn btn-primary w-75 btn-lg my-2">
                                             </form>
                                         </div>
                                     </div>
@@ -244,18 +241,10 @@
                                     </h2>
                                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body bg-light">
-                                            <form action="../../ClienteControl" method="post">
-                                                <div class="row d-flex align-items-center justify-content-center w-100">
+                                            <form action="../../ClienteControl" method="post" class="d-flex flex-column align-items-center">
+                                                <div class="row px-3">
                                                     <div>
-                                                        <input type="hidden" name="codigo" value="<%= cliente[0] %>">
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                        <input type="text" required class="form-control" name="nombre" value="<%= cliente[1] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                        <input type="text" required class="form-control" name="apellido" value="<%= cliente[2] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="hidden" name="dni" value="<%= cliente[3] %>">
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Dirección</span>
@@ -264,10 +253,6 @@
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
                                                         <input type="text" required class="form-control" name="telefono" value="<%= cliente[5] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
-                                                        <input type="date" required class="form-control" name="nombre" value="<%= cliente[6] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <div class="col-6 my-2" id="mostrar">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
@@ -307,14 +292,14 @@
                                                     </div>
                                                     <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Usuario</span>
-                                                        <input type="text" class="form-control" name="usuario" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                        <input type="text" class="form-control" name="usuario" value="<%= cliente[10] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6 my-2">
+                                                    <div class="col-6 my-2 m-auto">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
                                                         <input type="password" placeholder="Ingrese nueva contraseña" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <input type="submit" class="btn btn btn-secondary w-75 my-3 btn-lg" name="acc" value="Actualizar">
                                                 </div>
+                                                <input type="submit" class="btn btn btn-secondary w-75 my-2 btn-lg" name="acc" value="Actualizar">
                                             </form>
                                         </div>
                                     </div>
@@ -325,18 +310,15 @@
                                     </h2>
                                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body bg-light">
-                                            <form action="../../ClienteControl" method="post">
-                                                <div class="row d-flex align-items-center justify-content-center w-100 ">
-                                                    <div class="col-12 col-md-7">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Nombre del cliente:</span>
-                                                        <input required type="text" value="<%= cliente[1]+" "+cliente[2] %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                                        <input name="cod" type="hidden" value="<%= cliente[0] %>">
-                                                        <input name="usu" type="hidden" value="<%= cliente[10] %>">
-                                                    </div>
-                                                    <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
+                                            <form action="../../ClienteControl" method="post" class="d-flex flex-column align-items-center">
+                                                <div class="col-12 col-md-7 mt-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre del cliente:</span>
+                                                    <input required type="text" value="<%= cliente[1]+" "+cliente[2] %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                    <input name="cod" type="hidden" value="<%= cliente[0] %>">
+                                                    <input name="usu" type="hidden" value="<%= cliente[10] %>">
                                                 </div>
+                                                <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>

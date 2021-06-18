@@ -331,7 +331,7 @@
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
-                                            <div class="col-12 col-md-7">
+                                            <div class="col-12 col-md-7 mt-2">
                                                 <span class="input-group-text" id="inputGroup-sizing-lg">DNI:</span>
                                                 <input name="Dni" required type="text" class="form-control" value="<%= fila[2] %>" maxlength="8" onkeyup="this.value=Numeros(this.value)">
                                             </div>

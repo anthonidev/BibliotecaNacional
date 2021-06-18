@@ -68,6 +68,24 @@ public class ClienteControl extends HttpServlet {
 
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
+        
+        if (acc.equals("Actualizar")) {
+            String dni = request.getParameter("dni");
+            String direccion = request.getParameter("direccion");
+            String telefono = request.getParameter("telefono");
+            String dep = new String(request.getParameter("selectDepartamento2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String usuario = request.getParameter("usuario");
+            String password = request.getParameter("password");
+
+            String msg = cliSer.actualizarCliente(dni, direccion, telefono, dep, pro, dis, usuario);
+            Object[] fill = cliSer.buscarCliente(dni);
+            pg.setCliente(fill);
+            pg.setMsg(msg);
+
+            response.sendRedirect("Intranet/Admin/cliente.jsp");
+        }
 
         if (acc.equals("Eliminar")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
