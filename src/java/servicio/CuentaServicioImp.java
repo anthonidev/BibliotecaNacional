@@ -37,8 +37,10 @@ public class CuentaServicioImp implements CuentaServicio{
 
     @Override
     public Object[] validarCliente(String user, String pass) {
+        System.out.println(user);
+        System.out.println(pass);
         Cuenta cu=new Cuenta(user, pass);
-        Presentador pre=cuDao.validar(cu);
+        Presentador pre=cuDao.validarCliente(cu);
         if(pre!=null){
             Object[]fil=new Object[4];
             fil[0]=pre.getPer().getCodPer();

@@ -9,7 +9,7 @@
     Object[] cliente = pe.getCliente();
     
     List lisDep=ubiSer.listarDep();
-    List lisPro=ubiSer.listarPro(cliente[8].toString());
+    List lisPro=ubiSer.listarPro(cliente[7].toString());
     List lisDis=ubiSer.listarDis(cliente[7].toString(), cliente[8].toString());
 %>
 <!DOCTYPE html>
@@ -22,6 +22,7 @@
         <script src="https://kit.fontawesome.com/50872a9b90.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="../../js/ubigeo.js"></script>
+        <script src="../../js/ubigeo2.js"></script>
         <script src="../../js/validar.js"></script>
         <title>INTRANET</title>
     </head>
@@ -173,11 +174,11 @@
                                         <div class="accordion-body bg-light">
                                             <form action="../../ClienteControl" method="post">
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
                                                         <input type="text" required class="form-control" name="nom" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-6 my-2">
                                                         <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
                                                         <input type="text" required class="form-control" name="ape" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
@@ -245,71 +246,72 @@
                                         <div class="accordion-body bg-light">
                                             <form action="../../ClienteControl" method="post">
                                                 <div class="row d-flex align-items-center justify-content-center w-100">
-                                                    <div class="col-12 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
-                                                            <label for="floatingInputGrid">Codigo</label>
-                                                        </div>
+                                                    <div>
+                                                        <input type="hidden" name="codigo" value="<%= cliente[0] %>">
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
-                                                            <label for="floatingInputGrid">Nombre</label>
-                                                        </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
+                                                        <input type="text" required class="form-control" name="nombre" value="<%= cliente[1] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
-                                                            <label for="floatingInputGrid">Apellidos</label>
-                                                        </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
+                                                        <input type="text" required class="form-control" name="apellido" value="<%= cliente[2] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid"  maxlength="8" onkeyup="this.value=Numeros(this.value)">
-                                                            <label for="floatingInputGrid">Dni</label>
-                                                        </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Dirección</span>
+                                                        <input type="text" required class="form-control" name="direccion" value="<%= cliente[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
-                                                            <label for="floatingInputGrid">Direccion</label>
-                                                        </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
+                                                        <input type="text" required class="form-control" name="telefono" value="<%= cliente[5] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid"  maxlength="9" onkeyup="this.value=Numeros(this.value)">
-                                                            <label for="floatingInputGrid">Telefono</label>
-                                                        </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
+                                                        <input type="date" required class="form-control" name="nombre" value="<%= cliente[6] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
-                                                            <label for="floatingInputGrid">Fecha de Nacimiento</label>
-                                                        </div>
+                                                    <div class="col-6 my-2" id="mostrar">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
+                                                        <select class="form-select form-control" onchange="cambia2()" aria-label="Default select example" name="selectDepartamento2" required>
+                                                            <option value="">Seleccione</option>
+                                                            <% for (int i = 1; i < lisDep.size(); i++) { %>
+                                                            <% Object[] dep=(Object[]) lisDep.get(i); %>
+                                                            <% String sltd="", value=""; %>
+                                                            <% if(cliente[7].equals(dep[0])) sltd="selected"; value=dep[0].toString().replace(" ", "_"); %>
+                                                            <option value="<%= value %>" <%= sltd %>><%= dep[0] %></option>
+                                                            <% } %>
+                                                        </select>
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
-                                                            <label for="floatingInputGrid">Departamento</label>
-                                                        </div>
+                                                    <div class="col-6 my-2" id="mostrar">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
+                                                        <select class="form-select form-control" aria-label="Default select example" name="selectProvincia2" onchange="cambiaDistrito2()" required>
+                                                            <option>Seleccione la Provincia</option>
+                                                            <% for (int i = 1; i < lisPro.size(); i++) { %>
+                                                            <% Object[] pro=(Object[]) lisPro.get(i); %>
+                                                            <% String sltd="", value=""; %>
+                                                            <% if(cliente[8].equals(pro[0])) sltd="selected"; value=pro[0].toString().replace(" ", "_"); %>
+                                                            <option value="<%= value %>" <%= sltd %>><%= pro[0] %></option>
+                                                            <% } %>
+                                                        </select>
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
-                                                            <label for="floatingInputGrid">Provincia</label>
-                                                        </div>
+                                                    <div class="col-6 my-2" id="mostrar">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
+                                                        <select class="form-select form-control" aria-label="Default select example" name="selectDistrito2" required>
+                                                            <option>Seleccione el Distrito</option>
+                                                            <% for (int i = 1; i < lisDis.size(); i++) { %>
+                                                            <% Object[] dis=(Object[]) lisDis.get(i); %>
+                                                            <% String sltd="", value=""; %>
+                                                            <% if(cliente[9].equals(dis[0])) sltd="selected"; value=dis[0].toString().replace(" ", "_"); %>
+                                                            <option value="<%= value %>" <%= sltd %>><%= dis[0] %></option>
+                                                            <% } %>
+                                                        </select>
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" >
-                                                            <label for="floatingInputGrid">Distrito</label>
-                                                        </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Usuario</span>
+                                                        <input type="text" class="form-control" name="usuario" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
-                                                    <div class="col-6 mt-3" id="mostrar">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control" id="floatingInputGrid" placeholder="" value="">
-                                                            <label for="floatingInputGrid">Usuario</label>
-                                                        </div>
+                                                    <div class="col-6 my-2">
+                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
+                                                        <input type="password" placeholder="Ingrese nueva contraseña" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     </div>
                                                     <input type="submit" class="btn btn btn-secondary w-75 my-3 btn-lg" name="acc" value="Actualizar">
                                                 </div>
