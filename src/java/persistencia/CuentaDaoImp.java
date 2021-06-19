@@ -32,16 +32,13 @@ public class CuentaDaoImp implements CuentaDao{
 
     @Override
     public Presentador validarCliente(Cuenta cu) {
-        System.out.println(cu.getUser());
-        System.out.println(cu.getPass());
        String sql = "call ValidarCliente('"+cu.getUser()+"','"+cu.getPass()+"')";
         Object[] fill = Operacion.buscar(sql);
         if (fill != null) {
             Persona per = new Persona();
             per.setCodPer((int) fill[0]);
             per.setNombre(fill[1].toString());
-            per.setApellidos(fill[2].toString());
-            cu.setUser(fill[3].toString());
+            cu.setUser(fill[2].toString());
             
             Presentador pre=new Presentador(per, cu);
             return pre;

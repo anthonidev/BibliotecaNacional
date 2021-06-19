@@ -15,14 +15,18 @@ public class PresentadorGeneral {
     private String msg = "";
     private String ctr="" ;
    
-    private Object[] UserCliente={"","","",""};
+    private Object[] UserCliente={"","",""};
     private List cliUsu= new ArrayList();
+    
+    private Object[] cart={"","","","","",""};
+    private List cartList = new ArrayList();
     
     public PresentadorGeneral() {
         lista.add(pedido);
         listaDetalle.add(detalle);
         listaClienteBuscar.add(cliente);
         cliUsu.add(UserCliente);
+        cartList.add(cart);
     }
 
     public String getCtr() {
@@ -103,5 +107,13 @@ public class PresentadorGeneral {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public List getCartList() {
+        return cartList;
+    }
+
+    public void setCartList(Object[] cartList) {
+        this.cartList.add(cartList);
     }
 }

@@ -63,7 +63,7 @@
                     <h1 class="text-dark text-center fw-bolder m-0 align-self-center p-0">
                         Iniciar Sesión
                     </h1>
-                    <form action="ClienteControl" class="d-grid align-item-space-between" method="post">
+                    <form action="CarritoControl" class="d-grid align-item-space-between" method="post">
                         <div class="form-floating">
                             <input
                                 type="text"

@@ -13,11 +13,9 @@ public class ClienteControl extends HttpServlet {
 
     private ClienteServicio cliSer;
     private PresentadorGeneral pg;
-    private CuentaServicio cuSer;
 
     public ClienteControl() {
         cliSer = new ClienteServicioImp();
-        cuSer = new CuentaServicioImp();
         pg = new PresentadorGeneral();
     }
 
@@ -96,26 +94,6 @@ public class ClienteControl extends HttpServlet {
             pg.setMsg(msg);
 
             response.sendRedirect("Intranet/Admin/cliente.jsp");
-        }
-
-        if (acc.equals("Iniciar")) {
-            String user = request.getParameter("user");
-            String pass = request.getParameter("pass");
-            Object[] fila = cuSer.validarCliente(user, pass);
-            if (fila != null) {
-                pg.setUserCliente(fila);
-                pg.setCtr("online");
-                request.getSession().setAttribute("fila", fila);
-                response.sendRedirect("Libros.jsp");
-            } else {
-                request.getSession().setAttribute("msg", "ACCESO NO PERMITIDO");
-                response.sendRedirect("Intranet.jsp");
-            }
-        }
-        
-        if (acc.equals("Cerrar")) {
-            request.getSession().invalidate();
-            response.sendRedirect("Login.jsp");
         }
     }
 
