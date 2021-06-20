@@ -31,8 +31,7 @@
                     <div class="col-12 col-lg-9 offset-lg-3 pt-4">
                         <div class="row overflow-auto m-0 flex-nowrap pb-1 group-card--custom group-card--custom--busqueda container__sec--bottom w-100">
                             <% for (int i = 1; i < lis.size(); i++) {
-                                Object[] libro=(Object[])lis.get(i);
-                                int can=0; %>
+                                Object[] libro=(Object[])lis.get(i); %>
                             <form action="CarritoControl" method="post" class="col">
                                 <div class="card shadow card--libro">
                                     <img src="img/libros/portada-libro.jpg" class="card-img-top rounded-3" />

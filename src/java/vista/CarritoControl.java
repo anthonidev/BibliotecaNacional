@@ -1,21 +1,24 @@
 package vista;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicio.CuentaServicio;
-import servicio.CuentaServicioImp;
+import servicio.*;
 
 @WebServlet(name = "CarritoControl", urlPatterns = {"/CarritoControl"})
 public class CarritoControl extends HttpServlet {
     private PresentadorGeneral pg;
     private CuentaServicio cuSer;
+    private PedidoServicio pedSer;
 
     public CarritoControl() {
         cuSer = new CuentaServicioImp();
+        pedSer = new PedidoServicioImp();
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -41,12 +44,16 @@ public class CarritoControl extends HttpServlet {
             }
         }
         
+        if (acc.equals("carrito")) {
+            response.sendRedirect("ver-carrito.jsp");
+        }
+        
         if (acc.equals("Agregar")) {
-            String cod=request.getParameter("codigo");
+            int cod=Integer.parseInt(request.getParameter("codigo"));
             String nombre=request.getParameter("nombre");
             double precio=Double.parseDouble(request.getParameter("precio"));
             String foto=request.getParameter("foto");
-            Object[] lis=new Object[6];
+            Object[] lis=new Object[5];
             
             if (pg.getCartList().size()==1) {
                 lis[0]=cod;
@@ -54,11 +61,10 @@ public class CarritoControl extends HttpServlet {
                 lis[2]=precio;
                 lis[3]=foto;
                 lis[4]=1;
-                lis[5]=precio;
-                pg.setCartList(lis);
+                pg.addCartList(lis);
             } else {
                 int can=1;
-                double pre=precio, total=0;
+                double pre=precio;
                 lis[0]=cod;
                 lis[1]=nombre;
                 lis[3]=foto;
@@ -67,20 +73,17 @@ public class CarritoControl extends HttpServlet {
                     Object[] fi=(Object[]) pg.getCartList().get(i);
                     if (fi[0].equals(cod)) {
                         can=(int)fi[4];
-                        total=(double)fi[5];
                         pg.getCartList().remove(fi);
                         lis[0]=cod;
                         lis[1]=nombre;
-                        pre=(double)fi[2]+pre;
+                        pre+=(double)fi[2];
                         lis[3]=foto;
                         can++;
-                        total=total+(double)fi[5];
                     }
                 }
                 lis[2]=pre;
                 lis[4]=can;
-                lis[5]=total;
-                pg.setCartList(lis);
+                pg.addCartList(lis);
             }
             response.sendRedirect("Libros.jsp");
         }
@@ -92,12 +95,25 @@ public class CarritoControl extends HttpServlet {
                 if (fi[0].equals(cod))
                     pg.getCartList().remove(fi);
             }
-            
             response.sendRedirect("ver-carrito.jsp");
         }
         
-        if (acc.equals("carrito")) {
-            response.sendRedirect("ver-carrito.jsp");
+        if (acc.equals("Grabar Pedido")) {
+            int cod=Integer.parseInt(request.getParameter("codigo"));
+            double total=Double.parseDouble(request.getParameter("total"));
+            String msg=pedSer.grabarPedido(cod, total);
+            pg.setMsg(msg);
+            
+            for (int i = 1; i < pg.getCartList().size(); i++) {
+                Object[] lis=(Object[]) pg.getCartList().get(i);
+                pedSer.grabarDetalle((int)lis[0], (int)lis[4], (double)lis[2]);
+            }
+            
+            List li=new ArrayList();
+            Object[] libro={"","","",""};
+            pg.setCartList(li);
+            pg.addCartList(libro);
+            response.sendRedirect("Libros.jsp");
         }
         
         if (acc.equals("Cerrar")) {

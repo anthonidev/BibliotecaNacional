@@ -169,7 +169,7 @@
         <li class="nav-item">
             <div class="px-4 py-2 d-flex flex-column m-auto">
                 <span class="d-none d-lg-block m-auto">Bienvenido</span>
-                <span class="d-none d-lg-block m-auto fw-bold text-uppercase fs-5"><%=online[1]%></span>
+                <span class="d-none d-lg-block m-auto fw-bold text-uppercase fs-5"><%= online[1] %></span>
             </div>
             <form action="CarritoControl" method="post" class="mb-3 m-auto w-75">
                 <input type="submit" name="acc" class="btn-danger btn w-100 " value="Cerrar">

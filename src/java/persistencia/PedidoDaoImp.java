@@ -8,9 +8,14 @@ import negocio.Presentador;
 public class PedidoDaoImp implements PedidoDao{
 
     @Override
-    public String grabar(Pedido pe) {
-        
-    String sql="insert into pedido values(Null," + pe.getIdPerCli() + ",'" + pe.getFecha()+ "',Null'" + pe.getTotal() + ")";
+    public String grabarPedido(Pedido pe) {
+        String sql="call GrabarPedido("+pe.getIdPerCli()+",'"+pe.getFecha()+"',"+pe.getTotal()+")";
+        return Operacion.ejecutar(sql);
+    }
+    
+    @Override
+    public String grabarDetalle(Pedido pe) {
+        String sql="call GrabarDetalle("+pe.getIdLibro()+","+pe.getCantidad()+","+pe.getPrecio()+")";
         return Operacion.ejecutar(sql);
     }
 
@@ -62,7 +67,7 @@ public class PedidoDaoImp implements PedidoDao{
 
     @Override
     public List listarPedido(Pedido pe) {
-         String sql = "call ListarPedido("+pe.getEstado()+")";
+        String sql = "call ListarPedido("+pe.getEstado()+")";
         List lis=Operacion.listar(sql);
         if(lis!=null){
             return lis;
