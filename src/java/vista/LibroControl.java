@@ -1,7 +1,6 @@
 package vista;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,86 +9,118 @@ import javax.servlet.http.HttpServletResponse;
 import servicio.LibroServicioImp;
 import servicio.LibroServicio;
 
-@WebServlet(name = "libroControl", urlPatterns = {"/libroControl"})
+@WebServlet(name = "LibroControl", urlPatterns = {"/LibroControl"})
 public class LibroControl extends HttpServlet {
 
     private LibroServicio libSer;
+    private PresentadorGeneral pg;
 
     public LibroControl() {
         libSer = new LibroServicioImp();
+        pg = new PresentadorGeneral();
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String acc = request.getParameter("acc");
-        
-        if (acc.equals("Buscar")) {
-            int cod=Integer.parseInt(request.getParameter("Codigo"));
-            Object[] fila=libSer.buscarId(cod);
-            
-            if (fila!=null) {
+        request.getSession().setAttribute("pg", pg);
+
+        if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
+            int cod = Integer.parseInt(request.getParameter("Codigo"));
+            Object[] fila = libSer.buscar(cod);
+
+            if (fila != null) {
                 request.getSession().setAttribute("libus", fila);
-                request.getSession().setAttribute("msgL", null);
                 response.sendRedirect("Intranet/Admin/libros.jsp");
             } else {
-                Object[] fil={"","","","","","","",""};
+                Object[] fil = {"", "", "", "", "", "", "", ""};
                 request.getSession().setAttribute("libus", fil);
-                request.getSession().setAttribute("msgL", "Libro no existe");
+                pg.setMsg("Libro no existe");
                 response.sendRedirect("Intranet/Admin/libros.jsp");
             }
         }
-        
+
         if (acc.equals("Limpiar")) {
-            Object[] fila={"","","","","","","",""};
+            Object[] fila = {"", "", "", "", "", "", "", ""};
             request.getSession().setAttribute("libus", fila);
-            request.getSession().setAttribute("msgL", null);
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
-        
+
         if (acc.equals("Registrar")) {
+            String cargo = request.getParameter("cargo");
+
             String Nombre = request.getParameter("Nombre");
             String Categoria = request.getParameter("Categoria");
             int Stock = Integer.parseInt(request.getParameter("Stock"));
             double Precio = Double.parseDouble(request.getParameter("Precio"));
             String Descripcion = request.getParameter("Descripcion");
             String Portada = request.getParameter("Portada");
+            System.out.println(Categoria);
 
-            String msg=libSer.grabar(Nombre, 10000, Descripcion, Stock, Precio, Portada);
+            String msg = libSer.grabar(Nombre, Categoria, Descripcion, Stock, Precio, Portada);
+            pg.setMsg(msg);
 
             request.getSession().setAttribute("msgL", msg);
-            response.sendRedirect("Intranet/Admin/libros.jsp");
+            if ("Almacen".equals(cargo)) {
+                response.sendRedirect("Intranet/Almacen/Libros.jsp");
+            } else {
+                response.sendRedirect("Intranet/Admin/libros.jsp");
+            }
         }
-        
+
         if (acc.equals("Actualizar")) {
+            String cargo = request.getParameter("cargo");
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
-            String Nombre = request.getParameter("Nombre");
-            String Categoria = request.getParameter("Categoria");
             int Stock = Integer.parseInt(request.getParameter("Stock"));
             double Precio = Double.parseDouble(request.getParameter("Precio"));
             String Descripcion = request.getParameter("Descripcion");
-            String Portada = request.getParameter("Portada");
-            
-            String msg=libSer.actualizar(Codigo, Nombre, 10000, Descripcion, Stock, Precio);
+            System.out.println(Precio);
+            String msg = libSer.actualizar(Codigo, Stock, Precio, Descripcion);
+            pg.setMsg(msg);
+            Object[] fila = libSer.buscar(Codigo);
+            request.getSession().setAttribute("libus", fila);
 
-            if (Portada!="")
-                libSer.actualizarFoto(Portada);
-            
-            Object[] fila=libSer.buscarId(Codigo);
-            
-            request.getSession().setAttribute("msgL", msg);
+            if ("Almacen".equals(cargo)) {
+                response.sendRedirect("Intranet/Almacen/Libros.jsp");
+            } else {
+                response.sendRedirect("Intranet/Admin/libros.jsp");
+            }
+        }
+
+        if (acc.equals("Aceptar Libro")) {
+            int Codigo = Integer.parseInt(request.getParameter("Codigo"));
+            String msg = libSer.actualizarEstado(Codigo, 1);
+            pg.setMsg(msg);
+            Object[] fila = libSer.buscar(Codigo);
+
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
-        
-        if (acc.equals("Eliminar")) {
+        if (acc.equals("Rechazar Libro")) {
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
-            String msg=libSer.eliminar(Codigo);
-            Object[] fila={"","","","","","","","","","","","",""};
-            
-            request.getSession().setAttribute("msgL", msg);
+            String msg = libSer.actualizarEstado(Codigo, 2);
+            pg.setMsg(msg);
+            Object[] fila = libSer.buscar(Codigo);
+
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");
+        }
+
+        if (acc.equals("Eliminar")) {
+            String cargo = request.getParameter("cargo");
+
+            int Codigo = Integer.parseInt(request.getParameter("Codigo"));
+            String msg = libSer.eliminar(Codigo);
+            pg.setMsg(msg);
+            Object[] fila = {"", "", "", "", "", "", "", "", "", "", "", "", ""};
+
+            request.getSession().setAttribute("libus", fila);
+            if ("Almacen".equals(cargo)) {
+                response.sendRedirect("Intranet/Almacen/Libros.jsp");
+            } else {
+                response.sendRedirect("Intranet/Admin/libros.jsp");
+            }
         }
     }
 

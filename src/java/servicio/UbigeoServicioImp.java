@@ -1,6 +1,7 @@
 package servicio;
 
 import java.util.List;
+import negocio.Ubigeo;
 import persistencia.UbigeoDaoImp;
 import persistencia.UbigeoDao;
 
@@ -10,11 +11,6 @@ public class UbigeoServicioImp implements UbigeoServicio {
     public UbigeoServicioImp() {
         ubiDao =new UbigeoDaoImp();
     }
-    
-    @Override
-    public List listarId(String Dep, String Pro, String Dis) {
-        return ubiDao.listarId(Dep, Pro, Dis);
-    }
 
     @Override
     public List listarDep() {
@@ -22,12 +18,14 @@ public class UbigeoServicioImp implements UbigeoServicio {
     }
 
     @Override
-    public List listarPro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List listarPro(String Dep) {
+        Ubigeo ubi=new Ubigeo(Dep);
+        return ubiDao.listarPro(ubi);
     }
 
     @Override
-    public List listarDis() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List listarDis(String Dep, String Pro) {
+        Ubigeo ubi=new Ubigeo(Dep, Pro);
+        return ubiDao.listarDis(ubi);
     }
 }

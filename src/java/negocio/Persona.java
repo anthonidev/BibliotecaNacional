@@ -2,33 +2,37 @@ package negocio;
 
 public class Persona {
     private int codPer;
-    private String Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, IdDist, IdPro, IdDep;
+    private String Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, Dis, Pro, Dep;
     
     public Persona() { }
 
-    public Persona(String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String IdDist, String IdPro, String IdDep) {
+    public Persona(String Nombre, String Apellidos, String Dni, String Direccion, String Telefono, String FechaNa, String Dis, String Pro, String Dep) {
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
         this.Dni = Dni;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
         this.FechaNa = FechaNa;
-        this.IdDist = IdDist;
-        this.IdPro = IdPro;
-        this.IdDep = IdDep;
+        this.Dis = Dis;
+        this.Pro = Pro;
+        this.Dep = Dep;
     }
 
-    public Persona(String Dni, String Direccion, String Telefono, String IdDist, String IdPro, String IdDep) {
+    public Persona(String Dni, String Direccion, String Telefono, String Dis, String Pro, String Dep) {
         this.Dni = Dni;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
-        this.IdDist = IdDist;
-        this.IdPro = IdPro;
-        this.IdDep = IdDep;
+        this.Dis = Dis;
+        this.Pro = Pro;
+        this.Dep = Dep;
     }
 
     public Persona(String Dni) {
         this.Dni = Dni;
+    }
+
+    public Persona(int codPer) {
+        this.codPer = codPer;
     }
 
     public int getCodPer() {
@@ -38,7 +42,6 @@ public class Persona {
     public void setCodPer(int codPer) {
         this.codPer = codPer;
     }
-    
 
     public String getNombre() {
         return Nombre;
@@ -88,27 +91,27 @@ public class Persona {
         this.FechaNa = FechaNa;
     }
 
-    public String getIdDist() {
-        return IdDist;
+    public String getDis() {
+        return Dis;
     }
 
-    public void setIdDist(String IdDist) {
-        this.IdDist = IdDist;
+    public void setDis(String Dis) {
+        this.Dis = Dis;
     }
 
-    public String getIdPro() {
-        return IdPro;
+    public String getPro() {
+        return Pro;
     }
 
-    public void setIdPro(String IdPro) {
-        this.IdPro = IdPro;
+    public void setPro(String Pro) {
+        this.Pro = Pro;
     }
 
-    public String getIdDep() {
-        return IdDep;
+    public String getDep() {
+        return Dep;
     }
 
-    public void setIdDep(String IdDep) {
-        this.IdDep = IdDep;
+    public void setDep(String Dep) {
+        this.Dep = Dep;
     }
 }

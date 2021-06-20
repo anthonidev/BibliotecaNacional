@@ -4,15 +4,15 @@ public class DetallePedido {
     private int IdDetalle,IdPedido,IdLibro,Cantidad;
     private double Precio;
 
+    public DetallePedido() {
+    }
+
     public DetallePedido(int IdDetalle, int IdPedido, int IdLibro, int Cantidad, double Precio) {
         this.IdDetalle = IdDetalle;
         this.IdPedido = IdPedido;
         this.IdLibro = IdLibro;
         this.Cantidad = Cantidad;
         this.Precio = Precio;
-    }
-
-    public DetallePedido() {
     }
 
     public DetallePedido(int IdPedido, int IdLibro, int Cantidad, double Precio) {
@@ -61,5 +61,4 @@ public class DetallePedido {
     public void setPrecio(double Precio) {
         this.Precio = Precio;
     }
-    
 }

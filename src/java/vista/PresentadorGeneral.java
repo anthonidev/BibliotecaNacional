@@ -7,18 +7,46 @@ public class PresentadorGeneral {
     private Object[] pedido = {"", "", "", "", "", "", "", ""};
     private Object[] detalle={"","","",""};
     
-    private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", "", "",""};
+    private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", ""};
     private List listaClienteBuscar = new ArrayList();
-
     
     private List lista = new ArrayList();
     private List listaDetalle = new ArrayList();
     private String msg = "";
-
+    private String ctr="" ;
+   
+    private Object[] UserCliente={"","","",""};
+    private List cliUsu= new ArrayList();
+    
     public PresentadorGeneral() {
-         lista.add(pedido);
-         listaDetalle.add(detalle);
-         listaClienteBuscar.add(cliente);
+        lista.add(pedido);
+        listaDetalle.add(detalle);
+        listaClienteBuscar.add(cliente);
+        cliUsu.add(UserCliente);
+    }
+
+    public String getCtr() {
+        return ctr;
+    }
+
+    public void setCtr(String ctr) {
+        this.ctr = ctr;
+    }
+
+    public Object[] getUserCliente() {
+        return UserCliente;
+    }
+
+    public void setUserCliente(Object[] UserCliente) {
+        this.UserCliente = UserCliente;
+    }
+
+    public List getCliUsu() {
+        return cliUsu;
+    }
+
+    public void setCliUsu(List cliUsu) {
+        this.cliUsu = cliUsu;
     }
 
     public Object[] getCliente() {
@@ -36,7 +64,6 @@ public class PresentadorGeneral {
     public void setListaClienteBuscar(List listaClienteBuscar) {
         this.listaClienteBuscar = listaClienteBuscar;
     }
-
     
     public Object[] getDetalle() {
         return detalle;
@@ -53,7 +80,6 @@ public class PresentadorGeneral {
     public void setListaDetalle(List listaDetalle) {
         this.listaDetalle = listaDetalle;
     }
-    
 
     public Object[] getPedido() {
         return pedido;
@@ -78,8 +104,4 @@ public class PresentadorGeneral {
     public void setMsg(String msg) {
         this.msg = msg;
     }
-
-    
-    
-    
 }

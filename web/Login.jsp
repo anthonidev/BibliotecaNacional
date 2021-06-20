@@ -1,346 +1,114 @@
-<%-- Document : Libros Created on : 10/06/2021, 12:11:07 AM Author : Anthoni
---%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script
-      src="https://kit.fontawesome.com/50872a9b90.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
-    <title>Biblioteca</title>
-  </head>
+    <head>
+        <jsp:include page="./metas-head.jsp" />
+        <title>Biblioteca</title>
+    </head>
+    <body class="d-flex">
+        <main
+            class="container-fluid container_sesion w-100 h-100 p-0 position-relative"
+            >
+            <button
+                class="btn position-absolute pt-3 start-0 z-index"
+                onclick="history.go(-1)"
+                >
+                <img
+                    src="./img/icons/btn-atras.svg"
+                    width="32"
+                    alt=""
+                    class="d-none d-md-block"
+                    />
+                <img
+                    src="./img/icons/btn-atras--white.svg"
+                    width="32"
+                    alt=""
+                    class="d-md-none"
+                    />
+            </button>
 
-  <body class="">
-    <main class="container-fluid p-0">
-      <jsp:include page="navInicio.jsp" />
-
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
-            <div class="card position-fixed">
-              <h5 class="card-title fw-bold text-center">Filtrar</h5>
-
-              <div class="card-body d-flex flex-column">
-                <a href="#" class="btn btn-primary my-2"
-                  >De mayor a menor precio
-                  <i class="fas fa-sort-amount-up-alt"></i
-                ></a>
-
-                <a href="#" class="btn btn-primary my-2"
-                  >De menor a mayor precio
-                  <i class="fas fa-sort-amount-down-alt"></i
-                ></a>
-                <form class="d-flex my-2">
-                  <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                  <button class="btn btn-outline-success" type="submit">
-                    Search
-                  </button>
-                </form>
-              </div>
+            <div
+                class="
+                container-fluid
+                p-0
+                d-none d-md-flex
+                position-relative
+                overflow-hidden
+                m-0
+                bg-white
+                "
+                >
+                <img
+                    class="obj-fit--cover z-index-sec w-100 p-0"
+                    src="https://image.freepik.com/vector-gratis/ilustracion-plana-dia-mundial-libro_23-2148890538.jpg"
+                    alt="..."
+                    />
             </div>
-          </div>
-          <div class="col-9">
-            <div class="row justify-content-around">
-              <div class="col">
-                <div class="card shadow" style="width: 10rem">
+
+            <div class="container-fluid h-100 d-grid p-0 z-index-sec m-0">
+                <div class="row m-0 login_sec__logo">
                     <img
-                      src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
-                      class="card-img-top rounded-3"
-                      alt="..."
-                    />
-                    <div class="card-body position-relative">
-                      <h4>
-                        <span
-                          class="
-                            badge
-                            bg-light
-                            text-dark
-                            position-absolute
-                            precio_card
-                            shadow-sm
-                          "
-                          >S/. 150.00</span
-                        >
-                      </h4>
-                      <h6 class="card-title">Historia De Un Deicidio</h6>
-                      <div class="d-grid gap-2">
-                        <a
-                          href="#"
-                          class="
-                            btn btn-outline-success
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >ver info<i class="fas fa-eye m-0 ms-2"></i
-                        ></a>
-                        <a
-                          href="#"
-                          class="
-                            btn btn-primary
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >Agregar<i class="fas fa-cart-plus m-0 ms-2"></i
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card shadow" style="width: 10rem">
+                        src="./img/logtipo.svg"
+                        class="login_sec__logo--movil d-md-none"
+                        alt=""
+                        />
                     <img
-                      src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
-                      class="card-img-top rounded-3"
-                      alt="..."
-                    />
-                    <div class="card-body position-relative">
-                      <h4>
-                        <span
-                          class="
-                            badge
-                            bg-light
-                            text-dark
-                            position-absolute
-                            precio_card
-                            shadow-sm
-                          "
-                          >S/. 150.00</span
+                        src="./img/logo.svg"
+                        class="login_sec__logo--desktop d-none d-md-block"
+                        alt=""
+                        />
+                </div>
+
+                <div class="row m-0 login_sec__forms px-3">
+                    <h1 class="text-dark text-center fw-bolder m-0 align-self-center p-0">
+                        Iniciar Sesión
+                    </h1>
+                    <form action="ClienteControl" class="d-grid align-item-space-between" method="post">
+                        <div class="form-floating">
+                            <input
+                                type="text"
+                                required
+                                class="form-control"
+                                id="floatingInput"
+                                name="user"
+                                placeholder="Usuario"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-lg"
+                                />
+                            <label for="floatingInput">Usuario</label>
+                        </div>
+                        <div class="form-floating">
+                            <input
+                                type="password"
+                                required
+                                class="form-control"
+                                id="floatingPassword"
+                                placeholder="Contraseña"
+                                name="pass"
+                                aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-lg"
+                                />
+                            <label for="floatingPassword">Contraseña</label>
+                        </div>
+                        <div class="input-group input-group-lg">
+                            <input
+                                type="submit"
+                                name="acc"
+                                value="Iniciar"
+                                class="btn w-100 btn-primary fw-bold"
+                                />
+                        </div>
+                    </form>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <span class="text-dark h6 text-center m-0"
+                              >¿Aun no tienes una cuenta?</span
                         >
-                      </h4>
-                      <h6 class="card-title">Historia De Un Deicidio</h6>
-                      <div class="d-grid gap-2">
-                        <a
-                          href="#"
-                          class="
-                            btn btn-outline-success
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >ver info<i class="fas fa-eye m-0 ms-2"></i
-                        ></a>
-                        <a
-                          href="#"
-                          class="
-                            btn btn-primary
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >Agregar<i class="fas fa-cart-plus m-0 ms-2"></i
-                        ></a>
-                      </div>
+                        <a href="signUp.jsp" class="btn btn-link h5 text-success m-0">
+                            Registrate
+                        </a>
                     </div>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card shadow" style="width: 10rem">
-                    <img
-                      src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
-                      class="card-img-top rounded-3"
-                      alt="..."
-                    />
-                    <div class="card-body position-relative">
-                      <h4>
-                        <span
-                          class="
-                            badge
-                            bg-light
-                            text-dark
-                            position-absolute
-                            precio_card
-                            shadow-sm
-                          "
-                          >S/. 150.00</span
-                        >
-                      </h4>
-                      <h6 class="card-title">Historia De Un Deicidio</h6>
-                      <div class="d-grid gap-2">
-                        <a
-                          href="#"
-                          class="
-                            btn btn-outline-success
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >ver info<i class="fas fa-eye m-0 ms-2"></i
-                        ></a>
-                        <a
-                          href="#"
-                          class="
-                            btn btn-primary
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >Agregar<i class="fas fa-cart-plus m-0 ms-2"></i
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card shadow" style="width: 10rem">
-                    <img
-                      src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
-                      class="card-img-top rounded-3"
-                      alt="..."
-                    />
-                    <div class="card-body position-relative">
-                      <h4>
-                        <span
-                          class="
-                            badge
-                            bg-light
-                            text-dark
-                            position-absolute
-                            precio_card
-                            shadow-sm
-                          "
-                          >S/. 150.00</span
-                        >
-                      </h4>
-                      <h6 class="card-title">Historia De Un Deicidio</h6>
-                      <div class="d-grid gap-2">
-                        <a
-                          href="#"
-                          class="
-                            btn btn-outline-success
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >ver info<i class="fas fa-eye m-0 ms-2"></i
-                        ></a>
-                        <a
-                          href="#"
-                          class="
-                            btn btn-primary
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >Agregar<i class="fas fa-cart-plus m-0 ms-2"></i
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card shadow" style="width: 10rem">
-                    <img
-                      src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
-                      class="card-img-top rounded-3"
-                      alt="..."
-                    />
-                    <div class="card-body position-relative">
-                      <h4>
-                        <span
-                          class="
-                            badge
-                            bg-light
-                            text-dark
-                            position-absolute
-                            precio_card
-                            shadow-sm
-                          "
-                          >S/. 150.00</span
-                        >
-                      </h4>
-                      <h6 class="card-title">Historia De Un Deicidio</h6>
-                      <div class="d-grid gap-2">
-                        <a
-                          href="#"
-                          class="
-                            btn btn-outline-success
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >ver info<i class="fas fa-eye m-0 ms-2"></i
-                        ></a>
-                        <a
-                          href="#"
-                          class="
-                            btn btn-primary
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >Agregar<i class="fas fa-cart-plus m-0 ms-2"></i
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card shadow" style="width: 10rem">
-                    <img
-                      src="https://www.sbs.com.pe/media/catalog/product/cache/image/700x560/06ebfc67bb9ce8f5293116309d79ec73/9/7/9786125020062.jpg"
-                      class="card-img-top rounded-3"
-                      alt="..."
-                    />
-                    <div class="card-body position-relative">
-                      <h4>
-                        <span
-                          class="
-                            badge
-                            bg-light
-                            text-dark
-                            position-absolute
-                            precio_card
-                            shadow-sm
-                          "
-                          >S/. 150.00</span
-                        >
-                      </h4>
-                      <h6 class="card-title">Historia De Un Deicidio</h6>
-                      <div class="d-grid gap-2">
-                        <a
-                          href="#"
-                          class="
-                            btn btn-outline-success
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >ver info<i class="fas fa-eye m-0 ms-2"></i
-                        ></a>
-                        <a
-                          href="#"
-                          class="
-                            btn btn-primary
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                          "
-                          >Agregar<i class="fas fa-cart-plus m-0 ms-2"></i
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-              </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </body>
+        </main>
+    </body>
 </html>

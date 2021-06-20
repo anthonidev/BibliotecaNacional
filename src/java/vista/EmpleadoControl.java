@@ -1,7 +1,6 @@
 package vista;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,34 +8,44 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servicio.*;
 
-@WebServlet(name = "empleadoControl", urlPatterns = {"/empleadoControl"})
+@WebServlet(name = "EmpleadoControl", urlPatterns = {"/EmpleadoControl"})
 public class EmpleadoControl extends HttpServlet {
 
     private CuentaServicio cuSer;
     private EmpleadoServicio empSer;
-    private UbigeoServicio ubiSer;
+    private PresentadorGeneral pg;
 
     public EmpleadoControl() {
         cuSer = new CuentaServicioImp();
         empSer = new EmpleadoServicioImp();
-        ubiSer = new UbigeoServicioImp();
+        pg = new PresentadorGeneral();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String acc = request.getParameter("acc");
-        
+        request.getSession().setAttribute("pg", pg);
+
         if (acc.equals("Iniciar")) {
             String user = request.getParameter("user");
             String pass = request.getParameter("pass");
-            Object[] fil = cuSer.validar(user, pass);
-            
-            if (fil != null) {
-                switch (fil[2].toString()) {
+            Object[] fila = cuSer.validar(user, pass);
+
+            if (fila != null) {
+                System.out.println(fila[2]);
+                switch (fila[2].toString()) {
                     case "admin":
-                        request.getSession().setAttribute("fil", fil);
+                        request.getSession().setAttribute("filaInicio", fila);
                         response.sendRedirect("Intranet/Admin/index.jsp");
+                        break;
+                    case "Recursos Humano":
+                        request.getSession().setAttribute("filaInicio", fila);
+                        response.sendRedirect("Intranet/RRHH/index.jsp");
+                        break;
+                    case "Almacen":
+                        request.getSession().setAttribute("filaInicio", fila);
+                        response.sendRedirect("Intranet/Almacen/index.jsp");
                         break;
                 }
             } else {
@@ -44,31 +53,29 @@ public class EmpleadoControl extends HttpServlet {
                 response.sendRedirect("Intranet.jsp");
             }
         }
-        
-        if (acc.equals("Buscar")) {
-            String Dni=request.getParameter("Dni");
-            Object[] fila=empSer.buscar(Dni);
-            
-            if (fila!=null) {
+
+        if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
+            String Dni = request.getParameter("Dni");
+            Object[] fila = empSer.buscar(Dni);
+
+            if (fila != null) {
                 request.getSession().setAttribute("filaBus", fila);
-                request.getSession().setAttribute("msg", null);
                 response.sendRedirect("Intranet/Admin/empleados.jsp");
             } else {
-                Object[] fil={"","","","","","","","","","","",""};
-                request.getSession().setAttribute("filaBus", fil);
-                request.getSession().setAttribute("msg", "Empleado no existe");
+                pg.setMsg("Empleado no existe");
                 response.sendRedirect("Intranet/Admin/empleados.jsp");
             }
         }
-        
+
         if (acc.equals("Limpiar")) {
-            Object[] fila={"","","","","","","","","","","",""};
+            Object[] fila = {"", "", "", "", "", "", "", "", "", "", "", ""};
             request.getSession().setAttribute("filaBus", fila);
-            request.getSession().setAttribute("msg", null);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
-        
+
         if (acc.equals("Registrar")) {
+            String cargo = request.getParameter("cargo");
+
             String Nombre = request.getParameter("Nombre");
             String Apellidos = request.getParameter("Apellidos");
             String Dni = request.getParameter("Dni");
@@ -78,54 +85,67 @@ public class EmpleadoControl extends HttpServlet {
             String tipo = request.getParameter("tipo");
             String usu = request.getParameter("usuario");
             String pass = request.getParameter("password");
-            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
-            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
-            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
+            String dep = new String(request.getParameter("selectDepartamento").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String pro = new String(request.getParameter("selectProvincia").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String dis = new String(request.getParameter("selectDistrito").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
 
-            List lisId = ubiSer.listarId(dep, pro, dis);
-            Object[] id = (Object[]) lisId.get(1);
-            
-            String msg=empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, id[0].toString(), id[1].toString(), id[2].toString(), usu, pass, tipo);
+            String msg = empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, dis, pro, dep, usu, pass, tipo);
+            pg.setMsg(msg);
 
-            Object[] fila={"","","","","","","","","","","",""};
-            request.getSession().setAttribute("filaBus", fila);
-            request.getSession().setAttribute("msg", msg);
-            response.sendRedirect("Intranet/Admin/empleados.jsp");
+            if ("Recursos Humano".equals(cargo)) {
+                response.sendRedirect("Intranet/RRHH/Empleados.jsp");
+            } else {
+                response.sendRedirect("Intranet/Admin/empleados.jsp");
+            }
         }
-        
+
         if (acc.equals("Actualizar")) {
+            String cargo = request.getParameter("cargo");
             String Dni = request.getParameter("Dni");
             String Telefono = request.getParameter("Telefono");
             String Direccion = request.getParameter("Direccion");
             String tipo = request.getParameter("tipo");
             String pass = request.getParameter("password");
-            String dep = new String(request.getParameter("selectDepartamento2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
-            String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
-            String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"),"UTF-8").replace("_", " ");
-            
-            List lisId = ubiSer.listarId(dep, pro, dis);
-            Object[] id = (Object[]) lisId.get(1);
-            
-            String msg = empSer.actualizar(Direccion, Telefono, id[0].toString(), id[1].toString(), id[2].toString(), Dni, tipo);
-            
-            if (pass!="")
+            String dep = new String(request.getParameter("selectDepartamento2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+           
+
+            String msg = empSer.actualizar(Direccion, Telefono, dis, pro, dep, Dni, tipo);
+
+            if (pass != "") {
                 cuSer.actualizar(pass, Dni);
-            
-            Object[] fila=empSer.buscar(Dni);
-            
-            request.getSession().setAttribute("msg", msg);
+            }
+
+            pg.setMsg(msg);
+            Object[] fila = empSer.buscar(Dni);
             request.getSession().setAttribute("filaBus", fila);
-            response.sendRedirect("Intranet/Admin/empleados.jsp");
+            if ("Recursos Humano".equals(cargo)) {
+                response.sendRedirect("Intranet/RRHH/Empleados.jsp");
+            } else {
+                response.sendRedirect("Intranet/Admin/empleados.jsp");
+            }
         }
-        
+
         if (acc.equals("Eliminar")) {
-            String dni=request.getParameter("Dni");
+            String cargo = request.getParameter("cargo");
+
+            String dni = request.getParameter("Dni");
             String msg = empSer.eliminar(dni);
-            Object[] fila={"","","","","","","","","","","",""};
-            
-            request.getSession().setAttribute("msg", msg);
+            pg.setMsg(msg);
+            Object[] fila = {"", "", "", "", "", "", "", "", "", "", "", ""};
+
             request.getSession().setAttribute("filaBus", fila);
-            response.sendRedirect("Intranet/Admin/empleados.jsp");
+            if ("Recursos Humano".equals(cargo)) {
+                response.sendRedirect("Intranet/RRHH/Empleados.jsp");
+            } else {
+                response.sendRedirect("Intranet/Admin/empleados.jsp");
+            }
+        }
+
+        if (acc.equals("Cerrar")) {
+            request.getSession().invalidate();
+            response.sendRedirect("index.jsp");
         }
     }
 

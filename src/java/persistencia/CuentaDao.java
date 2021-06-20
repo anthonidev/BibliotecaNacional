@@ -1,8 +1,10 @@
 package persistencia;
 
+import negocio.Cuenta;
 import negocio.Presentador;
 
 public interface CuentaDao {
-    public String actualizar(Presentador pre);
-    public Presentador validar(String user, String pass);
+    public void actualizar(Presentador pre);
+    public Presentador validar(Cuenta cu);
+    public Presentador validarCliente(Cuenta cu);
 }

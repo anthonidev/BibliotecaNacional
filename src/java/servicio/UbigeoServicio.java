@@ -3,8 +3,7 @@ package servicio;
 import java.util.List;
 
 public interface UbigeoServicio {
-    public List listarId(String Dep, String Pro, String Dis);
     public List listarDep();
-    public List listarPro();
-    public List listarDis();
+    public List listarPro(String Dep);
+    public List listarDis(String Dep, String Pro);
 }
