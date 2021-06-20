@@ -18,7 +18,7 @@ public class PresentadorGeneral {
     private Object[] UserCliente={"","",""};
     private List cliUsu= new ArrayList();
     
-    private Object[] cart={"","","","",""};
+    private Object[] cart={"","","","","",""};
     private List cartList = new ArrayList();
     
     public PresentadorGeneral() {

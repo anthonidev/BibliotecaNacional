@@ -50,46 +50,69 @@ public class CarritoControl extends HttpServlet {
         
         if (acc.equals("Agregar")) {
             int cod=Integer.parseInt(request.getParameter("codigo"));
+            String foto=request.getParameter("foto");
             String nombre=request.getParameter("nombre");
             double precio=Double.parseDouble(request.getParameter("precio"));
-            String foto=request.getParameter("foto");
-            Object[] lis=new Object[5];
             
-            if (pg.getCartList().size()==1) {
+            boolean bool=true;
+            Object[] lis=new Object[6];
+            int cantidad=1, index=0;
+            double importe=precio;
+
+            if (bool) {
                 lis[0]=cod;
-                lis[1]=nombre;
-                lis[2]=precio;
-                lis[3]=foto;
-                lis[4]=1;
-                pg.addCartList(lis);
-            } else {
-                int can=1;
-                double pre=precio;
-                lis[0]=cod;
-                lis[1]=nombre;
-                lis[3]=foto;
-                
+                lis[1]=foto;
+                lis[2]=nombre;
+                lis[3]=precio;
+                lis[4]=cantidad;
+                lis[5]=importe;
                 for (int i = 1; i < pg.getCartList().size(); i++) {
                     Object[] fi=(Object[]) pg.getCartList().get(i);
                     if (fi[0].equals(cod)) {
-                        can=(int)fi[4];
-                        pg.getCartList().remove(fi);
-                        lis[0]=cod;
-                        lis[1]=nombre;
-                        pre+=(double)fi[2];
-                        lis[3]=foto;
-                        can++;
+                        bool=false;
+                        index=i;
+                        cantidad=(int)fi[4]+1;
+                        importe+=(double)fi[5];
                     }
                 }
-                lis[2]=pre;
-                lis[4]=can;
                 pg.addCartList(lis);
+            } if (!bool) {
+                lis[0]=cod;
+                lis[1]=foto;
+                lis[2]=nombre;
+                lis[3]=precio;
+                lis[4]=cantidad;
+                lis[5]=importe;
+                pg.getCartList().set(index, lis);
+                pg.getCartList().remove(pg.getCartList().size()-1);
+                bool=true;
             }
+            
             response.sendRedirect("Libros.jsp");
         }
         
+        if (acc.equals("actualizar")) {
+            int cod=Integer.parseInt(request.getParameter("codigo"));
+            int cantidad=Integer.parseInt(request.getParameter("cantidad"));
+            Object[] lis=new Object[6];
+            
+            for (int i = 1; i < pg.getCartList().size(); i++) {
+                Object[] fi=(Object[]) pg.getCartList().get(i);
+                if (fi[0].equals(cod)) {
+                    lis[0]=cod;
+                    lis[1]=fi[1];
+                    lis[2]=fi[2];
+                    lis[3]=fi[3];
+                    lis[4]=cantidad;
+                    lis[5]=(double)fi[3]*cantidad;
+                    pg.getCartList().set(i, lis);
+                }
+            }
+            response.sendRedirect("ver-carrito.jsp");
+        }
+        
         if (acc.equals("eliminar")) {
-            String cod=request.getParameter("codigo");
+            int cod=Integer.parseInt(request.getParameter("codigo"));
             for (int i = 1; i < pg.getCartList().size(); i++) {
                 Object[] fi=(Object[]) pg.getCartList().get(i);
                 if (fi[0].equals(cod))
@@ -106,13 +129,13 @@ public class CarritoControl extends HttpServlet {
             
             for (int i = 1; i < pg.getCartList().size(); i++) {
                 Object[] lis=(Object[]) pg.getCartList().get(i);
-                pedSer.grabarDetalle((int)lis[0], (int)lis[4], (double)lis[2]);
+                pedSer.grabarDetalle((int)lis[0], (int)lis[4], (double)lis[3]);
             }
             
             List li=new ArrayList();
-            Object[] libro={"","","",""};
+            Object[] vacio={"","","","","",""};
             pg.setCartList(li);
-            pg.addCartList(libro);
+            pg.addCartList(vacio);
             response.sendRedirect("Libros.jsp");
         }
         

@@ -74,37 +74,37 @@
                                             </div>
                                             <div class="col-12 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%=pedido[0]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[0] %>">
                                                     <label for="floatingInputGrid">Codigo</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%=pedido[1]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[1] %>">
                                                     <label for="floatingInputGrid">Nombre</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%=pedido[2]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[2] %>">
                                                     <label for="floatingInputGrid">Apellidos</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%=pedido[3]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[3] %>">
                                                     <label for="floatingInputGrid">Dni</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%=pedido[4]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[4] %>">
                                                     <label for="floatingInputGrid">Direccion</label>
                                                 </div>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%=pedido[5]%>">
+                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[5] %>">
                                                     <label for="floatingInputGrid">Fecha de pedido</label>
                                                 </div>
                                             </div>
@@ -139,7 +139,7 @@
                                                 <div class="card shadow bg-body rounded border-1 ">
                                                     <div class="card-body  d-flex  justify-content-center">
                                                         <form action="../../PedidoControl" method="post" class="d-flex  justify-content-center ">
-                                                            <input type="hidden" name="cod" value="<%=pedido[0]%>"> 
+                                                            <input type="hidden" name="cod" value="<%= pedido[0] %>"> 
                                                             <input type="submit" name="acc" class="btn btn-success btn-lg  mx-5 fw-bold " value="Aceptar Pedido">
                                                             <input type="submit" name="acc" class="btn btn-danger mx-5 btn-lg fw-bold " value="Rechazar Pedido">
                                                         </form>
@@ -147,11 +147,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 m-auto my-4">
-                                                <div class="card shadow  bg-body rounded border-1">
-                                                    <div class="card-body  d-flex">
-                                                        <a href="#pendientes" class="btn btn-secondary mx-5 fw-bold ">Pedidos Pendientes</a>
-                                                        <a href="#aceptados" class="btn btn-secondary mx-5 fw-bold ">Pedidos Aceptados</a>
-                                                        <a href="#rechazados" class="btn btn-secondary mx-5 fw-bold ">Pedidos Rechazados</a>
+                                                <div class="card shadow bg-body rounded border-1">
+                                                    <div class="card-body d-flex">
+                                                        <a href="#pendientes" class="btn btn-secondary mx-5 fw-bold">Pedidos Pendientes</a>
+                                                        <a href="#aceptados" class="btn btn-secondary mx-5 fw-bold">Pedidos Aceptados</a>
+                                                        <a href="#rechazados" class="btn btn-secondary mx-5 fw-bold">Pedidos Rechazados</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,14 +169,13 @@
                             <% pe.setMsg(""); %>
                             <% } %>
                             <h4 class="fw-bold text-secondary text-center my-4">Detalle del pedido</h4>
-                            <table class="table table-light table-striped  shadow  bg-body rounded border-1 ">
+                            <table class="table table-light table-striped shadow bg-body rounded border-1">
                                 <thead>
                                     <tr>
                                         <th scope="col">Id Detalle</th>
                                         <th scope="col">Nombre del libro</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Precio</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -201,6 +200,19 @@
                                         </th>
                                     </tr>
                                     <% } %>
+                                </tbody>
+                                <tbody>
+                                    <tr class="">
+                                        <th scope="row" colspan="3" class="text-center align-middle">
+                                            Total
+                                        </th>
+                                        <th scope="row">
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-white fw-bold">S/ </span>
+                                                <span class="form-control fw-bold"><%= pedido[7] %>
+                                            </div>
+                                        </th>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -237,7 +249,7 @@
                                     <td>
                                         <div class="input-group mb-3 " style="width: 120px">
                                             <span class="input-group-text">S/.</span>
-                                            <input type="text" value="<%= p[4]%>"  class="form-control " readonly>
+                                            <input type="text" value="<%= p[4] %>"  class="form-control " readonly>
                                         </div>
                                     </td>
                                     <td>

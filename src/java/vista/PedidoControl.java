@@ -3,6 +3,7 @@ package vista;
 import servicio.PedidoServicioImp;
 import servicio.PedidoServicio;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -69,7 +70,9 @@ public class PedidoControl extends HttpServlet {
         
         if (acc.equals("Limpiar")) {
             Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+            List vacio2=new ArrayList();
             pg.setPedido(vacio);
+            pg.setListaDetalle(vacio2);
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
         }
         

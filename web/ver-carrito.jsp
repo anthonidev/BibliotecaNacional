@@ -22,32 +22,37 @@
                                     <th class="text-center py-3 h5 fw-bold">#</th>
                                     <th class="py-3 h5 fw-bold">Portada</th>
                                     <th class="py-3 h5 fw-bold">Nombre</th>
-                                    <th class="py-3 h5 fw-bold">Cantidad</th>
-                                    <th class="py-3 h5 fw-bold">Precio</th>
-                                    <th class="text-center py-3 h5 fw-bold">Eliminar</th>
+                                    <th class="text-center py-3 h5 fw-bold">Precio</th>
+                                    <th class="text-center py-3 h5 fw-bold">Cantidad</th>
+                                    <th class="text-center py-3 h5 fw-bold">Importe</th>
+                                    <th class="text-center py-3 h5 fw-bold">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% for (int i = 1; i < pg.getCartList().size(); i++) {
                                 Object[] lisCar=(Object[]) pg.getCartList().get(i);
-                                total+=(double) lisCar[2]; %>
+                                total+=(double) lisCar[5]; %>
                                 <tr>
                                     <form action="CarritoControl" method="post">
                                         <input type="hidden" name="codigo" value="<%= lisCar[0] %>">
-                                        <td class="text-center align-middle"><%= i %></td>
-                                        <td style="width: 13%"><image class="w-50" src="img/libros/<%= lisCar[3] %>"></td>
-                                        <td class="align-middle"><%= lisCar[1] %></td>
-                                        <td class="align-middle ps-5"><%= lisCar[4] %></td>
-                                        <td class="align-middle">S/ <%= lisCar[2] %></td>
-                                        <td style="width: 15%" class="align-middle text-center"><button type="submit" name="acc" value="eliminar" class="btn btn-danger"><i class="fas fa-trash-alt fs-4"></i></button></td>
+                                        <td style="width: 5%" class="text-center align-middle"><%= i %></td>
+                                        <td style="width: 12%"><image class="w-50" src="img/libros/<%= lisCar[1] %>"></td>
+                                        <td class="align-middle"><%= lisCar[2] %></td>
+                                        <td class="text-center align-middle">S/ <%= lisCar[3] %></td>
+                                        <td class="text-center align-middle"><input type="number" name="cantidad" class="btn btn-dark shadow bg-gradient" value="<%= lisCar[4] %>"></td>
+                                        <td class="text-center align-middle">S/ <%= lisCar[5] %></td>
+                                        <td style="width: 15%" class="align-middle text-center">
+                                            <button type="submit" name="acc" value="actualizar" class="btn btn-success"><i class="fas fa-check fs-4"></i></button>
+                                            <button type="submit" name="acc" value="eliminar" class="btn btn-danger"><i class="fas fa-trash-alt fs-4"></i></button>
+                                        </td>
                                     </form>
                                 </tr>
                                 <% } %>
                             </tbody>
                             <tbody>
                                 <tr class="table-secondary">
-                                    <td colspan="4" class="text-center py-3 h4 fw-bold">TOTAL</td>
-                                    <td class="py-3 h5 fw-bold">S/ <%= total %></td>
+                                    <td colspan="5" class="text-center py-3 h4 fw-bold">TOTAL</td>
+                                    <td class="text-center py-3 h5 fw-bold">S/ <%= total %></td>
                                     <td class="py-3"></td>
                                 </tr>
                             </tbody>
