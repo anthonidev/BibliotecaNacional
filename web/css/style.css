@@ -11805,6 +11805,10 @@ fieldset:disabled .btn {
 /* custom */
 @import url(./style-responsive.css);
 .z-index {
+  z-index: 3;
+}
+
+.z-index-ter{
   z-index: 2;
 }
 
