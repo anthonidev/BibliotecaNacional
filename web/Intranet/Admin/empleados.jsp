@@ -167,24 +167,24 @@
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
-                                            <div class="row px-3">
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                    <input type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            <div class="row px-3 g-1">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input type="text" required class="form-control" placeholder="Nombre" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <label for="floatingInput">Nombre</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                    <input type="text" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input type="text" placeholder="Apellidos" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <label for="floatingInput">Apellidos</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
-                                                    <input type="text" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="8" onkeyup="this.value=Numeros(this.value)">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input type="text" placeholder="DNI" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="8" onkeyup="this.value=Numeros(this.value)">
+                                                    <label for="floatingInput">DNI</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
-                                                    <input type="text" required class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input type="text" required  placeholder="Telefono" class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
+                                                    <label for="floatingInput">Telefono</label>
                                                 </div>
-                                                <div class="col-4 my-2">
+                                                <div class="col-4 my-2 form-floating">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
                                                     <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required>
                                                         <option value="">Seleccione</option>
@@ -230,7 +230,7 @@
                                                     <input type="text" required class="form-control" name="usuario" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                 </div>
                                                 <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Contraseña</span>
                                                     <input type="password" required class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                 </div>
                                             </div>
@@ -307,7 +307,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Contraseña</span>
                                                     <input type="password" placeholder="Ingrese nueva contraseña" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                 </div>
                                             </div>
@@ -323,9 +323,9 @@
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
-                                            <div class="col-12 col-md-7 mt-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">DNI:</span>
-                                                <input name="Dni" required type="text" class="form-control" value="<%= fila[2] %>" maxlength="8" onkeyup="this.value=Numeros(this.value)">
+                                            <div class="col-12 col-md-7 mt-2 form-floating">
+                                                <input name="Dni" placeholder="DNI" required type="text" class="form-control" value="<%= fila[2] %>" maxlength="8" onkeyup="this.value=Numeros(this.value)">
+                                                <label for="floatingInput">DNI</label>
                                             </div>
                                             <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
                                         </form>
