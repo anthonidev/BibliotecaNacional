@@ -1,11 +1,17 @@
 package negocio;
 
 public class Pedido {
-    private int IdPedido, IdPerCli, estado;
+    private int IdPedido, IdPerCli, IdLibro, Cantidad, estado;
     private String fecha;
-    private double Total;
+    private double Total, Precio;
 
     public Pedido() {
+    }
+
+    public Pedido(int IdLibro, int Cantidad, double Precio) {
+        this.IdLibro = IdLibro;
+        this.Cantidad = Cantidad;
+        this.Precio = Precio;
     }
 
     public Pedido(int IdPerCli, String fecha, double Total) {
@@ -19,12 +25,8 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public Pedido(int IdPedido, int IdPerCli, int estado, String fecha, double Total) {
+    public Pedido(int IdPedido) {
         this.IdPedido = IdPedido;
-        this.IdPerCli = IdPerCli;
-        this.estado = estado;
-        this.fecha = fecha;
-        this.Total = Total;
     }
 
     public int getIdPedido() {
@@ -41,6 +43,22 @@ public class Pedido {
 
     public void setIdPerCli(int IdPerCli) {
         this.IdPerCli = IdPerCli;
+    }
+
+    public int getIdLibro() {
+        return IdLibro;
+    }
+
+    public void setIdLibro(int IdLibro) {
+        this.IdLibro = IdLibro;
+    }
+
+    public int getCantidad() {
+        return Cantidad;
+    }
+
+    public void setCantidad(int Cantidad) {
+        this.Cantidad = Cantidad;
     }
 
     public int getEstado() {
@@ -65,5 +83,13 @@ public class Pedido {
 
     public void setTotal(double Total) {
         this.Total = Total;
+    }
+
+    public double getPrecio() {
+        return Precio;
+    }
+
+    public void setPrecio(double Precio) {
+        this.Precio = Precio;
     }
 }

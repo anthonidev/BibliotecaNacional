@@ -1,7 +1,6 @@
 package vista;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,49 +16,42 @@ public class ClienteControl extends HttpServlet {
 
     public ClienteControl() {
         cliSer = new ClienteServicioImp();
+        pg = new PresentadorGeneral();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String acc = request.getParameter("acc");
+        request.getSession().setAttribute("pg", pg);
         
         if (acc.equals("Clientes")) {
-            pg = new PresentadorGeneral();
-            List lista = cliSer.listarCliente();
-            request.getSession().setAttribute("lista", lista);
-            request.getSession().setAttribute("pg", pg);
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
-        
+
         if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
             String dni = request.getParameter("dni");
             Object[] fill = cliSer.buscarCliente(dni);
 
             if (fill != null) {
                 pg.setCliente(fill);
-                List lista = cliSer.listarCliente();
-                request.getSession().setAttribute("lista", lista);
-                request.getSession().setAttribute("fill", fill);
                 response.sendRedirect("Intranet/Admin/cliente.jsp");
             } else {
-                Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-                pg.setCliente(vacio);
                 pg.setMsg("No exite el cliente!!");
                 response.sendRedirect("Intranet/Admin/cliente.jsp");
             }
         }
-        
+
         if (acc.equals("Limpiar")) {
-            Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
+            Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", ""};
             pg.setCliente(vacio);
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
-        
+
         if (acc.equals("Registrar")) {
-            String nommbre = request.getParameter("nom");
+            String nombre = request.getParameter("nom");
             String apellido = request.getParameter("ape");
-            String documento = request.getParameter("dni");
+            String dni = request.getParameter("dni");
             String direccion = request.getParameter("dir");
             String telefono = request.getParameter("tel");
             String fecha = request.getParameter("fec");
@@ -69,29 +61,38 @@ public class ClienteControl extends HttpServlet {
             String usuario = request.getParameter("user");
             String password = request.getParameter("pass");
 
-            String msg = cliSer.grabarCliente(nommbre, apellido, documento, direccion, telefono, fecha, dep, pro, dis, usuario, password);
-            if (msg == null) {
-                List lista = cliSer.listarCliente();
-                request.getSession().setAttribute("lista", lista);
-                pg.setMsg("Cliente registrado exitosamente");
-            } else {
-                pg.setMsg("Error al registrar cliente");
-            }
+            String msg = cliSer.grabarCliente(nombre, apellido, dni, direccion, telefono, fecha, dep, pro, dis, usuario, password);
+            pg.setMsg(msg);
+
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
         
+        if (acc.equals("Actualizar")) {
+            String dni = request.getParameter("dni");
+            String direccion = request.getParameter("direccion");
+            String telefono = request.getParameter("telefono");
+            String dep = new String(request.getParameter("selectDepartamento2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
+            String usuario = request.getParameter("usuario");
+            String password = request.getParameter("password");
+
+            String msg = cliSer.actualizarCliente(dni, direccion, telefono, dep, pro, dis, usuario);
+            Object[] fill = cliSer.buscarCliente(dni);
+            pg.setCliente(fill);
+            pg.setMsg(msg);
+
+            response.sendRedirect("Intranet/Admin/cliente.jsp");
+        }
+
         if (acc.equals("Eliminar")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
             String usu = request.getParameter("usu");
-
             String msg = cliSer.eliminarCliente(cod, usu);
+            Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", ""};
+            pg.setCliente(vacio);
+            pg.setMsg(msg);
 
-            if (msg == null) {
-                Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-                pg.setCliente(vacio);
-                List lista = cliSer.listarCliente();
-                request.getSession().setAttribute("lista", lista);
-            }
             response.sendRedirect("Intranet/Admin/cliente.jsp");
         }
     }

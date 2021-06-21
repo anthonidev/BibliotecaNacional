@@ -33,7 +33,6 @@ public class EmpleadoControl extends HttpServlet {
             Object[] fila = cuSer.validar(user, pass);
             
             if (fila != null) {
-                System.out.println(fila[2]);
                 switch (fila[2].toString()) {
                     case "admin":
                         request.getSession().setAttribute("filaInicio", fila);
@@ -54,8 +53,6 @@ public class EmpleadoControl extends HttpServlet {
                 request.getSession().setAttribute("filaBus", fila);
                 response.sendRedirect("Intranet/Admin/empleados.jsp");
             } else {
-                Object[] fil={"","","","","","","","","","","",""};
-                request.getSession().setAttribute("filaBus", fil);
                 pg.setMsg("Empleado no existe");
                 response.sendRedirect("Intranet/Admin/empleados.jsp");
             }
@@ -84,8 +81,6 @@ public class EmpleadoControl extends HttpServlet {
             String msg=empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, dis, pro, dep, usu, pass, tipo);
             pg.setMsg(msg);
             
-            Object[] fila={"","","","","","","","","","","",""};
-            request.getSession().setAttribute("filaBus", fila);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
         }
         
@@ -119,6 +114,11 @@ public class EmpleadoControl extends HttpServlet {
             
             request.getSession().setAttribute("filaBus", fila);
             response.sendRedirect("Intranet/Admin/empleados.jsp");
+        }
+        
+        if (acc.equals("Cerrar")) {
+            request.getSession().invalidate();
+            response.sendRedirect("index.jsp");
         }
     }
 

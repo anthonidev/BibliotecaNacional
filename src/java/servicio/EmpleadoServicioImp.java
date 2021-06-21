@@ -29,8 +29,9 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
     }
 
     @Override
-    public Object[] buscar(String Dni) {
-        Presentador pre=empDao.buscar(Dni);
+    public Object[] buscar(String dni) {
+        Persona per=new Persona(dni);
+        Presentador pre=empDao.buscar(per);
         if(pre!=null){
             Object[]fil=new Object[12];
             fil[0]=pre.getPer().getNombre();
@@ -64,7 +65,8 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
 
     @Override
     public String eliminar(String dni) {
-        String msg=empDao.eliminar(dni);
+        Persona per=new Persona(dni);
+        String msg=empDao.eliminar(per);
         
         if (msg==null) {
             msg="Empleado eliminado";

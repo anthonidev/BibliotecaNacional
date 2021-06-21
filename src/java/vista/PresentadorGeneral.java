@@ -7,17 +7,50 @@ public class PresentadorGeneral {
     private Object[] pedido = {"", "", "", "", "", "", "", ""};
     private Object[] detalle={"","","",""};
     
-    private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", "", "",""};
+    private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", ""};
     private List listaClienteBuscar = new ArrayList();
     
     private List lista = new ArrayList();
     private List listaDetalle = new ArrayList();
     private String msg = "";
-
+    private String ctr="" ;
+   
+    private Object[] UserCliente={"","",""};
+    private List cliUsu= new ArrayList();
+    
+    private Object[] cart={"","","","","",""};
+    private List cartList = new ArrayList();
+    
     public PresentadorGeneral() {
         lista.add(pedido);
         listaDetalle.add(detalle);
         listaClienteBuscar.add(cliente);
+        cliUsu.add(UserCliente);
+        cartList.add(cart);
+    }
+
+    public String getCtr() {
+        return ctr;
+    }
+
+    public void setCtr(String ctr) {
+        this.ctr = ctr;
+    }
+
+    public Object[] getUserCliente() {
+        return UserCliente;
+    }
+
+    public void setUserCliente(Object[] UserCliente) {
+        this.UserCliente = UserCliente;
+    }
+
+    public List getCliUsu() {
+        return cliUsu;
+    }
+
+    public void setCliUsu(List cliUsu) {
+        this.cliUsu = cliUsu;
     }
 
     public Object[] getCliente() {
@@ -74,5 +107,17 @@ public class PresentadorGeneral {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public List getCartList() {
+        return cartList;
+    }
+
+    public void setCartList(List cartList) {
+        this.cartList = cartList;
+    }
+
+    public void addCartList(Object[] cartList) {
+        this.cartList.add(cartList);
     }
 }

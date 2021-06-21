@@ -12,13 +12,10 @@ public class BoletaDaoimp implements BoletaDao {
     @Override
     public BoletaDao buscarBoleta(String cod) {
         return null;
-
     }
 
     @Override
     public List listarBoleta() {
         return null;
-
     }
-
 }

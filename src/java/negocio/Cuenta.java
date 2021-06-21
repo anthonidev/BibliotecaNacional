@@ -1,7 +1,6 @@
 package negocio;
 
 public class Cuenta {
-    private int IdCuenta;
     private String user,pass;
 
     public Cuenta() {
@@ -14,14 +13,6 @@ public class Cuenta {
 
     public Cuenta(String pass) {
         this.pass = pass;
-    }
-
-    public int getIdCuenta() {
-        return IdCuenta;
-    }
-
-    public void setIdCuenta(int IdCuenta) {
-        this.IdCuenta = IdCuenta;
     }
 
     public String getUser() {

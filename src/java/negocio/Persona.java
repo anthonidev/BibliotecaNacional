@@ -31,6 +31,10 @@ public class Persona {
         this.Dni = Dni;
     }
 
+    public Persona(int codPer) {
+        this.codPer = codPer;
+    }
+
     public int getCodPer() {
         return codPer;
     }

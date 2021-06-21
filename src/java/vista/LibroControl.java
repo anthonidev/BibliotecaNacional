@@ -54,7 +54,6 @@ public class LibroControl extends HttpServlet {
             double Precio = Double.parseDouble(request.getParameter("Precio"));
             String Descripcion = request.getParameter("Descripcion");
             String Portada = request.getParameter("Portada");
-            System.out.println(Categoria);
 
             String msg=libSer.grabar(Nombre, Categoria, Descripcion, Stock, Precio, Portada);
             pg.setMsg(msg);
@@ -68,7 +67,6 @@ public class LibroControl extends HttpServlet {
             int Stock = Integer.parseInt(request.getParameter("Stock"));
             double Precio = Double.parseDouble(request.getParameter("Precio"));
             String Descripcion = request.getParameter("Descripcion");
-            System.out.println(Precio);
             String msg=libSer.actualizar(Codigo, Stock, Precio, Descripcion);
             pg.setMsg(msg);
             Object[] fila=libSer.buscar(Codigo);

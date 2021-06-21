@@ -3,20 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/Login.jsp</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/index.jsp</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/persistencia/PedidoDao.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/CuentaServicio.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/persistencia/CuentaDao.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/CuentaServicioImp.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/persistencia/PedidoDaoImp.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/persistencia/Conexion.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/EmpleadoServicio.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/PedidoServicio.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/LibroServicioImp.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/LibroServicio.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/src/java/servicio/EmpleadoServicioImp.java</file>
-            <file>file:/C:/Users/angel/OneDrive/Escritorio/BibliotecaNacional-main/web/signUp.jsp</file>
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/ver-carrito.jsp</file>
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/src/java/vista/CarritoControl.java</file>
         </group>
     </open-files>
 </project-private>

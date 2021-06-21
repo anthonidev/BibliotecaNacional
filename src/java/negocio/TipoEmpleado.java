@@ -7,11 +7,6 @@ public class TipoEmpleado {
 
     public TipoEmpleado() {
     }
-
-    public TipoEmpleado(int idTip, String nombre) {
-        this.idTip = idTip;
-        this.nombre = nombre;
-    }
     
     public TipoEmpleado(String nombre) {
         this.nombre = nombre;

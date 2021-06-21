@@ -1,8 +1,16 @@
-
-<%-- Document : navInicio Created on : 05/06/2021, 02:02:25 PM Author : Anthoni
---%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.lang.Object"%>
+<%@page import="vista.PresentadorGeneral"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- navbar -->
+<%! String ctr = ""; %>
+<% PresentadorGeneral pg = (PresentadorGeneral) session.getAttribute("pg");
+    Object fila = session.getAttribute("fila");
+    Object[] online = {"", "", ""};
+    if (fila != null) {
+        online = pg.getUserCliente();
+    }
+%>
 <nav
     class=" z-index
     navbar navbar-light
@@ -14,7 +22,7 @@
     ms-2
     shadow
     d-lg-none
-    
+
     "
     >
     <div class="container">
@@ -53,6 +61,7 @@
                     <span class="d-none d-lg-block"> Informacion </span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a
                     class="mb-0 nav-link active h5"
@@ -106,7 +115,7 @@
 </nav>
 
 <nav
-    class=" navbar_desktop
+    class="navbar_desktop
     flex-column flex-shrink-0
     navbar-light
     bg-nav-bar
@@ -125,13 +134,13 @@
         navbar-nav
         d-flex
         align-content-center
-        w-100
+        w-100 h-100
         "
         >
         <li class="nav-item">
             <a class="mb-0 d-flex align-items-center nav-link active h5" aria-current="page" href="index.jsp">
                 <span class="icon-navbar_desktop">
-                    <img src="./img/icons/btn-inicio.svg" alt="" width="" />
+                    <i class="fas fa-home fs-2 text-secondary"></i>
                 </span>
                 <span class="d-none d-lg-block justify-self-center ms-4"> Inicio </span>
             </a>
@@ -143,7 +152,7 @@
                 href="Libros.jsp"
                 >
                 <span class="icon-navbar_desktop">
-                    <img src="./img/icons/btn-buscar.svg" alt="" width="" />
+                    <i class="fas fa-search fs-2 text-secondary"></i>
                 </span>
                 <span class="d-none d-lg-block justify-self-center ms-4"> Libros </span>
             </a>
@@ -151,11 +160,31 @@
         <li class="nav-item">
             <a class="mb-0 d-flex align-items-center nav-link active h5" aria-current="page" href="#">
                 <span class="icon-navbar_desktop">
-                    <img src="./img/icons/btn-biblioteca.svg" alt="" width="" />
+                    <i class="fas fa-bookmark fs-2 text-secondary"></i>
                 </span>
                 <span class="d-none d-lg-block justify-self-center ms-4"> Informacion </span>
             </a>
         </li>
+        <% if (online[0] != online[2]) { %>
+        <li class="nav-item">
+            <div class="px-4 py-2 d-flex flex-column m-auto">
+                <span class="d-none d-lg-block m-auto">Bienvenido</span>
+                <span class="d-none d-lg-block m-auto fw-bold text-uppercase fs-5"><%= online[1] %></span>
+            </div>
+            <form action="CarritoControl" method="post" class="mb-3 m-auto w-75">
+                <input type="submit" name="acc" class="btn-danger btn w-100 " value="Cerrar">
+            </form>
+        </li>
+        <li class="nav-item position-absolute bottom-0 start-0 my-5 pb-5 d-flex w-100">
+            <form action="CarritoControl" method="post" class="m-auto nav-link active">
+                <button type="submit" name="acc" value="carrito" class="d-flex align-items-center border-0 position-relative btn-primary shadow rounded py-2 px-4">
+                    <i class="fas fa-shopping-cart fs-3 text-secondary me-2"></i>Ver carrito
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-gradient bg-info fs-6"><%= pg.getCartList().size()-1 %></span>
+                </button>
+            </form>
+        </li>
+        <% } %>
+
         <li class="nav-item position-absolute nav-bar_desktop__sesion">
             <hr>
             <a

@@ -15,11 +15,10 @@ public class EmpleadoDaoImp implements EmpleadoDao {
     }
 
     @Override
-    public Presentador buscar(String dni) {
-        String sql = "call SP_BUSCAREMPLEADO("+dni+")";
+    public Presentador buscar(Persona per) {
+        String sql = "call SP_BUSCAREMPLEADO("+per.getDni()+")";
         Object[] fill = Operacion.buscar(sql);
         if (fill != null) {
-            Persona per = new Persona();
             Cuenta cu=new Cuenta();
             TipoEmpleado tip=new TipoEmpleado();
             
@@ -49,8 +48,8 @@ public class EmpleadoDaoImp implements EmpleadoDao {
     }
 
     @Override
-    public String eliminar(String dni) {
-        String sql = "call SP_ELIMINAREMPLEADO('"+dni+"')";
+    public String eliminar(Persona per) {
+        String sql = "call SP_ELIMINAREMPLEADO('"+per.getDni()+"')";
         return Operacion.ejecutar(sql);
     }
 

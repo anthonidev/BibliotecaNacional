@@ -1,9 +1,3 @@
-<%-- 
-    Document   : libros
-    Created on : 05/06/2021, 02:24:54 PM
-    Author     : Anthoni
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="servicio.LibroServicio"%>
 <%@page import="servicio.LibroServicioImp"%>
@@ -157,8 +151,8 @@
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
-                                        <form action="../../LibroControl" method="post">
-                                            <div class="row">
+                                        <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
+                                            <div class="row px-3">
                                                 <div class="col-6">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
                                                     <input type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
@@ -192,10 +186,8 @@
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Portada</span>
                                                     <input type="file" required class="form-control" name="Portada" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                 </div>
-                                                <div class="input-group input-group-lg mt-2">
-                                                    <input type="submit" name="acc" value="Registrar" class="btn w-100 btn-primary fw-bold">
-                                                </div>
                                             </div>
+                                            <input type="submit" name="acc" value="Registrar" class="btn btn btn-primary w-75 btn-lg my-2">
                                         </form>
                                     </div>
                                 </div>
@@ -215,30 +207,28 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <form action="../../LibroControl" method="post" class="mx-3">
-                                            <div class="d-flex flex-column align-items-center justify-content-center w-100">
-                                                <div class="row">
-                                                    <div>
-                                                        <input type="hidden" name="Codigo" value="<%= fila[0] %>">
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Stock</span>
-                                                        <input type="text" required class="form-control" name="Stock" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
-                                                    </div>
-                                                    <div class="col-6 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                        <div class="input-group">
-                                                            <span class="input-group-text">S/.</span>
-                                                            <input type="text" name="Precio" value="<%= fila[6]%>"  class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 my-2">
-                                                        <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
-                                                        <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"><%= fila[3] %></textarea>
+                                        <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
+                                            <div class="row px-3">
+                                                <div>
+                                                    <input type="hidden" name="Codigo" value="<%= fila[0] %>">
+                                                </div>
+                                                <div class="col-6 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Stock</span>
+                                                    <input type="text" required class="form-control" name="Stock" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
+                                                </div>
+                                                <div class="col-6 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">S/.</span>
+                                                        <input type="text" name="Precio" value="<%= fila[6]%>"  class="form-control">
                                                     </div>
                                                 </div>
-                                                <input type="submit" class="btn btn btn-secondary w-75 m-3 btn-lg" name="acc" value="Actualizar">
+                                                <div class="col-12 my-2">
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
+                                                    <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"><%= fila[3] %></textarea>
+                                                </div>
                                             </div>
+                                            <input type="submit" class="btn btn btn-secondary w-75 my-2 btn-lg" name="acc" value="Actualizar">
                                         </form>
                                     </div>
                                 </div>
@@ -249,15 +239,12 @@
                                 </h2>
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
-                                        <form action="../../LibroControl" method="post">
-                                            <div class="row d-flex align-items-center justify-content-center w-100 ">
-                                                <div class="col-12 col-md-7">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Código:</span>
-                                                    <input name="Codigo" required type="text" class="form-control" value="<%= fila[0] %>" maxlength="5" onkeyup="this.value=Numeros(this.value)">
-                                                </div>
-                                                
-                                                <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
+                                        <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
+                                            <div class="col-12 col-md-7 mt-2">
+                                                <span class="input-group-text" id="inputGroup-sizing-lg">Código:</span>
+                                                <input name="Codigo" required type="text" class="form-control" value="<%= fila[0] %>" maxlength="5" onkeyup="this.value=Numeros(this.value)">
                                             </div>
+                                            <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
                                         </form>
                                     </div>
                                 </div>

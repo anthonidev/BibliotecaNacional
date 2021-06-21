@@ -7,11 +7,6 @@ public class CategoriaLibro {
     public CategoriaLibro() {
     }
 
-    public CategoriaLibro(int idCat, String nombre) {
-        this.idCat = idCat;
-        this.nombre = nombre;
-    }
-
     public int getIdCat() {
         return idCat;
     }

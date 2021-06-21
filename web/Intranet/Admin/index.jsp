@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 05/06/2021, 02:23:32 PM
-    Author     : Anthoni
---%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.google.gson.Gson"%>

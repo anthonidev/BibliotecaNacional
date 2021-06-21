@@ -6,11 +6,10 @@ import negocio.Libro;
 public class LibroDaoImp implements LibroDao {
 
     @Override
-    public Libro buscar(int idLibro) {
-        String sql = "call SP_BUSCARLIBRO("+idLibro+")";
+    public Libro buscar(Libro lib) {
+        String sql = "call SP_BUSCARLIBRO("+lib.getIdLibro()+")";
         Object[] fill = Operacion.buscar(sql);
         if (fill != null) {
-            Libro lib = new Libro();
             lib.setIdLibro((int) fill[0]);
             lib.setNombre(fill[1].toString());
             lib.setCategoria(fill[2].toString());
@@ -32,20 +31,19 @@ public class LibroDaoImp implements LibroDao {
 
     @Override
     public String actualizar(Libro lib) {
-        System.out.println(lib.getPrecio());
         String sql="call SP_ACTUALIZARLIBRO("+lib.getIdLibro()+","+lib.getStock()+","+lib.getPrecio()+",'"+lib.getDescripcion()+"')";
         return Operacion.ejecutar(sql);
     }
 
     @Override
-    public String actualizarEstado(int idLibro, int estado) {
-        String sql="call SP_ACTUALIZARESTADO("+idLibro+","+estado+")";
+    public String actualizarEstado(Libro lib) {
+        String sql="call SP_ACTUALIZARESTADO("+lib.getIdLibro()+","+lib.getEstado()+")";
         return Operacion.ejecutar(sql);
     }
 
     @Override
-    public String eliminar(int idLibro) {
-        String sql = "call SP_ELIMINARLIBRO("+idLibro+")";
+    public String eliminar(Libro lib) {
+        String sql = "call SP_ELIMINARLIBRO("+lib.getIdLibro()+")";
         return Operacion.ejecutar(sql);
     }
 
