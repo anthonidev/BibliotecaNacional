@@ -1,6 +1,8 @@
 package servicio;
 
+import java.io.InputStream;
 import java.util.List;
+import javax.xml.bind.DatatypeConverter;
 import negocio.Libro;
 import persistencia.LibroDaoImp;
 import persistencia.LibroDao;
@@ -13,8 +15,8 @@ public class LibroServicioImp implements LibroServicio {
     }
     
     @Override
-    public String grabar(String nombre, String categoria, String descripcion, int stock, double precio, String foto) {
-        Libro lib = new Libro(stock, nombre, categoria, descripcion, foto, precio);
+    public String grabar(String nombre, int idCategoria, String descripcion, int stock, double precio, InputStream portada) {
+        Libro lib = new Libro(stock, nombre, idCategoria, descripcion, portada, precio);
         String msg = libDao.grabar(lib);
         if (msg==null)
             msg="Libro Grabado";
@@ -34,7 +36,11 @@ public class LibroServicioImp implements LibroServicio {
             fil[4]=lib.getStock();
             fil[5]=lib.getEstado();
             fil[6]=lib.getPrecio();
-            fil[7]="../../img/libros/"+lib.getFoto();
+
+            String data = DatatypeConverter.printBase64Binary(lib.getFoto());
+            String src = "data:image/png;base64," + data;
+            fil[7] = src;
+            
             return fil;
         }
         return null;

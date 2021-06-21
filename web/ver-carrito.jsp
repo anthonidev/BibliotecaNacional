@@ -36,10 +36,10 @@
                                     <form action="CarritoControl" method="post">
                                         <input type="hidden" name="codigo" value="<%= lisCar[0] %>">
                                         <td style="width: 5%" class="text-center align-middle"><%= i %></td>
-                                        <td style="width: 12%"><image class="w-50" src="img/libros/<%= lisCar[1] %>"></td>
+                                        <td style="width: 12%"><image class="w-50" src="<%= lisCar[1] %>"></td>
                                         <td class="align-middle"><%= lisCar[2] %></td>
                                         <td class="text-center align-middle">S/ <%= lisCar[3] %></td>
-                                        <td class="text-center align-middle"><input type="number" name="cantidad" class="btn btn-dark shadow bg-gradient" value="<%= lisCar[4] %>"></td>
+                                        <td style="width: 20%" class="text-center align-middle"><input type="number" name="cantidad" class="btn btn-dark shadow bg-gradient w-50" value="<%= lisCar[4] %>"></td>
                                         <td class="text-center align-middle">S/ <%= lisCar[5] %></td>
                                         <td style="width: 15%" class="align-middle text-center">
                                             <button type="submit" name="acc" value="actualizar" class="btn btn-success"><i class="fas fa-check fs-4"></i></button>

@@ -108,7 +108,7 @@
                                         <div class="col-4 mt-3" id="mostrar">
                                             <div class="form-floating">
                                                 <input type="image" class="form-control" src="<%= fila[7] %>" value="" style="height: 35vh;" readonly>
-                                                <label for="floatingInputGrid">Portada</label>
+                                                <label class="ms-3 text-center w-100" for="floatingInputGrid">Portada</label>
                                             </div>
                                         </div>
                                         <div class="col-6 mt-3" id="mostrar">
@@ -157,7 +157,7 @@
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
-                                        <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
+                                        <form action="../../LibroControl" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
                                             <div class="row px-3">
                                                 <div class="col-6">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
@@ -190,7 +190,7 @@
                                                 </div>
                                                 <div class="col-12 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Portada</span>
-                                                    <input type="file" required class="form-control" name="Portada" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <input type="file" accept="image/*" required class="form-control" name="Portada" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                 </div>
                                             </div>
                                             <input type="submit" name="acc" value="Registrar" class="btn btn btn-primary w-75 btn-lg my-2">

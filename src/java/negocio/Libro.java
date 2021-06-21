@@ -1,19 +1,23 @@
 package negocio;
 
+import java.io.InputStream;
+
 public class Libro {
-    private int IdLibro, Stock, Estado;
-    private String Nombre,Categoria,Descripcion,Foto;
+    private int IdLibro, IdCategoria, Stock, Estado;
+    private String Nombre, Categoria, Descripcion;
     private double Precio;
+    private byte[] Foto;
+    private InputStream Portada;
 
     public Libro() {
     }
 
-    public Libro(int Stock, String Nombre, String Categoria, String Descripcion, String Foto, double Precio) {
+    public Libro(int Stock, String Nombre, int IdCategoria, String Descripcion, InputStream Portada, double Precio) {
         this.Stock = Stock;
         this.Nombre = Nombre;
-        this.Categoria = Categoria;
+        this.IdCategoria = IdCategoria;
         this.Descripcion = Descripcion;
-        this.Foto = Foto;
+        this.Portada = Portada;
         this.Precio = Precio;
     }
 
@@ -73,6 +77,14 @@ public class Libro {
         this.Categoria = Categoria;
     }
 
+    public int getIdCategoria() {
+        return IdCategoria;
+    }
+
+    public void setIdCategoria(int IdCategoria) {
+        this.IdCategoria = IdCategoria;
+    }
+
     public String getDescripcion() {
         return Descripcion;
     }
@@ -81,19 +93,27 @@ public class Libro {
         this.Descripcion = Descripcion;
     }
 
-    public String getFoto() {
-        return Foto;
-    }
-
-    public void setFoto(String Foto) {
-        this.Foto = Foto;
-    }
-
     public double getPrecio() {
         return Precio;
     }
 
     public void setPrecio(double Precio) {
         this.Precio = Precio;
+    }
+
+    public byte[] getFoto() {
+        return Foto;
+    }
+
+    public void setFoto(byte[] Foto) {
+        this.Foto = Foto;
+    }
+
+    public InputStream getPortada() {
+        return Portada;
+    }
+
+    public void setPortada(InputStream Portada) {
+        this.Portada = Portada;
     }
 }

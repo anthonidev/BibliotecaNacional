@@ -12,20 +12,9 @@
             >
             <button
                 class="btn position-absolute pt-3 start-0 z-index"
-                onclick="history.go(-1)"
-                >
-                <img
-                    src="./img/icons/btn-atras.svg"
-                    width="32"
-                    alt=""
-                    class="d-none d-md-block"
-                    />
-                <img
-                    src="./img/icons/btn-atras--white.svg"
-                    width="32"
-                    alt=""
-                    class="d-md-none"
-                    />
+                onclick="location.href='Login.jsp'"
+                ><i class="d-md-none text-light fas fa-arrow-left h1 ms-2"></i>
+                <i class="d-none d-md-block fas fa-arrow-left h1 ms-2"></i>
             </button>
 
             <div

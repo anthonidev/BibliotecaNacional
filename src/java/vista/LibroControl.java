@@ -1,15 +1,19 @@
 package vista;
 
 import java.io.IOException;
+import java.io.InputStream;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import servicio.LibroServicioImp;
 import servicio.LibroServicio;
 
 @WebServlet(name = "LibroControl", urlPatterns = {"/LibroControl"})
+@MultipartConfig // anotacion
 public class LibroControl extends HttpServlet {
 
     private LibroServicio libSer;
@@ -21,6 +25,11 @@ public class LibroControl extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         String acc = request.getParameter("acc");
@@ -49,16 +58,16 @@ public class LibroControl extends HttpServlet {
         
         if (acc.equals("Registrar")) {
             String Nombre = request.getParameter("Nombre");
-            String Categoria = request.getParameter("Categoria");
+            int idCategoria = Integer.parseInt(request.getParameter("Categoria"));
             int Stock = Integer.parseInt(request.getParameter("Stock"));
             double Precio = Double.parseDouble(request.getParameter("Precio"));
             String Descripcion = request.getParameter("Descripcion");
-            String Portada = request.getParameter("Portada");
+            Part filePart =request.getPart("Portada");
+            InputStream portada = filePart.getInputStream();
 
-            String msg=libSer.grabar(Nombre, Categoria, Descripcion, Stock, Precio, Portada);
+            String msg=libSer.grabar(Nombre, idCategoria, Descripcion, Stock, Precio, portada);
             pg.setMsg(msg);
 
-            request.getSession().setAttribute("msgL", msg);
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
         
@@ -117,20 +126,6 @@ public class LibroControl extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }

@@ -1,3 +1,4 @@
+<%@page import="javax.xml.bind.DatatypeConverter"%>
 <%@page import="vista.PresentadorGeneral"%>
 <%@page import="java.util.List"%>
 <%@page import="servicio.LibroServicio"%>
@@ -32,10 +33,12 @@
                         <div class="row overflow-auto m-0 flex-nowrap pb-1 group-card--custom group-card--custom--busqueda container__sec--bottom w-100">
                             <% for (int i = 1; i < lis.size(); i++) {
                                 Object[] libro=(Object[])lis.get(i);
+                                String data = DatatypeConverter.printBase64Binary((byte[])libro[7]);
+                                String src = "data:image/png;base64," + data;
                                 if (libro[5].equals(1)) { %>
                             <form action="CarritoControl" method="post" class="col">
                                 <div class="card shadow card--libro">
-                                    <img src="img/libros/portada-libro.jpg" class="card-img-top rounded-3" />
+                                    <img src="<%= src %>" class="card-img-top rounded-3" />
                                     <div class="card-body position-relative">
                                         <h4>
                                             <span class="badge bg-light text-dark position-absolute precio_card shadow-sm">S/ <%= libro[6] %></span>
@@ -45,7 +48,7 @@
                                             <input type="hidden" name="codigo" value="<%= libro[0] %>">
                                             <input type="hidden" name="nombre" value="<%= libro[1] %>">
                                             <input type="hidden" name="precio" value="<%= libro[6] %>">
-                                            <input type="hidden" name="foto" value="<%= libro[7] %>">
+                                            <input type="hidden" name="foto" value="<%= src %>">
                                             <button type="submit" name="acc" value="Ver info" class="btn btn-outline-success d-flex justify-content-center align-items-center">Ver info<i class="fas fa-eye m-0 ms-2"></i></button>
                                             <button type="submit" name="acc" value="Agregar" class="btn btn-primary d-flex justify-content-center align-items-center">Agregar<i class="fas fa-cart-plus m-0 ms-2"></i></button>
                                         </div>

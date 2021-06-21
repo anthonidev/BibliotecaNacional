@@ -25,7 +25,6 @@ public class PedidoServicioImp implements PedidoServicio {
     public String grabarPedido(int IdPerCli, double Total) {
         Pedido Pe = new Pedido(IdPerCli, getFecha(), Total);
         String msg = peDao.grabarPedido(Pe);
-        System.out.println(msg);
         if (msg==null)
             msg="Pedido Grabado";
         return msg;
@@ -35,7 +34,6 @@ public class PedidoServicioImp implements PedidoServicio {
     public String grabarDetalle(int IdLibro, int Cantidad, double Precio) {
         Pedido Pe = new Pedido(IdLibro, Cantidad, Precio);
         String msg = peDao.grabarDetalle(Pe);
-        System.out.println(msg);
         if (msg==null)
             msg="Pedido Grabado";
         return msg;

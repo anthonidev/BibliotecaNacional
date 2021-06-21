@@ -17,7 +17,7 @@ public class LibroDaoImp implements LibroDao {
             lib.setStock((int) fill[4]);
             lib.setEstado((int) fill[5]);
             lib.setPrecio((double) fill[6]);
-            lib.setFoto(fill[7].toString());
+            lib.setFoto((byte[]) fill[7]);
             return lib;
         }
         return null;
@@ -25,8 +25,8 @@ public class LibroDaoImp implements LibroDao {
     
     @Override
     public String grabar(Libro lib) {
-        String sql = "call SP_GRABARLIBRO('"+lib.getNombre()+"','"+lib.getCategoria()+"','"+lib.getDescripcion()+"',"+lib.getStock()+","+lib.getPrecio()+",'"+lib.getFoto()+"')";
-        return Operacion.ejecutar(sql);
+        String sql = "call SP_GRABARLIBRO(?,?,?,?,?,?)";
+        return Operacion.grabarImagen(sql, lib);
     }
 
     @Override
