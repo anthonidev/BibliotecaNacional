@@ -24,6 +24,7 @@
                 "
                 type="submit">
                 <i class="d-sm-none d-flex pt-1 pb-1 fas fa-search fs-5 text-dark"></i>
+
                 <span class="d-none d-sm-block"> Buscar </span>
             </button>
         </form>

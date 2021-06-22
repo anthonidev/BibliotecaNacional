@@ -13,7 +13,9 @@ import servicio.LibroServicioImp;
 import servicio.LibroServicio;
 
 @WebServlet(name = "LibroControl", urlPatterns = {"/LibroControl"})
+
 @MultipartConfig // anotacion
+
 public class LibroControl extends HttpServlet {
 
     private LibroServicio libSer;
@@ -23,7 +25,7 @@ public class LibroControl extends HttpServlet {
         libSer = new LibroServicioImp();
         pg = new PresentadorGeneral();
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
@@ -40,23 +42,26 @@ public class LibroControl extends HttpServlet {
             Object[] fila=libSer.buscar(cod);
             
             if (fila!=null) {
+
                 request.getSession().setAttribute("libus", fila);
                 response.sendRedirect("Intranet/Admin/libros.jsp");
             } else {
-                Object[] fil={"","","","","","","",""};
+                Object[] fil = {"", "", "", "", "", "", "", ""};
                 request.getSession().setAttribute("libus", fil);
                 pg.setMsg("Libro no existe");
                 response.sendRedirect("Intranet/Admin/libros.jsp");
             }
         }
-        
+
         if (acc.equals("Limpiar")) {
-            Object[] fila={"","","","","","","",""};
+            Object[] fila = {"", "", "", "", "", "", "", ""};
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
-        
+
         if (acc.equals("Registrar")) {
+            String cargo = request.getParameter("cargo");
+
             String Nombre = request.getParameter("Nombre");
             int idCategoria = Integer.parseInt(request.getParameter("Categoria"));
             int Stock = Integer.parseInt(request.getParameter("Stock"));
@@ -69,9 +74,11 @@ public class LibroControl extends HttpServlet {
             pg.setMsg(msg);
 
             response.sendRedirect("Intranet/Admin/libros.jsp");
+
         }
-        
+
         if (acc.equals("Actualizar")) {
+            String cargo = request.getParameter("cargo");
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
             int Stock = Integer.parseInt(request.getParameter("Stock"));
             double Precio = Double.parseDouble(request.getParameter("Precio"));
@@ -84,6 +91,8 @@ public class LibroControl extends HttpServlet {
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
         
+          
+
         if (acc.equals("Aceptar Libro")) {
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
             String msg = libSer.actualizarEstado(Codigo, 1);
@@ -100,18 +109,35 @@ public class LibroControl extends HttpServlet {
             pg.setMsg(msg);
             Object[] fila=libSer.buscar(Codigo);
             
+
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
-        
-        if (acc.equals("Eliminar")) {
+        if (acc.equals("Rechazar Libro")) {
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
             String msg=libSer.eliminar(Codigo);
             pg.setMsg(msg);
             Object[] fila={"","","","","","","","","","","","",""};
             
+     
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");
+        }
+
+        if (acc.equals("Eliminar")) {
+            String cargo = request.getParameter("cargo");
+
+            int Codigo = Integer.parseInt(request.getParameter("Codigo"));
+            String msg = libSer.eliminar(Codigo);
+            pg.setMsg(msg);
+            Object[] fila = {"", "", "", "", "", "", "", "", "", "", "", "", ""};
+
+            request.getSession().setAttribute("libus", fila);
+            if ("Almacen".equals(cargo)) {
+                response.sendRedirect("Intranet/Almacen/Libros.jsp");
+            } else {
+                response.sendRedirect("Intranet/Admin/libros.jsp");
+            }
         }
     }
 

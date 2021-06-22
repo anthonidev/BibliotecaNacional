@@ -9,3 +9,4 @@ public interface EmpleadoServicio {
     public String eliminar(String dni);
     public List listar();
 }
+

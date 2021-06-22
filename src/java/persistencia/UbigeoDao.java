@@ -7,4 +7,5 @@ public interface UbigeoDao {
     public List listarDep();
     public List listarPro(Ubigeo ubi);
     public List listarDis(Ubigeo ubi);
+    
 }

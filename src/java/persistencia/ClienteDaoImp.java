@@ -58,4 +58,5 @@ public class ClienteDaoImp implements ClienteDao {
         String sql="call ActualizarCliente('"+pre.getPer().getDni()+"','"+pre.getPer().getDireccion()+"','"+pre.getPer().getTelefono()+"','"+pre.getPer().getDep()+"','"+pre.getPer().getPro()+"','"+pre.getPer().getDis()+"','"+pre.getCu().getUser()+"')";
         return Operacion.ejecutar(sql);
     }
+
 }

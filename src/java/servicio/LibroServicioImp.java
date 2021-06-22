@@ -17,6 +17,7 @@ public class LibroServicioImp implements LibroServicio {
     @Override
     public String grabar(String nombre, int idCategoria, String descripcion, int stock, double precio, InputStream portada) {
         Libro lib = new Libro(stock, nombre, idCategoria, descripcion, portada, precio);
+
         String msg = libDao.grabar(lib);
         if (msg==null)
             msg="Libro Grabado";
@@ -41,6 +42,7 @@ public class LibroServicioImp implements LibroServicio {
             String src = "data:image/png;base64," + data;
             fil[7] = src;
             
+
             return fil;
         }
         return null;

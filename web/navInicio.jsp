@@ -22,7 +22,6 @@
     ms-2
     shadow
     d-lg-none
-
     "
     >
     <div class="container">

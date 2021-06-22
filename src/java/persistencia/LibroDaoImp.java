@@ -31,6 +31,7 @@ public class LibroDaoImp implements LibroDao {
 
     @Override
     public String actualizar(Libro lib) {
+
         String sql="call SP_ACTUALIZARLIBRO("+lib.getIdLibro()+","+lib.getStock()+","+lib.getPrecio()+",'"+lib.getDescripcion()+"')";
         return Operacion.ejecutar(sql);
     }

@@ -1,3 +1,4 @@
+
 package negocio;
 
 public class Cuenta {
@@ -31,3 +32,5 @@ public class Cuenta {
         this.pass = pass;
     }
 }
+
+

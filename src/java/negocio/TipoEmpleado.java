@@ -28,3 +28,4 @@ public class TipoEmpleado {
         this.nombre = nombre;
     }
 }
+
