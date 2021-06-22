@@ -77,13 +77,13 @@
                 </div>
                 <div class="col-8 m-auto ">
                     <div class="row">
-                        <div class="col-12 my-3 shadow d-flex bg-secondary justify-content-center">
+                        <!-- <div class="col-12 my-3 shadow d-flex bg-secondary justify-content-center">
                             <ul class="mb-lg-0">
                                 <div class="p-3 bg-secondary bg-gradient">
                                     <h1 class="text-light h4 text-uppercase"><i class="fas fa-user-tie"></i> Cargo: <%= inicio[2] %></h1>
                                 </div>
                             </ul>
-                        </div>
+                        </div> -->
                         <div class="col-12 shadow p-3 bg-body rounded ">
                             <script type="text/javascript">
                                 window.onload = function () {
