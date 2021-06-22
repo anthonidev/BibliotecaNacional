@@ -152,13 +152,12 @@
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
-                                            <div class="row px-3">
-                                                <div class="col-6">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                    <input type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                            <div class="row px-3 g-1">
+                                                <div class="col-6 form-floating">
+                                                    <input placeholder="Nombre" type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <label for="floatingInput">Nombre</label>
                                                 </div>
-                                                <div class="col-6">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Categoría</span>
+                                                <div class="col-6 form-floating">
                                                     <select class="form-select form-control" aria-label="Default select example" name="Categoria" required>
                                                         <option selected>Seleccione</option>
                                                         <% for (int i = 1; i < lisCat.size(); i++) { %>
@@ -166,21 +165,22 @@
                                                         <option value="<%= cat[0] %>"><%= cat[1] %></option>
                                                         <% } %>
                                                     </select>
+                                                    <label for="floatingInput">Categoría</label>
+                                                </div>
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input placeholder="Stock" type="text" required class="form-control" name="Stock" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="3" onkeyup="this.value=Numeros(this.value)">
+                                                    <label for="floatingInput">Stock</label>
                                                 </div>
                                                 <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Stock</span>
-                                                    <input type="text" required class="form-control" name="Stock" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="3" onkeyup="this.value=Numeros(this.value)">
-                                                </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                    <div class="input-group">
+                                                    <div class="input-group form-floating">
                                                         <span class="input-group-text">S/ </span>
-                                                        <input type="text" required class="form-control" name="Precio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="6" onkeyup="this.value=Precios(this.value)">
+                                                        <input placeholder="Precio" type="text" required class="form-control" name="Precio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="6" onkeyup="this.value=Precios(this.value)">
+                                                        <label for="floatingInput" class="ps-5 ms-1">Precio</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
-                                                    <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"></textarea>
+                                                <div class="col-12 my-2 form-floating">
+                                                    <textarea placeholder="Descripcion" required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"></textarea>
+                                                    <label for="floatingInput">Descripción</label>
                                                 </div>
                                                 <div class="col-12 my-2">
                                                     <span class="input-group-text" id="inputGroup-sizing-lg">Portada</span>
@@ -208,24 +208,24 @@
                                             </div>
                                         </form>
                                         <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
-                                            <div class="row px-3">
+                                            <div class="row px-3 g-1">
                                                 <div>
                                                     <input type="hidden" name="Codigo" value="<%= fila[0] %>">
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Stock</span>
-                                                    <input type="text" required class="form-control" name="Stock" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input type="text" placeholder="Stock" required class="form-control" name="Stock" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value=Numeros(this.value)">
+                                                    <label for="floatingInput">Stock</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                    <div class="input-group">
+                                                <div class="col-6 my-2 ">
+                                                    <div class="input-group form-floating">
                                                         <span class="input-group-text">S/.</span>
-                                                        <input type="text" name="Precio" value="<%= fila[6]%>"  class="form-control">
+                                                        <input placeholder="Precio" type="text" name="Precio" value="<%= fila[6]%>"  class="form-control">
+                                                        <label for="floatingInput" class="ps-5 ms-1">Precio</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
-                                                    <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"><%= fila[3] %></textarea>
+                                                <div class="col-12 my-2 form-floating">
+                                                    <textarea placeholder="Descripción" required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"><%= fila[3] %></textarea>
+                                                    <label for="floatingInput">Descripción</label>
                                                 </div>
                                             </div>
                                             <input type="submit" class="btn btn btn-secondary w-75 my-2 btn-lg" name="acc" value="Actualizar">
@@ -240,9 +240,9 @@
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
-                                            <div class="col-12 col-md-7 mt-2">
-                                                <span class="input-group-text" id="inputGroup-sizing-lg">Código:</span>
-                                                <input name="Codigo" required type="text" class="form-control" value="<%= fila[0] %>" maxlength="5" onkeyup="this.value=Numeros(this.value)">
+                                            <div class="col-12 col-md-7 mt-2 form-floating">
+                                                <input placeholder="Código:" name="Codigo" required type="text" class="form-control" value="<%= fila[0] %>" maxlength="5" onkeyup="this.value=Numeros(this.value)">
+                                                <label for="floatingInput">Código:</label>
                                             </div>
                                             <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
                                         </form>
