@@ -13,9 +13,7 @@ import servicio.LibroServicioImp;
 import servicio.LibroServicio;
 
 @WebServlet(name = "LibroControl", urlPatterns = {"/LibroControl"})
-
 @MultipartConfig // anotacion
-
 public class LibroControl extends HttpServlet {
 
     private LibroServicio libSer;
@@ -61,7 +59,6 @@ public class LibroControl extends HttpServlet {
 
         if (acc.equals("Registrar")) {
             String cargo = request.getParameter("cargo");
-
             String Nombre = request.getParameter("Nombre");
             int idCategoria = Integer.parseInt(request.getParameter("Categoria"));
             int Stock = Integer.parseInt(request.getParameter("Stock"));
@@ -74,7 +71,6 @@ public class LibroControl extends HttpServlet {
             pg.setMsg(msg);
 
             response.sendRedirect("Intranet/Admin/libros.jsp");
-
         }
 
         if (acc.equals("Actualizar")) {
@@ -90,8 +86,6 @@ public class LibroControl extends HttpServlet {
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
-        
-          
 
         if (acc.equals("Aceptar Libro")) {
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
@@ -108,17 +102,16 @@ public class LibroControl extends HttpServlet {
             String msg = libSer.actualizarEstado(Codigo, 2);
             pg.setMsg(msg);
             Object[] fila=libSer.buscar(Codigo);
-            
 
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");
         }
+        
         if (acc.equals("Rechazar Libro")) {
             int Codigo = Integer.parseInt(request.getParameter("Codigo"));
             String msg=libSer.eliminar(Codigo);
             pg.setMsg(msg);
             Object[] fila={"","","","","","","","","","","","",""};
-            
      
             request.getSession().setAttribute("libus", fila);
             response.sendRedirect("Intranet/Admin/libros.jsp");

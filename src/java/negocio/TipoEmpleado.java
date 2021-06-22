@@ -1,4 +1,3 @@
-
 package negocio;
 
 public class TipoEmpleado {
