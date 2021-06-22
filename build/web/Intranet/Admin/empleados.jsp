@@ -169,24 +169,23 @@
                                         <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
                                             <div class="row px-3 g-1">
                                                 <div class="col-6 my-2 form-floating">
-                                                    <input type="text" required class="form-control" placeholder="Nombre" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <input type="text" id="floatingInput" required class="form-control" placeholder="Nombre" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     <label for="floatingInput">Nombre</label>
                                                 </div>
                                                 <div class="col-6 my-2 form-floating">
-                                                    <input type="text" placeholder="Apellidos" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <input type="text" id="floatingInput" placeholder="Apellidos" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                                     <label for="floatingInput">Apellidos</label>
                                                 </div>
                                                 <div class="col-6 my-2 form-floating">
-                                                    <input type="text" placeholder="DNI" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="8" onkeyup="this.value=Numeros(this.value)">
+                                                    <input type="text" id="floatingInput" placeholder="DNI" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="8" onkeyup="this.value=Numeros(this.value)">
                                                     <label for="floatingInput">DNI</label>
                                                 </div>
                                                 <div class="col-6 my-2 form-floating">
-                                                    <input type="text" required  placeholder="Telefono" class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
+                                                    <input type="text" id="floatingInput" required  placeholder="Telefono" class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
                                                     <label for="floatingInput">Telefono</label>
                                                 </div>
                                                 <div class="col-4 my-2 form-floating">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
-                                                    <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required>
+                                                    <select id="floatingSelect" class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required>
                                                         <option value="">Seleccione</option>
                                                         <% for (int i = 1; i < lisDep.size(); i++) { %>
                                                         <% Object[] dep=(Object[]) lisDep.get(i); %>
@@ -194,44 +193,45 @@
                                                         <option value="<%= value %>"><%= dep[0] %></option>
                                                         <% } %>
                                                     </select>
+                                                    <label for="floatingInput">Departamento</label>
                                                 </div>
-                                                <div class="col-4 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
-                                                    <select class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required>
+                                                <div class="col-4 my-2 form-floating">
+                                                    <select id="floatingSelect" class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required>
                                                         <option>Seleccione la Provincia</option>
                                                     </select>
+                                                    <label for="floatingInput">Provincia</label>
                                                 </div>
-                                                <div class="col-4 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
-                                                    <select class="form-select form-control" aria-label="Default select example" name="selectDistrito" required>
+                                                <div class="col-4 my-2 form-floating">
+                                                    <select id="floatingSelect" class="form-select form-control" aria-label="Default select example" name="selectDistrito" required>
                                                         <option>Seleccione el Distrito</option>
                                                     </select>
+                                                    <label for="floatingInput">Distrito</label>
                                                 </div>
-                                                <div class="col-12 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                    <input type="text" required class="form-control" name="Direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                <div class="col-12 my-2 form-floating">
+                                                    <input id="floatingSelect" placeholder="Dirección" type="text" required class="form-control" name="Direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <label for="floatingInput">Dirección</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
-                                                    <input type="date" required class="form-control" name="FechaNa" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input id="floatingSelect" type="date" required class="form-control" name="FechaNa" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                                                    <label for="floatingInput">Fecha de Nacimiento</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Tipo de usuario</span>
-                                                    <select class="form-select form-control" aria-label="Default select example" name="tipo" required>
+                                                <div class="col-6 my-2 form-floating">
+                                                    <select  id="floatingSelect" class="form-select form-control" aria-label="Default select example" name="tipo" required>
                                                         <option selected>Seleccione</option>
                                                         <% for (int i = 1; i < lisTip.size(); i++) { %>
                                                         <% Object[] tip=(Object[]) lisTip.get(i); %>
                                                         <option value="<%= tip[1] %>"><%= tip[1] %></option>
                                                         <% } %>
                                                     </select>
+                                                    <label for="floatingInput">Tipo de usuario</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
-                                                    <input type="text" required class="form-control" name="usuario" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input id="floatingSelect" placeholder="Usuario" type="text" required class="form-control" name="usuario" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <label for="floatingInput">Usuario</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Contraseña</span>
-                                                    <input type="password" required class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input id="floatingSelect" placeholder="Contraseña" type="password" required class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <label for="floatingInput">Contraseña</label>
                                                 </div>
                                             </div>
                                             <input type="submit" class="btn btn btn-primary w-75 btn-lg my-2" name="acc" value="Registrar">
@@ -246,17 +246,16 @@
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
-                                            <div class="row px-3">
+                                            <div class="row px-3 g-1">
                                                 <div>
                                                     <input type="hidden" name="Dni" value="<%= fila[2] %>">
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
-                                                    <input type="text" required class="form-control" name="Telefono" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input id="floatingSelect" placeholder="Telefono" type="text" required class="form-control" name="Telefono" value="<%= fila[4] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value=Numeros(this.value)">
+                                                    <label for="floatingSelect">Telefono</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
-                                                    <select class="form-select form-control" onchange="cambia2()" aria-label="Default select example" name="selectDepartamento2" required>
+                                                <div class="col-6 my-2 form-floating">
+                                                    <select id="floatingSelect" class="form-select form-control" onchange="cambia2()" aria-label="Default select example" name="selectDepartamento2" required>
                                                         <option value="">Seleccione</option>
                                                         <% for (int i = 1; i < lisDep.size(); i++) { %>
                                                         <% Object[] dep=(Object[]) lisDep.get(i); %>
@@ -265,10 +264,10 @@
                                                         <option value="<%= value %>" <%= sltd %>><%= dep[0] %></option>
                                                         <% } %>
                                                     </select>
+                                                    <label for="floatingSelect">Departamento</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
-                                                    <select class="form-select form-control" aria-label="Default select example" name="selectProvincia2" onchange="cambiaDistrito2()" required>
+                                                <div class="col-6 my-2 form-floating">
+                                                    <select id="floatingSelect" class="form-select form-control" aria-label="Default select example" name="selectProvincia2" onchange="cambiaDistrito2()" required>
                                                         <option>Seleccione la Provincia</option>
                                                         <% for (int i = 1; i < lisPro.size(); i++) { %>
                                                         <% Object[] pro=(Object[]) lisPro.get(i); %>
@@ -277,10 +276,10 @@
                                                         <option value="<%= value %>" <%= sltd %>><%= pro[0] %></option>
                                                         <% } %>
                                                     </select>
+                                                    <label for="floatingSelect">Provincia</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
-                                                    <select class="form-select form-control" aria-label="Default select example" name="selectDistrito2" required>
+                                                <div class="col-6 my-2 form-floating">
+                                                    <select id="floatingSelect" class="form-select form-control" aria-label="Default select example" name="selectDistrito2" required>
                                                         <option>Seleccione el Distrito</option>
                                                         <% for (int i = 1; i < lisDis.size(); i++) { %>
                                                         <% Object[] dis=(Object[]) lisDis.get(i); %>
@@ -289,14 +288,14 @@
                                                         <option value="<%= value %>" <%= sltd %>><%= dis[0] %></option>
                                                         <% } %>
                                                     </select>
+                                                    <label for="floatingSelect">Distrito</label>
                                                 </div>
-                                                <div class="col-12 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                    <input type="text" class="form-control" name="Direccion" value="<%= fila[3] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" required>
+                                                <div class="col-12 my-2 form-floating">
+                                                    <input id="floatingSelect"  placeholder="Dirección" type="text" class="form-control" name="Direccion" value="<%= fila[3] %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" required>
+                                                    <label for="floatingSelect">Dirección</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Tipo de empleado</span>
-                                                    <select class="form-select form-control" aria-label="Default select example" name="tipo" required>
+                                                <div class="col-6 my-2 form-floating">
+                                                    <select id="floatingSelect" class="form-select form-control" aria-label="Default select example" name="tipo" required>
                                                         <option>Seleccione</option>
                                                         <% for (int i = 1; i < lisTip.size(); i++) { %>
                                                         <% Object[] tip=(Object[]) lisTip.get(i); %>
@@ -305,10 +304,11 @@
                                                         <option value="<%= tip[1] %>" <%= sltd %>><%= tip[1] %></option>
                                                         <% } %>
                                                     </select>
+                                                    <label for="floatingSelect">Tipo de empleado</label>
                                                 </div>
-                                                <div class="col-6 my-2">
-                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Contraseña</span>
-                                                    <input type="password" placeholder="Ingrese nueva contraseña" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                <div class="col-6 my-2 form-floating">
+                                                    <input id="floatingSelect" type="password" placeholder="Ingrese nueva contraseña" class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                    <label for="floatingSelect">Nueva Contraseña</label>
                                                 </div>
                                             </div>
                                             <input type="submit" class="btn btn btn-secondary w-75 my-2 btn-lg" name="acc" value="Actualizar">
