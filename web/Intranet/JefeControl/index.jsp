@@ -1,3 +1,11 @@
+<%-- 
+    Document   : index
+    Created on : 21/06/2021, 03:10:07 PM
+    Author     : Anthoni
+--%>
+
+<%@page import="servicio.LibroServicioImp"%>
+<%@page import="servicio.LibroServicio"%>
 <%@page import="servicio.UbigeoServicioImp"%>
 <%@page import="servicio.TipoServicioImp"%>
 <%@page import="servicio.UbigeoServicio"%>
@@ -8,6 +16,9 @@
 <%@ page import="com.google.gson.JsonObject"%>
 
 <%
+    LibroServicio libSer = new LibroServicioImp();
+    List lisCat = libSer.listarCategoria();
+
     Gson gsonObj = new Gson();
     Map<Object, Object> map = null;
     int totalVisitors = 883000;
@@ -146,7 +157,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-           <script src="../../js/ubigeo.js"></script>
+        <script src="../../js/ubigeo.js"></script>
         <script src="../../js/ubigeo2.js"></script>
         <script type="text/javascript">
             window.onload = function () {
@@ -293,111 +304,20 @@
                         <div class="col-12 shadow p-3 bg-body rounded my-5 d-flex justify-content-center">
                             <div class="card" >
                                 <div class="card-body">
-                                    <a href="Empleados.jsp" class="text-decoration-none">
+                                    <a href="pedidos.jsp" class="text-decoration-none">
                                         <div class="alert alert-secondary fw-bold text-center h4" role="alert">
-                                            100 Empleados
+                                            Pedidos
                                         </div>
                                     </a>
                                 </div>
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class=" alert alert-secondary fw-bold text-center h4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        Registrar Empleado
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
-
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Registrar Empleado</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <div class="row px-3">
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Nombre</span>
-                                                                <input type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Apellidos</span>
-                                                                <input type="text" required class="form-control" name="Apellidos" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Dni</span>
-                                                                <input type="text" required class="form-control" name="Dni" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="8" onkeyup="this.value = Numeros(this.value)">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Telefono</span>
-                                                                <input type="text" required class="form-control" name="Telefono" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="9" onkeyup="this.value = Numeros(this.value)">
-                                                            </div>
-                                                            <div class="col-4 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Departamento</span>
-                                                                <select class="form-select form-control" onchange="cambia()" aria-label="Default select example" name="selectDepartamento" required>
-                                                                    <option value="">Seleccione</option>
-                                                                    <% for (int i = 1; i < lisDep.size(); i++) { %>
-                                                                    <% Object[] dep = (Object[]) lisDep.get(i); %>
-                                                                    <% String value = dep[0].toString().replace(" ", "_");%>
-                                                                    <option value="<%= value%>"><%= dep[0]%></option>
-                                                                    <% } %>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-4 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Provincia</span>
-                                                                <select class="form-select form-control" aria-label="Default select example" name="selectProvincia" onchange="cambiaDistrito()" required>
-                                                                    <option>Seleccione la Provincia</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-4 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Distrito</span>
-                                                                <select class="form-select form-control" aria-label="Default select example" name="selectDistrito" required>
-                                                                    <option>Seleccione el Distrito</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-12 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Direccion</span>
-                                                                <input type="text" required class="form-control" name="Direccion" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Fecha de Nacimiento</span>
-                                                                <input type="date" required class="form-control" name="FechaNa" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Tipo de usuario</span>
-                                                                <select class="form-select form-control" aria-label="Default select example" name="tipo" required>
-                                                                    <option selected>Seleccione</option>
-                                                                    <% for (int i = 1; i < lisTip.size(); i++) { %>
-                                                                    <% Object[] tip = (Object[]) lisTip.get(i);%>
-                                                                    <option value="<%= tip[1]%>"><%= tip[1]%></option>
-                                                                    <% }%>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text " id="inputGroup-sizing-lg">Usuario</span>
-                                                                <input type="text" required class="form-control" name="usuario" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Constraseña</span>
-                                                                <input type="password" required class="form-control" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                        <input type="hidden" name="cargo" value="<%=inicio[2]%>">
-                                                        <input type="submit" class="btn  btn-primary" name="acc" value="Registrar">
-
-                                                    </div>
-                                                </form>
-
-                                            </div>
+                                   <a href="libros.jsp" class="text-decoration-none">
+                                        <div class="alert alert-secondary fw-bold text-center h4" role="alert">
+                                            Libros
                                         </div>
-                                    </div>
+                                    </a> 
                                 </div>
                             </div>
                         </div>

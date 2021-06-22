@@ -389,6 +389,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                        <input type="hidden" name="cargo" value="<%=inicio[2]%>">
                                                         <input type="submit" class="btn  btn-primary" name="acc" value="Registrar">
 
                                                     </div>

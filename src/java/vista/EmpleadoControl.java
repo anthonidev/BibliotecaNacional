@@ -34,18 +34,20 @@ public class EmpleadoControl extends HttpServlet {
 
             if (fila != null) {
                 System.out.println(fila[2]);
+                request.getSession().setAttribute("filaInicio", fila);
+
                 switch (fila[2].toString()) {
                     case "admin":
-                        request.getSession().setAttribute("filaInicio", fila);
                         response.sendRedirect("Intranet/Admin/index.jsp");
                         break;
                     case "Recursos Humano":
-                        request.getSession().setAttribute("filaInicio", fila);
                         response.sendRedirect("Intranet/RRHH/index.jsp");
                         break;
                     case "Almacen":
-                        request.getSession().setAttribute("filaInicio", fila);
                         response.sendRedirect("Intranet/Almacen/index.jsp");
+                        break;
+                    case "Jefe de Control":
+                        response.sendRedirect("Intranet/JefeControl/index.jsp");
                         break;
                 }
             } else {
@@ -91,9 +93,9 @@ public class EmpleadoControl extends HttpServlet {
 
             String msg = empSer.grabar(Nombre, Apellidos, Dni, Direccion, Telefono, FechaNa, dis, pro, dep, usu, pass, tipo);
             pg.setMsg(msg);
-
+            System.out.println(cargo);
             if ("Recursos Humano".equals(cargo)) {
-                response.sendRedirect("Intranet/RRHH/Empleados.jsp");
+                response.sendRedirect("Intranet/RRHH/index.jsp");
             } else {
                 response.sendRedirect("Intranet/Admin/empleados.jsp");
             }
@@ -109,7 +111,6 @@ public class EmpleadoControl extends HttpServlet {
             String dep = new String(request.getParameter("selectDepartamento2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
             String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
             String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
-           
 
             String msg = empSer.actualizar(Direccion, Telefono, dis, pro, dep, Dni, tipo);
 
@@ -145,7 +146,7 @@ public class EmpleadoControl extends HttpServlet {
 
         if (acc.equals("Cerrar")) {
             request.getSession().invalidate();
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("Intranet.jsp");
         }
     }
 
