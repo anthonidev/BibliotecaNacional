@@ -68,7 +68,6 @@ public class BoletaControl extends HttpServlet {
             LocalDate fechPedido = LocalDate.parse(request.getParameter("fechPedido"));
             double total = Double.parseDouble(request.getParameter("total"));
             System.out.println(fechPedido.plusDays(30));
-            
             String msg=boleSer.grabar(codPedido, codEmpleado, fechPedido.toString(), fechPedido.plusDays(30).toString(), total);
             pg.setMsg(msg);
             
