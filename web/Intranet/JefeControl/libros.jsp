@@ -4,6 +4,7 @@
     Author     : Anthoni
 --%>
 
+<%@page import="javax.xml.bind.DatatypeConverter"%>
 <%-- 
     Document   : Libros
     Created on : 19/06/2021, 11:56:55 PM
@@ -24,6 +25,9 @@
     if (obj != null) {
         fila = obj;
     }
+
+    LibroServicio serLib = new LibroServicioImp();
+    List lis = serLib.listar();
 %>
 <!DOCTYPE html>
 <html>
@@ -75,125 +79,68 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <% List lista = libSer.listar();
-                                for (int i = 1; i < lista.size(); i++) {
-                                    Object[] fi = (Object[]) lista.get(i);
-                                    String style;
-                                    if (fi[5].equals(0)) {
-                                        fi[5] = "Pendiente";
-                                        style = "bg-primary";
-                                    } else if (fi[5].equals(1)) {
-                                        fi[5] = "Aceptado";
-                                        style = "bg-success";
-                                    } else {
-                                        fi[5] = "Rechazado";
-                                        style = "bg-danger";
-                                    }%>
-                    <div class="d-flex flex-column">
-                        <tr>
-                            <td style="width: 7%"><input type="text" value="<%= fi[0]%>" class="form-control text-center" readonly></td>
-                            <td><input type="text" value="<%= fi[1]%>" class="form-control text-center" readonly></td>
-                            <td><input type="text" value="<%= fi[2]%>" class="form-control text-center" readonly></td>
-                            <td><input type="text" value="<%= fi[6]%>" class="form-control text-center" readonly></td>
-                            <td style="width: 5%"><input type="text" value="<%= fi[4]%>" class="form-control text-center" readonly></td>
-                            <td style="width: 11%"><input type="text" value="<%= fi[5]%>" class="form-control text-center <%= style%>" readonly></td>
+                            <% for (int i = 1; i < lis.size(); i++) {
+                                    Object[] libro = (Object[]) lis.get(i);
+                                    String data = DatatypeConverter.printBase64Binary((byte[]) libro[7]);
+                                    String src = "data:image/png;base64," + data;
+                                    if (libro[5].equals(1)) {%>
+                    <div class="d-flex flex-column ">
+                        <tr >
+                            <td style="width: 7%"> <input type="text" value="<%= libro[0]%>" class="form-control text-center  " readonly>
+                            </td>
+                            <td  ><input type="text" value="<%= libro[1]%>" class="form-control text-center  " readonly></td>
+                            <td><input type="text" value="<%= libro[2]%>" class="form-control text-center" readonly></td>
+                            <td><input type="text" value="<%= libro[3]%>" class="form-control text-center" readonly></td>
+                            <td style="width: 5%"><input type="text" value="<%= libro[4]%>" class="form-control text-center" readonly></td>
+                            <td style="width: 11%"><input type="text" value="<%= libro[5]%>" class="form-control text-center " readonly></td>
                             <td style="width: 10%">
                                 <div class="input-group">
                                     <span class="input-group-text">S/ </span>
-                                    <input type="text" value="<%= fi[6]%>"  class="form-control text-center" readonly>
+                                    <input type="text" value="<%= libro[6]%>"  class="form-control text-center" readonly>
                                 </div>
                             </td>
                             <td scope="row">
-                                <input type="hidden" name="Codigo" value="<%= fi[0]%>" >
-                                <button type="button" class=" btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal<%= fi[0]%>">
-                                    <i class="fas fa-pen-square m-auto h3 text-light"></i>
+                                <button type="button" class=" btn btn-primary" data-bs-toggle="modal" data-bs-target="#Eliminar<%=libro[0]%>">
+                                    <i class="fas fa-exclamation-circle m-auto h3 text-secondary text-light"></i>
                                 </button>
-                                <div class="modal fade" id="exampleModal<%= fi[0]%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                                        <form action="../../LibroControl" method="post" class="mx-3">
-
-                                            <div class="modal-content">
-
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Libro</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-
-                                                <div class="modal-body">
-                                                    <div class="d-flex flex-column align-items-center justify-content-center w-100">
-                                                        <div class="row">
-                                                            <div>
-                                                                <input type="hidden" name="Codigo" value="<%= fi[0]%>">
-                                                                <input type="hidden" name="cargo" value="<%= inicio[2]%>">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Stock</span>
-                                                                <input type="text" required class="form-control" name="Stock" value="<%= fi[4]%>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" onkeyup="this.value = Numeros(this.value)">
-                                                            </div>
-                                                            <div class="col-6 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Precio</span>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-text">S/.</span>
-                                                                    <input type="text" name="Precio" value="<%= fi[6]%>"  class="form-control">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Descripcion</span>
-                                                                <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"><%= fi[3]%></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                    <input type="submit" class="btn  btn-primary" name="acc" value="Actualizar">
-
-                                                </div>
-
-                                            </div>
-                                        </form>
-
-                                    </div>
-                                </div>
-                                <button type="button" class=" btn btn-danger" data-bs-toggle="modal" data-bs-target="#Eliminar<%= fi[0]%>">
-                                    <i class="fas fa-minus-square m-auto h3 text-light"></i>
-                                </button>
-                                <div class="modal fade" id="Eliminar<%= fi[0]%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal fade" id="Eliminar<%=libro[0]%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog  modal-dialog-centered">
 
                                         <div class="modal-content">
 
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">¿Estas seguro?</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel"><%= libro[1]%></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
 
-                                            <div class="modal-body">
-                                                <h5>Se eliminara el libro: <%= fi[1]%></h5>
+                                            <div class="modal-body d-flex justify-content-center align-items-center">
+                                                <h5 style="width: 30%">                                   <img src="<%= src%>" class="card-img-top rounded-3" />
+                                                </h5>
+                                                <form action="../../LibroControl" method="post" class=" mx-5">
+                                                            <input type="hidden" name="Codigo"  value="<%= libro[0]%>">
+                                                            <input type="submit" name="acc" class="shadow bg-gradient btn btn-success btn-lg fw-bold w-100 my-4  " value="Aceptar Libro">
+                                                            <input type="submit" name="acc" class="shadow bg-gradient btn btn-danger btn-lg fw-bold w-100 my-4" value="Rechazar Libro">
+                                                </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <form action="../../LibroControl" method="post" class="">
-
-                                                    <input type="hidden" name="Codigo" value="<%= fi[0]%>">
+                                                    <input type="hidden" name="Codigo" value="<%= libro[1]%>">
                                                     <input type="hidden" name="cargo" value="<%= inicio[2]%>">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                    <input type="submit" class="btn  btn-danger" name="acc" value="Eliminar">
                                                 </form>
-
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                    </div>
-                    <% }%>
+                        <% }%>
+                        <% }%>
+                    
                     </tr>
                     </tbody>
                 </table>
-                    <a href="index.jsp" class="btn btn-secondary w-25 my-4 py-3 mx-auto fw-bold">Regresar</a>
+                <a href="index.jsp" class="btn btn-secondary w-25 my-4 py-3 mx-auto fw-bold">Regresar</a>
             </div>
         </div>
     </body>

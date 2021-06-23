@@ -27,7 +27,7 @@ public class PedidoControl extends HttpServlet {
         String acc = request.getParameter("acc");
 
         if (acc.equals("Pedidos")) {
-            pg = new PresentadorGeneral();
+                    pg = new PresentadorGeneral();
 
             //listar pedidos(pendiente,aprovado, rechazado)
             List Pendiente = peSer.listarPedido(0);
@@ -41,7 +41,7 @@ public class PedidoControl extends HttpServlet {
             request.getSession().setAttribute("pg", pg);
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
         }
-        
+
         if (acc.equals("Buscar")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
             Object[] fill = peSer.buscar(cod);
@@ -67,15 +67,15 @@ public class PedidoControl extends HttpServlet {
                 response.sendRedirect("Intranet/Admin/pedidos.jsp");
             }
         }
-        
+
         if (acc.equals("Limpiar")) {
             Object[] vacio = {"", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-            List vacio2=new ArrayList();
+            List vacio2 = new ArrayList();
             pg.setPedido(vacio);
             pg.setListaDetalle(vacio2);
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
         }
-        
+
         if (acc.equals("Aceptar Pedido")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
             String msg = peSer.aprobarPedido(cod);
@@ -95,7 +95,7 @@ public class PedidoControl extends HttpServlet {
             }
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
         }
-        
+
         if (acc.equals("Rechazar Pedido")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
             String msg = peSer.negarPedido(cod);
@@ -114,8 +114,11 @@ public class PedidoControl extends HttpServlet {
             }
             response.sendRedirect("Intranet/Admin/pedidos.jsp");
         }
-        
+
         if (acc.equals("Ver Detalles")) {
+                                pg = new PresentadorGeneral();
+
+            String cargo = request.getParameter("cargo");
             int cod = Integer.parseInt(request.getParameter("cod"));
             Object[] fill = peSer.buscar(cod);
             List lisP = peSer.listarDetalle(cod);
@@ -123,55 +126,56 @@ public class PedidoControl extends HttpServlet {
             if (fill != null) {
                 pg.setPedido(fill);
                 request.getSession().setAttribute("fill", fill);
-                response.sendRedirect("Intranet/Admin/pedidos.jsp");
+                request.getSession().setAttribute("pg", pg);
+
+                if ("Jefe de Control".equals(cargo)) {
+                    response.sendRedirect("Intranet/JefeControl/pedidos.jsp");
+                } else {
+                    response.sendRedirect("Intranet/Admin/pedidos.jsp");
+
+                }
+
             }
         }
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-        /**
-         * Handles the HTTP <code>GET</code> method.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        @Override
-        protected void doGet
-        (HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest(request, response);
-        }
+        processRequest(request, response);
+    }
 
-        /**
-         * Handles the HTTP <code>POST</code> method.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        @Override
-        protected void doPost
-        (HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest(request, response);
-        }
+        processRequest(request, response);
+    }
 
-        /**
-         * Returns a short description of the servlet.
-         *
-         * @return a String containing servlet description
-         */
-        @Override
-        public String getServletInfo
-        
-        
-        
-        
-            () {
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
         return "Short description";
-        }// </editor-fold>
+    }// </editor-fold>
 
 }

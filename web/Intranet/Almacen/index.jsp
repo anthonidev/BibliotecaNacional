@@ -139,14 +139,13 @@
     if (obj != null) {
         fila = obj;
     }
-    TipoServicio tipSer = new TipoServicioImp();
-    UbigeoServicio ubiSer = new UbigeoServicioImp();
-    List lisTip = tipSer.listar();
-    List lisDep = ubiSer.listarDep();
-    List lisPro = ubiSer.listarPro(fila[6].toString());
-    List lisDis = ubiSer.listarDis(fila[6].toString(), fila[7].toString());
-%>
+    
+    
+List listaLib = libSer.listar();
 
+%>
+<%! int cantidad; %>
+<% cantidad=listaLib.size()-1; %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -300,7 +299,7 @@
                                 <div class="card-body">
                                     <a href="Libros.jsp" class="text-decoration-none">
                                         <div class="alert alert-secondary fw-bold text-center h4" role="alert">
-                                            100 libros
+                                            <%=cantidad%> libros
                                         </div>
                                     </a>
                                 </div>
@@ -356,9 +355,9 @@
                                                                 <textarea required class="form-control" name="Descripcion" id="floatingTextarea2" style="height: 125px" aria-label="Sizing example input" aria-describedby="inputGroup-sizing"></textarea>
                                                             </div>
                                                             <div class="col-12 my-2">
-                                                                <span class="input-group-text" id="inputGroup-sizing-lg">Portada</span>
-                                                                <input type="file" required class="form-control" name="Portada" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
-                                                            </div>
+                                                    <span class="input-group-text" id="inputGroup-sizing-lg">Portada</span>
+                                                    <input type="file" accept="image/*" required class="form-control" name="Portada" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+                                                </div>
 
                                                         </div>
                                                     </div>

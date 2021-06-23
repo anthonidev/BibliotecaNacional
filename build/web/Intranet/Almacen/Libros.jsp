@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     LibroServicio libSer = new LibroServicioImp();
+    
     PresentadorGeneral pe = (PresentadorGeneral) session.getAttribute("pg");
     Object[] obj = (Object[]) session.getAttribute("libus");
     Object[] fila = {"", "", "", "", "", "", "", ""};

@@ -4,6 +4,8 @@
     Author     : Anthoni
 --%>
 
+<%@page import="servicio.PedidoServicioImp"%>
+<%@page import="servicio.PedidoServicio"%>
 <%@page import="servicio.LibroServicioImp"%>
 <%@page import="servicio.LibroServicio"%>
 <%@page import="servicio.UbigeoServicioImp"%>
@@ -18,6 +20,8 @@
 <%
     LibroServicio libSer = new LibroServicioImp();
     List lisCat = libSer.listarCategoria();
+PedidoServicio peSer = new PedidoServicioImp();
+
 
     Gson gsonObj = new Gson();
     Map<Object, Object> map = null;
@@ -147,12 +151,10 @@
     }
     TipoServicio tipSer = new TipoServicioImp();
     UbigeoServicio ubiSer = new UbigeoServicioImp();
-    List lisTip = tipSer.listar();
-    List lisDep = ubiSer.listarDep();
-    List lisPro = ubiSer.listarPro(fila[6].toString());
-    List lisDis = ubiSer.listarDis(fila[6].toString(), fila[7].toString());
+    List Pendiente = peSer.listarPedido(0);
 %>
-
+<%! int cantidad; %>
+<% cantidad=Pendiente.size()-1; %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -302,16 +304,19 @@
                             <button class="btn invisible" id="backButton">&lt; Back</button>
                         </div>
                         <div class="col-12 shadow p-3 bg-body rounded my-5 d-flex justify-content-center">
-                            <div class="card" >
+                            <div class="card mx-5" >
                                 <div class="card-body">
                                     <a href="pedidos.jsp" class="text-decoration-none">
                                         <div class="alert alert-secondary fw-bold text-center h4" role="alert">
-                                            Pedidos
+                                            Pedidos<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    <%=cantidad%> 
+    <span class="visually-hidden">unread messages</span>
+  </span>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card mx-5">
                                 <div class="card-body">
                                    <a href="libros.jsp" class="text-decoration-none">
                                         <div class="alert alert-secondary fw-bold text-center h4" role="alert">

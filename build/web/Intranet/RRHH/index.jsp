@@ -1,3 +1,5 @@
+<%@page import="servicio.EmpleadoServicioImp"%>
+<%@page import="servicio.EmpleadoServicio"%>
 <%@page import="servicio.UbigeoServicioImp"%>
 <%@page import="servicio.TipoServicioImp"%>
 <%@page import="servicio.UbigeoServicio"%>
@@ -8,6 +10,7 @@
 <%@ page import="com.google.gson.JsonObject"%>
 
 <%
+    
     Gson gsonObj = new Gson();
     Map<Object, Object> map = null;
     int totalVisitors = 883000;
@@ -140,8 +143,14 @@
     List lisDep = ubiSer.listarDep();
     List lisPro = ubiSer.listarPro(fila[6].toString());
     List lisDis = ubiSer.listarDis(fila[6].toString(), fila[7].toString());
-%>
+    
 
+EmpleadoServicio empSer = new EmpleadoServicioImp();
+List listaEmp = empSer.listar();
+
+%>
+<%! int cantidad; %>
+<% cantidad=listaEmp.size()-1; %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -295,7 +304,7 @@
                                 <div class="card-body">
                                     <a href="Empleados.jsp" class="text-decoration-none">
                                         <div class="alert alert-secondary fw-bold text-center h4" role="alert">
-                                            100 Empleados
+                                            <%=cantidad%> Empleados
                                         </div>
                                     </a>
                                 </div>
