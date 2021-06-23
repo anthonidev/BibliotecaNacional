@@ -1,9 +1,10 @@
 package persistencia;
 
 import java.util.List;
+import negocio.Boleta;
 
 public interface BoletaDao {
-    public String grabarBoleta(BoletaDao bo);
-    public BoletaDao buscarBoleta(String cod);
-    public List listarBoleta(); 
+    public String grabar(Boleta bole);
+    public Boleta buscar(Boleta bole);
+    public List listar(); 
 }

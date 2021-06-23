@@ -9,8 +9,7 @@ public class Boleta {
     public Boleta() {
     }
 
-    public Boleta(int IdBoleta, int IdPedido, int IdPerEmp, String fecha, String fechaDev, double Total) {
-        this.IdBoleta = IdBoleta;
+    public Boleta(int IdPedido, int IdPerEmp, String fecha, String fechaDev, double Total) {
         this.IdPedido = IdPedido;
         this.IdPerEmp = IdPerEmp;
         this.fecha = fecha;

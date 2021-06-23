@@ -56,7 +56,7 @@
                                 class="fas fa-book-open w-100 h3 text-center"></i>Libros</a>
                     </li>
                     <li class="nav-item shadow-sm p-3 bg-body rounded">
-                        <form action="../../PedidoControl" method="post">
+                        <form action="../../BoletaControl" method="post">
                             <i class="fas fa-clipboard-list w-100 h3 text-center"></i>
                             <input class="nav-link active text-dark text-center border-0 bg-body m-auto p-2" type="submit" name="acc" value="Boletas" >
                         </form>
@@ -331,11 +331,7 @@
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body bg-light">
                                         <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
-<<<<<<< HEAD
                                             <div class="col-12 col-md-7 mt-2">
-=======
-                                            <div class="col-12 col-md-7">
->>>>>>> origin/boleta
                                                 <span class="input-group-text" id="inputGroup-sizing-lg">DNI:</span>
                                                 <input name="Dni" required type="text" class="form-control" value="<%= fila[2] %>" maxlength="8" onkeyup="this.value=Numeros(this.value)">
                                             </div>

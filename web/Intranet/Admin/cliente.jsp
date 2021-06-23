@@ -56,7 +56,7 @@
                                 class="fas fa-book-open w-100 h3 text-center"></i>Libros</a>
                     </li>
                     <li class="nav-item shadow-sm p-3 bg-body rounded">
-                        <form action="../../PedidoControl" method="post">
+                        <form action="../../BoletaControl" method="post">
                             <i class="fas fa-clipboard-list w-100 h3 text-center"></i>
                             <input class="nav-link active text-dark text-center border-0 bg-body m-auto p-2" type="submit" name="acc" value="Boletas" >
                         </form>
