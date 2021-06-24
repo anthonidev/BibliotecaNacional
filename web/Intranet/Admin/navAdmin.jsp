@@ -1,8 +1,8 @@
 <% Object[] inicio=(Object[]) session.getAttribute("filaInicio"); %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="index.jsp">
+    <div class="container-fluid">
+        <a class="navbar-brand mx-3" href="index.jsp">
             <img src="../../img/logo.svg" height="68" class="d-none d-lg-block" alt="">
             <img src="../../img/logtipo.svg" height="68" class=" d-lg-none" alt="">
         </a>
