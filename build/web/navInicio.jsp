@@ -177,7 +177,6 @@ online = {"", "", ""}; if (fila != null) { online = pg.getUserCliente(); } %>
     p-3
     z-index
   "
-  style="width: 280px"
 >
   <a class="navbar-brand d-none d-lg-block m-0 mb-2" href="index.jsp"
     ><img src="img/logo.svg" alt="" class="logo-navbar_desktop"

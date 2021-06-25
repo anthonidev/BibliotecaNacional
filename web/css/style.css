@@ -11804,6 +11804,9 @@ fieldset:disabled .btn {
 /*# sourceMappingURL=custon.css.map */
 /* custom */
 @import url(./style-responsive.css);
+.z-index-0{
+  z-index: -1;
+}
 .z-index {
   z-index: 3;
 }
@@ -11845,6 +11848,9 @@ fieldset:disabled .btn {
   filter: blur(4px) grayscale(.5);
   object-position: 30%;
 }
+.pe-none.active{
+  background-color: var(--bs-danger) !important;
+}
 /* navbar */
 .bg-nav-bar {
   background-color: var(--bs-lila);
@@ -11880,6 +11886,12 @@ fieldset:disabled .btn {
 .navbar_desktop {
   height: 100vh;
   position: fixed;
+  width: 280px;
+}
+.navbar_desktop--intranet{
+  padding-top: calc(94px + 24px) !important;
+  top: 0;
+  bottom: 0;
 }
 
 .navbar_desktop ul {
@@ -12059,6 +12071,11 @@ fieldset:disabled .btn {
     .container_section_datos {
       width: calc(100vw - 297px);
     }
+  }
+  .container_section_datos--intranet{
+    padding-top: 0 !important;
+    width: calc(100vw - 292px);
+    height: fit-content;
   }
   .container__sec--bottom {
     margin-bottom: 0 !important;
