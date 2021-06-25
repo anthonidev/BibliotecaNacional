@@ -25,8 +25,8 @@
     <jsp:include page="./navAdmin.jsp" />
     <jsp:include page="./navbarAdmin.jsp" />
     <div class="container_section_datos container_section_datos--intranet">
-      <section class=" px-5 pt-3" style="height: 1000px" id="sec11">
-        <div class="col-6 d-flex flex-column pt-3">
+      <section class="px-3 px-lg-5 pt-3" style="height: 1000px" id="sec11">
+        <div class="col-lg-6 d-flex flex-column pt-3">
           <!-- alerta -->
           <% if (pe.getMsg().toString() != "") { %>
             <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
@@ -204,8 +204,8 @@
                   Eliminar Empleado
               </h3>
               <div>
-                <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
-                  <div class="col-12 col-md-7 mt-2 form-floating">
+                <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center px-3">
+                  <div class="col-9 col-md-7 mt-2 form-floating">
                       <input name="Dni" placeholder="DNI" required type="text" class="form-control" value="<%= fila[2] %>" maxlength="8" onkeyup="this.value=Numeros(this.value)">
                       <label for="floatingInput">DNI</label>
                   </div>

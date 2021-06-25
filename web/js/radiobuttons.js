@@ -16,5 +16,5 @@ function verificarZise(item){
 }
 
 let desktop = window.matchMedia("(max-width: 992px)");
-verificarZise(desktop);
+/* verificarZise(desktop); */
 desktop.addListener(verificarZise);

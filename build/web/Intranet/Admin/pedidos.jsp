@@ -11,7 +11,7 @@
         <main class="container-fluid p-0  ">
             <jsp:include page="navAdmin.jsp" />
             <jsp:include page="./navbarAdmin.jsp" />
-            <div class="container_section_datos container_section_datos--intranet px-5" id="sec3">
+            <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5" id="sec3">
                 <div class="d-flex">
                     <div class="col-6">
                         <div class="row">
@@ -183,7 +183,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container_section_datos container_section_datos--intranet px-5">
+            <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5">
                 <div class="col-5 m-auto d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="pendientes">
                     <h1 class="fw-bold text-center text-primary my-5">Lista de Pedidos Pendientes</h1>
                     <% List Pendiente = (List) session.getAttribute("Pendiente");%>

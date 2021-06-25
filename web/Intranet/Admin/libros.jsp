@@ -26,7 +26,7 @@
            else if (fila[5].equals(1)) { estado="Aceptado"; estilo="bg-success"; }
            else if (fila[5].equals(2)) { estado="Rechazado"; estilo="bg-danger"; } 
            else estilo=""; %>
-        <div class="container_section_datos container_section_datos--intranet px-5" id="sec4">
+        <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5" id="sec4">
                 <div class="d-flex">
                     <div class="col-6">
                         <div class="row">
@@ -222,7 +222,7 @@
                     </div>
                 </div>
         </div>
-        <div class="container_section_datos container_section_datos--intranet px-5">
+        <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5">
             <div class="col-10 m-auto d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="listar">
                 <h1 class="fw-bold text-success my-5">Lista de Libros</h1>
                 <table class="table table-light table-striped shadow bg-body rounded border-1">

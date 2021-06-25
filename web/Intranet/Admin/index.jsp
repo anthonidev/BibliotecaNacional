@@ -44,8 +44,8 @@
         <main class="container-fluid p-0" id="index">
             <jsp:include page="navAdmin.jsp" />
             <jsp:include page="./navbarAdmin.jsp" />
-            <div class="container_section_datos container_section_datos--intranet px-5">
-                <div class="row">
+            <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5">
+                <div class="row mx-0 w-100">
                     <div class="col-12 shadow p-3 bg-body rounded ">
                         <script type="text/javascript">
                             window.onload = function () {
