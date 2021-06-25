@@ -11830,6 +11830,11 @@ fieldset:disabled .btn {
 .h-min {
   height: min-content;
 }
+
+.wm-max{
+  max-width: max-content;
+}
+
 .obj-fit{
   object-fit: contain;
 }
@@ -12072,6 +12077,9 @@ fieldset:disabled .btn {
 /* resposive desktop */
 @media screen and (min-width: 992px) {
   /* general */
+  .wm-lg-max{
+    max-width: max-content;
+  }
   .container_section_datos {
     padding-top: 74px !important;
     width: calc(100vw - 292px);
