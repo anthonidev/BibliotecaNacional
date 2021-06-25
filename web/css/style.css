@@ -12083,8 +12083,11 @@ fieldset:disabled .btn {
   }
   .container_section_datos--intranet{
     /* width: calc(100vw - 292px); */
-    padding-top: calc(94px + 1rem) !important;
+    padding-top:94px !important;
     height: fit-content;
+  }
+  .container_section_datos--intranet > .row{
+    margin-top: 1rem !important;
   }
   .container__sec--bottom {
     margin-bottom: 0 !important;

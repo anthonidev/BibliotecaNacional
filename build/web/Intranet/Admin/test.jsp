@@ -8,11 +8,28 @@
     <jsp:include page="./navAdmin.jsp" />
     <jsp:include page="./navbarAdmin.jsp" />
     <div class="container_section_datos container_section_datos--intranet">
-      <section class="bg-dark" style="height: 1000px;" id="sec11"></section>
-      <section class="bg-primary" style="height: 1000px;" id="sec2"></section>
-      <section class="bg-warning" style="height: 1000px;" id="sec3"></section>
-      <section class="bg-light" style="height: 1000px;" id="sec4"></section>
-      <section class="bg-dark" style="height: 1000px;" id="sec5"></section>
+      <section class="bg-dark" style="height: 1000px" id="sec11">
+        <div class="">
+          <div class="">
+            <label class="">
+              <input type="radio" name="Tipo" value="1" />1 </label
+            ><br />
+            <label class="">
+              <input type="radio" name="Tipo" value="2" />2
+            </label>
+            <hr />
+            <label class="">
+              <input type="radio" name="Tipo" value="3" />3 </label
+            ><br />
+            <hr />
+            <button type="reset">Desseleccionar</button>
+          </div>
+        </div>
+      </section>
+      <section class="bg-primary" style="height: 1000px" id="sec2"></section>
+      <section class="bg-warning" style="height: 1000px" id="sec3"></section>
+      <section class="bg-light" style="height: 1000px" id="sec4"></section>
+      <section class="bg-dark" style="height: 1000px" id="sec5"></section>
     </div>
     <div class="col-6 d-flex flex-column d-none">
       <div
