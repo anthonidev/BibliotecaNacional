@@ -11,7 +11,7 @@ function verificarZise(item){
     if(item.matches){
         quitarChecked();
     }else{
-        console.log("no pasa nada");
+        agregarChecked();
     }
 }
 
