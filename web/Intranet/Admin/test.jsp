@@ -7,10 +7,12 @@
   <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="94">
     <jsp:include page="./navAdmin.jsp" />
     <jsp:include page="./navbarAdmin.jsp" />
-    <div class="container_section_datos container_section_datos--intranet p-0">
+    <div class="container_section_datos container_section_datos--intranet">
       <section class="bg-dark" style="height: 1000px;" id="sec11"></section>
       <section class="bg-primary" style="height: 1000px;" id="sec2"></section>
       <section class="bg-warning" style="height: 1000px;" id="sec3"></section>
+      <section class="bg-light" style="height: 1000px;" id="sec4"></section>
+      <section class="bg-dark" style="height: 1000px;" id="sec5"></section>
     </div>
     <div class="col-6 d-flex flex-column d-none">
       <div

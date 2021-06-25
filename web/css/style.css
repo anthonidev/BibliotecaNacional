@@ -11851,6 +11851,9 @@ fieldset:disabled .btn {
 .pe-none.active{
   background-color: var(--bs-danger) !important;
 }
+.text-none{
+  color: transparent;
+}
 /* navbar */
 .bg-nav-bar {
   background-color: var(--bs-lila);
@@ -11893,7 +11896,6 @@ fieldset:disabled .btn {
   top: 0;
   bottom: 0;
 }
-
 .navbar_desktop ul {
   gap: 0.5rem;
 }
@@ -11903,6 +11905,13 @@ fieldset:disabled .btn {
   border-radius: 8px;
   -webkit-box-shadow: 0 8px 12px 0 #a3a3d673;
   box-shadow: 0 8px 12px 0 #a3a3d673;
+}
+
+.navbar_desktop--intranet ul li a.d-flex:hover{
+  border-radius: inherit;
+  background: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .logo-navbar_desktop {
@@ -12073,8 +12082,8 @@ fieldset:disabled .btn {
     }
   }
   .container_section_datos--intranet{
-    padding-top: 0 !important;
-    width: calc(100vw - 292px);
+    /* width: calc(100vw - 292px); */
+    padding-top: calc(94px + 1rem) !important;
     height: fit-content;
   }
   .container__sec--bottom {
