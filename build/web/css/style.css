@@ -12107,6 +12107,7 @@ fieldset:disabled .btn {
   .container_section_datos--intranet{
     padding-top:94px !important;
     height: fit-content;
+    overflow: inherit;
   }
   .container_section_datos--intranet > .row{
     margin-top: 1rem !important;

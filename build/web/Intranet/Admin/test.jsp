@@ -26,7 +26,7 @@
     <jsp:include page="./navbarAdmin.jsp" />
     <div class="container_section_datos container_section_datos--intranet">
       <section class="px-3 px-lg-5 pt-3" style="height: 1000px" id="sec11">
-        <div class="col-lg-6 d-flex flex-column pt-3">
+        <div class="col-lg-6 d-flex flex-column pt-3 order-1 order-lg-2">
           <!-- alerta -->
           <% if (pe.getMsg().toString() != "") { %>
             <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
