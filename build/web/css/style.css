@@ -12053,6 +12053,11 @@ fieldset:disabled .btn {
   width: 50%;
 }
 /* /sesiones */
+/* intranet */
+.container_section_datos--intranet{
+  padding-top:94px !important;
+}
+/* /intranet */
 /* /custom */
 
 /* resposive tablet */
@@ -12093,7 +12098,6 @@ fieldset:disabled .btn {
     }
   }
   .container_section_datos--intranet{
-    /* width: calc(100vw - 292px); */
     padding-top:94px !important;
     height: fit-content;
   }

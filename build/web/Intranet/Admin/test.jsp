@@ -4,25 +4,68 @@
     <jsp:include page="./metas-head.jsp" />
     <title>Biblioteca</title>
   </head>
+  <style>
+    #btnradio3:checked ~ .prueba{
+      display: block !important;
+      top: 100%;
+    };
+  </style>
   <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="94">
     <jsp:include page="./navAdmin.jsp" />
     <jsp:include page="./navbarAdmin.jsp" />
     <div class="container_section_datos container_section_datos--intranet">
-      <section class="bg-dark" style="height: 1000px" id="sec11">
-        <div class="">
-          <div class="">
-            <label class="">
-              <input type="radio" name="Tipo" value="1" />1 </label
-            ><br />
-            <label class="">
-              <input type="radio" name="Tipo" value="2" />2
-            </label>
-            <hr />
-            <label class="">
-              <input type="radio" name="Tipo" value="3" />3 </label
-            ><br />
-            <hr />
-            <button type="reset">Desseleccionar</button>
+      <section class="bg-dark px-5 pt-3" style="height: 1000px" id="sec11">
+        <div class="col-6 d-flex flex-column offset-6">
+          <div class="btn-group position-relative w-100" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+            <div class=" d-none prueba position-absolute w-100 bg-light">
+              <h2 class="text-center pt-3">
+                  Eliminar Empleado
+              </h2>
+              <div>
+                <div class="accordion-body bg-light">
+                  <form action="../../EmpleadoControl" method="post">
+                    <div
+                      class="
+                        row
+                        d-flex
+                        align-items-center
+                        justify-content-center
+                        w-100
+                      "
+                    >
+                      <div class="col-12 col-md-7">
+                        <span class="input-group-text" id="inputGroup-sizing-lg"
+                          >DNI:</span
+                        >
+                        <input
+                          name="Dni"
+                          required
+                          type="text"
+                          class="form-control"
+                          value=""
+                          maxlength="8"
+                          onkeyup="this.value=Numeros(this.value)"
+                        />
+                      </div>
+                      <input
+                        type="submit"
+                        class="btn btn btn-danger w-75 m-3 btn-lg"
+                        name="acc"
+                        value="Eliminar"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
