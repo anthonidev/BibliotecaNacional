@@ -39,11 +39,11 @@
           <!-- CRUD -->
           <div class="d-flex justify-content-between position-relative w-100" role="group" aria-label="Basic radio toggle button group">
             <!-- radio botones -->
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="crud" id="btnradio1" autocomplete="off" checked>
             <label class="btn fw-bolder shadow-sm text-dark w-100 btn-outline-primary" for="btnradio1">Agregar</label>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <input type="radio" class="btn-check" name="crud" id="btnradio2" autocomplete="off">
             <label class="btn fw-bolder shadow-sm w-100 btn-outline-secondary mx-2" for="btnradio2">Actualizar</label>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <input type="radio" class="btn-check" name="crud" id="btnradio3" autocomplete="off">
             <label class="btn fw-bolder shadow-sm w-100 btn-outline-danger" for="btnradio3">Eliminar</label>
             <!-- /radio botones -->
             <!-- Formularios -->
@@ -223,5 +223,6 @@
       <section class="bg-light" style="height: 1000px" id="sec4"></section>
       <section class="bg-dark" style="height: 1000px" id="sec5"></section>
     </div>
+    <script src="../../js/radiobuttons.js"></script>
   </body>
 </html>
