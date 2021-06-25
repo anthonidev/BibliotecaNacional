@@ -17,48 +17,17 @@
         <jsp:include page="./metas-head.jsp" />
         <title>INTRANET</title>
     </head>
-    <body>
+    <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="94">
         <jsp:include page="navAdmin.jsp" />
+        <jsp:include page="./navbarAdmin.jsp" />
         <%! String estado, estilo; %>
         <% estado=fila[5].toString();
            if (fila[5].equals(0)) { estado="Pendiente"; estilo="bg-primary"; }
            else if (fila[5].equals(1)) { estado="Aceptado"; estilo="bg-success"; }
            else if (fila[5].equals(2)) { estado="Rechazado"; estilo="bg-danger"; } 
            else estilo=""; %>
-        
-        <div class="d-flex" style="height: 94vh">
-            <div class="col-1 py-4 d-flex shadow-sm p-3 mb-5 bg-primary rounded">
-                    <ul class="navbar-nav d-flex justify-content-between me-auto mb-2 mb-lg-0">
-                        <li class="nav-item shadow-sm p-3 bg-body rounded">
-                            <a class="nav-link active text-dark text-center" aria-current="page" href="empleados.jsp"><i
-                                    class="fas fa-users-cog w-100 h3 text-center"></i>Empleados</a>
-                        </li>
-                        <li class="nav-item shadow-sm p-3 bg-body rounded">
-                            <form action="../../ClienteControl" method="post">
-                                <i class="fas fa-user-tag w-100 h3 text-center"></i>
-                                <input class="nav-link active text-dark text-center border-0 bg-body m-auto p-2" type="submit" name="acc" value="Clientes" >
-                            </form>
-                        </li>
-                        <li class="nav-item shadow-sm p-3 bg-body rounded">
-                            <form action="../../PedidoControl" method="post">
-                                <i class="fas fa-truck-loading w-100 h3 text-center"></i>
-                                <input class="nav-link active text-dark text-center border-0 bg-body m-auto p-2" type="submit" name="acc" value="Pedidos" >
-                            </form>
-                        </li>
-                        <li class="nav-item shadow-sm p-3 bg-danger rounded">
-                            <a class="nav-link active text-dark text-center" aria-current="page" href="libros.jsp"><i
-                                    class="fas fa-book-open w-100 h3 text-center"></i>Libros</a>
-                        </li>
-                        <li class="nav-item shadow-sm p-3 bg-body rounded">
-                            <form action="../../PedidoControl" method="post">
-                                <i class="fas fa-clipboard-list w-100 h3 text-center"></i>
-                                <input class="nav-link active text-dark text-center border-0 bg-body m-auto p-2" type="submit" name="acc" value="Boletas" >
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            <div class="col-11" id="#">
-                <div class="d-flex px-5">
+        <div class="container_section_datos container_section_datos--intranet px-5" id="sec4">
+                <div class="d-flex">
                     <div class="col-6">
                         <div class="row">
                             <div class="col-12 my-4">
@@ -175,7 +144,7 @@
                                                     <div class="input-group form-floating">
                                                         <span class="input-group-text">S/ </span>
                                                         <input placeholder="Precio" type="text" required class="form-control" name="Precio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing" maxlength="6" onkeyup="this.value=Precios(this.value)">
-                                                        <label for="floatingInput" class="ps-5 ms-1">Precio</label>
+                                                        <label for="floatingInput" class="ps-5 ms-2 z-index">Precio</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-2 form-floating">
@@ -220,7 +189,7 @@
                                                     <div class="input-group form-floating">
                                                         <span class="input-group-text">S/.</span>
                                                         <input placeholder="Precio" type="text" name="Precio" value="<%= fila[6]%>"  class="form-control">
-                                                        <label for="floatingInput" class="ps-5 ms-1">Precio</label>
+                                                        <label for="floatingInput" class="ps-5 ms-3 z-index">Precio</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 my-2 form-floating">
@@ -252,9 +221,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
-        <div class="d-flex">
+        <div class="container_section_datos container_section_datos--intranet px-5">
             <div class="col-10 m-auto d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="listar">
                 <h1 class="fw-bold text-success my-5">Lista de Libros</h1>
                 <table class="table table-light table-striped shadow bg-body rounded border-1">
