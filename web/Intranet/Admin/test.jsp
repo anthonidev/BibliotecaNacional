@@ -39,7 +39,7 @@
           <!-- CRUD -->
           <div class="d-flex justify-content-between position-relative w-100" role="group" aria-label="Basic radio toggle button group">
             <!-- radio botones -->
-            <input type="radio" class="btn-check" name="crud" id="btnradio1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="crud" id="btnradio1" autocomplete="off">
             <label class="btn fw-bolder shadow-sm text-dark w-100 btn-outline-primary" for="btnradio1">Agregar</label>
             <input type="radio" class="btn-check" name="crud" id="btnradio2" autocomplete="off">
             <label class="btn fw-bolder shadow-sm w-100 btn-outline-secondary mx-2" for="btnradio2">Actualizar</label>
@@ -48,6 +48,7 @@
             <!-- /radio botones -->
             <!-- Formularios -->
             <div class="d-none shadow rounded sec1 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
+              <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
               <h3 class="text-center">
                   Agregar Empleado
               </h3>
@@ -125,7 +126,8 @@
               </div>
             </div>
             <div class="d-none shadow rounded sec2 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
-              <h3 class="text-center">
+                <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
+                <h3 class="text-center">
                   Actualizar Empleado
               </h3>
               <div>
@@ -200,6 +202,7 @@
               </div>
             </div>
             <div class="d-none shadow rounded sec3 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
+              <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
               <h3 class="text-center">
                   Eliminar Empleado
               </h3>
