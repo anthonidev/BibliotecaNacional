@@ -28,8 +28,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-9 offset-lg-3 pt-4">
-                        <div class="row overflow-auto m-0 flex-nowrap pb-1 group-card--custom group-card--custom--busqueda container__sec--bottom w-100">
+                    <div class="col-12 col-lg-9 offset-lg-3">
+                        <div class="row overflow-auto m-0 pb-1 pt-4 group-card--custom group-card--custom--busqueda container__sec--bottom w-100 px-3">
                             <% for (int i = 1; i < lis.size(); i++) {
                                 Object[] libro=(Object[])lis.get(i);
                                 if (libro[5].equals(1)) { %>

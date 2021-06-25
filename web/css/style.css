@@ -12007,13 +12007,16 @@ fieldset:disabled .btn {
 /* busqueda libros */
 .group-card--custom--busqueda {
   margin-left: 0 !important;
-  padding-left: 0 !important;
-  flex-wrap: wrap !important;
   justify-content: space-between;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, 10rem);
 }
+.group-card--custom--busqueda > * {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .group-card--custom--busqueda > .col {
   margin-right: 0 !important;
   margin-bottom: 1rem;
