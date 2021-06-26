@@ -76,43 +76,48 @@
                                                     <div class="d-flex flex-column">
                                                         <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Limpiar">
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-12 mt-3" id="mostrar">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[0] %>">
-                                                    <label for="floatingInputGrid">Codigo</label>
                                                 </div>
-                                            </div>
-                                            <div class="col-6 mt-3" id="mostrar">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[1] %>">
-                                                    <label for="floatingInputGrid">Nombre</label>
+                                            </form>
+                                            <form action="../../PedidoControl" method="post" class="col-2">
+                                                <div class="d-flex flex-column">
+                                                    <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Limpiar">
                                                 </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-12 mt-3" id="mostrar">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[0] %>">
+                                                <label for="floatingInputGrid">Codigo</label>
                                             </div>
-                                            <div class="col-6 mt-3" id="mostrar">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[2] %>">
-                                                    <label for="floatingInputGrid">Apellidos</label>
-                                                </div>
+                                        </div>
+                                        <div class="col-6 mt-3" id="mostrar">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[1] %>">
+                                                <label for="floatingInputGrid">Nombre</label>
                                             </div>
-                                            <div class="col-6 mt-3" id="mostrar">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[3] %>">
-                                                    <label for="floatingInputGrid">Dni</label>
-                                                </div>
+                                        </div>
+                                        <div class="col-6 mt-3" id="mostrar">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[2] %>">
+                                                <label for="floatingInputGrid">Apellidos</label>
                                             </div>
-                                            <div class="col-6 mt-3" id="mostrar">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[4] %>">
-                                                    <label for="floatingInputGrid">Direccion</label>
-                                                </div>
+                                        </div>
+                                        <div class="col-6 mt-3" id="mostrar">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[3] %>">
+                                                <label for="floatingInputGrid">Dni</label>
                                             </div>
-                                            <div class="col-6 mt-3" id="mostrar">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[5] %>">
-                                                    <label for="floatingInputGrid">Fecha de pedido</label>
-                                                </div>
+                                        </div>
+                                        <div class="col-6 mt-3" id="mostrar">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[4] %>">
+                                                <label for="floatingInputGrid">Direccion</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-3" id="mostrar">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingInputGrid" readonly value="<%= pedido[5] %>">
+                                                <label for="floatingInputGrid">Fecha de pedido</label>
                                             </div>
                                             <div class="col-6 mt-3" id="mostrar">
                                                 <div class="form-floating">
@@ -136,62 +141,62 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 d-flex flex-column">
-                            <% if (pe.getMsg().toString() != "") { %>
-                            <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-                                <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg() %></h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            <% pe.setMsg(""); %>
-                            <% } %>
-                            <h4 class="fw-bold text-secondary text-center my-4">Detalle del pedido</h4>
-                            <table class="table table-light table-striped shadow bg-body rounded border-1">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Id Detalle</th>
-                                        <th scope="col">Nombre del libro</th>
-                                        <th scope="col">Cantidad</th>
-                                        <th scope="col">Precio</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% List Lista = pe.getListaDetalle(); %>
-                                    <% for (int i = 1; i < Lista.size(); i++) { %>
-                                    <% Object[] f = (Object[]) Lista.get(i);%>
-                                    <tr class="">
-                                        <th scope="row">
-                                            <input type="text"  value="<%= f[0]%>" class="form-control text-center" readonly>
-                                        </th>
-                                        <th scope="row">
-                                            <input type="text"  value="<%= f[1]%>" class="form-control text-center" readonly>
-                                        </th>
-                                        <th scope="row">
-                                            <input type="text"  value="<%= f[2]%>" class="form-control text-center" readonly>
-                                        </th>
-                                        <th scope="row">
-                                            <div class="input-group">
-                                                <span class="input-group-text">S/ </span>
-                                                <input type="text" value="<%= f[3] %>"  class="form-control " readonly>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                    <% } %>
-                                </tbody>
-                                <tbody>
-                                    <tr class="">
-                                        <th scope="row" colspan="3" class="text-center align-middle">
-                                            Total
-                                        </th>
-                                        <th scope="row">
-                                            <div class="input-group">
-                                                <span class="input-group-text bg-white fw-bold">S/ </span>
-                                                <span class="form-control fw-bold"><%= pedido[7] %>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <% if (pe.getMsg().toString() != "") { %>
+                        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                            <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg() %></h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
+                        <% pe.setMsg(""); %>
+                        <% } %>
+                        <h4 class="fw-bold text-secondary text-center my-4">Detalle del pedido</h4>
+                        <table class="table table-light table-striped shadow bg-body rounded border-1">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id Detalle</th>
+                                    <th scope="col">Nombre del libro</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% List Lista = pe.getListaDetalle(); %>
+                                <% for (int i = 1; i < Lista.size(); i++) { %>
+                                <% Object[] f = (Object[]) Lista.get(i);%>
+                                <tr class="">
+                                    <th scope="row">
+                                        <input type="text"  value="<%= f[0]%>" class="form-control text-center" readonly>
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text"  value="<%= f[1]%>" class="form-control text-center" readonly>
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text"  value="<%= f[2]%>" class="form-control text-center" readonly>
+                                    </th>
+                                    <th scope="row">
+                                        <div class="input-group">
+                                            <span class="input-group-text">S/ </span>
+                                            <input type="text" value="<%= f[3] %>"  class="form-control " readonly>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                            <tbody>
+                                <tr class="">
+                                    <th scope="row" colspan="3" class="text-center align-middle">
+                                        Total
+                                    </th>
+                                    <th scope="row">
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-white fw-bold">S/ </span>
+                                            <span class="form-control fw-bold"><%= pedido[7] %>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
