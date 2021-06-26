@@ -226,6 +226,5 @@
       <section class="bg-light" style="height: 1000px" id="sec4"></section>
       <section class="bg-dark" style="height: 1000px" id="sec5"></section>
     </div>
-    <script src="../../js/radiobuttons.js"></script>
   </body>
 </html>

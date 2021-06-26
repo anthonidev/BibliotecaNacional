@@ -115,32 +115,32 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-flex flex-column py-3 order-1 order-lg-2">
-          <!-- alerta -->
-          <% if (pe.getMsg().toString() != "") { %>
-            <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-                <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg() %></h4>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <% pe.setMsg(""); %>
-            <% } %>
-          <!-- /alerta -->
-          <!-- CRUD -->
-          <div class="d-flex justify-content-between position-relative w-100" role="group" aria-label="Basic radio toggle button group">
-            <!-- radio botones -->
-            <input type="radio" class="btn-check" name="crud" id="btnradio1" autocomplete="off">
-            <label class="btn fw-bolder shadow-sm text-dark w-100 btn-outline-primary" for="btnradio1">Agregar</label>
-            <input type="radio" class="btn-check" name="crud" id="btnradio2" autocomplete="off">
-            <label class="btn fw-bolder shadow-sm w-100 btn-outline-secondary mx-2" for="btnradio2">Actualizar</label>
-            <input type="radio" class="btn-check" name="crud" id="btnradio3" autocomplete="off">
-            <label class="btn fw-bolder shadow-sm w-100 btn-outline-danger" for="btnradio3">Eliminar</label>
-            <!-- /radio botones -->
-            <!-- Formularios -->
-            <div class="d-none shadow rounded sec1 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
-              <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
-              <h3 class="text-center">
-                  Agregar Empleado
-              </h3>
-              <div>
+                    <!-- alerta -->
+                    <% if (pe.getMsg().toString() != "") { %>
+                      <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                          <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg() %></h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      <% pe.setMsg(""); %>
+                      <% } %>
+                    <!-- /alerta -->
+                    <!-- CRUD -->
+                    <div class="d-flex justify-content-between position-relative w-100" role="group" aria-label="Basic radio toggle button group">
+                      <!-- radio botones -->
+                      <input type="radio" class="btn-check" name="crud" id="btnradio1" autocomplete="off">
+                      <label class="btn fw-bolder shadow-sm text-dark w-100 btn-outline-primary" for="btnradio1">Agregar</label>
+                      <input type="radio" class="btn-check" name="crud" id="btnradio2" autocomplete="off">
+                      <label class="btn fw-bolder shadow-sm w-100 btn-outline-secondary mx-2" for="btnradio2">Actualizar</label>
+                      <input type="radio" class="btn-check" name="crud" id="btnradio3" autocomplete="off">
+                      <label class="btn fw-bolder shadow-sm w-100 btn-outline-danger" for="btnradio3">Eliminar</label>
+                      <!-- /radio botones -->
+                      <!-- Formularios -->
+                      <div class="d-none shadow rounded sec1 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
+                        <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
+                        <h3 class="text-center">
+                            Agregar Empleado
+                        </h3>
+                        <div>
                 <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center">
                   <div class="row px-3 g-1">
                       <div class="col-6 my-2 form-floating">
@@ -211,9 +211,9 @@
                   </div>
                   <input type="submit" class="btn btn btn-primary w-75 btn-lg my-2" name="acc" value="Registrar">
               </form>
-              </div>
-            </div>
-            <div class="d-none shadow rounded sec2 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
+                        </div>
+                      </div>
+                      <div class="d-none shadow rounded sec2 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
                 <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
                 <h3 class="text-center">
                   Actualizar Empleado
@@ -288,25 +288,25 @@
                   <input type="submit" class="btn btn btn-secondary w-75 my-2 btn-lg" name="acc" value="Actualizar">
                 </form>
               </div>
-            </div>
-            <div class="d-none shadow rounded sec3 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
-              <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
-              <h3 class="text-center">
-                  Eliminar Empleado
-              </h3>
-              <div>
-                <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center px-3">
-                  <div class="col-9 col-md-7 mt-2 form-floating">
-                      <input name="Dni" placeholder="DNI" required type="text" class="form-control" value="<%= fila[2] %>" maxlength="8" onkeyup="this.value=Numeros(this.value)">
-                      <label for="floatingInput">DNI</label>
-                  </div>
-                  <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
-                </form>
-              </div>
-            </div>
-            <!-- /Formularios -->
-          </div>
-          <!-- /CRUD -->
+                      </div>
+                      <div class="d-none shadow rounded sec3 position-absolute w-100 bg-light pt-3 pb-2 mt-2">
+                        <button type="button" class="btn-close d-lg-none position-absolute end-0 top-0 mt-2 me-2" aria-label="Close" onclick="quitarChecked()"></button>
+                        <h3 class="text-center">
+                            Eliminar Empleado
+                        </h3>
+                        <div>
+                          <form action="../../EmpleadoControl" method="post" class="d-flex flex-column align-items-center px-3">
+                            <div class="col-9 col-md-7 mt-2 form-floating">
+                                <input name="Dni" placeholder="DNI" required type="text" class="form-control" value="<%= fila[2] %>" maxlength="8" onkeyup="this.value=Numeros(this.value)">
+                                <label for="floatingInput">DNI</label>
+                            </div>
+                            <input type="submit" class="btn btn btn-danger w-75 m-3 btn-lg" name="acc" value="Eliminar">
+                          </form>
+                        </div>
+                      </div>
+                      <!-- /Formularios -->
+                    </div>
+                    <!-- /CRUD -->
                 </div>
             </div>
         </div>
