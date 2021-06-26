@@ -25,8 +25,8 @@
         <jsp:include page="navAdmin.jsp"/>
         <jsp:include page="./navbarAdmin.jsp" />
         <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5" id="sec11">
-            <div class="d-flex flex-column flex-lg-row">
-                <div class="col-6 order-2 py-3 me-lg-3">
+            <div class="d-flex flex-column flex-lg-row gap-lg-4">
+                <div class="col-lg-6 order-2 py-3">
                     <div class="row px-2">
                         <div class="d-flex justify-content-between">
                             <form action="../../EmpleadoControl" method="post" class="col-10">
@@ -311,7 +311,7 @@
             </div>
         </div>
         <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5">
-            <div class="col-10 m-auto d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="listar">
+            <div class="col-12 d-flex justify-content-center align-items-center flex-column" style="height: 100vh" id="listar">
                 <h1 class="fw-bold text-primary my-5">Lista de Empleados</h1>
                 <table class="table table-light table-striped shadow bg-body rounded border-1">
                     <thead>

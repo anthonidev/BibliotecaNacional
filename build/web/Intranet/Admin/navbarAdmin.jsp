@@ -1,6 +1,6 @@
 <% Object[] inicio=(Object[]) session.getAttribute("filaInicio"); %>
 <nav
-  class="
+  class="d-none d-lg-flex
     navbar_desktop navbar_desktop--intranet
     col-1
     py-4

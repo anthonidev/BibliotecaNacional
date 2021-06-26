@@ -8,3 +8,4 @@
 <script src="../../js/ubigeo.js"></script>
 <script src="../../js/ubigeo2.js"></script>
 <script src="../../js/validar.js"></script>
+<script src="../../js/radiobuttons.js"></script>
