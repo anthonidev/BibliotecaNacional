@@ -28,12 +28,14 @@
             <div class="d-flex flex-column flex-lg-row gap-lg-4">
                 <div class="col-lg-6 order-2 py-3">
                     <div class="row px-2">
-                        <div class="d-flex justify-content-between gap-2">
+                        <div class="d-flex justify-content-between">
                             <form action="../../EmpleadoControl" method="post" class="col-10">
-                                <div class="row">
-                                    <div class="col">
+                                <div class="row col-12">
+                                    <div class="col-9">
                                         <input type="text" class="form-control rounded-pill" required placeholder="Buscar empleado por DNI" name="Dni" maxlength="8" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <input class="btn btn-primary rounded-pill" type="submit" id="button-addon2" name="acc" value="Buscar">
+                                    </div>
+                                    <div class="col-3 d-flex flex-column">
+                                        <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Buscar">
                                     </div>
                                 </div>
                             </form>

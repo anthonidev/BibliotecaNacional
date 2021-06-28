@@ -1,5 +1,6 @@
 package servicio;
 
+import java.util.List;
 import negocio.Boleta;
 import persistencia.BoletaDao;
 import persistencia.BoletaDaoImp;
@@ -19,5 +20,10 @@ public class BoletaServicioImp implements BoletaServicio {
         if (msg==null) {
             msg="Boleta Generada";
         } return msg;
+    }
+
+    @Override
+    public List listar() {
+        return boleDao.listar();
     }
 }

@@ -73,6 +73,11 @@ public class BoletaControl extends HttpServlet {
             
             response.sendRedirect("Intranet/Admin/boletas.jsp");
         }
+        
+        if (acc.equals("Exportar PDF")) {
+            int cod = Integer.parseInt(request.getParameter("cod"));
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

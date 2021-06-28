@@ -18,6 +18,11 @@ public class BoletaDaoImp implements BoletaDao {
 
     @Override
     public List listar() {
+        String sql = "call SP_LISTARBOLETA()";
+        List lis=Operacion.listar(sql);
+        if(lis!=null){
+            return lis;
+        }
         return null;
     }
 }
