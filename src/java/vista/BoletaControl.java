@@ -9,21 +9,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicio.BoletaServicio;
 import servicio.BoletaServicioImp;
+import servicio.ClienteServicioImp;
 import servicio.PedidoServicio;
 import servicio.PedidoServicioImp;
 
 @WebServlet(name = "BoletaControl", urlPatterns = {"/BoletaControl"})
 public class BoletaControl extends HttpServlet {
     
-    private BoletaServicio boleSer;
     private PedidoServicio peSer;
     private PresentadorGeneral pg;
 
     public BoletaControl() {
         peSer = new PedidoServicioImp();
-        boleSer = new BoletaServicioImp();
+        
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -65,19 +64,28 @@ public class BoletaControl extends HttpServlet {
         if (acc.equals("Generar Boleta")) {
             int codPedido = Integer.parseInt(request.getParameter("codPedido"));
             int codEmpleado = Integer.parseInt(request.getParameter("codEmpleado"));
-            LocalDate fechPedido = LocalDate.parse(request.getParameter("fechPedido"));
             double total = Double.parseDouble(request.getParameter("total"));
-            System.out.println(fechPedido.plusDays(30));
-            String msg=boleSer.grabar(codPedido, codEmpleado, fechPedido.toString(), fechPedido.plusDays(30).toString(), total);
+            
+            String msg=new BoletaServicioImp().grabar(codPedido, codEmpleado, LocalDate.now().toString(), LocalDate.now().plusDays(30).toString(), total);
             pg.setMsg(msg);
             
             response.sendRedirect("Intranet/Admin/boletas.jsp");
         }
         
         if (acc.equals("Exportar PDF")) {
-            int cod = Integer.parseInt(request.getParameter("cod"));
+            String idBoleta = request.getParameter("idBoleta");
+            int idPedido = Integer.parseInt(request.getParameter("idPedido"));
+            String fecha = request.getParameter("fecha");
             
+            Object[] ped = peSer.buscar(idPedido);
+            Object[] cli = new ClienteServicioImp().buscarCliente(ped[3].toString());
+            List lisP = peSer.listarDetalle(idPedido);
+            response.setContentType("application/pdf");
+            
+            BoletaPDF PDF=new BoletaPDF(idBoleta, String.valueOf(idPedido), fecha, cli, lisP);
+            PDF.crearPDF(response);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
