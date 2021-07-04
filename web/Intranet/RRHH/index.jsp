@@ -1,3 +1,5 @@
+<%@page import="vista.PresentadorGeneral"%>
+<%@page import="vista.PresentadorGeneral"%>
 <%@page import="servicio.EmpleadoServicioImp"%>
 <%@page import="servicio.EmpleadoServicio"%>
 <%@page import="servicio.UbigeoServicioImp"%>
@@ -10,7 +12,7 @@
 <%@ page import="com.google.gson.JsonObject"%>
 
 <%
-    
+
     Gson gsonObj = new Gson();
     Map<Object, Object> map = null;
     int totalVisitors = 883000;
@@ -143,19 +145,19 @@
     List lisDep = ubiSer.listarDep();
     List lisPro = ubiSer.listarPro(fila[6].toString());
     List lisDis = ubiSer.listarDis(fila[6].toString(), fila[7].toString());
-    
 
-EmpleadoServicio empSer = new EmpleadoServicioImp();
-List listaEmp = empSer.listar();
+    EmpleadoServicio empSer = new EmpleadoServicioImp();
+    List listaEmp = empSer.listar();
+    PresentadorGeneral pe = (PresentadorGeneral) session.getAttribute("pg");
 
 %>
-<%! int cantidad; %>
-<% cantidad=listaEmp.size()-1; %>
+<%! int cantidad;%>
+<% cantidad = listaEmp.size() - 1; %>
 <!DOCTYPE HTML>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-           <script src="../../js/ubigeo.js"></script>
+        <script src="../../js/ubigeo.js"></script>
         <script src="../../js/ubigeo2.js"></script>
         <script type="text/javascript">
             window.onload = function () {
@@ -287,7 +289,9 @@ List listaEmp = empSer.listar();
             <div class="d-flex" style="height: 94vh">
 
                 <div class="col-8 m-auto ">
+                    
                     <div class="row">
+                        
                         <div class="col-12 my-3 shadow d-flex bg-secondary justify-content-center">
                             <ul class="mb-lg-0">
                                 <div class="p-3 bg-secondary bg-gradient">
@@ -295,6 +299,13 @@ List listaEmp = empSer.listar();
                                 </div>
                             </ul>
                         </div>
+                                <% if (pe.getMsg().toString() != "") {%>
+                    <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                        <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg()%></h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% pe.setMsg(""); %>
+                    <% }%>
                         <div class="col-12 shadow p-3 bg-body rounded ">
                             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                             <button class="btn invisible" id="backButton">&lt; Back</button>

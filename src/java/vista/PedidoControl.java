@@ -27,7 +27,7 @@ public class PedidoControl extends HttpServlet {
         String acc = request.getParameter("acc");
 
         if (acc.equals("Pedidos")) {
-                    pg = new PresentadorGeneral();
+            pg = new PresentadorGeneral();
 
             //listar pedidos(pendiente,aprovado, rechazado)
             List Pendiente = peSer.listarPedido(0);
@@ -78,6 +78,7 @@ public class PedidoControl extends HttpServlet {
 
         if (acc.equals("Aceptar Pedido")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
+            String cargo = request.getParameter("cargo");
             String msg = peSer.aprobarPedido(cod);
             if (msg == null) {
                 //actualizar tabla
@@ -93,10 +94,18 @@ public class PedidoControl extends HttpServlet {
                 request.getSession().setAttribute("Aceptados", Aceptados);
                 request.getSession().setAttribute("Rechazados", Rechazados);
             }
-            response.sendRedirect("Intranet/Admin/pedidos.jsp");
+            if (cargo.equals("jefecontrol")) {
+                response.sendRedirect("Intranet/JefeControl/pedidos.jsp");
+
+            } else {
+                response.sendRedirect("Intranet/Admin/pedidos.jsp");
+
+            }
         }
 
         if (acc.equals("Rechazar Pedido")) {
+            String cargo = request.getParameter("cargo");
+
             int cod = Integer.parseInt(request.getParameter("cod"));
             String msg = peSer.negarPedido(cod);
             if (msg == null) {
@@ -112,11 +121,17 @@ public class PedidoControl extends HttpServlet {
                 request.getSession().setAttribute("Aceptados", Aceptados);
                 request.getSession().setAttribute("Rechazados", Rechazados);
             }
-            response.sendRedirect("Intranet/Admin/pedidos.jsp");
+            if (cargo.equals("jefecontrol")) {
+                response.sendRedirect("Intranet/JefeControl/pedidos.jsp");
+
+            } else {
+                response.sendRedirect("Intranet/Admin/pedidos.jsp");
+
+            }
         }
 
         if (acc.equals("Ver Detalles")) {
-                                pg = new PresentadorGeneral();
+            pg = new PresentadorGeneral();
 
             String cargo = request.getParameter("cargo");
             int cod = Integer.parseInt(request.getParameter("cod"));
