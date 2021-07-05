@@ -48,6 +48,13 @@ public class EmpleadoControl extends HttpServlet {
                     case "Jefe de Control":
                         response.sendRedirect("Intranet/JefeControl/index.jsp");
                         break;
+                    case "Recepcion":
+                        response.sendRedirect("Intranet/Recepcionista/index.jsp");
+                        break;
+                        case "Administracion":
+                        response.sendRedirect("Intranet/Recepcionista/index.jsp");
+                        break;
+
                 }
             } else {
                 request.getSession().setAttribute("msg", "ACCESO NO PERMITIDO");
@@ -94,7 +101,7 @@ public class EmpleadoControl extends HttpServlet {
             pg.setMsg(msg);
             System.out.println(cargo);
             if ("Recursos Humanos".equals(cargo)) {
-                
+
                 response.sendRedirect("Intranet/RRHH/index.jsp");
             } else {
                 response.sendRedirect("Intranet/Admin/empleados.jsp");

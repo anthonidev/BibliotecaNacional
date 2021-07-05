@@ -102,6 +102,28 @@
         />
       </form>
     </li>
+    <li class="nav-item shadow-sm rounded position-relative w-100">
+        <a class="nav-link position-absolute bg-body z-index-0 top-0 bottom-0 start-0 end-0 pe-none" href="#sec5" >
+            </a
+          >
+      <form action="../../BoletaControl" class="h-100 d-grid align-content-center py-2 px-3" method="post">
+        <i class="fas fa-clipboard-list w-100 h3 text-center"></i>
+        <span class="text-center">Boletas</span>
+        <input
+          class="
+          nav-link
+          active
+          text-none
+          border-0
+          w-100
+          p-2 position-absolute top-0 bottom-0 end-0 start-0
+          "
+          type="submit"
+          name="acc"
+          value="Boletas"
+        />
+      </form>
+    </li>
     <li class="nav-item rounded position-absolute top-0">
       <a class="nav-link position-absolute bg-body z-index-0 top-0 bottom-0 start-0 end-0 pe-none" href="#index" >
       </a>
