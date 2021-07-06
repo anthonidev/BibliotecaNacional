@@ -3,6 +3,7 @@ package vista;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -80,7 +81,9 @@ public class DevolcucionControl extends HttpServlet {
             String cod = request.getParameter("cod");
             String total = request.getParameter("total");
             LocalDateTime fecha = LocalDateTime.now();
-            deSer.RegistrarDevolucion(cod, fecha.toString(), total);
+            
+            String msg =deSer.RegistrarDevolucion(cod, fecha.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), total);
+            pg.setMsg(msg);
             response.sendRedirect("Intranet/Admin/Devoluciones.jsp");
 
         }

@@ -125,13 +125,7 @@
                     </div>
                 </div>
                 <div class="col-6 d-flex flex-column">
-                    <% if (pe.getMsg().toString() != "") {%>
-                    <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-                        <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg()%></h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <% pe.setMsg(""); %>
-                    <% }%>
+
 
                     <h4 class="fw-bold text-secondary text-center my-4">Evaluacion</h4>
                     <form action="../../DevolcucionControl" method="post" class="">
@@ -190,12 +184,19 @@
                         </div>
                     </div>
                     <div class="col-5 m-auto my-3 p-2">
-                        <form action="../../BoletaControl" method="post" class="d-flex  justify-content-center">
+                        <form action="../../DevolcucionControl" method="post" class="d-flex  justify-content-center">
                             <input type="hidden" name="cod"  value="<%= boleta[0]%>">
                             <input type="hidden" name="total"  value="<%= pe.getPrecioTotal()%>">
                             <input type="submit" name="acc" class="btn btn-success btn-lg px-5 mx-5 fw-bold " value="Devolucion Concretada">
                         </form>
                     </div>
+                    <% if (pe.getMsg().toString() != "") {%>
+                    <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                        <h4 class="fw-bold text-center text-dark my-2"><%= pe.getMsg()%></h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% pe.setMsg(""); %>
+                    <% }%>
                 </div>
             </div>
         </div>
