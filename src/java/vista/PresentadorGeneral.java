@@ -7,6 +7,9 @@ public class PresentadorGeneral {
     private Object[] pedido = {"", "", "", "", "", "", "", ""};
     private Object[] detalle={"","","",""};
     
+    long dias=0;
+    double precioTotal=0;
+    
     private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", ""};
     private List listaClienteBuscar = new ArrayList();
     
@@ -24,6 +27,23 @@ public class PresentadorGeneral {
     
     private Object[] cart={"","","","","",""};
     private List cartList = new ArrayList();
+
+    public long getDias() {
+        return dias;
+    }
+
+    public void setDias(long dias) {
+        this.dias = dias;
+    }
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+    
     
     public PresentadorGeneral() {
         lista.add(pedido);

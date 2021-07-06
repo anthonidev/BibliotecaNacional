@@ -90,12 +90,33 @@
                                             <label for="floatingInputGrid">Fecha de devolucion</label>
                                         </div>
                                     </div>
-                                    <div class="col-5 m-auto my-3 p-2">
-                                        <form action="../../BoletaControl" method="post" class="d-flex  justify-content-center">
-                                            <input type="submit" name="acc" class="btn btn-success btn-lg px-5 mx-5 fw-bold " value="Devolucion">
-                                        </form>
-                                    </div>
 
+                                    <h4 class="fw-bold text-secondary text-center my-4">Detalle del pedido</h4>
+                                    <table class="table table-light table-striped shadow bg-body rounded border-1">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nombre del libro</th>
+                                                <th scope="col">Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% List Lista = pe.getListaDetalle(); %>
+                                            <% for (int i = 1; i < Lista.size(); i++) { %>
+                                            <% Object[] f = (Object[]) Lista.get(i);%>
+                                            <tr class="">
+
+                                                <th scope="row">
+                                                    <input type="text"  value="<%= f[1]%>" class="form-control text-center" readonly>
+                                                </th>
+                                                <th scope="row">
+                                                    <input type="text"  value="<%= f[2]%>" class="form-control text-center" readonly>
+                                                </th>
+
+                                            </tr>
+                                            <% }%>
+                                        </tbody>
+
+                                    </table>
 
                                     <a href="#boletas" class="btn btn-secondary my-2 py-3 fw-bold">Listar Boletas</a>
                                 </div>
@@ -110,67 +131,71 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <% pe.setMsg(""); %>
-                    <% } %>
-                    <h4 class="fw-bold text-secondary text-center my-4">Detalle del pedido</h4>
-                    <table class="table table-light table-striped shadow bg-body rounded border-1">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre del libro</th>
-                                <th scope="col">Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% List Lista = pe.getListaDetalle(); %>
-                            <% for (int i = 1; i < Lista.size(); i++) { %>
-                            <% Object[] f = (Object[]) Lista.get(i);%>
-                            <tr class="">
+                    <% }%>
 
-                                <th scope="row">
-                                    <input type="text"  value="<%= f[1]%>" class="form-control text-center" readonly>
-                                </th>
-                                <th scope="row">
-                                    <input type="text"  value="<%= f[2]%>" class="form-control text-center" readonly>
-                                </th>
-
-                            </tr>
-                            <% } %>
-                        </tbody>
-
-                    </table>
                     <h4 class="fw-bold text-secondary text-center my-4">Evaluacion</h4>
+                    <form action="../../DevolcucionControl" method="post" class="">
 
-                    <table class="table table-light table-striped shadow bg-body rounded border-1">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre del libro</th>
-                                <th scope="col">Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <table class="table table-light table-striped shadow bg-body rounded border-1 ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre del libro</th>
+                                    <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            <tr class="">
+                                <tr class="">
 
-                                <th scope="row">
-                                    <input type="text"  value="Libros Dañados" class="form-control text-center" readonly>
-                                </th>
-                                <th scope="row">
-                                    <input type="number"  value="" class="form-control text-center"  >
-                                </th>
+                                    <th scope="row">
+                                        <input type="text"  value="Libros Dañados" class="form-control text-center" readonly>
+                                    </th>
+                                    <th scope="row">
+                                        <input type="number"  name="libros" value="" class="form-control text-center"  >
+                                    </th>
 
-                            </tr>
-                            <tr class="">
+                                </tr>
+                                <tr class="">
 
-                                <th scope="row">
-                                    <input type="text"  value="Dias Pasados" class="form-control text-center" readonly>
-                                </th>
-                                <th scope="row">
-                                    <input type="number"  value="" max="15" class="form-control text-center"  >
-                                </th>
+                                    <th scope="row">
+                                        <input type="text"  value="Dias Pasados" class="form-control text-center" readonly>
+                                    </th>
+                                    <th scope="row">
+                                        <input type="number"  name="dias" value="<%= pe.getDias()%>" max="15" class="form-control text-center" readonly="" >
+                                    </th>
 
-                            </tr>
-                        </tbody>
+                                </tr>
+                                <tr >
 
-                    </table>
+                                    <td colspan="2" class="table-activ  ">
+                                        <input type="submit" name="acc" class="btn btn-info   fw-bold" value="Realizar Evaluacion" >
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </form>
+                    <div class="justify-content-end  align-self-end ">
+                        <div class="card shadow  bg-body rounded border-1">
+
+                            <div class="card-body   ">
+                                <div class="input-group input-group ">
+                                    <span class="input-group-text" id="inputGroup-sizing-lg " style="width: 80px;">Total</span>
+                                    <span class="input-group-text">S/.</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value="<%= pe.getPrecioTotal()%>">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5 m-auto my-3 p-2">
+                        <form action="../../BoletaControl" method="post" class="d-flex  justify-content-center">
+                            <input type="hidden" name="cod"  value="<%= boleta[0]%>">
+                            <input type="hidden" name="total"  value="<%= pe.getPrecioTotal()%>">
+                            <input type="submit" name="acc" class="btn btn-success btn-lg px-5 mx-5 fw-bold " value="Devolucion Concretada">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
