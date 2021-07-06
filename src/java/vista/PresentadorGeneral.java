@@ -15,6 +15,10 @@ public class PresentadorGeneral {
     private String msg = "";
     private String ctr="" ;
    
+    private Object[] boletaObj = {"", "", "", "", "", "", ""};
+        private List boletaList = new ArrayList();
+
+    
     private Object[] UserCliente={"","",""};
     private List cliUsu= new ArrayList();
     
@@ -27,6 +31,23 @@ public class PresentadorGeneral {
         listaClienteBuscar.add(cliente);
         cliUsu.add(UserCliente);
         cartList.add(cart);
+        boletaList.add(boletaObj);
+    }
+
+    public Object[] getBoletaObj() {
+        return boletaObj;
+    }
+
+    public void setBoletaObj(Object[] boletaObj) {
+        this.boletaObj = boletaObj;
+    }
+
+    public List getBoletaList() {
+        return boletaList;
+    }
+
+    public void setBoletaList(List boletaList) {
+        this.boletaList = boletaList;
     }
 
     public String getCtr() {

@@ -2,6 +2,8 @@ package persistencia;
 
 import java.util.List;
 import negocio.Boleta;
+import negocio.Persona;
+import negocio.Presentador;
 
 public class BoletaDaoImp implements BoletaDao {
 
@@ -12,7 +14,22 @@ public class BoletaDaoImp implements BoletaDao {
     }
 
     @Override
-    public Boleta buscar(Boleta bole) {
+    public Presentador buscar(Boleta bole) {
+        String sql = "call BuscarBoleta("+bole.getIdBoleta()+")";
+        Object[] fill = Operacion.buscar(sql);
+        if (fill != null) {
+            Persona per=new Persona();
+            bole.setIdBoleta((int) fill[0]);
+            per.setNombre((String) fill[1]);
+            per.setApellidos((String) fill[2]);
+            per.setDni((String) fill[3]);
+            per.setDireccion((String) fill[4]);
+            bole.setFecha(fill[5].toString());
+            bole.setFechaDev(fill[6].toString());
+            bole.setIdPedido((int)fill[7]);
+            Presentador pre=new Presentador(per, bole);
+            return pre;
+        }
         return null;
     }
 

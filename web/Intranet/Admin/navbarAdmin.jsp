@@ -103,12 +103,12 @@
       </form>
     </li>
     <li class="nav-item shadow-sm rounded position-relative w-100">
-        <a class="nav-link position-absolute bg-body z-index-0 top-0 bottom-0 start-0 end-0 pe-none" href="#sec5" >
+        <a class="nav-link position-absolute bg-body z-index-0 top-0 bottom-0 start-0 end-0 pe-none" href="#sec6" >
             </a
           >
-      <form action="../../BoletaControl" class="h-100 d-grid align-content-center py-2 px-3" method="post">
+      <form action="../../DevolcucionControl" class="h-100 d-grid align-content-center py-2 px-3" method="post">
         <i class="fas fa-clipboard-list w-100 h3 text-center"></i>
-        <span class="text-center">Boletas</span>
+        <span class="text-center">Devolucion</span>
         <input
           class="
           nav-link
@@ -120,7 +120,7 @@
           "
           type="submit"
           name="acc"
-          value="Boletas"
+          value="Devolucion"
         />
       </form>
     </li>

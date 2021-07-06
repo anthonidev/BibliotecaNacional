@@ -105,6 +105,9 @@
                                                 <div class="card-body  d-flex  justify-content-center">
                                                     <form action="../../PedidoControl" method="post" class="d-flex  justify-content-center ">
                                                         <input type="hidden" name="cod" value="<%= pedido[0] %>"> 
+                                                       <input type="hidden" name="cargo" value="admin"> 
+
+                                                        
                                                         <input type="submit" name="acc" class="btn btn-success btn-lg  mx-5 fw-bold " value="Aceptar Pedido">
                                                         <input type="submit" name="acc" class="btn btn-danger mx-5 btn-lg fw-bold " value="Rechazar Pedido">
                                                     </form>

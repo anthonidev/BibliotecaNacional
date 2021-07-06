@@ -218,7 +218,7 @@
                     </tr>
                     </tbody>
                 </table>
-                    <a href="index.jsp" class="btn btn-secondary w-25 my-4 py-3 mx-auto fw-bold">Regresar</a>
+                <a href="index.jsp" class="btn btn-secondary w-25 my-4 py-3 mx-auto fw-bold">Regresar</a>
             </div>
         </div>
     </body>

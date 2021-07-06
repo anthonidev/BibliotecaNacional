@@ -1,94 +1,60 @@
 package vista;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import servicio.BoletaServicio;
 import servicio.BoletaServicioImp;
-import servicio.ClienteServicioImp;
 import servicio.PedidoServicio;
 import servicio.PedidoServicioImp;
 
-@WebServlet(name = "BoletaControl", urlPatterns = {"/BoletaControl"})
-public class BoletaControl extends HttpServlet {
+@WebServlet(name = "DevolcucionControl", urlPatterns = {"/DevolcucionControl"})
+public class DevolcucionControl extends HttpServlet {
 
-    private PedidoServicio peSer;
+    private BoletaServicio boSer;
     private PresentadorGeneral pg;
-
-    public BoletaControl() {
-        peSer = new PedidoServicioImp();
+ private PedidoServicio peSer;
+    public DevolcucionControl() {
+        boSer = new BoletaServicioImp();
+        pg = new PresentadorGeneral();
+         peSer = new PedidoServicioImp();
 
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String acc = request.getParameter("acc");
-
-        if (acc.equals("Boletas") || acc.equals("Devolucion")) {
+        System.out.println(acc);
+        if (acc.equals("Devolucion")) {
             pg = new PresentadorGeneral();
             request.getSession().setAttribute("pg", pg);
 
-            if (acc.equals("Boletas")) {
-                response.sendRedirect("Intranet/Admin/boletas.jsp");
-            } else {
-                response.sendRedirect("Intranet/Admin/Devoluciones.jsp");
+            response.sendRedirect("Intranet/Admin/Devoluciones.jsp");
 
-            }
         }
 
         if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
             int cod = Integer.parseInt(request.getParameter("cod"));
-            Object[] fill = peSer.buscar(cod);
-            List lisP = peSer.listarDetalle(cod);
+            Object[] fill = boSer.buscarBoleta(cod);
+            int pedido= (int)fill[7];
+            List lisP = peSer.listarDetalle(pedido);
             pg.setListaDetalle(lisP);
             if (fill != null) {
-                pg.setPedido(fill);
-
+                pg.setBoletaObj(fill);
                 request.getSession().setAttribute("fill", fill);
-                response.sendRedirect("Intranet/Admin/boletas.jsp");
+                response.sendRedirect("Intranet/Admin/Devoluciones.jsp");
+
             } else {
                 pg.setMsg("No exite el pedido");
                 response.sendRedirect("Intranet/Admin/boletas.jsp");
             }
         }
-
-        if (acc.equals("Limpiar")) {
-            Object[] vacio = {"", "", "", "", "", "", "", ""};
-            List vacio2 = new ArrayList();
-            pg.setPedido(vacio);
-            pg.setListaDetalle(vacio2);
-            response.sendRedirect("Intranet/Admin/boletas.jsp");
-        }
-
-        if (acc.equals("Generar Boleta")) {
-            int codPedido = Integer.parseInt(request.getParameter("codPedido"));
-            int codEmpleado = Integer.parseInt(request.getParameter("codEmpleado"));
-            double total = Double.parseDouble(request.getParameter("total"));
-
-            String msg = new BoletaServicioImp().grabar(codPedido, codEmpleado, LocalDate.now().toString(), LocalDate.now().plusDays(30).toString(), total);
-            pg.setMsg(msg);
-
-            response.sendRedirect("Intranet/Admin/boletas.jsp");
-        }
-
-        if (acc.equals("Exportar PDF")) {
-            String idBoleta = request.getParameter("idBoleta");
-            int idPedido = Integer.parseInt(request.getParameter("idPedido"));
-            String fecha = request.getParameter("fecha");
-
-            Object[] ped = peSer.buscar(idPedido);
-            Object[] cli = new ClienteServicioImp().buscarCliente(ped[3].toString());
-            List lisP = peSer.listarDetalle(idPedido);
-            response.setContentType("application/pdf");
-
-            BoletaPDF PDF = new BoletaPDF(idBoleta, String.valueOf(idPedido), fecha, cli, lisP);
-            PDF.crearPDF(response);
+        if (acc.equals("Buscar") || acc.equals("Ver Detalles")) {
+            
         }
 
     }

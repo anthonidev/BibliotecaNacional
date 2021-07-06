@@ -5,7 +5,14 @@ public class Presentador {
     private Cuenta cu;
     private TipoEmpleado tip;
     private Pedido ped;
+    private Boleta bole;
 
+    public Presentador(Persona per, Boleta bole) {
+        this.per = per;
+        this.bole = bole;
+    }
+
+    
     public Presentador(Persona per, TipoEmpleado tip) {
         this.per = per;
         this.tip = tip;
@@ -26,6 +33,15 @@ public class Presentador {
         this.cu = cu;
         this.tip = tip;
     }
+
+    public Boleta getBole() {
+        return bole;
+    }
+
+    public void setBole(Boleta bole) {
+        this.bole = bole;
+    }
+    
 
     public Persona getPer() {
         return per;
