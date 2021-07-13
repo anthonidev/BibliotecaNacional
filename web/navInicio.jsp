@@ -43,7 +43,7 @@
     >
       <li class="nav-item">
         <a class="mb-0 nav-link active h5" aria-current="page" href="index.jsp">
-          <img src="./img/icons/btn-inicio.svg" alt="" width="" />
+          <i class="fas fa-home fs-2"></i>
           <span class="d-none d-lg-block"> Inicio </span>
         </a>
       </li>
@@ -53,13 +53,13 @@
           aria-current="page"
           href="Libros.jsp"
         >
-          <img src="./img/icons/btn-buscar.svg" alt="" width="" />
-          <span class="d-none d-lg-block"> Libros </span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="mb-0 nav-link active h5" aria-current="page" href="#">
-          <img src="./img/icons/btn-biblioteca.svg" alt="" width="" />
+        <i class="fas fa-search fs-2"></i>
+        <span class="d-none d-lg-block"> Libros </span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="mb-0 nav-link active h5" aria-current="page" href="#">
+          <i class="fas fa-bookmark fs-2"></i>
           <span class="d-none d-lg-block"> Informacion </span>
         </a>
       </li>
@@ -74,7 +74,7 @@
             aria-expanded="false"
             aria-controls="multiCollapseExample2"
           >
-            <img src="./img/icons/btn-perfil.svg" alt="" width="" />
+          <i class="fas fa-user-circle fs-3"></i>
             <span class="d-none d-lg-block"> Contacto </span>
           </a>
           <div class="collapse tipo-sesion shadow-sm" id="navbarSupportedContent">
@@ -127,6 +127,7 @@
             aria-controls="multiCollapseExample2"
           >
             <img src="./img/icons/btn-perfil.svg" alt="" width="" />
+            <i class="fas fa-user-circle fs-3"></i>
             <span class="d-none d-lg-block"> Contacto </span>
           </a>
           <div class="collapse tipo-sesion shadow-sm" id="navbarSupportedContent">

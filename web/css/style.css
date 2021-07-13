@@ -11859,6 +11859,11 @@ fieldset:disabled .btn {
 .text-none{
   color: transparent;
 }
+
+.navbar-light{
+  background-color: var(--bs-lila);
+}
+
 /* funcionamiento de radiobuttons forms */
 #btnradio1:checked ~ .sec1,#btnradio2:checked ~ .sec2,#btnradio3:checked ~ .sec3{
   display: block !important;
