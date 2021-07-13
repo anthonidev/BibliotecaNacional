@@ -4,10 +4,8 @@
 <%@page import="servicio.LibroServicio"%>
 <%@page import="servicio.LibroServicioImp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    LibroServicio serLib=new LibroServicioImp();
-    List lis=serLib.listar();
-%>
+<% LibroServicio serLib=new LibroServicioImp(); %>
+<% List lis=serLib.listar(); %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
