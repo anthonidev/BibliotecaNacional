@@ -4,6 +4,8 @@
     Author     : Anthoni
 --%>
 
+<%@page import="vista.PresentadorGeneral"%>
+<%@page import="vista.PresentadorGeneral"%>
 <%@page import="servicio.PedidoServicioImp"%>
 <%@page import="servicio.PedidoServicio"%>
 <%@page import="servicio.LibroServicioImp"%>
@@ -20,8 +22,7 @@
 <%
     LibroServicio libSer = new LibroServicioImp();
     List lisCat = libSer.listarCategoria();
-PedidoServicio peSer = new PedidoServicioImp();
-
+    PedidoServicio peSer = new PedidoServicioImp();
 
     Gson gsonObj = new Gson();
     Map<Object, Object> map = null;
@@ -153,8 +154,8 @@ PedidoServicio peSer = new PedidoServicioImp();
     UbigeoServicio ubiSer = new UbigeoServicioImp();
     List Pendiente = peSer.listarPedido(0);
 %>
-<%! int cantidad; %>
-<% cantidad=Pendiente.size()-1; %>
+<%! int cantidad;%>
+<% cantidad = Pendiente.size() - 1; %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -288,7 +289,8 @@ PedidoServicio peSer = new PedidoServicioImp();
             <jsp:include page="../Admin/navAdmin.jsp" />
 
             <% Object[] inicio = (Object[]) session.getAttribute("filaInicio");%>
-            <div class="d-flex" style="height: 94vh">
+                <div class="d-flex" style="height: 94vh">
+                
 
                 <div class="col-8 m-auto ">
                     <div class="row">
@@ -309,16 +311,16 @@ PedidoServicio peSer = new PedidoServicioImp();
                                     <a href="pedidos.jsp" class="text-decoration-none">
                                         <div class="alert alert-secondary fw-bold text-center h4" role="alert">
                                             Pedidos<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    <%=cantidad%> 
-    <span class="visually-hidden">unread messages</span>
-  </span>
+                                                <%=cantidad%> 
+                                                <span class="visually-hidden">unread messages</span>
+                                            </span>
                                         </div>
                                     </a>
                                 </div>
                             </div>
                             <div class="card mx-5">
                                 <div class="card-body">
-                                   <a href="libros.jsp" class="text-decoration-none">
+                                    <a href="libros.jsp" class="text-decoration-none">
                                         <div class="alert alert-secondary fw-bold text-center h4" role="alert">
                                             Libros
                                         </div>
@@ -328,6 +330,7 @@ PedidoServicio peSer = new PedidoServicioImp();
                         </div>
                     </div>
                 </div>
+
             </div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         </main>

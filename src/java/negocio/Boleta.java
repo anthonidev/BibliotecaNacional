@@ -17,6 +17,11 @@ public class Boleta {
         this.Total = Total;
     }
 
+    public Boleta(int IdBoleta) {
+        this.IdBoleta = IdBoleta;
+    }
+    
+
     public int getIdBoleta() {
         return IdBoleta;
     }

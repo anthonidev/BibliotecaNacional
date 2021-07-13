@@ -27,6 +27,7 @@
         <div class="container_section_datos container_section_datos--intranet px-3 px-lg-5" id="sec11">
             <div class="d-flex flex-column flex-lg-row gap-lg-4">
                 <div class="col-lg-6 order-2 py-3">
+<<<<<<< HEAD
                     <div class="row px-2 ali">
                         <div class="d-flex justify-content-between align-items-center gap-2">
                             <form action="../../EmpleadoControl" method="post" class="col-10">
@@ -34,6 +35,17 @@
                                     <div class="col position-relative">
                                         <input type="text" class="form-control rounded-pill py-2" required placeholder="Buscar empleado por DNI" name="Dni" maxlength="8" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <input class="btn btn-primary rounded-pill position-absolute me-3 top-0 bottom-0 end-0" type="submit" id="button-addon2" name="acc" value="Buscar">
+=======
+                    <div class="row px-2">
+                        <div class="d-flex justify-content-between">
+                            <form action="../../EmpleadoControl" method="post" class="col-10">
+                                <div class="row col-12">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control rounded-pill" required placeholder="Buscar empleado por DNI" name="Dni" maxlength="8" onkeyup="this.value=Numeros(this.value)" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    </div>
+                                    <div class="col-3 d-flex flex-column">
+                                        <input class="btn btn-secondary" type="submit" id="button-addon2" name="acc" value="Buscar">
+>>>>>>> main
                                     </div>
                                 </div>
                             </form>

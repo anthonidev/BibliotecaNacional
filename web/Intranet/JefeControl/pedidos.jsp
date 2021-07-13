@@ -66,8 +66,8 @@
             } %>
 
 
-        <div class="row">
-            <div class="col-10 m-auto" id="#">
+            <div class="row " style="margin-top: 10%" >
+            <div class="col-10 m-auto"  id="#">
                 <div class="d-flex px-5">
                     <div class="col-6">
                         <div class="row">
@@ -162,6 +162,7 @@
                                                 <div class="card-body  d-flex  justify-content-center">
                                                     <form action="../../PedidoControl" method="post" class="d-flex  justify-content-center ">
                                                         <input type="hidden" name="cod" value="<%= pedido[0]%>"> 
+                                                        <input type="hidden" name="cargo" value="jefecontrol"> 
                                                         <input type="submit" name="acc" class="btn btn-success btn-lg  mx-5 fw-bold " value="Aceptar Pedido">
                                                         <input type="submit" name="acc" class="btn btn-danger mx-5 btn-lg fw-bold " value="Rechazar Pedido">
                                                     </form>
@@ -169,7 +170,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 m-auto my-4">
-                                            <div class="card shadow bg-body rounded border-1">
+                                            <div cla    ss="card shadow bg-body rounded border-1">
                                                 <div class="card-body d-flex">
                                                     <a href="#pendientes" class="btn btn-secondary m-auto fw-bold">Pedidos Pendientes
                                                         <span class="position-absolute text-dark top-0 start-100 translate-middle badge rounded-pill bg-primary">

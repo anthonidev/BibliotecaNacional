@@ -25,6 +25,8 @@ public class CarritoControl extends HttpServlet {
             throws ServletException, IOException {
         
         String acc = request.getParameter("acc");
+        pg = (PresentadorGeneral)request.getSession().getAttribute("pg");
+        request.getSession().setAttribute("pg", pg);
 
         if (acc.equals("Iniciar")) {
             String user = request.getParameter("user");
@@ -87,7 +89,6 @@ public class CarritoControl extends HttpServlet {
                 pg.getCartList().remove(pg.getCartList().size()-1);
                 bool=true;
             }
-            
             response.sendRedirect("Libros.jsp");
         }
         
@@ -122,21 +123,25 @@ public class CarritoControl extends HttpServlet {
         }
         
         if (acc.equals("Grabar Pedido")) {
-            int cod=Integer.parseInt(request.getParameter("codigo"));
+            String cod=request.getParameter("codigo");
             double total=Double.parseDouble(request.getParameter("total"));
-            String msg=pedSer.grabarPedido(cod, total);
-            pg.setMsg(msg);
-            
-            for (int i = 1; i < pg.getCartList().size(); i++) {
-                Object[] lis=(Object[]) pg.getCartList().get(i);
-                pedSer.grabarDetalle((int)lis[0], (int)lis[4], (double)lis[3]);
+            if (!request.getParameter("codigo").equals("")) {
+                pg.setMsg(pedSer.grabarPedido(Integer.parseInt(cod), total));
+                
+                for (int i = 1; i < pg.getCartList().size(); i++) {
+                    Object[] lis=(Object[]) pg.getCartList().get(i);
+                    pedSer.grabarDetalle((int)lis[0], (int)lis[4], (double)lis[3]);
+                }
+                
+                List li=new ArrayList();
+                Object[] vacio={"","","","","",""};
+                pg.setCartList(li);
+                pg.addCartList(vacio);
+                response.sendRedirect("Libros.jsp");
+            } else {
+                pg.setMsg("Para continuar debe iniciar sesión");
+                response.sendRedirect("ver-carrito.jsp");
             }
-            
-            List li=new ArrayList();
-            Object[] vacio={"","","","","",""};
-            pg.setCartList(li);
-            pg.addCartList(vacio);
-            response.sendRedirect("Libros.jsp");
         }
         
         if (acc.equals("Cerrar")) {

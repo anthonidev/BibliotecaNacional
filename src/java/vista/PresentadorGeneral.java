@@ -7,6 +7,9 @@ public class PresentadorGeneral {
     private Object[] pedido = {"", "", "", "", "", "", "", ""};
     private Object[] detalle={"","","",""};
     
+    long dias=0;
+    double precioTotal=0;
+    
     private Object[] cliente={"", "", "", "", "", "", "", "","", "", "", ""};
     private List listaClienteBuscar = new ArrayList();
     
@@ -15,11 +18,32 @@ public class PresentadorGeneral {
     private String msg = "";
     private String ctr="" ;
    
+    private Object[] boletaObj = {"", "", "", "", "", "", ""};
+        private List boletaList = new ArrayList();
+
+    
     private Object[] UserCliente={"","",""};
     private List cliUsu= new ArrayList();
     
     private Object[] cart={"","","","","",""};
     private List cartList = new ArrayList();
+
+    public long getDias() {
+        return dias;
+    }
+
+    public void setDias(long dias) {
+        this.dias = dias;
+    }
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+    
     
     public PresentadorGeneral() {
         lista.add(pedido);
@@ -27,6 +51,23 @@ public class PresentadorGeneral {
         listaClienteBuscar.add(cliente);
         cliUsu.add(UserCliente);
         cartList.add(cart);
+        boletaList.add(boletaObj);
+    }
+
+    public Object[] getBoletaObj() {
+        return boletaObj;
+    }
+
+    public void setBoletaObj(Object[] boletaObj) {
+        this.boletaObj = boletaObj;
+    }
+
+    public List getBoletaList() {
+        return boletaList;
+    }
+
+    public void setBoletaList(List boletaList) {
+        this.boletaList = boletaList;
     }
 
     public String getCtr() {

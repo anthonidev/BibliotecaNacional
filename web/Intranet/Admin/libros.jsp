@@ -126,7 +126,7 @@
                             Agregar Libro
                         </h3>
                         <div>
-                            <form action="../../LibroControl" method="post" class="d-flex flex-column align-items-center">
+                            <form action="../../LibroControl" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
                             <div class="row px-3 g-1">
                                 <div class="col-6 form-floating">
                                     <input placeholder="Nombre" type="text" required class="form-control" name="Nombre" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
@@ -162,6 +162,7 @@
                                     <input type="file" required class="form-control" name="Portada" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
                                 </div>
                             </div>
+                                    <input type="hidden" name="cargo" value="admin" >
                             <input type="submit" name="acc" value="Registrar" class="btn btn btn-primary w-75 btn-lg my-2">
                             </form>
                         </div>
