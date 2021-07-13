@@ -26,6 +26,13 @@
                     </div>
                     <% } else { %>
                     <div class="m-auto table-responsive" style="width: 90%">
+                        <% if (!pg.getMsg().equals("")) { %>
+                        <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
+                            <h4 class="fw-bold text-center text-dark my-2"><%= pg.getMsg() %></h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <% pg.setMsg(""); %>
+                        <% } %>
                         <span class="h2 d-flex justify-content-center pb-2">Lista del Carrito</span>
                         <table class="table table-dark table-striped mb-5">
                             <thead>
