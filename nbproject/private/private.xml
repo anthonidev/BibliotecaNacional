@@ -2,31 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/persistencia/ClienteDao.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/web/Intranet/Almacen/Libros.jsp</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/persistencia/BoletaDao.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/web/Intranet/RRHH/Empleados.jsp</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/negocio/Persona.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/persistencia/ClienteDaoImp.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/vista/DevolcucionControl.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/negocio/Presentador.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/web/Intranet/Admin/Devoluciones.jsp</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/servicio/ClienteServicioImp.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/web/Intranet/Admin/boletas.jsp</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/vista/PedidoControl.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/vista/PresentadorGeneral.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/servicio/BoletaServicio.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/vista/BoletaPDF.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/vista/BoletaControl.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/servicio/ClienteServicio.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/web/Intranet/Admin/navbarAdmin.jsp</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/servicio/BoletaServicioImp.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/persistencia/BoletaDaoImp.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/negocio/Boleta.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/vista/ClienteControl.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/src/java/negocio/Devolucion.java</file>
-            <file>file:/C:/Users/toni/Documents/BibliotecaNacional/web/Intranet/Admin/pedidos.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
