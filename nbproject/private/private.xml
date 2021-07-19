@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/Libros.jsp</file>
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/ver-carrito.jsp</file>
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/src/java/vista/CarritoControl.java</file>
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/navInicio.jsp</file>
+            <file>file:/C:/Users/jesus/Desktop/BibliotecaNacional/web/Intranet/Admin/empleados.jsp</file>
+        </group>
+>>>>>>> e3095c7400eb1a6bd8518ff15dd02b60f7b9f06f
     </open-files>
 </project-private>

@@ -1,10 +1,18 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.lang.Object"%> <%@page import="vista.PresentadorGeneral"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- navbar -->
-<%! String ctr = ""; %> <% PresentadorGeneral pg = (PresentadorGeneral)
-session.getAttribute("pg"); Object fila = session.getAttribute("fila"); Object[]
-online = {"", "", ""}; if (fila != null) { online = pg.getUserCliente(); } %>
+<%! String ctr = ""; %>
+<% PresentadorGeneral pg = (PresentadorGeneral)session.getAttribute("pg");
+    if (pg == null) {
+        pg=new PresentadorGeneral();
+        session.setAttribute("pg",pg);
+    }
+    Object fila = session.getAttribute("fila"); Object[]
+    online = {"", "", ""};
+    if (fila != null)
+        online = pg.getUserCliente(); %>
 <nav
   class="
     z-index
@@ -354,7 +362,6 @@ online = {"", "", ""}; if (fila != null) { online = pg.getUserCliente(); } %>
   </ul>
 </nav>
 <!-- boton de carrito -->
-<% if (online[0] != online[2]) { %>
 <li
   class="
     nav-item
@@ -404,6 +411,5 @@ online = {"", "", ""}; if (fila != null) { online = pg.getUserCliente(); } %>
     </button>
   </form>
 </li>
-<% } %>
 <!-- /boton de carrito -->
 <!-- /navbar -->

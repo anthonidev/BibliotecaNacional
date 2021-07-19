@@ -15,7 +15,7 @@
                 <li class="nav-item mx-3">
                     <ul class="gap-2 navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-column align-items-center align-items-lg-center justify-content-center justify-content-lg-end w-100">   
                         <li class="nav-item mx-3">
-                            <h1 class="text-dark h5 m-0"><i class="far fa-address-card"></i> C&oacute;digo: <%= inicio[0] %> </h1>
+                            <h1 class="text-dark h5 m-0"><i class="far fa-address-card"></i> Código: <%= inicio[0] %> </h1>
                         </li>
                         <li class="nav-item mx-3">
                             <h1 class="text-dark h5 m-0"><i class="fas fa-user"></i> Nombre: <%= inicio[1] %> </h1>
