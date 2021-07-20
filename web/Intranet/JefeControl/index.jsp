@@ -30,14 +30,19 @@
     List<Map<Object, Object>> list = new ArrayList<Map<Object, Object>>();
 
     map = new HashMap<Object, Object>();
-    map.put("y", 519960);
-    map.put("name", "New Visitors");
+    map.put("y", peSer.listarPedido(0).size()-1);
+    map.put("name", "Pedidos Pendientes");
     map.put("color", "#E7823A");
     list.add(map);
     map = new HashMap<Object, Object>();
-    map.put("y", 363040);
-    map.put("name", "Returning Visitors");
+    map.put("y", peSer.listarPedido(1).size()-1);
+    map.put("name", "Pedidos Aceptados");
     map.put("color", "#546BC1");
+    list.add(map);
+    map = new HashMap<Object, Object>();
+    map.put("y", peSer.listarPedido(2).size()-1);
+    map.put("name", "Pedidos Rechazados");
+    map.put("color", "#140BD5");
     list.add(map);
 
     String newVsReturningVisitorsDataPoints = gsonObj.toJson(list);
