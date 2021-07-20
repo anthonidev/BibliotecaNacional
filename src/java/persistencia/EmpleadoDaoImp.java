@@ -1,10 +1,12 @@
 package persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 import negocio.Persona;
 import negocio.Cuenta;
 import negocio.Presentador;
 import negocio.TipoEmpleado;
+import vista.PresentadorGeneral;
 
 public class EmpleadoDaoImp implements EmpleadoDao {
 
@@ -56,6 +58,51 @@ public class EmpleadoDaoImp implements EmpleadoDao {
     @Override
     public List listar() {
         String sql="call SP_LISTAREMPLEADO()";
+        List lis=Operacion.listar(sql);
+        if (lis!=null)
+            return lis;
+        return null;
+    }
+
+    @Override
+    public List admin() {
+        String sql="SELECT T.NOMBRE FROM EMPLEADO E INNER JOIN CUENTA C INNER JOIN PERSONA P INNER JOIN TIPOEMPLEADO T ON E.IDPEREM=P.IDPER WHERE (E.IDCUENTA=C.IDCUENTA AND E.IDTIP=T.IDTIP AND T.NOMBRE='admin')";
+        List lis=Operacion.listar(sql);
+        if (lis!=null)
+            return lis;
+        return null;
+    }
+
+    @Override
+    public List almacen() {
+        String sql="SELECT T.NOMBRE FROM EMPLEADO E INNER JOIN CUENTA C INNER JOIN PERSONA P INNER JOIN TIPOEMPLEADO T ON E.IDPEREM=P.IDPER WHERE (E.IDCUENTA=C.IDCUENTA AND E.IDTIP=T.IDTIP AND T.NOMBRE='Almacen')";
+        List lis=Operacion.listar(sql);
+        if (lis!=null)
+            return lis;
+        return null;
+    }
+
+    @Override
+    public List jefe() {
+        String sql="SELECT T.NOMBRE FROM EMPLEADO E INNER JOIN CUENTA C INNER JOIN PERSONA P INNER JOIN TIPOEMPLEADO T ON E.IDPEREM=P.IDPER WHERE (E.IDCUENTA=C.IDCUENTA AND E.IDTIP=T.IDTIP AND T.NOMBRE='Jefe de Control')";
+        List lis=Operacion.listar(sql);
+        if (lis!=null)
+            return lis;
+        return null;
+    }
+
+    @Override
+    public List rrhh() {
+        String sql="SELECT T.NOMBRE FROM EMPLEADO E INNER JOIN CUENTA C INNER JOIN PERSONA P INNER JOIN TIPOEMPLEADO T ON E.IDPEREM=P.IDPER WHERE (E.IDCUENTA=C.IDCUENTA AND E.IDTIP=T.IDTIP AND T.NOMBRE='Recursos Humanos')";
+        List lis=Operacion.listar(sql);
+        if (lis!=null)
+            return lis;
+        return null;
+    }
+
+    @Override
+    public List recepcionista() {
+        String sql="SELECT T.NOMBRE FROM EMPLEADO E INNER JOIN CUENTA C INNER JOIN PERSONA P INNER JOIN TIPOEMPLEADO T ON E.IDPEREM=P.IDPER WHERE (E.IDCUENTA=C.IDCUENTA AND E.IDTIP=T.IDTIP AND T.NOMBRE='Recepcionista')";
         List lis=Operacion.listar(sql);
         if (lis!=null)
             return lis;

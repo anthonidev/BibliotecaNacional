@@ -75,7 +75,6 @@ public class ClienteControl extends HttpServlet {
             String pro = new String(request.getParameter("selectProvincia2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
             String dis = new String(request.getParameter("selectDistrito2").getBytes("ISO-8859-1"), "UTF-8").replace("_", " ");
             String usuario = request.getParameter("usuario");
-            String password = request.getParameter("password");
 
             String msg = cliSer.actualizarCliente(dni, direccion, telefono, dep, pro, dis, usuario);
             Object[] fill = cliSer.buscarCliente(dni);

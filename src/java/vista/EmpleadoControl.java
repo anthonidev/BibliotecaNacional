@@ -52,7 +52,7 @@ public class EmpleadoControl extends HttpServlet {
                         response.sendRedirect("Intranet/Recepcionista/index.jsp");
                         break;
                         case "Administracion":
-                        response.sendRedirect("Intranet/Recepcionista/index.jsp");
+                        response.sendRedirect("Intranet/Administracion/index.jsp");
                         break;
 
                 }

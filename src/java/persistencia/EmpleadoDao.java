@@ -11,4 +11,9 @@ public interface EmpleadoDao {
     public String actualizar(Presentador pre);
     public String eliminar(Persona per);
     public List listar();
+    public List admin();
+    public List almacen();
+    public List jefe();
+    public List rrhh();
+    public List recepcionista();
 }
